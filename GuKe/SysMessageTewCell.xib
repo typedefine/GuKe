@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="SysMessageTewCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="81"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="80.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="系统消息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LbJ-yR-ki8">
+                        <rect key="frame" x="16" y="4" width="343" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="fdM-dZ-DR6"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欢迎注册骨先生APP欢迎注册骨先生APP欢迎注册骨先生APP欢迎注册骨先生APP欢迎注册骨先生APP欢迎注册骨先生APP欢迎注册骨先生APP欢迎注册骨先生APP欢迎注册骨先生APP欢迎注册骨先生APP" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFG-4U-Eji">
+                        <rect key="frame" x="16" y="27" width="343" height="35"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019/2/23 21:30:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CiX-aZ-qaw">
+                        <rect key="frame" x="247" y="63.5" width="112" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="1GD-pT-4Rt"/>
+                            <constraint firstAttribute="height" constant="15" id="1XY-3a-AkN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="CiX-aZ-qaw" secondAttribute="trailing" constant="16" id="00g-fj-cyI"/>
+                    <constraint firstItem="CiX-aZ-qaw" firstAttribute="top" secondItem="CFG-4U-Eji" secondAttribute="bottom" constant="1.5" id="1TD-o4-VAd"/>
+                    <constraint firstAttribute="bottom" secondItem="CiX-aZ-qaw" secondAttribute="bottom" constant="2" id="BOb-Ey-NGX"/>
+                    <constraint firstAttribute="trailing" secondItem="LbJ-yR-ki8" secondAttribute="trailing" constant="16" id="I20-mC-uun"/>
+                    <constraint firstItem="LbJ-yR-ki8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="L5F-ad-fMG"/>
+                    <constraint firstItem="CFG-4U-Eji" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Nd6-TT-dfD"/>
+                    <constraint firstItem="CFG-4U-Eji" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Ziu-Rb-QYC"/>
+                    <constraint firstItem="LbJ-yR-ki8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="aIK-CV-ssi"/>
+                    <constraint firstItem="CFG-4U-Eji" firstAttribute="top" secondItem="LbJ-yR-ki8" secondAttribute="bottom" constant="2" id="duW-gs-ES6"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="MessageTime" destination="CiX-aZ-qaw" id="Xhl-iB-zi3"/>
+                <outlet property="MessageTitle" destination="LbJ-yR-ki8" id="hHA-KS-9zz"/>
+                <outlet property="Messconcent" destination="CFG-4U-Eji" id="fud-zS-oww"/>
+            </connections>
+            <point key="canvasLocation" x="61.600000000000001" y="55.772113943028494"/>
+        </tableViewCell>
+    </objects>
+</document>

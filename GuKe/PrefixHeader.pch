@@ -1,0 +1,492 @@
+//
+//  PrefixHeader.pch
+//  GuKe
+//
+//  Created by yu on 2017/8/1.
+//  Copyright © 2017年 shangyukeji. All rights reserved.
+//
+
+//wang start
+#ifdef __OBJC__
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+#endif
+//end
+#import "UIViewController+BackButtonHandler.h"
+#import "moduleDate.h"
+#import "ZJNDeviceInfo.h"
+#import "ZJNRequestManager.h"
+#import "UILabel+BoundingRect.h"
+#import "UIViewController+HUD.h"
+#import "UIImage+extension.h"
+#import "UIView+Extension.h"
+#import "NSDate+Extension.h"
+#import "UIImageView+EMWebCache.h"
+#import "MJRefresh.h"
+#import "SDCycleScrollView.h"
+#import "UIColor+XPKit.h"
+#import "Utile.h"
+#import "YYModel.h"
+#import "Masonry.h"
+#import "UIViewExt.h"
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "MBProgressHUD.h"
+#import "WXApi.h"
+#import <AVFoundation/AVAsset.h>
+#import <AVFoundation/AVAssetImageGenerator.h>
+#import <AVFoundation/AVTime.h>
+#import <UMSocialCore/UMSocialCore.h>
+#import "NSString+containsString.h"
+#import "AFNetworking.h"
+#import "UIView+XPKit.h"
+
+//wang start
+#import <Hyphenate/Hyphenate.h>
+#import "EaseUI.h"
+#import "EMAlertView.h"
+#import <Parse/Parse.h>
+#import "TTGlobalUICommon.h"
+#import "MWPhotoBrowser.h"
+#define DEMO_CALL 1
+//end
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+
+#define SetColor(hexValue) [UIColor colorWithRed:((float)((hexValue & 0xFF0000) >> 16)) / 255.0 green:((float)((hexValue & 0xFF00) >> 8)) / 255.0 blue:((float)(hexValue & 0xFF)) / 255.0 alpha:1.0f]
+
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_IPHONE_4_OR_LESS (IS_IPHONE && ScreenHeight < 568.0)
+#define IS_IPHONE_5 (IS_IPHONE && ScreenHeight == 568.0)
+#define IS_IPHONE_6 (IS_IPHONE && ScreenHeight == 667.0)
+#define IS_IPHONE_6P (IS_IPHONE && ScreenHeight == 736.0)
+#define IS_IPGONE_X (IS_IPHONE && ScreenHeight == 812.0)
+//屏幕宽度
+#define ScreenWidth  [UIScreen mainScreen].bounds.size.width
+
+//资讯中轮播图的高度
+#define lunboImgHeight 3*(ScreenWidth/5.0)
+
+//屏幕高度
+#define ScreenHeight [UIScreen mainScreen].bounds.size.height
+/** 导航栏高度 */
+#define NavBarHeight (ScreenHeight == 812.0 ? 88 : 64)
+/** tabbar高度 */
+#define TabbarHeight (ScreenHeight == 812.0 ? 83 : 49)
+/** tabbar增加的高度 */
+#define TabbarAddHeight (ScreenHeight == 812.0 ? 17 : 0)
+
+//
+//// 导航栏 加 状态栏
+//#define NavStatusBarHeight (44 + StatusBarHeight)
+//// 导航栏高度
+//#define NavBarHeight 44
+////有导航控制器的时候 Tababar高度
+//#define NavTabBarHeight [self.navigationController.tabBarController.tabBar frame].size.height
+//// Tababar高度
+//#define TabBarHeight [self.tabBarController.tabBar frame].size.height
+//// 状态栏高度
+//#define StatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
+
+
+//大标题字号
+#define Font14 [UIFont systemFontOfSize:14]
+//小标题字号
+#define Font12 [UIFont systemFontOfSize:12]
+//内容字号
+#define Font18 [UIFont systemFontOfSize:18]
+
+#define Font16 [UIFont systemFontOfSize:16]
+
+#define Font15 [UIFont systemFontOfSize:15]
+
+#define Font19 [UIFont systemFontOfSize:19]
+#define SetFont(a)  [UIFont systemFontOfSize:a]
+
+//字体颜色  标题
+#define titColor  SetColor(0x333333)
+
+#define detailTextColor SetColor(0x666666)
+
+#define greenC SetColor(0x06a27b)
+
+//sessionid//@"8ac282835dbfa82d015dbfa8c8d50000"
+#define sessionIding  [[NSUserDefaults standardUserDefaults]objectForKey:@"sessionIdUser"]
+//userid
+#define UserId [[NSUserDefaults standardUserDefaults]objectForKey:@"UserId"]
+
+//新的朋友红点提示  10:有好友申请   5 ：没有好友申请
+#define newDriend  [[NSUserDefaults standardUserDefaults]objectForKey:@"WYYAddNewFriend"]
+#define SetnewDriend(a) [[NSUserDefaults standardUserDefaults]setObject:a forKey:@"WYYAddNewFriend"]
+
+
+
+
+//userid
+#define UserId [[NSUserDefaults standardUserDefaults]objectForKey:@"UserId"]
+
+//wang start
+//同步
+#define Synchronize [[NSUserDefaults standardUserDefaults] synchronize];
+//#define RequestURL @"http://sycs.dashouzhang.org:8081/bone/"
+#define KNOTIFICATIONNAME_DELETEALLMESSAGE @"RemoveAllMessages"
+
+//用户头像
+#define ChatImgUrl [[NSUserDefaults standardUserDefaults]objectForKey:@"chatImgurl"]
+
+#define SetChatImgUrl(a) [[NSUserDefaults standardUserDefaults]setObject:a forKey:@"chatImgurl"]
+//用户昵称
+#define ChatUserName [[NSUserDefaults standardUserDefaults]objectForKey:@"chatUsername"]
+#define SetChatUserName(a) [[NSUserDefaults standardUserDefaults]setObject:a forKey:@"chatUsername"]
+
+#define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+//end
+
+// 图片压缩比例
+#define  proportion  0.7
+
+ /* 测试地址*/
+//#define requestUrl @"http://test.guxians.com/bone/"
+
+//正式 www.guxians.com
+#define imgPath    @"http://files.guxians.com/"
+#define requestUrl @"https://www.guxians.com/bone/"
+
+
+
+//我的患者--列表
+#define patientpatient_list @"/app/patient/patient_list.json"
+
+//我的患者--随访记录
+#define patientpatient_revisit @"/app/patient/patient_revisit.json"
+
+//医生好友列表
+#define friendslist @"/app/friends/list.json"
+
+//修改回访时间
+#define callbackupdate @"/app/callback/update.json"
+
+//回访列表
+#define callbacklist @"/app/callback/list.json"
+
+//我的收藏
+#define collectionlist @"/app/collection/list.json"
+
+//检查更新
+#define renewallist @"/app/renewal/list.json"
+
+//验证码
+//#define appsms @"/app/sms.json"
+#define appsms @"/app/v2/sms.json"
+
+//重置密码
+#define resetlist @"/app/resetpwd.json"
+
+//注册
+#define appregister @"/app/register.json"
+
+//我的患者--手术记录
+#define patientpatient_surgical @"/app/patient/patient_surgical.json"
+
+//轮播图展示
+#define carouselcarouselimg @"/app/carousel/carouselimg.json"
+//科室信息
+#define departmentlist @"/app/department/list.json"
+
+//医院信息
+#define hospitallist @"/app/hospital/list.json"
+
+//登录
+#define logining @"/app/login.json"
+
+//用户相关信息
+#define doctorlist @"/app/doctor/list.json"
+
+//公用专长
+#define specialtylist @"/app/specialty/list.json"
+
+//公用关节
+#define jointslist @"/app/joints/list.json"
+//根据地址获取省市区
+#define GetAddressWithadd @"app/address/name.json"
+
+
+
+//我的患者--就诊记录
+#define patientpatient_visit @"/app/patient/patient_visit.json"
+
+//上传视频
+#define videoing @"/app/videoUpload.video"
+
+//图片上传
+#define uploadimageUpload @"/upload/imageUpload.json"
+
+//我的患者---添加
+#define patientpatient_save @"/app/patient/patient_save.json"
+
+//添加手术记录
+#define patientsurgical_save @"/app/patient/surgical_save.json"
+//获取所有手术类别
+#define patientsurgeryAllType  @"app/common/surgeryType/all.json"
+//获取器械品牌列表
+#define shoushusurgeryBrand @"/app/surgeryBrand/list.json"
+
+//添加随访记录
+
+#define patientcall_save @"/app/patient/call_save.json"
+
+//麻醉类型
+#define anesthesialist @"/app/anesthesia/list.json"
+
+//我的患者--随访记录 --对比内容
+#define patientpatient_compare @"/app/patient/patient_compare.json"
+
+//我的患者--随访记录 --对比时间
+#define patientpatient_time @"/app/patient/patient_time.json"
+
+//我组织的会议
+#define meetingorganization @"/app/meeting/organization.json"
+
+//我报名的会议
+#define meetingmymeet @"/app/meeting/mymeet.json"
+
+//热门会议
+#define meetinglist @"/app/meeting/list.json"
+
+//发布会议
+#define meetingsave @"/app/meeting/save.json"
+
+//我的随访
+#define callbacklist @"/app/callback/list.json"
+
+//更多报名
+#define meetingapply @"/app/meeting/apply.json"
+
+//会议报名/会议详情
+#define meetingshow @"/app/meeting/show.json"
+
+//医生好友列表 --是否是好友
+#define doctorfriends_is @"/app/doctor/friends_is.json"
+
+//医生好友列表 --删除好友
+#define doctorfriends_delete @"/app/doctor/friends_delete.json"
+
+//医生好友列表 --同意好友申请
+#define doctorfriends_agree @"/app/doctor//friends_agree.json"
+
+//医生好友列表 --申请添加好友
+#define doctorfriends_apply @"/app/doctor/friends_apply.json"
+
+//医生好友列表 --手机号搜索好友
+#define doctorfriends_phone @"/app/doctor/friends_phone.json"
+
+//我的患者--就诊记录--邀请专家
+#define doctorinvite_doctot @"/app/doctor/invite_doctot.json"
+//评分列表
+#define form_list @"/app/form/list.json"
+//文章详情
+#define informationshow @"/app/information/show.json"
+
+//资讯列表
+#define informationlist @"/app/information/list.json"
+
+//个人资料新建或修改
+#define doctorsave @"/app/doctor/save.json"
+
+//个人资料展示
+#define doctorshow @"/app/doctor/show.json"
+
+//医生详情列表
+#define doctordoctor_xq @"/app/userpatienthuanxin/docshow.json"
+
+//医生列表
+#define doctordoctor_list @"/app/doctor/doctor_list.json"
+
+//医生好友列表
+#define doctorfriends @"/app/doctor/friends.json"
+
+//修改回访时间
+#define callbackupdate @"/app/callback/update.json"
+
+//首页
+#define doctorlist @"/app/doctor/list.json"
+
+//省市区
+#define districtlist @"/app/district/list.json"
+
+//资讯模块
+#define informationmodule @"/app/information/module.json"
+
+//民族
+#define nationlist @"/app/nation/list.json"
+
+//我的随访--随访时间
+#define cyclelist @"/app/cycle/list.json"
+
+//职称列表
+#define titlelist @"/app/title/list.json"
+
+//与本人关系列表
+#define relationlist @"/app/relation/list.json"
+
+//我要报名
+#define meetingbaom @"/app/meeting/baom.json"
+
+//我的手术 已完成
+#define surgerylist @"/app/surgery/list.json"
+
+//我已随访 已完成
+#define patientchecklist @"/app/patientcheck/list.json"
+
+//资讯、视频添加我的收藏
+#define collectionadd @"/app/collection/add.json"
+
+//医生名片
+#define doctor_card @"/app/doctor/doctor_card.json"
+
+//直播地址
+#define Backroom @"/app/liveroom/list.json"
+#define liveroom @"/app/liveroom/listroom.json"
+//直播分享地址
+//#define fxliveroom @"/app/liveroom/fxlist.json"
+#define fxliveroom @"/app/liveroom/fxlistroom.json"
+ /** 分享会议 */
+#define fxMeeting @"/app/meeting/fxorganization_show.json"
+
+//分享患者就诊记录
+#define fxpatient @"/app/patient/fxpatient.json"
+/**好友申请列表*/
+#define goodfriendaddlist  @"/app/goodfriend/addlist.json"
+
+/**拒绝添加*/
+#define goodfrienddelete @"/app/goodfriend/delete.json"
+
+/**同意添加*/
+#define goodfriendadd  @"/app/goodfriend/add.json"
+
+/**好友申请--患者信息*/
+#define goodfriendlookpatient  @"/app/goodfriend/lookpatient.json"
+
+/**好友申请--医生资料*/
+#define goodfriendlookdoctor @"/app/goodfriend/lookdoctor.json"
+
+/**好友医生列表*/
+#define userpatienthuanxinmydoctor @"/app/userpatienthuanxin/mydoctor.json"
+
+/**医生搜索列表*/
+#define userpatienthuanxindoclist @"/app/userpatienthuanxin/doclist.json"
+
+/**省市区医院科室五级联动*/
+#define userpatienthuanxinlist  @"/app/userpatienthuanxin/list.json"
+
+
+
+
+/**医生添加医生申请*/
+#define doctorhuanxinaddHuan @"/app/doctorhuanxin/addHuan.json"
+
+
+/**删除好友*/
+#define userpatienthuanxindeletefriend @"/app/userpatienthuanxin/deletefriend.json"
+
+/**我的群列表*/
+#define chatgroupsmygroup @"/app/chatgroups/mygroup.json"
+
+/**群信息*/
+#define chatgroupsgroupinfo @"/app/chatgroups/groupinfo.json"
+
+/**医生好友（不包括患者,建群时使用）*/
+#define doctorhuanxindoctorlist @"/app/doctorhuanxin/doctorlist.json"
+
+/**群成员拉人*/
+#define doctorhuanxingrouplist @"/app/doctorhuanxin/grouplist.json"
+
+/**好友列表（所有）*/
+#define doctorhuanxinfreindlist  @"/app/doctorhuanxin/freindlist.json"
+
+/**解散群*/
+#define chatgroupsdelete @"/app/chatgroups/delete.json"
+
+/**退出群*/
+#define chatgroupsleavegroup @"/app/chatgroups/leavegroup.json"
+
+/**群主移除群成员*/
+#define chatgroupsdeletegroup @"/app/chatgroups/deletegroup.json"
+
+/**添加群成员*/
+#define chatgroupsaddgroup @"/app/chatgroups/addgroup.json"
+
+/**建群*/
+#define chatgroupsadd @"/app/chatgroups/add.json"
+
+/**首页热门视频*/
+#define pubvideolist  @"/app/pubvideo/list.json"
+
+/**热门视频分类*/
+#define pubvideolisttype @"/app/pubvideo/listtype.json"
+
+/**热门视频列表*/
+#define pubvideomorelist @"/app/pubvideo/morelist.json"
+/**热门视频搜索  全部*/
+#define pubvideoSearchlist @"app/pubvideo/searchList.json"
+/**消息通知列表  */
+#define messageList @"/app/notice/list.json"
+
+
+
+/**热门视频详情*/
+#define pubvideolook @"/app/pubvideo/look.json"
+
+/**我的患者列表*/
+#define doctorhuanxinpatientlist @"/app/doctorhuanxin/patientlist.json"
+
+/**患者聊天--患者详情*/
+#define doctorhuanxinlookpatient @"/app/doctorhuanxin/lookpatient.json"
+
+/**根据user_id 判断医生还是患者*/
+#define doctorhuanxinDistinguish  @"/app/doctorhuanxin/Distinguish.json"
+
+/**邀请医生列表*/
+#define hospdoctorlist   @"/app/hospdoctor/list.json"
+
+/**热门视频分享详情(H5页面跳转)*/
+#define pubvideofxlook  @"/app/pubvideo/fxlook.json"
+
+/** 手术记录修改 */
+#define updatesurgical @"/app/patient/updatesurgical.json"
+
+/** 修改随访记录 */
+#define updatecheck @"/app/patient/updatecheck.json"
+
+/** 修改患者基本信息 */
+#define updatejbxx @"/app/patient/updatejbxx.json"
+
+/** 修改患者生命体征 */
+#define updatetzxx @"/app/patient/updatetzxx.json"
+/** 修改患者就诊病历 */
+#define updatehzxx @"/app/patient/updatehzxx.json"
+
+/**修改随访记录--病例报告图片 */
+#define updatecheckimage @"/app/patient/updatecheckimage.json"
+/* 修改 i病例的图片 */
+#define updateUpdateimage @"/app/patient/updateimage.json"
+
+/**资讯收藏列表*/
+#define collectionlistinfo @"/app/collection/listinfo.json"
+/**视频收藏列表*/
+#define videocollectionlistinfo @"/app/collection/listvideo.json"
+
+// 保存统计模块耗时数据
+#define  PubStatisticalSave  @"/app/pubStatistical/save.json"
+// 获取省市区信息
+#define  allArea  @"app/common/area/all.json"
+
+
+
+// nslog 打印不全的问题
+ #define NSLog(format,...) printf("%s",[[NSString stringWithFormat:(format), ##__VA_ARGS__] UTF8String])
+
+
+#endif /* PrefixHeader_pch */

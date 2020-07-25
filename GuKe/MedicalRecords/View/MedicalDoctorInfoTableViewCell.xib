@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="122" id="KGk-i7-Jjw" customClass="MedicalDoctorInfoTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="医      院：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fS-Mo-gCu">
+                        <rect key="frame" x="15" y="10" width="72" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="Lmk-sk-oLQ"/>
+                            <constraint firstAttribute="width" constant="72" id="uBS-Jw-ghG"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="科      室：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POX-9X-Tqn">
+                        <rect key="frame" x="15" y="40" width="72" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="72" id="WUg-JQ-Sfg"/>
+                            <constraint firstAttribute="height" constant="20" id="jWT-Sf-jXF"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主治医生：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TgR-5F-3jg">
+                        <rect key="frame" x="15" y="70" width="72" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="L2F-aS-F5j"/>
+                            <constraint firstAttribute="width" constant="72" id="ueU-n7-s00"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="郑州市骨科医院" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1h-uJ-AfI">
+                        <rect key="frame" x="87" y="10" width="223" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="BQ2-nT-H2U"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="骨科" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDe-Js-uaw">
+                        <rect key="frame" x="87" y="40" width="215" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="Bwl-oS-FXf"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="张医生" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Igq-3K-nkq">
+                        <rect key="frame" x="87" y="70" width="223" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="v0a-ir-s4A"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Igq-3K-nkq" firstAttribute="centerY" secondItem="TgR-5F-3jg" secondAttribute="centerY" id="7pj-fG-VHK"/>
+                    <constraint firstAttribute="trailing" secondItem="h1h-uJ-AfI" secondAttribute="trailing" constant="10" id="Fbp-UE-9Qi"/>
+                    <constraint firstItem="POX-9X-Tqn" firstAttribute="leading" secondItem="9fS-Mo-gCu" secondAttribute="leading" id="H2G-mn-3HM"/>
+                    <constraint firstItem="h1h-uJ-AfI" firstAttribute="centerY" secondItem="9fS-Mo-gCu" secondAttribute="centerY" id="Mct-7N-xtr"/>
+                    <constraint firstItem="POX-9X-Tqn" firstAttribute="top" secondItem="9fS-Mo-gCu" secondAttribute="bottom" constant="10" id="RdS-WG-V6h"/>
+                    <constraint firstItem="TgR-5F-3jg" firstAttribute="top" secondItem="POX-9X-Tqn" secondAttribute="bottom" constant="10" id="Rqd-r2-it5"/>
+                    <constraint firstItem="9fS-Mo-gCu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="hu4-zZ-rIY"/>
+                    <constraint firstItem="QDe-Js-uaw" firstAttribute="centerY" secondItem="POX-9X-Tqn" secondAttribute="centerY" id="ijK-EZ-Km7"/>
+                    <constraint firstAttribute="trailing" secondItem="Igq-3K-nkq" secondAttribute="trailing" constant="10" id="o0q-bb-Ivc"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="QDe-Js-uaw" secondAttribute="trailing" constant="10" id="qAo-at-Stj"/>
+                    <constraint firstItem="h1h-uJ-AfI" firstAttribute="leading" secondItem="9fS-Mo-gCu" secondAttribute="trailing" id="rJT-GG-9i8"/>
+                    <constraint firstItem="Igq-3K-nkq" firstAttribute="leading" secondItem="TgR-5F-3jg" secondAttribute="trailing" id="rdl-L3-XZa"/>
+                    <constraint firstItem="QDe-Js-uaw" firstAttribute="leading" secondItem="POX-9X-Tqn" secondAttribute="trailing" id="vve-Jf-43z"/>
+                    <constraint firstItem="TgR-5F-3jg" firstAttribute="leading" secondItem="9fS-Mo-gCu" secondAttribute="leading" id="xub-h2-DdZ"/>
+                    <constraint firstItem="9fS-Mo-gCu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="yio-D0-J5g"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="doctorNameLabel" destination="Igq-3K-nkq" id="rvJ-Vq-HAl"/>
+                <outlet property="hospitalNameLabel" destination="h1h-uJ-AfI" id="SOs-X6-CzG"/>
+                <outlet property="roomLabel" destination="QDe-Js-uaw" id="cuk-2y-cD5"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="14.5"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ZJNMRSharesCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="83" height="128"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="83" height="128"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y2z-fX-w1Y">
+                        <rect key="frame" x="5" y="5" width="73" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="UeF-a8-yLX"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朱佳楠" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lkr-Bg-AMb">
+                        <rect key="frame" x="0.0" y="65" width="83" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="删除icon" translatesAutoresizingMaskIntoConstraints="NO" id="rVE-VG-fVz">
+                        <rect key="frame" x="68" y="0.0" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="8if-v1-rVm"/>
+                            <constraint firstAttribute="width" constant="15" id="rML-uJ-TfB"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="rVE-VG-fVz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1hm-V6-FoQ"/>
+                <constraint firstItem="Lkr-Bg-AMb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="AXF-fm-lUr"/>
+                <constraint firstItem="Y2z-fX-w1Y" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="Iig-mk-Fli"/>
+                <constraint firstItem="Y2z-fX-w1Y" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="Mgv-yr-Aed"/>
+                <constraint firstItem="Lkr-Bg-AMb" firstAttribute="top" secondItem="Y2z-fX-w1Y" secondAttribute="bottom" constant="10" id="UE9-Cx-jhP"/>
+                <constraint firstAttribute="trailing" secondItem="Y2z-fX-w1Y" secondAttribute="trailing" constant="5" id="d9D-EB-3L4"/>
+                <constraint firstAttribute="trailing" secondItem="rVE-VG-fVz" secondAttribute="trailing" id="vYo-pn-Erl"/>
+                <constraint firstAttribute="trailing" secondItem="Lkr-Bg-AMb" secondAttribute="trailing" id="zch-G8-GDT"/>
+            </constraints>
+            <size key="customSize" width="83" height="128"/>
+            <connections>
+                <outlet property="deleteImageView" destination="rVE-VG-fVz" id="Lej-Lf-HHw"/>
+                <outlet property="imageHeightConstraint" destination="UeF-a8-yLX" id="NYo-ZX-co3"/>
+                <outlet property="imageView" destination="Y2z-fX-w1Y" id="kGY-2F-k30"/>
+                <outlet property="nameLabel" destination="Lkr-Bg-AMb" id="CJU-Eq-ymi"/>
+            </connections>
+            <point key="canvasLocation" x="50.5" y="93"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="删除icon" width="11" height="11"/>
+    </resources>
+</document>

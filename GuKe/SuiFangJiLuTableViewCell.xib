@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="137" id="KGk-i7-Jjw" customClass="SuiFangJiLuTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="73.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="回访时间:2018-01-01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69N-gY-uyn">
+                        <rect key="frame" x="30" y="19" width="119" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="热门学术会议-icon1" translatesAutoresizingMaskIntoConstraints="NO" id="c0j-CZ-bSq">
+                        <rect key="frame" x="169" y="19" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="GpU-fk-LlE"/>
+                            <constraint firstAttribute="height" constant="15" id="Tnt-gW-kVz"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 专科检查:检查结果很好" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GB8-My-dOU">
+                        <rect key="frame" x="16" y="46" width="294" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="c6P-kV-sK3"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="热门学术会议-icon2" translatesAutoresizingMaskIntoConstraints="NO" id="uTz-1c-X9p">
+                        <rect key="frame" x="10" y="19" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="1w7-Or-Wpa"/>
+                            <constraint firstAttribute="width" constant="15" id="Ih4-fD-O12"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="王麻子" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZ0-7a-gmJ">
+                        <rect key="frame" x="192" y="19" width="37" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.36078431372549019" green="0.36078431372549019" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一月随访" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Kd-gl-tFy">
+                        <rect key="frame" x="213" y="19" width="100" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="n9t-FG-VZa"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.95294117647058818" green="0.69411764705882351" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="GB8-My-dOU" secondAttribute="bottom" constant="10.5" id="0Jw-Ji-Fba"/>
+                    <constraint firstItem="69N-gY-uyn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="19" id="H9t-9V-sZH"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="7Kd-gl-tFy" secondAttribute="trailing" constant="-9" id="INB-CF-FcD"/>
+                    <constraint firstItem="CZ0-7a-gmJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="19" id="IrA-cl-94n"/>
+                    <constraint firstItem="69N-gY-uyn" firstAttribute="leading" secondItem="uTz-1c-X9p" secondAttribute="trailing" constant="5" id="JlM-xM-0Kk"/>
+                    <constraint firstItem="c0j-CZ-bSq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="19" id="TUl-d2-ces"/>
+                    <constraint firstItem="uTz-1c-X9p" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="V4g-sc-0AT"/>
+                    <constraint firstItem="c0j-CZ-bSq" firstAttribute="leading" secondItem="69N-gY-uyn" secondAttribute="trailing" constant="20.5" id="cGU-C3-HXa"/>
+                    <constraint firstItem="7Kd-gl-tFy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="19" id="eNT-JT-WJm"/>
+                    <constraint firstItem="GB8-My-dOU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="eVX-WG-8pT"/>
+                    <constraint firstItem="uTz-1c-X9p" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="19" id="sx4-mF-dCJ"/>
+                    <constraint firstItem="CZ0-7a-gmJ" firstAttribute="leading" secondItem="c0j-CZ-bSq" secondAttribute="trailing" constant="8" id="thr-an-i4S"/>
+                    <constraint firstAttribute="trailing" secondItem="GB8-My-dOU" secondAttribute="trailing" constant="10" id="wfC-BH-EXu"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="jianchaLab" destination="GB8-My-dOU" id="g1J-eU-Zx7"/>
+                <outlet property="nameLab" destination="CZ0-7a-gmJ" id="Jod-VH-8Vl"/>
+                <outlet property="suifangTimeLab" destination="7Kd-gl-tFy" id="P8j-7r-lT8"/>
+                <outlet property="timelab" destination="69N-gY-uyn" id="koC-C6-bZZ"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="100"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="热门学术会议-icon1" width="13" height="13"/>
+        <image name="热门学术会议-icon2" width="13" height="13"/>
+    </resources>
+</document>

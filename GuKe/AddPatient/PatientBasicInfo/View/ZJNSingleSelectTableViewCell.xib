@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ZJNSingleSelectTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性别" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Re0-2f-Cm6">
+                        <rect key="frame" x="15" y="12" width="29" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="y4w-mX-luV"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="女" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="At5-Z5-28q">
+                        <rect key="frame" x="295.5" y="12.5" width="14.5" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="OEb-e5-bpS"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wU-SC-SzU">
+                        <rect key="frame" x="175" y="0.0" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="rOj-wr-8vM"/>
+                            <constraint firstAttribute="width" constant="44" id="rfU-JC-mNP"/>
+                        </constraints>
+                        <state key="normal" image="性别_未选中"/>
+                        <state key="selected" image="性别_选中"/>
+                        <connections>
+                            <action selector="leftButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dcM-yz-9dU"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZi-Ad-Xzh">
+                        <rect key="frame" x="247.5" y="0.0" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="dBd-80-qV3"/>
+                            <constraint firstAttribute="width" constant="44" id="gCM-QW-clC"/>
+                        </constraints>
+                        <state key="normal" image="性别_未选中"/>
+                        <state key="selected" image="性别_选中"/>
+                        <connections>
+                            <action selector="rightButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NxT-xW-d82"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="男" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Skp-Qh-lJS">
+                        <rect key="frame" x="223" y="12" width="14.5" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="CLG-1Z-S8o"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="At5-Z5-28q" firstAttribute="centerY" secondItem="Re0-2f-Cm6" secondAttribute="centerY" id="3bU-d6-fEf"/>
+                    <constraint firstAttribute="trailing" secondItem="At5-Z5-28q" secondAttribute="trailing" constant="10" id="9dh-Ag-ZjZ"/>
+                    <constraint firstItem="At5-Z5-28q" firstAttribute="leading" secondItem="nZi-Ad-Xzh" secondAttribute="trailing" constant="4" id="Gjn-0y-qMc"/>
+                    <constraint firstItem="Skp-Qh-lJS" firstAttribute="leading" secondItem="6wU-SC-SzU" secondAttribute="trailing" constant="4" id="K9G-Sl-lOX"/>
+                    <constraint firstItem="Re0-2f-Cm6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="PoL-IL-AHU"/>
+                    <constraint firstItem="nZi-Ad-Xzh" firstAttribute="leading" secondItem="Skp-Qh-lJS" secondAttribute="trailing" constant="10" id="ZGs-cc-Dav"/>
+                    <constraint firstItem="Re0-2f-Cm6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="cmh-gc-eKd"/>
+                    <constraint firstItem="6wU-SC-SzU" firstAttribute="centerY" secondItem="Re0-2f-Cm6" secondAttribute="centerY" id="rkz-b5-zjv"/>
+                    <constraint firstItem="nZi-Ad-Xzh" firstAttribute="centerY" secondItem="Re0-2f-Cm6" secondAttribute="centerY" id="uYb-MM-8lL"/>
+                    <constraint firstItem="Skp-Qh-lJS" firstAttribute="centerY" secondItem="Re0-2f-Cm6" secondAttribute="centerY" id="w9c-nb-2TQ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="leftButton" destination="6wU-SC-SzU" id="t5l-z3-BvK"/>
+                <outlet property="rightButton" destination="nZi-Ad-Xzh" id="Kvx-xL-FDo"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="性别_未选中" width="13" height="13"/>
+        <image name="性别_选中" width="13" height="13"/>
+    </resources>
+</document>
