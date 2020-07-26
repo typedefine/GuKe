@@ -75,8 +75,6 @@
 		9A08A8651F300F8F00AF29EB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A08A8641F300F8F00AF29EB /* main.m */; };
 		9A08A8681F300F8F00AF29EB /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A08A8671F300F8F00AF29EB /* AppDelegate.mm */; };
 		9A08A8701F300F8F00AF29EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A08A86F1F300F8F00AF29EB /* Assets.xcassets */; };
-		9A08A87E1F300F8F00AF29EB /* GuKeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A08A87D1F300F8F00AF29EB /* GuKeTests.m */; };
-		9A08A8891F300F8F00AF29EB /* GuKeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A08A8881F300F8F00AF29EB /* GuKeUITests.m */; };
 		9A08A89F1F30116200AF29EB /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A08A89D1F30116200AF29EB /* MainViewController.m */; };
 		9A08A8A01F30116200AF29EB /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A08A89E1F30116200AF29EB /* MainViewController.xib */; };
 		9A08A8AF1F30126D00AF29EB /* WoDeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A08A8AD1F30126D00AF29EB /* WoDeViewController.m */; };
@@ -813,23 +811,6 @@
 		E3F964261F7F9A5900924F8A /* ZJNSingleSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F964241F7F9A5900924F8A /* ZJNSingleSelectTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		9A08A87A1F300F8F00AF29EB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9A08A8581F300F8E00AF29EB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9A08A85F1F300F8E00AF29EB;
-			remoteInfo = GuKe;
-		};
-		9A08A8851F300F8F00AF29EB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9A08A8581F300F8E00AF29EB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9A08A85F1F300F8E00AF29EB;
-			remoteInfo = GuKe;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		E3084D8C1FA80140001E7439 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -966,12 +947,6 @@
 		9A08A8671F300F8F00AF29EB /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		9A08A86F1F300F8F00AF29EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A08A8741F300F8F00AF29EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9A08A8791F300F8F00AF29EB /* GuKeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GuKeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A08A87D1F300F8F00AF29EB /* GuKeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuKeTests.m; sourceTree = "<group>"; };
-		9A08A87F1F300F8F00AF29EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9A08A8841F300F8F00AF29EB /* GuKeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GuKeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A08A8881F300F8F00AF29EB /* GuKeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuKeUITests.m; sourceTree = "<group>"; };
-		9A08A88A1F300F8F00AF29EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A08A89C1F30116200AF29EB /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		9A08A89D1F30116200AF29EB /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		9A08A89E1F30116200AF29EB /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
@@ -2286,20 +2261,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9A08A8761F300F8F00AF29EB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9A08A8811F300F8F00AF29EB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -2504,8 +2465,6 @@
 			children = (
 				9A15E9C11F3BE48E008890F4 /* Frameworks */,
 				9A08A8621F300F8F00AF29EB /* GuKe */,
-				9A08A87C1F300F8F00AF29EB /* GuKeTests */,
-				9A08A8871F300F8F00AF29EB /* GuKeUITests */,
 				EADD92A641DA8857A878049D /* Pods */,
 				9A08A8611F300F8F00AF29EB /* Products */,
 			);
@@ -2515,8 +2474,6 @@
 			isa = PBXGroup;
 			children = (
 				9A08A8601F300F8E00AF29EB /* GuKe.app */,
-				9A08A8791F300F8F00AF29EB /* GuKeTests.xctest */,
-				9A08A8841F300F8F00AF29EB /* GuKeUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2550,24 +2507,6 @@
 				E308BE901F677A8100399B76 /* SynthesizeSingleton.h */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		9A08A87C1F300F8F00AF29EB /* GuKeTests */ = {
-			isa = PBXGroup;
-			children = (
-				9A08A87D1F300F8F00AF29EB /* GuKeTests.m */,
-				9A08A87F1F300F8F00AF29EB /* Info.plist */,
-			);
-			path = GuKeTests;
-			sourceTree = "<group>";
-		};
-		9A08A8871F300F8F00AF29EB /* GuKeUITests */ = {
-			isa = PBXGroup;
-			children = (
-				9A08A8881F300F8F00AF29EB /* GuKeUITests.m */,
-				9A08A88A1F300F8F00AF29EB /* Info.plist */,
-			);
-			path = GuKeUITests;
 			sourceTree = "<group>";
 		};
 		9A08A8961F30109100AF29EB /* login */ = {
@@ -5577,7 +5516,6 @@
 				9A08A85D1F300F8E00AF29EB /* Frameworks */,
 				9A08A85E1F300F8E00AF29EB /* Resources */,
 				FDB7E9E1627FF34077FD98D0 /* [CP] Embed Pods Frameworks */,
-				3351053674151DA4366AE679 /* [CP] Copy Pods Resources */,
 				E3084D8C1FA80140001E7439 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -5588,42 +5526,6 @@
 			productName = GuKe;
 			productReference = 9A08A8601F300F8E00AF29EB /* GuKe.app */;
 			productType = "com.apple.product-type.application";
-		};
-		9A08A8781F300F8F00AF29EB /* GuKeTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9A08A8901F300F8F00AF29EB /* Build configuration list for PBXNativeTarget "GuKeTests" */;
-			buildPhases = (
-				9A08A8751F300F8F00AF29EB /* Sources */,
-				9A08A8761F300F8F00AF29EB /* Frameworks */,
-				9A08A8771F300F8F00AF29EB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9A08A87B1F300F8F00AF29EB /* PBXTargetDependency */,
-			);
-			name = GuKeTests;
-			productName = GuKeTests;
-			productReference = 9A08A8791F300F8F00AF29EB /* GuKeTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		9A08A8831F300F8F00AF29EB /* GuKeUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9A08A8931F300F8F00AF29EB /* Build configuration list for PBXNativeTarget "GuKeUITests" */;
-			buildPhases = (
-				9A08A8801F300F8F00AF29EB /* Sources */,
-				9A08A8811F300F8F00AF29EB /* Frameworks */,
-				9A08A8821F300F8F00AF29EB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9A08A8861F300F8F00AF29EB /* PBXTargetDependency */,
-			);
-			name = GuKeUITests;
-			productName = GuKeUITests;
-			productReference = 9A08A8841F300F8F00AF29EB /* GuKeUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -5647,16 +5549,6 @@
 							};
 						};
 					};
-					9A08A8781F300F8F00AF29EB = {
-						CreatedOnToolsVersion = 8.1;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 9A08A85F1F300F8E00AF29EB;
-					};
-					9A08A8831F300F8F00AF29EB = {
-						CreatedOnToolsVersion = 8.1;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 9A08A85F1F300F8E00AF29EB;
-					};
 				};
 			};
 			buildConfigurationList = 9A08A85B1F300F8E00AF29EB /* Build configuration list for PBXProject "GuKe" */;
@@ -5674,8 +5566,6 @@
 			projectRoot = "";
 			targets = (
 				9A08A85F1F300F8E00AF29EB /* GuKe */,
-				9A08A8781F300F8F00AF29EB /* GuKeTests */,
-				9A08A8831F300F8F00AF29EB /* GuKeUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -5920,43 +5810,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9A08A8771F300F8F00AF29EB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9A08A8821F300F8F00AF29EB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3351053674151DA4366AE679 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-GuKe/Pods-GuKe-resources.sh",
-				"${PODS_ROOT}/EaseUI/EaseUI/resources/EaseUIResource.bundle",
-				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				$PODS_CONFIGURATION_BUILD_DIR/MWPhotoBrowser/MWPhotoBrowser.bundle,
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GuKe/Pods-GuKe-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9854397BECCA49D36B14CA0A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -5981,7 +5837,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-GuKe/Pods-GuKe-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-GuKe/Pods-GuKe-frameworks.sh",
 				"${PODS_ROOT}/Hyphenate/ios_IM_Hyphenate_sdk_3.3.7/HyphenateFullSDK/Hyphenate.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -5990,7 +5846,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GuKe/Pods-GuKe-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GuKe/Pods-GuKe-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -6518,36 +6374,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9A08A8751F300F8F00AF29EB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9A08A87E1F300F8F00AF29EB /* GuKeTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9A08A8801F300F8F00AF29EB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9A08A8891F300F8F00AF29EB /* GuKeUITests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9A08A87B1F300F8F00AF29EB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9A08A85F1F300F8E00AF29EB /* GuKe */;
-			targetProxy = 9A08A87A1F300F8F00AF29EB /* PBXContainerItemProxy */;
-		};
-		9A08A8861F300F8F00AF29EB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9A08A85F1F300F8E00AF29EB /* GuKe */;
-			targetProxy = 9A08A8851F300F8F00AF29EB /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9A53886E20084DC30084E772 /* LoginViewController.strings */ = {
@@ -6812,52 +6639,6 @@
 			};
 			name = Release;
 		};
-		9A08A8911F300F8F00AF29EB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = GuKeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shangyukeji.GuKeTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GuKe.app/GuKe";
-			};
-			name = Debug;
-		};
-		9A08A8921F300F8F00AF29EB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = GuKeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shangyukeji.GuKeTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GuKe.app/GuKe";
-			};
-			name = Release;
-		};
-		9A08A8941F300F8F00AF29EB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = GuKeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shangyukeji.GuKeUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = GuKe;
-			};
-			name = Debug;
-		};
-		9A08A8951F300F8F00AF29EB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = GuKeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shangyukeji.GuKeUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = GuKe;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -6875,24 +6656,6 @@
 			buildConfigurations = (
 				9A08A88E1F300F8F00AF29EB /* Debug */,
 				9A08A88F1F300F8F00AF29EB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9A08A8901F300F8F00AF29EB /* Build configuration list for PBXNativeTarget "GuKeTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9A08A8911F300F8F00AF29EB /* Debug */,
-				9A08A8921F300F8F00AF29EB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9A08A8931F300F8F00AF29EB /* Build configuration list for PBXNativeTarget "GuKeUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9A08A8941F300F8F00AF29EB /* Debug */,
-				9A08A8951F300F8F00AF29EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
