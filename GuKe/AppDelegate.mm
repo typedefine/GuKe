@@ -44,7 +44,7 @@
 
 ////自定义
 +(AppDelegate*)shareInstance {
-    return [[UIApplication sharedApplication] delegate];
+    return [UIApplication sharedApplication].delegate;
 }
 -(void)toast:(NSString*)message {
     MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.window animated:YES];
@@ -58,7 +58,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    
     [ZYNetworkAccessibity setAlertEnable:YES];
     
     [ZYNetworkAccessibity setStateDidUpdateNotifier:^(ZYNetworkAccessibleState state) {
@@ -66,9 +65,6 @@
     }];
     
     [ZYNetworkAccessibity start];
-
-    
-    
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     CommitData = NO ;
@@ -136,8 +132,6 @@
     option.apnsCertName = apnsCertName;
     [[EMClient sharedClient]initializeSDKWithOptions:option];
     
-    
-    
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         //注册推送, 用于iOS8以及iOS8之后的系统
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil];
@@ -184,10 +178,10 @@
         }];
         return YES;
     }
-
-    
     return YES;
 }
+
+
 - (void)loginStateChange:(NSNotification *)notification
 {
     

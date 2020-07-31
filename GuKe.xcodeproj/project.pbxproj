@@ -72,6 +72,8 @@
 		1FFEF4642214FC1300CBF50E /* LawVersionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFEF4622214FC0B00CBF50E /* LawVersionView.m */; };
 		1FFEF4652214FC1300CBF50E /* LawVersionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FFEF4632214FC1300CBF50E /* LawVersionView.xib */; };
 		24B5F0B468F42243B33343FE /* libPods-GuKe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B7FF23F1248C473B00EA53 /* libPods-GuKe.a */; };
+		89203DC424CDA86E00D4D55E /* PatientMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89203DC324CDA86E00D4D55E /* PatientMessageController.m */; };
+		89203DC824CDB98F00D4D55E /* MessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89203DC724CDB98F00D4D55E /* MessageController.m */; };
 		9A08A8651F300F8F00AF29EB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A08A8641F300F8F00AF29EB /* main.m */; };
 		9A08A8681F300F8F00AF29EB /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A08A8671F300F8F00AF29EB /* AppDelegate.mm */; };
 		9A08A8701F300F8F00AF29EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A08A86F1F300F8F00AF29EB /* Assets.xcassets */; };
@@ -941,6 +943,10 @@
 		1FFEF4622214FC0B00CBF50E /* LawVersionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LawVersionView.m; sourceTree = "<group>"; };
 		1FFEF4632214FC1300CBF50E /* LawVersionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LawVersionView.xib; sourceTree = "<group>"; };
 		52B7FF23F1248C473B00EA53 /* libPods-GuKe.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GuKe.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		89203DC224CDA86E00D4D55E /* PatientMessageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientMessageController.h; sourceTree = "<group>"; };
+		89203DC324CDA86E00D4D55E /* PatientMessageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientMessageController.m; sourceTree = "<group>"; };
+		89203DC624CDB98F00D4D55E /* MessageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageController.h; sourceTree = "<group>"; };
+		89203DC724CDB98F00D4D55E /* MessageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageController.m; sourceTree = "<group>"; };
 		9A08A8601F300F8E00AF29EB /* GuKe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuKe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A08A8641F300F8F00AF29EB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9A08A8661F300F8F00AF29EB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -2367,20 +2373,6 @@
 			name = "添加品牌VC";
 			sourceTree = "<group>";
 		};
-		1F374E1422408421001B6D01 /* chatVC */ = {
-			isa = PBXGroup;
-			children = (
-				1F374E152240846D001B6D01 /* SysmessageViewController.h */,
-				1F374E162240846D001B6D01 /* SysmessageViewController.m */,
-				1F374E1B22408AC0001B6D01 /* SysMessageTewCell.h */,
-				1F374E1C22408AC0001B6D01 /* SysMessageTewCell.m */,
-				1F374E1D22408AC0001B6D01 /* SysMessageTewCell.xib */,
-				1F7E8A3D2252E47000E3D185 /* MessageModels.h */,
-				1F7E8A3E2252E47000E3D185 /* MessageModels.m */,
-			);
-			name = chatVC;
-			sourceTree = "<group>";
-		};
 		1FBA711A211D718F001D1F71 /* Alipay */ = {
 			isa = PBXGroup;
 			children = (
@@ -2460,6 +2452,24 @@
 			path = BacKSelectView;
 			sourceTree = "<group>";
 		};
+		89203DC524CDA8B400D4D55E /* message */ = {
+			isa = PBXGroup;
+			children = (
+				1F374E152240846D001B6D01 /* SysmessageViewController.h */,
+				1F374E162240846D001B6D01 /* SysmessageViewController.m */,
+				1F374E1B22408AC0001B6D01 /* SysMessageTewCell.h */,
+				1F374E1C22408AC0001B6D01 /* SysMessageTewCell.m */,
+				1F374E1D22408AC0001B6D01 /* SysMessageTewCell.xib */,
+				1F7E8A3D2252E47000E3D185 /* MessageModels.h */,
+				1F7E8A3E2252E47000E3D185 /* MessageModels.m */,
+				89203DC224CDA86E00D4D55E /* PatientMessageController.h */,
+				89203DC324CDA86E00D4D55E /* PatientMessageController.m */,
+				89203DC624CDB98F00D4D55E /* MessageController.h */,
+				89203DC724CDB98F00D4D55E /* MessageController.m */,
+			);
+			path = message;
+			sourceTree = "<group>";
+		};
 		9A08A8571F300F8E00AF29EB = {
 			isa = PBXGroup;
 			children = (
@@ -2481,9 +2491,8 @@
 		9A08A8621F300F8F00AF29EB /* GuKe */ = {
 			isa = PBXGroup;
 			children = (
-				1F374E1422408421001B6D01 /* chatVC */,
+				89203DC524CDA8B400D4D55E /* message */,
 				E30974F81F9DD20E00EC3F80 /* ZJNTool */,
-				E308B4B21F67655700399B76 /* GuKe.entitlements */,
 				9A08A8C71F302AA500AF29EB /* thirdTool */,
 				9A08A8BB1F3012A800AF29EB /* tabbar */,
 				9A08A89A1F3010CA00AF29EB /* me */,
@@ -2491,9 +2500,6 @@
 				9A08A8981F3010A900AF29EB /* info */,
 				9A08A8971F30109F00AF29EB /* main */,
 				9A08A8961F30109100AF29EB /* login */,
-				9A08A86F1F300F8F00AF29EB /* Assets.xcassets */,
-				9A08A8741F300F8F00AF29EB /* Info.plist */,
-				9A08A8C61F30199B00AF29EB /* PrefixHeader.pch */,
 				9A08A8631F300F8F00AF29EB /* Supporting Files */,
 			);
 			path = GuKe;
@@ -2502,6 +2508,10 @@
 		9A08A8631F300F8F00AF29EB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9A08A86F1F300F8F00AF29EB /* Assets.xcassets */,
+				9A08A8741F300F8F00AF29EB /* Info.plist */,
+				9A08A8C61F30199B00AF29EB /* PrefixHeader.pch */,
+				E308B4B21F67655700399B76 /* GuKe.entitlements */,
 				E308BB471F677A7300399B76 /* Resources */,
 				9A08A8641F300F8F00AF29EB /* main.m */,
 				E308BE901F677A8100399B76 /* SynthesizeSingleton.h */,
@@ -5904,6 +5914,7 @@
 				E30976F81F9DD20F00EC3F80 /* SelectBtn.m in Sources */,
 				E3A105C71FA18A6500EBEF1F /* TZAssetCell.m in Sources */,
 				E3577A7B1FFC703600E4A738 /* ZJNInfoViewController.m in Sources */,
+				89203DC824CDB98F00D4D55E /* MessageController.m in Sources */,
 				9A53891520084DC40084E772 /* EMGroupBansViewController.m in Sources */,
 				E31619B520299EDE00394A8E /* ZJNAnesthesiaTableViewCell.m in Sources */,
 				9A08A9021F302B2E00AF29EB /* MJRefreshBackFooter.m in Sources */,
@@ -6299,6 +6310,7 @@
 				9A08A9521F302B3600AF29EB /* AFURLRequestSerialization.m in Sources */,
 				9A5387AF20084D8B0084E772 /* EaseTextView.m in Sources */,
 				9A53892B20084DC40084E772 /* EMChatroomMembersViewController.m in Sources */,
+				89203DC424CDA86E00D4D55E /* PatientMessageController.m in Sources */,
 				E3BC82071F7D07AB00F0F38F /* MedicalPatientInfoTableViewCell.m in Sources */,
 				9A1E38741F32C8A00063FC2A /* ZhhuanChangViewController.m in Sources */,
 				E309767B1F9DD20F00EC3F80 /* IQKeyboardReturnKeyHandler.m in Sources */,

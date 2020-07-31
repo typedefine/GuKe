@@ -14,12 +14,13 @@
 #import "GuKeNavigationViewController.h"
 
 //wang start
-#import "EaseConversationListViewController.h"
-#import "ConversationListController.h"
+//#import "EaseConversationListViewController.h"
+//#import "ConversationListController.h"
 //wang
 #import "ChatDemoHelper.h"
 #import "ApplyViewController.h"
 //end
+#import "MessageController.h"
 
 //两次提示的默认间隔
 static const CGFloat kDefaultPlaySoundInterval = 3.0;
@@ -32,6 +33,7 @@ static NSString *kGroupName = @"GroupName";
     MainViewController *_mainVC;
 }
 @property (strong, nonatomic) NSDate *lastPlaySoundDate;
+@property (nonatomic, strong) ConversationListController *chatListVC;
 
 @end
 
@@ -56,8 +58,10 @@ static NSString *kGroupName = @"GroupName";
     [self addChildViewController:resource andTitle:@"首页" andImageName:@"icon1_1" andSelectedImage:@"icon1"];
     
     //消息
-    _chatListVC = [[ConversationListController alloc]init];
-    [self addChildViewController:_chatListVC andTitle:@"消息" andImageName:@"icon3_1" andSelectedImage:@"icon3"];
+    _chatListVC = [[ConversationListController alloc] init];
+    MessageController *msgController = [[MessageController alloc] init];
+    msgController.chatListVC = _chatListVC;
+    [self addChildViewController:msgController andTitle:@"消息" andImageName:@"icon3_1" andSelectedImage:@"icon3"];
     
     //资讯
     ZJNInfoViewController *class = [[ZJNInfoViewController alloc]init];

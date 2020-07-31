@@ -9,14 +9,14 @@
 #import <UIKit/UIKit.h>
 //wang
 #import <UserNotifications/UserNotifications.h>
-#import "ConversationListController.h"
+//#import "ConversationListController.h"
 
 //end
 
 @interface GuKeViewController : UITabBarController
 //wang
-@property (nonatomic, strong) ConversationListController *chatListVC;
-- (void)jumpToChatList;
+//@property (nonatomic, strong) ConversationListController *chatListVC;
+//- (void)jumpToChatList;
 
 - (void)setupUntreatedApplyCount;
 
@@ -24,9 +24,9 @@
 
 - (void)networkChanged:(EMConnectionState)connectionState;
 
-- (void)didReceiveLocalNotification:(UILocalNotification *)notification;
+//- (void)didReceiveLocalNotification:(UILocalNotification *)notification;
 
-- (void)didReceiveUserNotification:(UNNotification *)notification;
+//- (void)didReceiveUserNotification:(UNNotification *)notification;
 
 - (void)playSoundAndVibration;
 
