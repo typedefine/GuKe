@@ -13,6 +13,8 @@
 #import "Follow_UpRecordsViewController.h"
 #import "AddFollow_UpRecordsViewController.h"
 #import "ZJNAddPatientOperationInfoViewController.h"
+#import "PatientRecordInfoManageController.h"
+
 @interface ShuHouSUFangViewController ()<UIScrollViewDelegate>{
     UIScrollView *scrollVi;
     UIView *yellowView;
@@ -52,11 +54,12 @@
         //添加到导航条
     UIBarButtonItem *leftBarButtomItem = [[UIBarButtonItem alloc]initWithCustomView:_issueButton];
     self.navigationItem.rightBarButtonItem = leftBarButtomItem;
-    [self makeButton];
+    [self initViews];
     [self addShareView];
     // Do any additional setup after loading the view from its nib.
 }
--(void)addShareView{
+-(void)addShareView
+{
     heiseView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
     heiseView.backgroundColor = [UIColor colorWithColor:[UIColor blackColor] alpha:0.3];
     [[[UIApplication sharedApplication]keyWindow] addSubview:heiseView];
@@ -178,14 +181,15 @@
     }
     
 }
-- (void)makeButton{
-    NSArray *titleArr = [NSArray arrayWithObjects:@"就诊记录",@"手术记录",@"随访记录", nil];
-    for (int a = 0; a < 3; a ++) {
-        UIButton *btns = [[UIButton alloc]initWithFrame:CGRectMake(20 + ((ScreenWidth - 120)/3 + 40)* a, 0, (ScreenWidth - 120)/3, 39)];
+- (void)initViews
+{
+    NSArray *titleArr = [NSArray arrayWithObjects:@"就诊记录",@"手术记录",@"随访记录", @"信息管理", nil];
+    for (int a = 0; a < titleArr.count; a ++) {
+        UIButton *btns = [[UIButton alloc]initWithFrame:CGRectMake(15 + ((ScreenWidth - 120)/4 + 30)* a, 0, (ScreenWidth - 120)/4, 39)];
         [btns setTitle:titleArr[a] forState:normal];
         [btns setTitleColor:titColor forState:normal];
         [btns setTitleColor:greenC forState:UIControlStateSelected];
-        [btns addTarget:self action:@selector(didThreeButton:) forControlEvents:UIControlEventTouchUpInside];
+        [btns addTarget:self action:@selector(clickedTopButton:) forControlEvents:UIControlEventTouchUpInside];
         btns.titleLabel.font = [UIFont systemFontOfSize:14];
         [self.view addSubview:btns];
         btns.tag =  10 + a;
@@ -195,13 +199,13 @@
         }
         
     }
-    yellowView = [[UIView alloc]initWithFrame:CGRectMake(20 + self.numbers*((ScreenWidth - 120)/3 + 40), 39, (ScreenWidth - 120)/3, 1)];
+    yellowView = [[UIView alloc]initWithFrame:[self configureIndicatorFrameAtIndex:self.numbers]];
     yellowView.backgroundColor = greenC;
     [self.view addSubview:yellowView];
     
     scrollVi = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 40, ScreenWidth, ScreenHeight - 64 - 40)];
     scrollVi.delegate = self;
-    scrollVi.contentSize = CGSizeMake(ScreenWidth * 3, ScreenHeight - 64 - 40);
+    scrollVi.contentSize = CGSizeMake(ScreenWidth * 4, ScreenHeight - 64 - 40);
     scrollVi.pagingEnabled = YES;
     [self.view addSubview:scrollVi];
     
@@ -226,9 +230,20 @@
     [scrollVi addSubview:followViewC.view];
     [self addChildViewController:followViewC];
     
+    PatientRecordInfoManageController *infoManageVC = [[PatientRecordInfoManageController alloc] init];
+    infoManageVC.view.frame = CGRectMake(ScreenWidth *3, 0, ScreenWidth, scrollVi.frame.size.height);
+    [scrollVi addSubview:infoManageVC.view];
+    [self addChildViewController:infoManageVC];
+    
 }
+
+- (CGRect)configureIndicatorFrameAtIndex:(NSInteger)index
+{
+    return CGRectMake(15 + ((ScreenWidth - 120)/4 + 30)* index , 39, (ScreenWidth - 120)/4, 1);
+}
+
 #pragma mark 就诊记录 手术记录 随访记录
-- (void)didThreeButton:(UIButton *)sender{
+- (void)clickedTopButton:(UIButton *)sender{
     sender.selected =! sender.selected;
     if (sender != _selectBtn) {
         self.selectBtn.selected = NO;
@@ -239,7 +254,7 @@
     }
     [UIView animateWithDuration:0.3 animations:^{
         scrollVi.contentOffset = CGPointMake(ScreenWidth * (sender.tag - 10), 0);
-        yellowView.frame = CGRectMake(20 + ((ScreenWidth - 120)/3 + 40)* (sender.tag - 10) , 39, (ScreenWidth - 120)/3, 1);
+        yellowView.frame = [self configureIndicatorFrameAtIndex:sender.tag - 10];
         
     }];
     
@@ -286,7 +301,7 @@
     btnss.selected = YES;
     self.selectBtn = btnss;
     [UIView animateWithDuration:0.3 animations:^{
-        yellowView.frame = CGRectMake(20 + ((ScreenWidth - 120)/3 + 40)* index , 39, (ScreenWidth - 120)/3, 1);
+        yellowView.frame = [self configureIndicatorFrameAtIndex:index];
     }];
 }
 - (void)didReceiveMemoryWarning {

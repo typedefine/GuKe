@@ -54,7 +54,6 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     reportStr = @"hy";
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-104) style:UITableViewStyleGrouped];
     _tableView.delegate = self;
