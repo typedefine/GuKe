@@ -112,6 +112,8 @@
 
 #define greenC SetColor(0x06a27b)
 
+#define Color_rgba(r, g, b, a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
+
 //sessionid//@"8ac282835dbfa82d015dbfa8c8d50000"
 #define sessionIding  [[NSUserDefaults standardUserDefaults]objectForKey:@"sessionIdUser"]
 //userid

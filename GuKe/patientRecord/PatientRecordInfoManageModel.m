@@ -139,7 +139,7 @@
 {
     switch (section) {
         case 0:
-            return CGSizeMake(ScreenWidth-40, 180);
+            return CGSizeMake(ScreenWidth, 180);
         case 1:
             return CGSizeMake(ScreenWidth, 40);
             

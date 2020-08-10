@@ -34,6 +34,7 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
+        self.contentView.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:self.checkBoxButton];
         [self.checkBoxButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.contentView).offset(10);

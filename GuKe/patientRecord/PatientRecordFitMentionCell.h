@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PatientRecordFitMentionCell : UICollectionViewCell
 
+@property (nonatomic, strong) UITextView *textView;
+
+@property (nonatomic, strong) UILabel *placeholderLabel;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -13,8 +13,11 @@
 #import "PatientRecordInfoManageCell.h"
 #import "PatientRecordInfoManageHeaderView.h"
 
-@interface PatientRecordInfoManageController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching>
+@interface PatientRecordInfoManageController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching, UIScrollViewDelegate>
 
+@property (nonatomic, strong) UIButton *previewButton;
+@property (nonatomic, strong) UIButton *saveButton;
+@property (nonatomic, strong) UIButton *cancelButton;
 @property (nonatomic, strong) UICollectionView *collection;
 @property (nonatomic, strong) PatientRecordInfoManageModel *viewModel;
 
@@ -27,20 +30,69 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+    
     [self.viewModel configureWithData:[[NSObject alloc] init]];
     [self.view addSubview:self.collection];
     [self.collection mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+    
+    CGFloat w = 70.0f , x = w/2.0 + (ScreenWidth-3*w)/4.0f, bottomMargin = 20+TabbarAddHeight;
+    [self.view addSubview:self.previewButton];
+    [self.previewButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).offset(-bottomMargin);
+        make.centerX.equalTo(self.view.mas_left).offset(x);
+        make.width.mas_equalTo(w);
+    }];
+    [self.previewButton addTarget:self action:@selector(preview) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:self.saveButton];
+    [self.saveButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).offset(-bottomMargin);
+        make.centerX.equalTo(self.previewButton.mas_right).offset(x);
+        make.width.mas_equalTo(w);
+    }];
+    [self.saveButton addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:self.cancelButton];
+    [self.cancelButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).offset(-bottomMargin);
+        make.centerX.equalTo(self.saveButton.mas_right).offset(x);
+        make.width.mas_equalTo(w);
+    }];
+    [self.cancelButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
+    
     [self.collection reloadData];
 }
 
 
+- (void)preview
+{
+    
+}
+
+- (void)save
+{
+    
+}
+
+- (void)cancel
+{
+    
+}
+
+
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.view endEditing:YES];
+}
 
 //- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 //{
 //    return  UIEdgeInsetsZero;
 //}
+
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
@@ -137,14 +189,16 @@
 {
     if (!_collection) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.headerReferenceSize = CGSizeMake(ScreenWidth, 30);
-        layout.footerReferenceSize = CGSizeMake(ScreenWidth, 20);
+        layout.headerReferenceSize = CGSizeMake(ScreenWidth, 44);
+        layout.footerReferenceSize = CGSizeMake(ScreenWidth, 15);
         layout.sectionHeadersPinToVisibleBounds = YES;
 //        layout.sectionInset = UIEdgeInsetsZero;
         _collection = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         _collection.backgroundColor = [UIColor whiteColor];
         _collection.prefetchingEnabled = YES;
         _collection.allowsSelection = NO;
+        _collection.alwaysBounceVertical = YES;
+        _collection.alwaysBounceHorizontal = NO;
         [_collection registerClass:[PatientRecordBookCell class] forCellWithReuseIdentifier:NSStringFromClass([PatientRecordBookCell class])];
         [_collection registerClass:[PatientRecordFitMentionCell class] forCellWithReuseIdentifier:NSStringFromClass([PatientRecordFitMentionCell class])];
         [_collection registerClass:[PatientRecordInfoManageCell class] forCellWithReuseIdentifier:NSStringFromClass([PatientRecordInfoManageCell class])];
@@ -164,6 +218,57 @@
     }
     return _viewModel;
 }
+
+- (UIButton *)previewButton
+{
+    if (!_previewButton) {
+        _previewButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _previewButton.backgroundColor = [UIColor whiteColor];
+        _previewButton.layer.borderWidth = 1.0;
+        _previewButton.layer.borderColor = SetColor(0x666666).CGColor;
+        _previewButton.layer.masksToBounds = YES;
+        _previewButton.layer.cornerRadius = 5.0;
+        [_previewButton setTitle:@"预览" forState:UIControlStateNormal];
+        [_previewButton setTitleColor:titColor forState:UIControlStateNormal];
+        _previewButton.titleLabel.font = Font14;
+    }
+    return _previewButton;
+}
+
+
+- (UIButton *)saveButton
+{
+    if (!_saveButton) {
+        _saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _saveButton.backgroundColor = [UIColor whiteColor];
+        _saveButton.layer.borderWidth = 1.0;
+        _saveButton.layer.borderColor = SetColor(0x666666).CGColor;
+        _saveButton.layer.masksToBounds = YES;
+        _saveButton.layer.cornerRadius = 5.0;
+        [_saveButton setTitle:@"保存" forState:UIControlStateNormal];
+        [_saveButton setTitleColor:titColor forState:UIControlStateNormal];
+        _saveButton.titleLabel.font = Font14;
+    }
+    return _saveButton;
+}
+
+- (UIButton *)cancelButton
+{
+    if (!_cancelButton) {
+        _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _cancelButton.backgroundColor = [UIColor whiteColor];
+        _cancelButton.layer.borderWidth = 1.0;
+        _cancelButton.layer.borderColor = SetColor(0x666666).CGColor;
+        _cancelButton.layer.masksToBounds = YES;
+        _cancelButton.layer.cornerRadius = 5.0;
+        [_cancelButton setTitle:@"取消" forState:UIControlStateNormal];
+        [_cancelButton setTitleColor:titColor forState:UIControlStateNormal];
+        _cancelButton.titleLabel.font = Font14;
+    }
+    return _cancelButton;
+}
+
+
 
 /*
 #pragma mark - Navigation
