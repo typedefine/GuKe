@@ -475,6 +475,9 @@
 /* 修改 i病例的图片 */
 #define updateUpdateimage @"/app/patient/updateimage.json"
 
+/* 病例--信息管理 */
+#define patient_info @"/app/patient/patient_info.json"
+
 /**资讯收藏列表*/
 #define collectionlistinfo @"/app/collection/listinfo.json"
 /**视频收藏列表*/

@@ -63,6 +63,28 @@
     [self.cancelButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
     
     [self.collection reloadData];
+    
+    [self getData];
+}
+
+- (void)getData
+{
+    NSString *urlString = @"http://113.31.119.175/bones/app/patient/patient_info.json";//[NSString stringWithFormat:@"%@%@",requestUrl,patient_info];
+    NSString *hopitalId = [[NSUserDefaults standardUserDefaults]objectForKey:@"hospitalnumbar"];
+
+    NSArray *keysArray = @[@"hospid",@"sessionid"];
+    NSArray *valueArray = @[hopitalId,sessionIding];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjects:valueArray forKeys:keysArray];
+    [self showHudInView:self.view hint:nil];
+    [ZJNRequestManager postWithUrlString:urlString parameters:dic success:^(id data) {
+        NSLog(@"病例--信息管理%@",data);
+        
+        [self hideHud];
+    } failure:^(NSError *error) {
+        [self hideHud];
+        NSLog(@"病例--信息管理error:%@",error);
+    }];
+    
 }
 
 

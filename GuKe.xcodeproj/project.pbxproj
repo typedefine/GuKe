@@ -76,6 +76,9 @@
 		89203DC824CDB98F00D4D55E /* MessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89203DC724CDB98F00D4D55E /* MessageController.m */; };
 		892555A024D6FFEC002F7B5B /* PatientRecordBookCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8925559F24D6FFEC002F7B5B /* PatientRecordBookCellModel.m */; };
 		892555A324D7015F002F7B5B /* PatientRecordInfoManageCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 892555A224D7015F002F7B5B /* PatientRecordInfoManageCellModel.m */; };
+		892555A624E2DBB6002F7B5B /* GJObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 892555A524E2DBB6002F7B5B /* GJObject.m */; };
+		892555A924E2E009002F7B5B /* NSObject+DDC.m in Sources */ = {isa = PBXBuildFile; fileRef = 892555A824E2E009002F7B5B /* NSObject+DDC.m */; };
+		892555B124E423AD002F7B5B /* PatientBookReplyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 892555B024E423AD002F7B5B /* PatientBookReplyModel.m */; };
 		898F1ADC24D46FD400397505 /* PatientRecordInfoManageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1ADB24D46FD400397505 /* PatientRecordInfoManageController.m */; };
 		898F1ADF24D6C77200397505 /* PatientRecordInfoManageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1ADE24D6C77200397505 /* PatientRecordInfoManageModel.m */; };
 		898F1AE224D6DBF100397505 /* PatientRecordInfoManageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1AE124D6DBF100397505 /* PatientRecordInfoManageHeaderView.m */; };
@@ -959,6 +962,12 @@
 		8925559F24D6FFEC002F7B5B /* PatientRecordBookCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientRecordBookCellModel.m; sourceTree = "<group>"; };
 		892555A124D7015F002F7B5B /* PatientRecordInfoManageCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientRecordInfoManageCellModel.h; sourceTree = "<group>"; };
 		892555A224D7015F002F7B5B /* PatientRecordInfoManageCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientRecordInfoManageCellModel.m; sourceTree = "<group>"; };
+		892555A424E2DBB6002F7B5B /* GJObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GJObject.h; sourceTree = "<group>"; };
+		892555A524E2DBB6002F7B5B /* GJObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GJObject.m; sourceTree = "<group>"; };
+		892555A724E2E009002F7B5B /* NSObject+DDC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DDC.h"; sourceTree = "<group>"; };
+		892555A824E2E009002F7B5B /* NSObject+DDC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DDC.m"; sourceTree = "<group>"; };
+		892555AF24E423AD002F7B5B /* PatientBookReplyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookReplyModel.h; sourceTree = "<group>"; };
+		892555B024E423AD002F7B5B /* PatientBookReplyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientBookReplyModel.m; sourceTree = "<group>"; };
 		898F1ADA24D46FD400397505 /* PatientRecordInfoManageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientRecordInfoManageController.h; sourceTree = "<group>"; };
 		898F1ADB24D46FD400397505 /* PatientRecordInfoManageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientRecordInfoManageController.m; sourceTree = "<group>"; };
 		898F1ADD24D6C77200397505 /* PatientRecordInfoManageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientRecordInfoManageModel.h; sourceTree = "<group>"; };
@@ -2494,13 +2503,33 @@
 			path = message;
 			sourceTree = "<group>";
 		};
-		898F1AD924D46F5D00397505 /* patientRecord */ = {
+		892555AB24E42206002F7B5B /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				898F1ADD24D6C77200397505 /* PatientRecordInfoManageModel.h */,
+				898F1ADE24D6C77200397505 /* PatientRecordInfoManageModel.m */,
 				898F1ADA24D46FD400397505 /* PatientRecordInfoManageController.h */,
 				898F1ADB24D46FD400397505 /* PatientRecordInfoManageController.m */,
-				898F1AE024D6DBF100397505 /* PatientRecordInfoManageHeaderView.h */,
-				898F1AE124D6DBF100397505 /* PatientRecordInfoManageHeaderView.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		892555AE24E42371002F7B5B /* model */ = {
+			isa = PBXGroup;
+			children = (
+				892555A724E2E009002F7B5B /* NSObject+DDC.h */,
+				892555A824E2E009002F7B5B /* NSObject+DDC.m */,
+				892555A424E2DBB6002F7B5B /* GJObject.h */,
+				892555A524E2DBB6002F7B5B /* GJObject.m */,
+				892555AF24E423AD002F7B5B /* PatientBookReplyModel.h */,
+				892555B024E423AD002F7B5B /* PatientBookReplyModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		892555B324E42512002F7B5B /* view */ = {
+			isa = PBXGroup;
+			children = (
 				898F1AE324D6DC6700397505 /* PatientRecordFitMentionCell.h */,
 				898F1AE424D6DC6700397505 /* PatientRecordFitMentionCell.m */,
 				898F1AE624D6DC9600397505 /* PatientRecordInfoManageCell.h */,
@@ -2511,8 +2540,18 @@
 				898F1AEA24D6DCCD00397505 /* PatientRecordBookCell.m */,
 				8925559E24D6FFEC002F7B5B /* PatientRecordBookCellModel.h */,
 				8925559F24D6FFEC002F7B5B /* PatientRecordBookCellModel.m */,
-				898F1ADD24D6C77200397505 /* PatientRecordInfoManageModel.h */,
-				898F1ADE24D6C77200397505 /* PatientRecordInfoManageModel.m */,
+				898F1AE024D6DBF100397505 /* PatientRecordInfoManageHeaderView.h */,
+				898F1AE124D6DBF100397505 /* PatientRecordInfoManageHeaderView.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		898F1AD924D46F5D00397505 /* patientRecord */ = {
+			isa = PBXGroup;
+			children = (
+				892555B324E42512002F7B5B /* view */,
+				892555AE24E42371002F7B5B /* model */,
+				892555AB24E42206002F7B5B /* controller */,
 			);
 			path = patientRecord;
 			sourceTree = "<group>";
@@ -6137,6 +6176,7 @@
 				9A53877E20084D8B0084E772 /* PSTCollectionViewController.m in Sources */,
 				E30976A61F9DD20F00EC3F80 /* ViewController+MASAdditions.m in Sources */,
 				9A53876420084D8A0084E772 /* MWGridViewController.m in Sources */,
+				892555B124E423AD002F7B5B /* PatientBookReplyModel.m in Sources */,
 				9A1E386F1F32C2D60063FC2A /* TongYongSettingViewController.m in Sources */,
 				9A5387A120084D8B0084E772 /* EaseCustomMessageCell.m in Sources */,
 				9A42C4D31F53B8D8008D41C4 /* SuiFangJiLuTableViewCell.m in Sources */,
@@ -6353,6 +6393,7 @@
 				9A53891920084DC40084E772 /* EMGroupSharedFilesViewController.m in Sources */,
 				9A949BE42010882E00AE1A60 /* ZJNHotMeetingListModel.m in Sources */,
 				E32291C0202C3CA300D00ACA /* ZJNChangeOperationViewController.m in Sources */,
+				892555A924E2E009002F7B5B /* NSObject+DDC.m in Sources */,
 				9A08A9641F302B8600AF29EB /* UILabel+BoundingRect.m in Sources */,
 				9A53878220084D8B0084E772 /* PSTCollectionViewLayout.m in Sources */,
 				1F1128B9222125B200FD8CB6 /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
@@ -6377,6 +6418,7 @@
 				1FA455322064ABC200CF0DD1 /* MineCollectViewController.m in Sources */,
 				9A08A8AF1F30126D00AF29EB /* WoDeViewController.m in Sources */,
 				E3BC820C1F7D0DE700F0F38F /* MedicalLifeSignsTableViewCell.m in Sources */,
+				892555A624E2DBB6002F7B5B /* GJObject.m in Sources */,
 				9A53892320084DC40084E772 /* SearchChatViewController.m in Sources */,
 				1FA5AFBB211B755800FBF98B /* H5ViewController.m in Sources */,
 				E3DF941A1F7A28E9001E1963 /* UserInfoModel.m in Sources */,
