@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PatientRecordBookCellModel.h"
-#import "PatientRecordInfoManageCellModel.h"
+#import "PatientBookInfoStateCellModel.h"
+#import "PatientInfoManageCellModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,30 +20,31 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-@interface PatienRecordFitMentionSectionModel : PatientRecordInfoSectionModel
+@interface PatienFitMentionSectionModel : PatientRecordInfoSectionModel
 
 @property (nonatomic, copy) NSString *content;
 
 @end
 
-@interface PatientRecordInfoManageSectionModel : PatientRecordInfoSectionModel
+@interface PatientInfoManageSectionModel : PatientRecordInfoSectionModel
 
 //@property (nonatomic, assign) BOOL showRecord;
 //@property (nonatomic, assign) BOOL showSurgery;
 //@property (nonatomic, assign) BOOL showFollwUp;
 
-@property (nonatomic, readonly) NSArray<PatientRecordInfoManageCellModel *> *cellModelList;
+@property (nonatomic, readonly) NSArray<PatientInfoManageCellModel *> *cellModelList;
 
 @end
 
 
-@interface PatientRecordBookSectionModel : PatientRecordInfoSectionModel
+@interface PatientBookSectionModel : PatientRecordInfoSectionModel
 
-@property (nonatomic, readonly) NSArray<PatientRecordBookCellModel *> *cellModelList;
+@property (nonatomic, readonly) NSArray<PatientBookInfoStateCellModel *> *cellModelList;
 
 @end
 
-@interface PatientRecordInfoManageModel : NSObject
+
+@interface PatientInfoManagePageModel : NSObject
 
 @property (nonatomic, assign) NSInteger numberOfSection;
 @property (nonatomic, readonly) NSArray<PatientRecordInfoSectionModel *> *sectionModelList;

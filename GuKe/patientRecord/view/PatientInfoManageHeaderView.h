@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PatientRecordInfoManageHeaderView : UICollectionReusableView
+@interface PatientInfoManageHeaderView : UICollectionReusableView
 
 @property (nonatomic ,copy) NSString *title;
 

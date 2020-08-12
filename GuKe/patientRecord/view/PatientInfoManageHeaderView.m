@@ -6,15 +6,15 @@
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "PatientRecordInfoManageHeaderView.h"
+#import "PatientInfoManageHeaderView.h"
 
-@interface PatientRecordInfoManageHeaderView()
+@interface PatientInfoManageHeaderView()
 
 @property (nonatomic, strong) UILabel *titleLabel;
 
 @end
 
-@implementation PatientRecordInfoManageHeaderView
+@implementation PatientInfoManageHeaderView
 
 
 

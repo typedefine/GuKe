@@ -6,24 +6,24 @@
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "PatientRecordInfoManageController.h"
-#import "PatientRecordInfoManageModel.h"
-#import "PatientRecordBookCell.h"
-#import "PatientRecordFitMentionCell.h"
-#import "PatientRecordInfoManageCell.h"
-#import "PatientRecordInfoManageHeaderView.h"
+#import "PatientInfoManageController.h"
+#import "PatientInfoManagePageModel.h"
+#import "PatientBookInfoStateCell.h"
+#import "PatientFitMentionCell.h"
+#import "PatientInfoManageCell.h"
+#import "PatientInfoManageHeaderView.h"
 
-@interface PatientRecordInfoManageController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching, UIScrollViewDelegate>
+@interface PatientInfoManageController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching, UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIButton *previewButton;
 @property (nonatomic, strong) UIButton *saveButton;
 @property (nonatomic, strong) UIButton *cancelButton;
 @property (nonatomic, strong) UICollectionView *collection;
-@property (nonatomic, strong) PatientRecordInfoManageModel *viewModel;
+@property (nonatomic, strong) PatientInfoManagePageModel *viewModel;
 
 @end
 
-@implementation PatientRecordInfoManageController
+@implementation PatientInfoManageController
 
 
 - (void)viewDidLoad {
@@ -31,7 +31,6 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     
-    [self.viewModel configureWithData:[[NSObject alloc] init]];
     [self.view addSubview:self.collection];
     [self.collection mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
@@ -69,7 +68,7 @@
 
 - (void)getData
 {
-    NSString *urlString = @"http://113.31.119.175/bones/app/patient/patient_info.json";//[NSString stringWithFormat:@"%@%@",requestUrl,patient_info];
+    NSString *urlString = DEBUG ? @"http://113.31.119.175/bones/app/patient/patient_info.json" : [NSString stringWithFormat:@"%@%@",requestUrl,patient_info];
     NSString *hopitalId = [[NSUserDefaults standardUserDefaults]objectForKey:@"hospitalnumbar"];
 
     NSArray *keysArray = @[@"hospid",@"sessionid"];
@@ -78,8 +77,13 @@
     [self showHudInView:self.view hint:nil];
     [ZJNRequestManager postWithUrlString:urlString parameters:dic success:^(id data) {
         NSLog(@"病例--信息管理%@",data);
-        
+        NSDictionary *dict = (NSDictionary *)data;
+        if ([dict[@"retcode"] intValue] == 0) {
+            
+            [self.viewModel configureWithData:dict[@"data"]];
+        }
         [self hideHud];
+        [self.collection reloadData];
     } failure:^(NSError *error) {
         [self hideHud];
         NSLog(@"病例--信息管理error:%@",error);
@@ -140,7 +144,7 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     if ([kind isEqualToString: UICollectionElementKindSectionHeader]) {
-        PatientRecordInfoManageHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([PatientRecordInfoManageHeaderView class]) forIndexPath:indexPath];
+        PatientInfoManageHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([PatientInfoManageHeaderView class]) forIndexPath:indexPath];
         headerView.title = [self.viewModel titleForSection:indexPath.section];
         return headerView;
     }
@@ -160,14 +164,18 @@
     switch (indexPath.section) {
         case 0:
         {
-            PatientRecordFitMentionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([PatientRecordFitMentionCell class]) forIndexPath:indexPath];
+            PatientFitMentionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([PatientFitMentionCell class]) forIndexPath:indexPath];
+            __block PatienFitMentionSectionModel *sectionModel = (PatienFitMentionSectionModel *)[_viewModel sectionModel:indexPath.section];
+            [cell configureCellWithData:sectionModel.content input:^(NSString * _Nonnull text) {
+                sectionModel.content = text;
+            }];
             return cell;
         }
             
         case 1:
         {
-            PatientRecordInfoManageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([PatientRecordInfoManageCell class]) forIndexPath:indexPath];
-            PatientRecordInfoManageSectionModel *sectionModel = (PatientRecordInfoManageSectionModel *)[_viewModel sectionModel:indexPath.section];
+            PatientInfoManageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([PatientInfoManageCell class]) forIndexPath:indexPath];
+            PatientInfoManageSectionModel *sectionModel = (PatientInfoManageSectionModel *)[_viewModel sectionModel:indexPath.section];
             [cell configureWithData: sectionModel.cellModelList[indexPath.item]];
             return cell;
         }
@@ -175,8 +183,8 @@
             
         default:
         {
-            PatientRecordBookCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([PatientRecordBookCell class]) forIndexPath:indexPath];
-            PatientRecordBookSectionModel *sectionModel = (PatientRecordBookSectionModel *)[_viewModel sectionModel:indexPath.section];
+            PatientBookInfoStateCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([PatientBookInfoStateCell class]) forIndexPath:indexPath];
+            PatientBookSectionModel *sectionModel = (PatientBookSectionModel *)[_viewModel sectionModel:indexPath.section];
             [cell configureWithData: sectionModel.cellModelList[indexPath.item]];
             return cell;
         }
@@ -221,10 +229,10 @@
         _collection.allowsSelection = NO;
         _collection.alwaysBounceVertical = YES;
         _collection.alwaysBounceHorizontal = NO;
-        [_collection registerClass:[PatientRecordBookCell class] forCellWithReuseIdentifier:NSStringFromClass([PatientRecordBookCell class])];
-        [_collection registerClass:[PatientRecordFitMentionCell class] forCellWithReuseIdentifier:NSStringFromClass([PatientRecordFitMentionCell class])];
-        [_collection registerClass:[PatientRecordInfoManageCell class] forCellWithReuseIdentifier:NSStringFromClass([PatientRecordInfoManageCell class])];
-        [_collection registerClass:[PatientRecordInfoManageHeaderView class] forSupplementaryViewOfKind: UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([PatientRecordInfoManageHeaderView class])];
+        [_collection registerClass:[PatientBookInfoStateCell class] forCellWithReuseIdentifier:NSStringFromClass([PatientBookInfoStateCell class])];
+        [_collection registerClass:[PatientFitMentionCell class] forCellWithReuseIdentifier:NSStringFromClass([PatientFitMentionCell class])];
+        [_collection registerClass:[PatientInfoManageCell class] forCellWithReuseIdentifier:NSStringFromClass([PatientInfoManageCell class])];
+        [_collection registerClass:[PatientInfoManageHeaderView class] forSupplementaryViewOfKind: UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([PatientInfoManageHeaderView class])];
         [_collection registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind: UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass([UICollectionReusableView class])];
         _collection.delegate = self;
         _collection.dataSource = self;
@@ -233,10 +241,10 @@
     return _collection;
 }
 
-- (PatientRecordInfoManageModel *)viewModel
+- (PatientInfoManagePageModel *)viewModel
 {
     if (!_viewModel) {
-        _viewModel = [[PatientRecordInfoManageModel alloc] init];
+        _viewModel = [[PatientInfoManagePageModel alloc] init];
     }
     return _viewModel;
 }

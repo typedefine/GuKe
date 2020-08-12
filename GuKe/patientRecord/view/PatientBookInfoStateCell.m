@@ -6,19 +6,19 @@
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "PatientRecordBookCell.h"
+#import "PatientBookInfoStateCell.h"
 
 
 
-@interface PatientRecordBookCell()
+@interface PatientBookInfoStateCell()
 
 @property (nonatomic, strong) UILabel *contentLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
-@property (nonatomic, strong) PatientRecordBookCellModel *cellModel;
+@property (nonatomic, strong) PatientBookInfoStateCellModel *cellModel;
 
 @end
 
-@implementation PatientRecordBookCell
+@implementation PatientBookInfoStateCell
 
 - (UILabel *)contentLabel
 {
@@ -34,7 +34,7 @@
 {
     if (!_timeLabel) {
         _timeLabel = [[UILabel alloc] init];
-        _timeLabel.textColor = SetColor(0x1a1a1a);
+        _timeLabel.textColor = SetColor(0x666666);
         _timeLabel.font = [UIFont systemFontOfSize:14];
     }
     return _timeLabel;
@@ -61,7 +61,7 @@
 }
 
 
-- (void)configureWithData:(PatientRecordBookCellModel *)data
+- (void)configureWithData:(PatientBookInfoStateCellModel *)data
 {
     self.cellModel = data;
     self.contentLabel.text = data.title;

@@ -6,7 +6,9 @@
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "PatientRecordInfoManageModel.h"
+#import "PatientInfoManagePageModel.h"
+#import "PatientInfoManageModel.h"
+#import "PatientBookInfoStateModel.h"
 
 @implementation PatientRecordInfoSectionModel
 
@@ -20,7 +22,7 @@
 
 @end
 
-@implementation PatienRecordFitMentionSectionModel
+@implementation PatienFitMentionSectionModel
 
 - (instancetype)init
 {
@@ -33,7 +35,7 @@
 
 @end
 
-@implementation PatientRecordInfoManageSectionModel
+@implementation PatientInfoManageSectionModel
 @synthesize cellModelList;
 
 - (instancetype)init
@@ -44,7 +46,7 @@
         NSArray *itemTitleList = @[@"就诊记录", @"手术记录", @"随访记录"];
         NSMutableArray *items = [NSMutableArray array];
         for (int i=0; i<itemTitleList.count; i++) {
-            PatientRecordInfoManageCellModel *cellModel = [[PatientRecordInfoManageCellModel alloc] init];
+            PatientInfoManageCellModel *cellModel = [[PatientInfoManageCellModel alloc] init];
             cellModel.title = itemTitleList[i];
             [items addObject:cellModel];
         }
@@ -54,10 +56,12 @@
     return self;
 }
 
+
+
 @end
 
 
-@implementation PatientRecordBookSectionModel
+@implementation PatientBookSectionModel
 @synthesize cellModelList;
 
 - (instancetype)init
@@ -69,19 +73,20 @@
     return self;
 }
 
-- (void)configureWithData:(id)data
+- (void)configureWithData:(NSArray<PatientBookInfoStateModel *> *)data
 {
     NSMutableArray *bookList = [NSMutableArray array];
-    PatientRecordBookCellModel *cellModel = [[PatientRecordBookCellModel alloc] init];
-    cellModel.title  = @"已回复";
-    cellModel.time = @"2020-08-03";
-    [bookList addObject:cellModel];
-    
-    cellModel = [[PatientRecordBookCellModel alloc] init];
-    cellModel.title  = @"未回复";
-    cellModel.titleColor = [UIColor redColor];
-    [bookList addObject:cellModel];
-    
+    for (PatientBookInfoStateModel *model in data) {
+        PatientBookInfoStateCellModel *cellModel = [[PatientBookInfoStateCellModel alloc] init];
+        if (model.isreply.isValidStringValue && [model.isreply isEqualToString:@"1"]) {
+            cellModel.title  = @"已回复";
+            cellModel.time = [Tools dateFormatterWithDateStringValue:model.replyTime];
+        }else{
+            cellModel.title  = @"未回复";
+            cellModel.titleColor = [UIColor redColor];
+        }
+        [bookList addObject:cellModel];
+    }
     cellModelList = [bookList copy];
 //    self.rowCount = cellModelList.count;
 }
@@ -96,7 +101,7 @@
 
 
 
-@implementation PatientRecordInfoManageModel
+@implementation PatientInfoManagePageModel
 
 @synthesize sectionModelList;
 
@@ -104,9 +109,9 @@
 {
     if (self = [super init]) {
         sectionModelList = @[
-            [[PatienRecordFitMentionSectionModel alloc] init],
-            [[PatientRecordInfoManageSectionModel alloc] init],
-            [[PatientRecordBookSectionModel alloc] init]
+            [[PatienFitMentionSectionModel alloc] init],
+            [[PatientInfoManageSectionModel alloc] init],
+            [[PatientBookSectionModel alloc] init]
         ];
         self.numberOfSection = sectionModelList.count;
     }
@@ -115,8 +120,28 @@
 
 - (void)configureWithData:(id)data
 {
-    PatientRecordBookSectionModel *bookSectionModel =  (PatientRecordBookSectionModel *)self.sectionModelList[2];
-    [bookSectionModel configureWithData:[NSNull null]];
+    PatientInfoManageModel *model = [PatientInfoManageModel mj_objectWithKeyValues:data];
+    PatienFitMentionSectionModel *fitMentionSectionModel =  (PatienFitMentionSectionModel *)[self sectionModel:0];
+    if (model.remind.isValidStringValue) {
+        fitMentionSectionModel.content = model.remind;
+    }
+    
+    
+    PatientInfoManageSectionModel *infoManageSectionModel =  (PatientInfoManageSectionModel *)[self sectionModel:1];
+    if (model.visit.isValidStringValue) {
+        infoManageSectionModel.cellModelList[0].select = [model.visit isEqualToString:@"1"];
+    }
+    
+    if (model.operation.isValidStringValue) {
+        infoManageSectionModel.cellModelList[1].select = [model.operation isEqualToString:@"1"];
+    }
+    
+    if (model.follow.isValidStringValue) {
+        infoManageSectionModel.cellModelList[2].select = [model.follow isEqualToString:@"1"];
+    }
+    
+    PatientBookSectionModel *bookSectionModel =  (PatientBookSectionModel *)[self sectionModel:2];
+    [bookSectionModel configureWithData:model.bookInfoStateList];
 }
 
 - (PatientRecordInfoSectionModel *)sectionModel:(NSInteger)section

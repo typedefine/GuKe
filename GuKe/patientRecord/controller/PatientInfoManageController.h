@@ -1,16 +1,16 @@
 //
-//  PatientBookReplyModel.h
+//  PatientRecordInfoManageController.h
 //  GuKe
 //
-//  Created by 莹宝 on 2020/8/12.
+//  Created by 莹宝 on 2020/7/31.
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "GJObject.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PatientBookReplyModel : GJObject
+@interface PatientInfoManageController : UIViewController
 
 @end
 

@@ -13,7 +13,7 @@
 #import "Follow_UpRecordsViewController.h"
 #import "AddFollow_UpRecordsViewController.h"
 #import "ZJNAddPatientOperationInfoViewController.h"
-#import "PatientRecordInfoManageController.h"
+#import "PatientInfoManageController.h"
 
 @interface ShuHouSUFangViewController ()<UIScrollViewDelegate>{
     UIScrollView *scrollVi;
@@ -230,7 +230,7 @@
     [scrollVi addSubview:followViewC.view];
     [self addChildViewController:followViewC];
     
-    PatientRecordInfoManageController *infoManageVC = [[PatientRecordInfoManageController alloc] init];
+    PatientInfoManageController *infoManageVC = [[PatientInfoManageController alloc] init];
     infoManageVC.view.frame = CGRectMake(ScreenWidth *3, 0, ScreenWidth, scrollVi.frame.size.height);
     [scrollVi addSubview:infoManageVC.view];
     [self addChildViewController:infoManageVC];

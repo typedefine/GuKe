@@ -40,6 +40,8 @@
 #import "NSString+containsString.h"
 #import "AFNetworking.h"
 #import "UIView+XPKit.h"
+#import "Tools.h"
+#import "NSObject+DDC.h"
 
 //wang start
 #import <Hyphenate/Hyphenate.h>

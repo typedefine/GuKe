@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PatientRecordBookCellModel.h"
+#import "PatientBookInfoStateCellModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PatientRecordBookCell : UICollectionViewCell
+@interface PatientBookInfoStateCell : UICollectionViewCell
 
-- (void)configureWithData:(PatientRecordBookCellModel *)data;
+- (void)configureWithData:(PatientBookInfoStateCellModel *)data;
 
 @end
 

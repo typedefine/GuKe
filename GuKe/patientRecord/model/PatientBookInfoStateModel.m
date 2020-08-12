@@ -6,8 +6,8 @@
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "PatientBookReplyModel.h"
+#import "PatientBookInfoStateModel.h"
 
-@implementation PatientBookReplyModel
+@implementation PatientBookInfoStateModel
 
 @end

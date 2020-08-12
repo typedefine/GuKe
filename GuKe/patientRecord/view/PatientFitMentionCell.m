@@ -6,13 +6,17 @@
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "PatientRecordFitMentionCell.h"
+#import "PatientFitMentionCell.h"
 
-@interface PatientRecordFitMentionCell ()<UITextViewDelegate>
+@interface PatientFitMentionCell ()<UITextViewDelegate>
+
+@property (nonatomic, strong) UITextView *textView;
+@property (nonatomic, strong) UILabel *placeholderLabel;
+@property (nonatomic, copy) inputBlock input;
 
 @end
 
-@implementation PatientRecordFitMentionCell
+@implementation PatientFitMentionCell
 
 
 -(instancetype)initWithFrame:(CGRect)frame
@@ -43,6 +47,15 @@
     return self;
 }
 
+- (void)configureCellWithData:(NSString *)data input:(inputBlock)input
+{
+    if (data.isValidStringValue) {
+        self.textView.text = data;
+    }
+    self.input = [input copy];
+}
+
+
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
     self.placeholderLabel.hidden = YES;
@@ -53,6 +66,13 @@
     self.placeholderLabel.hidden = textView.text.length > 0;
 }
 
+- (void)textViewDidChange:(UITextView *)textView
+{
+    if (self.input) {
+        self.input(textView.text);
+    }
+}
+
 - (UITextView *)textView
 {
     if (!_textView) {
@@ -60,6 +80,8 @@
         _textView.textColor = SetColor(0x666666);
         _textView.font = Font14;
         _textView.tintColor = greenC;
+        _textView.autocorrectionType = UITextAutocorrectionTypeNo;
+        _textView.autocapitalizationType = UITextAutocapitalizationTypeNone;
         _textView.delegate = self;
     }
     return _textView;

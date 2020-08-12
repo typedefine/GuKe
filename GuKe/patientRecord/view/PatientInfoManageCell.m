@@ -6,16 +6,16 @@
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "PatientRecordInfoManageCell.h"
+#import "PatientInfoManageCell.h"
 
-@interface PatientRecordInfoManageCell()
+@interface PatientInfoManageCell()
 
 @property (nonatomic, strong) UIButton *checkBoxButton;
-@property (nonatomic, strong) PatientRecordInfoManageCellModel *cellModel;
+@property (nonatomic, strong) PatientInfoManageCellModel *cellModel;
 
 @end
 
-@implementation PatientRecordInfoManageCell
+@implementation PatientInfoManageCell
 
 - (UIButton *)checkBoxButton
 {
@@ -51,7 +51,7 @@
      self.cellModel.select = button.selected = !button.selected;
 }
 
-- (void)configureWithData:(PatientRecordInfoManageCellModel *)data
+- (void)configureWithData:(PatientInfoManageCellModel *)data
 {
     self.cellModel = data;
     [self.checkBoxButton setTitle:data.title forState:UIControlStateNormal];

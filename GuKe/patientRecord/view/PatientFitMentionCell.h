@@ -10,11 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PatientRecordFitMentionCell : UICollectionViewCell
+typedef void (^ inputBlock)(NSString *text);
 
-@property (nonatomic, strong) UITextView *textView;
+@interface PatientFitMentionCell : UICollectionViewCell
 
-@property (nonatomic, strong) UILabel *placeholderLabel;
+- (void)configureCellWithData:(NSString *)data input:(inputBlock)input;
 
 @end
 

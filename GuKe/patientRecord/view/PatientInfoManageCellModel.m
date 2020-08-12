@@ -6,8 +6,8 @@
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "PatientRecordInfoManageCellModel.h"
+#import "PatientInfoManageCellModel.h"
 
-@implementation PatientRecordInfoManageCellModel
+@implementation PatientInfoManageCellModel
 
 @end
