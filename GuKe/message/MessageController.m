@@ -7,7 +7,7 @@
 //
 
 #import "MessageController.h"
-#import "PatientMessageController.h"
+#import "PatientMessagePageController.h"
 
 @interface MessageController ()<UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
@@ -47,7 +47,7 @@
 - (NSArray *)pageList
 {
     if (!_pageList) {
-        _pageList = @[self.chatListVC, [[PatientMessageController alloc] init]];
+        _pageList = @[self.chatListVC, [[PatientMessagePageController alloc] init]];
     }
     return _pageList;
 }

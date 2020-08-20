@@ -1,5 +1,5 @@
 //
-//  PatientMessageController.h
+//  PatientBookController.h
 //  GuKe
 //
 //  Created by 莹宝 on 2020/8/19.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PatientMessageController : UIViewController
+@interface PatientBookController : UIViewController
 
 @end
 

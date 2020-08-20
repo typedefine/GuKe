@@ -2,13 +2,16 @@
 //  PatientMessageController.m
 //  GuKe
 //
-//  Created by 莹宝 on 2020/7/26.
+//  Created by 莹宝 on 2020/8/19.
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
 #import "PatientMessageController.h"
+#import "PatientMessageCell.h"
 
-@interface PatientMessageController ()
+@interface PatientMessageController ()<UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
@@ -17,6 +20,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self.view addSubview:self.tableView];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+}
+
+
+- (UITableView *)tableView
+{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView.tableFooterView = [[UIView alloc] init];
+        [_tableView registerClass:[PatientMessageCell class] forCellReuseIdentifier:NSStringFromClass([PatientMessageCell class])];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+    }
+    return _tableView;
 }
 
 /*
