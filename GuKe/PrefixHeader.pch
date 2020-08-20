@@ -480,6 +480,9 @@
 /* 病例--信息管理 */
 #define patient_info @"/app/patient/patient_info.json"
 
+/* 患者留言--留言信息 */
+#define patient_msg_list @"/app/msg/msg_list.json"
+
 /**资讯收藏列表*/
 #define collectionlistinfo @"/app/collection/listinfo.json"
 /**视频收藏列表*/

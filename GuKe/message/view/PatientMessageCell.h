@@ -10,7 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void (^ replyBlock)(id model);
+
+@class PatientMessageCellModel;
 @interface PatientMessageCell : UITableViewCell
+
+- (void)configureCellWithData:(PatientMessageCellModel *)data reply:(replyBlock)reply;
 
 @end
 

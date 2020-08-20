@@ -72,6 +72,9 @@
 		1FFEF4642214FC1300CBF50E /* LawVersionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFEF4622214FC0B00CBF50E /* LawVersionView.m */; };
 		1FFEF4652214FC1300CBF50E /* LawVersionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FFEF4632214FC1300CBF50E /* LawVersionView.xib */; };
 		24B5F0B468F42243B33343FE /* libPods-GuKe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B7FF23F1248C473B00EA53 /* libPods-GuKe.a */; };
+		7F9A7EFB24EE1FB000E5CDFA /* PatientMessageCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9A7EFA24EE1FB000E5CDFA /* PatientMessageCellModel.m */; };
+		7F9A7EFE24EE252200E5CDFA /* PatientMessagePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9A7EFD24EE252200E5CDFA /* PatientMessagePageModel.m */; };
+		7F9A7F0424EE2A1A00E5CDFA /* PatientMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9A7F0324EE2A1A00E5CDFA /* PatientMessageModel.m */; };
 		89162EAA24E4293700698B84 /* PatientInfoManageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EA924E4293700698B84 /* PatientInfoManageModel.m */; };
 		89162EAF24E438B400698B84 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EAE24E438B400698B84 /* Tools.m */; };
 		89162EB224ED70A400698B84 /* PatientMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EB124ED70A400698B84 /* PatientMessageController.m */; };
@@ -959,6 +962,12 @@
 		1FFEF4622214FC0B00CBF50E /* LawVersionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LawVersionView.m; sourceTree = "<group>"; };
 		1FFEF4632214FC1300CBF50E /* LawVersionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LawVersionView.xib; sourceTree = "<group>"; };
 		52B7FF23F1248C473B00EA53 /* libPods-GuKe.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GuKe.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F9A7EF924EE1FB000E5CDFA /* PatientMessageCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientMessageCellModel.h; sourceTree = "<group>"; };
+		7F9A7EFA24EE1FB000E5CDFA /* PatientMessageCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientMessageCellModel.m; sourceTree = "<group>"; };
+		7F9A7EFC24EE252200E5CDFA /* PatientMessagePageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientMessagePageModel.h; sourceTree = "<group>"; };
+		7F9A7EFD24EE252200E5CDFA /* PatientMessagePageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientMessagePageModel.m; sourceTree = "<group>"; };
+		7F9A7F0224EE2A1A00E5CDFA /* PatientMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientMessageModel.h; sourceTree = "<group>"; };
+		7F9A7F0324EE2A1A00E5CDFA /* PatientMessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientMessageModel.m; sourceTree = "<group>"; };
 		89162EA824E4293700698B84 /* PatientInfoManageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientInfoManageModel.h; sourceTree = "<group>"; };
 		89162EA924E4293700698B84 /* PatientInfoManageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientInfoManageModel.m; sourceTree = "<group>"; };
 		89162EAD24E438B400698B84 /* Tools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
@@ -2500,6 +2509,43 @@
 			path = BacKSelectView;
 			sourceTree = "<group>";
 		};
+		7F9A7EFF24EE296800E5CDFA /* view */ = {
+			isa = PBXGroup;
+			children = (
+				89162EB624ED761500698B84 /* PatientMessageCell.h */,
+				89162EB724ED761500698B84 /* PatientMessageCell.m */,
+				7F9A7EF924EE1FB000E5CDFA /* PatientMessageCellModel.h */,
+				7F9A7EFA24EE1FB000E5CDFA /* PatientMessageCellModel.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		7F9A7F0024EE297200E5CDFA /* model */ = {
+			isa = PBXGroup;
+			children = (
+				7F9A7F0224EE2A1A00E5CDFA /* PatientMessageModel.h */,
+				7F9A7F0324EE2A1A00E5CDFA /* PatientMessageModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		7F9A7F0124EE297900E5CDFA /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				89203DC624CDB98F00D4D55E /* MessageController.h */,
+				89203DC724CDB98F00D4D55E /* MessageController.m */,
+				89203DC224CDA86E00D4D55E /* PatientMessagePageController.h */,
+				89203DC324CDA86E00D4D55E /* PatientMessagePageController.m */,
+				89162EB324ED70C300698B84 /* PatientBookController.h */,
+				89162EB424ED70C300698B84 /* PatientBookController.m */,
+				89162EB024ED70A400698B84 /* PatientMessageController.h */,
+				89162EB124ED70A400698B84 /* PatientMessageController.m */,
+				7F9A7EFC24EE252200E5CDFA /* PatientMessagePageModel.h */,
+				7F9A7EFD24EE252200E5CDFA /* PatientMessagePageModel.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
 		89162EAC24E4389800698B84 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -2512,6 +2558,9 @@
 		89203DC524CDA8B400D4D55E /* message */ = {
 			isa = PBXGroup;
 			children = (
+				7F9A7F0124EE297900E5CDFA /* controller */,
+				7F9A7F0024EE297200E5CDFA /* model */,
+				7F9A7EFF24EE296800E5CDFA /* view */,
 				1F374E152240846D001B6D01 /* SysmessageViewController.h */,
 				1F374E162240846D001B6D01 /* SysmessageViewController.m */,
 				1F374E1B22408AC0001B6D01 /* SysMessageTewCell.h */,
@@ -2519,16 +2568,6 @@
 				1F374E1D22408AC0001B6D01 /* SysMessageTewCell.xib */,
 				1F7E8A3D2252E47000E3D185 /* MessageModels.h */,
 				1F7E8A3E2252E47000E3D185 /* MessageModels.m */,
-				89203DC224CDA86E00D4D55E /* PatientMessagePageController.h */,
-				89203DC324CDA86E00D4D55E /* PatientMessagePageController.m */,
-				89162EB024ED70A400698B84 /* PatientMessageController.h */,
-				89162EB124ED70A400698B84 /* PatientMessageController.m */,
-				89162EB624ED761500698B84 /* PatientMessageCell.h */,
-				89162EB724ED761500698B84 /* PatientMessageCell.m */,
-				89162EB324ED70C300698B84 /* PatientBookController.h */,
-				89162EB424ED70C300698B84 /* PatientBookController.m */,
-				89203DC624CDB98F00D4D55E /* MessageController.h */,
-				89203DC724CDB98F00D4D55E /* MessageController.m */,
 			);
 			path = message;
 			sourceTree = "<group>";
@@ -5668,7 +5707,6 @@
 				TargetAttributes = {
 					9A08A85F1F300F8E00AF29EB = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 23P4287UJD;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -6005,6 +6043,7 @@
 				892555A024D6FFEC002F7B5B /* PatientBookInfoStateCellModel.m in Sources */,
 				9A53878D20084D8B0084E772 /* NSDate+Category.m in Sources */,
 				E32291BC202C184500D00ACA /* ZJNOperationTableViewCell.m in Sources */,
+				7F9A7EFB24EE1FB000E5CDFA /* PatientMessageCellModel.m in Sources */,
 				9A08A9541F302B3600AF29EB /* AFURLSessionManager.m in Sources */,
 				9A5387B420084D8B0084E772 /* EaseConversationCell.m in Sources */,
 				9A5387A220084D8B0084E772 /* EaseMessageCell.m in Sources */,
@@ -6220,6 +6259,7 @@
 				9A08A9131F302B2E00AF29EB /* UIScrollView+MJRefresh.m in Sources */,
 				9A53892E20084DC40084E772 /* ContactListViewController.m in Sources */,
 				9A79E8661F385B1000BCF889 /* SuiFourTableViewCell.m in Sources */,
+				7F9A7F0424EE2A1A00E5CDFA /* PatientMessageModel.m in Sources */,
 				9A53877420084D8A0084E772 /* UIButton+EMWebCache.m in Sources */,
 				E30976D01F9DD20F00EC3F80 /* UIImage+PKShortVideoPlayer.m in Sources */,
 				E30976D81F9DD20F00EC3F80 /* PKShortVideoRecorder.m in Sources */,
@@ -6291,6 +6331,7 @@
 				9A08A90C1F302B2E00AF29EB /* MJRefreshGifHeader.m in Sources */,
 				9AA0F4B0201713D300C97EF1 /* WYYShiPinDetailViewController.m in Sources */,
 				1F1D1FD322D83198000ACC5C /* ZYNetworkAccessibity.m in Sources */,
+				7F9A7EFE24EE252200E5CDFA /* PatientMessagePageModel.m in Sources */,
 				9A53878C20084D8B0084E772 /* EaseUserModel.m in Sources */,
 				9A756CA22011C5DF005FE5FB /* WYYzuZhiHuiYiViewController.m in Sources */,
 				9A530B281F46B62500BD6C7E /* FaBuHuiYiViewController.m in Sources */,
@@ -6669,9 +6710,10 @@
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_ENTITLEMENTS = GuKe/GuKe.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 23P4287UJD;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6734,7 +6776,7 @@
 				CODE_SIGN_ENTITLEMENTS = GuKe/GuKe.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 23P4287UJD;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
