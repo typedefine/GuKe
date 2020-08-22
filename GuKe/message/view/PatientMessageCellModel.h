@@ -13,10 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 @class PatientMessageModel;
 @interface PatientMessageCellModel : NSObject
 
-@property (nonatomic, copy) NSString *patientId;
 @property (nonatomic, copy) NSString *portraitUrl;
 @property (nonatomic, copy) NSString *patientName;
 @property (nonatomic, copy) NSString *content;
+@property (nonatomic, copy) NSString *replyTitle;
 @property (nonatomic, strong) PatientMessageModel *model;
 
 @end

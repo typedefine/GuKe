@@ -81,6 +81,7 @@
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.tableFooterView = [[UIView alloc] init];
         [_tableView registerClass:[PatientMessageCell class] forCellReuseIdentifier:NSStringFromClass([PatientMessageCell class])];
+        _tableView.rowHeight = 80;
         _tableView.delegate = self;
         _tableView.dataSource = self;
     }

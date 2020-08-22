@@ -7,7 +7,17 @@
 //
 
 #import "PatientMessageCellModel.h"
+#import "PatientMessageModel.h"
 
 @implementation PatientMessageCellModel
+
+- (void)setModel:(PatientMessageModel *)model
+{
+    if (_model == model || !model) return;
+    _model = model;
+    self.patientName = model.realName;
+    self.content = model.content;
+    self.replyTitle = model.isRead == 1 ? @"已回复" : @"回复";
+}
 
 @end

@@ -28,21 +28,21 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self.contentView addSubview:self.portraitView];
         [self.portraitView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.contentView).offset(20);
+            make.left.equalTo(self.contentView).offset(15);
             make.top.equalTo(self.contentView).offset(15);
             make.size.mas_equalTo(50);
         }];
         
         [self.contentView addSubview:self.nameLabel];
         [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.portraitView);
+            make.top.equalTo(self.portraitView).offset(5);
             make.left.equalTo(self.portraitView.mas_right).offset(10);
             make.height.mas_equalTo(20);
         }];
         
         [self.contentView addSubview:self.contentLabel];
         [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.nameLabel.mas_bottom).offset(15);
+            make.top.equalTo(self.nameLabel.mas_bottom).offset(10);
             make.left.equalTo(self.portraitView.mas_right).offset(10);
         }];
         
@@ -51,7 +51,7 @@
             make.top.equalTo(self.portraitView);
             make.right.equalTo(self.contentView.mas_right).offset(-20);
             make.width.mas_equalTo(80);
-            make.height.mas_equalTo(40);
+            make.height.mas_equalTo(35);
         }];
         [self.replyButton addTarget:self action:@selector(replyButtonActtion) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -73,6 +73,7 @@
     }
     self.nameLabel.text = data.patientName;
     self.contentLabel.text = data.content;
+    [self.replyButton setTitle:data.replyTitle forState:UIControlStateNormal];
     self.reply = [reply copy];
 }
 
@@ -81,6 +82,7 @@
 {
     if (!_portraitView) {
         _portraitView = [[UIImageView alloc] init];
+        _portraitView.image = [UIImage imageNamed:@"default_avatar"];
     }
     return _portraitView;
 }
@@ -100,7 +102,7 @@
     if (!_contentLabel) {
         _contentLabel = [[UILabel alloc] init];
         _contentLabel.font = [UIFont systemFontOfSize:14];
-        _contentLabel.textColor = SetColor(0x666666);
+        _contentLabel.textColor = SetColor(0x333333);
     }
     return _contentLabel;
 }
@@ -115,6 +117,8 @@
         _replyButton.titleLabel.font = [UIFont systemFontOfSize:14];
         _replyButton.layer.borderColor = SetColor(0x999999).CGColor;
         _replyButton.layer.borderWidth = 1;
+        _replyButton.clipsToBounds = YES;
+        _replyButton.layer.cornerRadius = 5;
     }
     return _replyButton;
 }

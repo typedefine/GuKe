@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PatientMessagePageModel : NSObject
 
 @property(nonatomic, strong) NSArray<PatientMessageCellModel *> *cellModelList;
-@property(nonatomic, strong) NSArray *modelList;
 
 - (void)configureWithData:(NSArray *)data;
 

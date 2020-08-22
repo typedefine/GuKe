@@ -15,19 +15,13 @@
 {
     NSMutableArray *list = [NSMutableArray arrayWithCapacity:data.count];
     for (NSDictionary *item in data) {
-        PatientMessageModel *model = [[PatientMessageModel alloc] init];
-        [list addObject:model];
+        PatientMessageModel *model = [PatientMessageModel mj_objectWithKeyValues:item];
+        PatientMessageCellModel *cellModel = [[PatientMessageCellModel alloc] init];
+        cellModel.model = model;
+        [list addObject:cellModel];
     }
     self.cellModelList = [list copy];
 }
 
-- (void)setModelList:(NSArray * _Nonnull)modelList
-{
-    if (_modelList == modelList) return;
-    _modelList = modelList;
-    [modelList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        
-    }];
-}
 
 @end
