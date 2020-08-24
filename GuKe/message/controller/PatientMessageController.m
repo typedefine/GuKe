@@ -9,6 +9,7 @@
 #import "PatientMessageController.h"
 #import "PatientMessageCell.h"
 #import "PatientMessagePageModel.h"
+#import "PatientMsgChatController.h"
 
 @interface PatientMessageController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -29,16 +30,17 @@
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+    self.tableView.mj_header = [MJRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(getData)];
     
     [self getData];
 }
 
 - (void)getData
 {
-    NSString *urlString = DEBUG ? @"http://113.31.119.175/bones/app/msg/msg_list.json" : [NSString stringWithFormat:@"%@%@",requestUrl,patient_msg_list];
     [self showHudInView:self.view hint:nil];
-    [ZJNRequestManager postWithUrlString:urlString parameters:@{@"sessionid":sessionIding} success:^(id data) {
-        NSLog(@"患者留言--留言信息%@",data);
+    [ZJNRequestManager postWithUrlString:self.pageModel.loadUrl parameters:@{@"sessionid":self.pageModel.sessionId} success:^(id data) {
+        [self.tableView.mj_header endRefreshing];
+        NSLog(@"%@%@",self.pageModel.msgPrint, data);
         NSDictionary *dict = (NSDictionary *)data;
         if ([dict[@"retcode"] intValue] == 0) {
             [self.pageModel configureWithData:dict[@"data"]];
@@ -47,7 +49,7 @@
         [self.tableView reloadData];
     } failure:^(NSError *error) {
         [self hideHud];
-        NSLog(@"患者留言--留言信息error:%@",error);
+        NSLog(@"%@error:%@", self.pageModel.msgPrint, error);
     }];
     
 }
@@ -60,18 +62,31 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _pageModel.cellModelList.count;
+    return self.pageModel.cellModelList.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PatientMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([PatientMessageCell class])];
-    PatientMessageCellModel *cellModel = _pageModel.cellModelList[indexPath.row];
-    [cell configureCellWithData:cellModel reply:^(id  _Nonnull model) {
-        
-    }];
+    PatientMessageCellModel *cellModel = self.pageModel.cellModelList[indexPath.row];
+    [cell configureCellWithData:cellModel];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PatientMessageCellModel *cellModel = self.pageModel.cellModelList[indexPath.row];
+    PatientMsgChatController *msgChatVC = [[PatientMsgChatController alloc] init];
+    msgChatVC.sessionid = self.pageModel.sessionId;
+    msgChatVC.recipient = cellModel.model.sender;
+    msgChatVC.nickname = cellModel.model.realName;
+    msgChatVC.hidesBottomBarWhenPushed = YES;
+//    msgChatVC.modalPresentationStyle = UIModalPresentationFullScreen;
+//    [self presentViewController:msgChatVC animated:YES completion:^{
+//
+//    }];
+    [self.navigationController pushViewController:msgChatVC animated:YES];
 }
 
 
@@ -92,6 +107,12 @@
 {
     if (!_pageModel) {
         _pageModel = [[PatientMessagePageModel alloc] init];
+        NSString *urlString, *msg;
+        urlString = DEBUG ? @"http://113.31.119.175/bones/app/msg/msg_list.json" : [NSString stringWithFormat:@"%@%@",requestUrl,patient_msg_list];
+        msg = @"患者留言--留言信息";
+        _pageModel.loadUrl = urlString;
+        _pageModel.msgPrint = msg;
+        _pageModel.sessionId = sessionIding;
     }
     return _pageModel;
 }

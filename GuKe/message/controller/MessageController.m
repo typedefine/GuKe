@@ -20,6 +20,17 @@
 
 @implementation MessageController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.segmentCtrl.hidden = NO;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.segmentCtrl.hidden = YES;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

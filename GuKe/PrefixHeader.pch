@@ -483,6 +483,12 @@
 /* 患者留言--留言信息 */
 #define patient_msg_list @"/app/msg/msg_list.json"
 
+/* 患者留言--留言详情 */
+#define patient_msg_record @"app/msg/msg_record.json"
+
+/* 患者留言--预约就诊 */
+#define patient_msg_book @"/app/msg/msg_book.json"
+
 /**资讯收藏列表*/
 #define collectionlistinfo @"/app/collection/listinfo.json"
 /**视频收藏列表*/

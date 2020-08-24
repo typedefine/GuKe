@@ -1,5 +1,5 @@
 //
-//  PatientBookController.h
+//  DoctorChatCell.h
 //  GuKe
 //
 //  Created by 莹宝 on 2020/8/23.
@@ -10,7 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PatientBookController : UIViewController
+@class PatientMsgChatCellModel;
+@interface DoctorChatCell : UITableViewCell
+
+- (void)configureCellWithData:(PatientMsgChatCellModel *)data;
 
 @end
 

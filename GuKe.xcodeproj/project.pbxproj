@@ -78,7 +78,7 @@
 		89162EAA24E4293700698B84 /* PatientInfoManageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EA924E4293700698B84 /* PatientInfoManageModel.m */; };
 		89162EAF24E438B400698B84 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EAE24E438B400698B84 /* Tools.m */; };
 		89162EB224ED70A400698B84 /* PatientMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EB124ED70A400698B84 /* PatientMessageController.m */; };
-		89162EB524ED70C300698B84 /* PatientBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EB424ED70C300698B84 /* PatientBookController.m */; };
+		89162EB524ED70C300698B84 /* PatientMsgChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EB424ED70C300698B84 /* PatientMsgChatController.m */; };
 		89162EB824ED761500698B84 /* PatientMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EB724ED761500698B84 /* PatientMessageCell.m */; };
 		89203DC424CDA86E00D4D55E /* PatientMessagePageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89203DC324CDA86E00D4D55E /* PatientMessagePageController.m */; };
 		89203DC824CDB98F00D4D55E /* MessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89203DC724CDB98F00D4D55E /* MessageController.m */; };
@@ -93,6 +93,15 @@
 		898F1AE524D6DC6700397505 /* PatientFitMentionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1AE424D6DC6700397505 /* PatientFitMentionCell.m */; };
 		898F1AE824D6DC9600397505 /* PatientInfoManageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1AE724D6DC9600397505 /* PatientInfoManageCell.m */; };
 		898F1AEB24D6DCCD00397505 /* PatientBookInfoStateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1AEA24D6DCCD00397505 /* PatientBookInfoStateCell.m */; };
+		89E52ED724F267E30052403B /* PatientBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52ED624F267E30052403B /* PatientBookController.m */; };
+		89E52EDA24F26ACC0052403B /* PatientBookPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52ED924F26ACC0052403B /* PatientBookPageModel.m */; };
+		89E52EDD24F26B2F0052403B /* PatientBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52EDC24F26B2F0052403B /* PatientBookCell.m */; };
+		89E52EE024F26B670052403B /* PatientBookCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52EDF24F26B670052403B /* PatientBookCellModel.m */; };
+		89E52EE424F2C5670052403B /* PatientChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52EE324F2C5670052403B /* PatientChatCell.m */; };
+		89E52EE724F2C5800052403B /* DoctorChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52EE624F2C5800052403B /* DoctorChatCell.m */; };
+		89E52EEA24F2D64D0052403B /* PatientMsgChatPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52EE924F2D64D0052403B /* PatientMsgChatPageModel.m */; };
+		89E52EED24F2D7750052403B /* PatientMsgChatCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52EEC24F2D7750052403B /* PatientMsgChatCellModel.m */; };
+		89E52EF024F2D7A10052403B /* PatientMsgChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52EEF24F2D7A10052403B /* PatientMsgChatModel.m */; };
 		9A08A8651F300F8F00AF29EB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A08A8641F300F8F00AF29EB /* main.m */; };
 		9A08A8681F300F8F00AF29EB /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A08A8671F300F8F00AF29EB /* AppDelegate.mm */; };
 		9A08A8701F300F8F00AF29EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A08A86F1F300F8F00AF29EB /* Assets.xcassets */; };
@@ -974,8 +983,8 @@
 		89162EAE24E438B400698B84 /* Tools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tools.m; sourceTree = "<group>"; };
 		89162EB024ED70A400698B84 /* PatientMessageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientMessageController.h; sourceTree = "<group>"; };
 		89162EB124ED70A400698B84 /* PatientMessageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientMessageController.m; sourceTree = "<group>"; };
-		89162EB324ED70C300698B84 /* PatientBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookController.h; sourceTree = "<group>"; };
-		89162EB424ED70C300698B84 /* PatientBookController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientBookController.m; sourceTree = "<group>"; };
+		89162EB324ED70C300698B84 /* PatientMsgChatController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientMsgChatController.h; sourceTree = "<group>"; };
+		89162EB424ED70C300698B84 /* PatientMsgChatController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientMsgChatController.m; sourceTree = "<group>"; };
 		89162EB624ED761500698B84 /* PatientMessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientMessageCell.h; sourceTree = "<group>"; };
 		89162EB724ED761500698B84 /* PatientMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientMessageCell.m; sourceTree = "<group>"; };
 		89203DC224CDA86E00D4D55E /* PatientMessagePageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientMessagePageController.h; sourceTree = "<group>"; };
@@ -1004,6 +1013,24 @@
 		898F1AE724D6DC9600397505 /* PatientInfoManageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientInfoManageCell.m; sourceTree = "<group>"; };
 		898F1AE924D6DCCD00397505 /* PatientBookInfoStateCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookInfoStateCell.h; sourceTree = "<group>"; };
 		898F1AEA24D6DCCD00397505 /* PatientBookInfoStateCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientBookInfoStateCell.m; sourceTree = "<group>"; };
+		89E52ED524F267E30052403B /* PatientBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookController.h; sourceTree = "<group>"; };
+		89E52ED624F267E30052403B /* PatientBookController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientBookController.m; sourceTree = "<group>"; };
+		89E52ED824F26ACC0052403B /* PatientBookPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookPageModel.h; sourceTree = "<group>"; };
+		89E52ED924F26ACC0052403B /* PatientBookPageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientBookPageModel.m; sourceTree = "<group>"; };
+		89E52EDB24F26B2F0052403B /* PatientBookCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookCell.h; sourceTree = "<group>"; };
+		89E52EDC24F26B2F0052403B /* PatientBookCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientBookCell.m; sourceTree = "<group>"; };
+		89E52EDE24F26B670052403B /* PatientBookCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookCellModel.h; sourceTree = "<group>"; };
+		89E52EDF24F26B670052403B /* PatientBookCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientBookCellModel.m; sourceTree = "<group>"; };
+		89E52EE224F2C5670052403B /* PatientChatCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientChatCell.h; sourceTree = "<group>"; };
+		89E52EE324F2C5670052403B /* PatientChatCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientChatCell.m; sourceTree = "<group>"; };
+		89E52EE524F2C5800052403B /* DoctorChatCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoctorChatCell.h; sourceTree = "<group>"; };
+		89E52EE624F2C5800052403B /* DoctorChatCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DoctorChatCell.m; sourceTree = "<group>"; };
+		89E52EE824F2D64D0052403B /* PatientMsgChatPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientMsgChatPageModel.h; sourceTree = "<group>"; };
+		89E52EE924F2D64D0052403B /* PatientMsgChatPageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientMsgChatPageModel.m; sourceTree = "<group>"; };
+		89E52EEB24F2D7750052403B /* PatientMsgChatCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientMsgChatCellModel.h; sourceTree = "<group>"; };
+		89E52EEC24F2D7750052403B /* PatientMsgChatCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientMsgChatCellModel.m; sourceTree = "<group>"; };
+		89E52EEE24F2D7A10052403B /* PatientMsgChatModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientMsgChatModel.h; sourceTree = "<group>"; };
+		89E52EEF24F2D7A10052403B /* PatientMsgChatModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientMsgChatModel.m; sourceTree = "<group>"; };
 		9A08A8601F300F8E00AF29EB /* GuKe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuKe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A08A8641F300F8F00AF29EB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9A08A8661F300F8F00AF29EB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -2516,6 +2543,10 @@
 				89162EB724ED761500698B84 /* PatientMessageCell.m */,
 				7F9A7EF924EE1FB000E5CDFA /* PatientMessageCellModel.h */,
 				7F9A7EFA24EE1FB000E5CDFA /* PatientMessageCellModel.m */,
+				89E52EDB24F26B2F0052403B /* PatientBookCell.h */,
+				89E52EDC24F26B2F0052403B /* PatientBookCell.m */,
+				89E52EDE24F26B670052403B /* PatientBookCellModel.h */,
+				89E52EDF24F26B670052403B /* PatientBookCellModel.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2536,12 +2567,14 @@
 				89203DC724CDB98F00D4D55E /* MessageController.m */,
 				89203DC224CDA86E00D4D55E /* PatientMessagePageController.h */,
 				89203DC324CDA86E00D4D55E /* PatientMessagePageController.m */,
-				89162EB324ED70C300698B84 /* PatientBookController.h */,
-				89162EB424ED70C300698B84 /* PatientBookController.m */,
 				89162EB024ED70A400698B84 /* PatientMessageController.h */,
 				89162EB124ED70A400698B84 /* PatientMessageController.m */,
 				7F9A7EFC24EE252200E5CDFA /* PatientMessagePageModel.h */,
 				7F9A7EFD24EE252200E5CDFA /* PatientMessagePageModel.m */,
+				89E52ED524F267E30052403B /* PatientBookController.h */,
+				89E52ED624F267E30052403B /* PatientBookController.m */,
+				89E52ED824F26ACC0052403B /* PatientBookPageModel.h */,
+				89E52ED924F26ACC0052403B /* PatientBookPageModel.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -2558,6 +2591,7 @@
 		89203DC524CDA8B400D4D55E /* message */ = {
 			isa = PBXGroup;
 			children = (
+				89E52EE124F2B1320052403B /* chat */,
 				7F9A7F0124EE297900E5CDFA /* controller */,
 				7F9A7F0024EE297200E5CDFA /* model */,
 				7F9A7EFF24EE296800E5CDFA /* view */,
@@ -2625,6 +2659,25 @@
 				892555AB24E42206002F7B5B /* controller */,
 			);
 			path = patientRecord;
+			sourceTree = "<group>";
+		};
+		89E52EE124F2B1320052403B /* chat */ = {
+			isa = PBXGroup;
+			children = (
+				89162EB324ED70C300698B84 /* PatientMsgChatController.h */,
+				89162EB424ED70C300698B84 /* PatientMsgChatController.m */,
+				89E52EE824F2D64D0052403B /* PatientMsgChatPageModel.h */,
+				89E52EE924F2D64D0052403B /* PatientMsgChatPageModel.m */,
+				89E52EE224F2C5670052403B /* PatientChatCell.h */,
+				89E52EE324F2C5670052403B /* PatientChatCell.m */,
+				89E52EE524F2C5800052403B /* DoctorChatCell.h */,
+				89E52EE624F2C5800052403B /* DoctorChatCell.m */,
+				89E52EEB24F2D7750052403B /* PatientMsgChatCellModel.h */,
+				89E52EEC24F2D7750052403B /* PatientMsgChatCellModel.m */,
+				89E52EEE24F2D7A10052403B /* PatientMsgChatModel.h */,
+				89E52EEF24F2D7A10052403B /* PatientMsgChatModel.m */,
+			);
+			path = chat;
 			sourceTree = "<group>";
 		};
 		9A08A8571F300F8E00AF29EB = {
@@ -6103,6 +6156,7 @@
 				E30976D41F9DD20F00EC3F80 /* PKFullScreenPlayerView.m in Sources */,
 				9A53890C20084DC40084E772 /* ChatDemoHelper.m in Sources */,
 				9A3D1EF52020201C008F219B /* WYYHuanZheViewController.m in Sources */,
+				89E52EE424F2C5670052403B /* PatientChatCell.m in Sources */,
 				9A08A9661F302B8600AF29EB /* ZJNRequestManager.m in Sources */,
 				E3A105D41FA18A6500EBEF1F /* UIView+Layout.m in Sources */,
 				E3D30D682043DC2E00876D44 /* ZJNChangePatientBasicInfoViewController.m in Sources */,
@@ -6119,7 +6173,8 @@
 				9A3A1BF01F4131AC00F33025 /* DuiBiViewController.m in Sources */,
 				9A08A90A1F302B2E00AF29EB /* MJRefreshBackNormalFooter.m in Sources */,
 				E309767F1F9DD20F00EC3F80 /* IQTitleBarButtonItem.m in Sources */,
-				89162EB524ED70C300698B84 /* PatientBookController.m in Sources */,
+				89162EB524ED70C300698B84 /* PatientMsgChatController.m in Sources */,
+				89E52EED24F2D7750052403B /* PatientMsgChatCellModel.m in Sources */,
 				9A53877B20084D8B0084E772 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				9A53874A20084D8A0084E772 /* EMVoiceConverter.mm in Sources */,
 				9A54BB6A200F184600CF0844 /* WYYYiShengOneTableViewCell.m in Sources */,
@@ -6131,6 +6186,7 @@
 				E30976961F9DD20F00EC3F80 /* LiveGiftListModel.m in Sources */,
 				9A53877C20084D8B0084E772 /* PSTCollectionView.m in Sources */,
 				9A5387AA20084D8B0084E772 /* EaseBubbleView+Voice.m in Sources */,
+				89E52EEA24F2D64D0052403B /* PatientMsgChatPageModel.m in Sources */,
 				9AFBC3921F3956180061AAEE /* HuanZheListModel.m in Sources */,
 				1FEEAE4B20A59376009C78F1 /* QjcBackSelectCell.m in Sources */,
 				9A756CAF2011E15A005FE5FB /* WYYShiPinTableViewCell.m in Sources */,
@@ -6238,6 +6294,7 @@
 				E32CF40C1F9B3F2F00CF8C53 /* ZJNSingUpMeetingPeopleTableViewCell.m in Sources */,
 				9A53879A20084D8B0084E772 /* EaseLocationViewController.m in Sources */,
 				9A530B231F468B6300BD6C7E /* WoDeHuiYiTableViewCell.m in Sources */,
+				89E52ED724F267E30052403B /* PatientBookController.m in Sources */,
 				E3669D6F1FA96A410011DCF1 /* ZJNShareView.m in Sources */,
 				E3F4B0FE1F7CCF1000CB16ED /* OperationRecordsViewController.m in Sources */,
 				898F1AE824D6DC9600397505 /* PatientInfoManageCell.m in Sources */,
@@ -6301,6 +6358,7 @@
 				1FEC9D7B22DED4850060E3E1 /* CountButton.m in Sources */,
 				9A08A8D01F302B2900AF29EB /* UIImage+extension.m in Sources */,
 				9A53874420084D8A0084E772 /* EMCDDeviceManager+Microphone.m in Sources */,
+				89E52EF024F2D7A10052403B /* PatientMsgChatModel.m in Sources */,
 				E30976A11F9DD20F00EC3F80 /* MASViewAttribute.m in Sources */,
 				E3536B5A1F7E3269009EC5F9 /* Follow_UpRecordsViewController.m in Sources */,
 				E309769A1F9DD20F00EC3F80 /* LiveGiftShowView.m in Sources */,
@@ -6312,6 +6370,7 @@
 				E3E895A72021D178004C2DB2 /* ZJNMRSharesCollectionViewCell.m in Sources */,
 				9A53879720084D8B0084E772 /* EaseEmotionManager.m in Sources */,
 				9A53876720084D8A0084E772 /* MWTapDetectingImageView.m in Sources */,
+				89E52EE724F2C5800052403B /* DoctorChatCell.m in Sources */,
 				1F6FD51920CE710C004893DD /* PingfenModel.m in Sources */,
 				9A53873F20084D8A0084E772 /* EaseUI.m in Sources */,
 				9A53876520084D8A0084E772 /* MWPhoto.m in Sources */,
@@ -6433,6 +6492,7 @@
 				E30976761F9DD20F00EC3F80 /* IQUITextFieldView+Additions.m in Sources */,
 				E3DF94161F7A22CA001E1963 /* PersonInfoTableViewCell.m in Sources */,
 				9AF6D9E51F5CF15700C52F9B /* harrisPingfenViewController.m in Sources */,
+				89E52EDD24F26B2F0052403B /* PatientBookCell.m in Sources */,
 				E3A105D21FA18A6500EBEF1F /* TZProgressView.m in Sources */,
 				E3D35C14202318FB00A6FB9F /* ZJNTextView.m in Sources */,
 				9A2D38D41F3AF40A00932F35 /* ZYQAssetPickerController.m in Sources */,
@@ -6482,6 +6542,7 @@
 				E3F4B1111F7CEE3500CB16ED /* OperationInfoModel.m in Sources */,
 				9A79E8181F37FE9400BCF889 /* WoDeHuanZheTableViewCell.m in Sources */,
 				9A08A9521F302B3600AF29EB /* AFURLRequestSerialization.m in Sources */,
+				89E52EDA24F26ACC0052403B /* PatientBookPageModel.m in Sources */,
 				898F1AE224D6DBF100397505 /* PatientInfoManageHeaderView.m in Sources */,
 				9A5387AF20084D8B0084E772 /* EaseTextView.m in Sources */,
 				9A53892B20084DC40084E772 /* EMChatroomMembersViewController.m in Sources */,
@@ -6504,6 +6565,7 @@
 				1F374E1E22408AC0001B6D01 /* SysMessageTewCell.m in Sources */,
 				9A08A8B41F30127E00AF29EB /* SuFangViewController.m in Sources */,
 				9A53879320084D8B0084E772 /* EaseMessageReadManager.m in Sources */,
+				89E52EE024F26B670052403B /* PatientBookCellModel.m in Sources */,
 				1F1128B02221246E00FD8CB6 /* DetailsTableViewCell.m in Sources */,
 				E346BE2E1F7B8B7C00E776B8 /* PatientInfoViewController.m in Sources */,
 				9A53877520084D8A0084E772 /* UIImage+EMGIF.m in Sources */,

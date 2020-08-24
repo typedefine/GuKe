@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *content;//内容
 @property (nonatomic, assign) NSInteger isRead;//是否已读
 @property (nonatomic, copy) NSString *realName;//显示的姓名
-@property (nonatomic, copy) NSString *crateTime;//消息的时间
+@property (nonatomic, copy) NSString *createTime;//消息的时间
 @property (nonatomic, copy) NSString *readTime;//已读时间
 @property (nonatomic, copy) NSString *medicalTime;//缺省，预留字段，此接口没有用到
 

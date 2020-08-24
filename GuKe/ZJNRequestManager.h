@@ -16,6 +16,11 @@ typedef void (^HttpFailure)(NSError *error);
 //get请求
 +(void)getWithUrlString:(NSString *)urlString success:(HttpSuccess)success failure:(HttpFailure)failure;
 
++(void)getWithUrlString:(NSString *)urlString
+             parameters:(NSDictionary *)parameters
+                success:(HttpSuccess)success
+                failure:(HttpFailure)failure;
+
 //post请求
 +(void)postWithUrlString:(NSString *)urlString parameters:(NSDictionary *)parameters success:(HttpSuccess)success failure:(HttpFailure)failure;
 

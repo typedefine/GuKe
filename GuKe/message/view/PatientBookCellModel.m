@@ -1,15 +1,15 @@
 //
-//  PatientMessageCellModel.m
+//  PatientCellModel.m
 //  GuKe
 //
-//  Created by jiangchen zhou on 2020/8/20.
+//  Created by 莹宝 on 2020/8/23.
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "PatientMessageCellModel.h"
+#import "PatientBookCellModel.h"
 #import "PatientMessageModel.h"
 
-@implementation PatientMessageCellModel
+@implementation PatientBookCellModel
 
 - (void)setModel:(PatientMessageModel *)model
 {
@@ -17,7 +17,7 @@
     _model = model;
     self.patientName = model.realName;
     self.content = model.content;
-    self.time = [Tools dateFormatterWithDateStringValue:model.createTime sourceFormatter:@"yyyy-MM-dd dd:mm:ss.s"];
+    self.replyTitle = model.isRead == 1 ? @"已回复" : @"回复";
 }
 
 @end

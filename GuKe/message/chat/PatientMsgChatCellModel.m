@@ -1,23 +1,23 @@
 //
-//  PatientMessageCellModel.m
+//  PatientMsgChatCellModel.m
 //  GuKe
 //
-//  Created by jiangchen zhou on 2020/8/20.
+//  Created by 莹宝 on 2020/8/24.
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "PatientMessageCellModel.h"
-#import "PatientMessageModel.h"
+#import "PatientMsgChatCellModel.h"
 
-@implementation PatientMessageCellModel
+@implementation PatientMsgChatCellModel
 
-- (void)setModel:(PatientMessageModel *)model
+- (void)setModel:(PatientMsgChatModel *)model
 {
     if (_model == model || !model) return;
     _model = model;
-    self.patientName = model.realName;
     self.content = model.content;
     self.time = [Tools dateFormatterWithDateStringValue:model.createTime sourceFormatter:@"yyyy-MM-dd dd:mm:ss.s"];
+
 }
+
 
 @end

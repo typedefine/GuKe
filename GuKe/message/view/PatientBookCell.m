@@ -1,25 +1,26 @@
 //
-//  PatientMessageCell.m
+//  PatientBookCell.m
 //  GuKe
 //
-//  Created by 莹宝 on 2020/8/19.
+//  Created by 莹宝 on 2020/8/23.
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "PatientMessageCell.h"
-#import "PatientMessageCellModel.h"
+#import "PatientBookCell.h"
+#import "PatientBookCellModel.h"
 
-@interface PatientMessageCell()
+@interface PatientBookCell()
 
 @property (nonatomic, strong) UIImageView *portraitView;
 @property (nonatomic, strong) UILabel *nameLabel;
-@property (nonatomic, strong) UILabel *timeLabel;
 @property (nonatomic, strong) UILabel *contentLabel;
-@property (nonatomic, strong) PatientMessageCellModel *cellModel;
+@property (nonatomic, strong) UIButton *replyButton;
+@property (nonatomic, copy) replyBlock reply;
+@property (nonatomic, strong) PatientBookCellModel *cellModel;
 
 @end
 
-@implementation PatientMessageCell
+@implementation PatientBookCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -39,32 +40,41 @@
             make.height.mas_equalTo(20);
         }];
         
-        [self.contentView addSubview:self.timeLabel];
-        [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(self.nameLabel);
-            make.right.equalTo(self.contentView).offset(-10);
-        }];
-        
         [self.contentView addSubview:self.contentLabel];
         [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.nameLabel.mas_bottom).offset(10);
             make.left.equalTo(self.portraitView.mas_right).offset(10);
-            make.right.equalTo(self.timeLabel);
         }];
+        
+        [self.contentView addSubview:self.replyButton];
+        [self.replyButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.portraitView);
+            make.right.equalTo(self.contentView.mas_right).offset(-20);
+            make.width.mas_equalTo(80);
+            make.height.mas_equalTo(35);
+        }];
+        [self.replyButton addTarget:self action:@selector(replyButtonActtion) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
 }
 
+- (void)replyButtonActtion
+{
+    if (self.reply) {
+        self.reply(self.cellModel.model);
+    }
+}
 
-- (void)configureCellWithData:(PatientMessageCellModel *)data
+- (void)configureCellWithData:(PatientBookCellModel *)data reply:(replyBlock)reply
 {
     self.cellModel = data;
     if (data.portraitUrl && data.portraitUrl.length > 0) {
         [self.portraitView sd_setImageWithURL:[NSURL URLWithString:data.portraitUrl] placeholderImage:[UIImage imageNamed:@"default_avatar"]];
     }
     self.nameLabel.text = data.patientName;
-    self.timeLabel.text = data.time;
     self.contentLabel.text = data.content;
+    [self.replyButton setTitle:data.replyTitle forState:UIControlStateNormal];
+    self.reply = [reply copy];
 }
 
 
@@ -87,17 +97,6 @@
     return _nameLabel;
 }
 
-- (UILabel *)timeLabel
-{
-    if (!_timeLabel) {
-        _timeLabel = [[UILabel alloc] init];
-        _timeLabel.font = [UIFont systemFontOfSize:12];
-        _timeLabel.textColor = SetColor(0x666666);
-    }
-    return _timeLabel;
-}
-
-
 - (UILabel *)contentLabel
 {
     if (!_contentLabel) {
@@ -108,5 +107,20 @@
     return _contentLabel;
 }
 
+
+- (UIButton *)replyButton
+{
+    if (!_replyButton) {
+        _replyButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_replyButton setTitle:@"回复" forState:UIControlStateNormal];
+        [_replyButton setTitleColor:SetColor(0x666666) forState:UIControlStateNormal];
+        _replyButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        _replyButton.layer.borderColor = SetColor(0x999999).CGColor;
+        _replyButton.layer.borderWidth = 1;
+        _replyButton.clipsToBounds = YES;
+        _replyButton.layer.cornerRadius = 5;
+    }
+    return _replyButton;
+}
 
 @end
