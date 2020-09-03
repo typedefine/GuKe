@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 +(BOOL)isBlankString:(NSString *)string;
 + (CGSize)sizeOfText:(NSString *)text andMaxSize:(CGSize)size andFont:(UIFont *)font;
 +(NSString *)dateFormatterWithDateStringValue:(NSString *)dateStringValue;
++(NSString *)dateFormatterWithMillTimeInterval:(NSString *)timeIntervalString;
 +(NSString *)dateFormatterWithTimeInterval:(NSString *)timeIntervalString;
 +(NSString *)dateFormatterWithDateStringValue:(NSString *)dateStringValue sourceFormatter:(NSString *)sourceFormatter;
 +(NSString *)dateFormatterWithDate:(NSDate *)date;

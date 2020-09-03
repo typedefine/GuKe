@@ -49,7 +49,7 @@
     self.issueButton.imageEdgeInsets = UIEdgeInsetsMake(0, 30, 0, 0);
     _issueButton.titleLabel.font = [UIFont systemFontOfSize:17];
     [_issueButton addTarget:self action:@selector(onClickedView) forControlEvents:UIControlEventTouchUpInside];
-    [_issueButton setImage:[UIImage imageNamed:@"MORE"] forState:UIControlStateNormal];
+    [_issueButton setImage:[UIImage imageNamed:@"分享"] forState:UIControlStateNormal];//MORE
     
         //添加到导航条
     UIBarButtonItem *leftBarButtomItem = [[UIBarButtonItem alloc]initWithCustomView:_issueButton];

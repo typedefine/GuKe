@@ -46,6 +46,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PatientInfoManagePageModel : NSObject
 
+@property (nonatomic, copy) NSString *sessionid;
+@property (nonatomic, copy) NSString *hospid;
+
 @property (nonatomic, assign) NSInteger numberOfSection;
 @property (nonatomic, readonly) NSArray<PatientRecordInfoSectionModel *> *sectionModelList;
 
@@ -55,6 +58,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSInteger)numberOfRowAtSection:(NSInteger)section;
 - (PatientRecordInfoSectionModel *)sectionModel:(NSInteger)section;
 - (CGSize)sizeForItemAtSection:(NSInteger)section;
+
+- (void)reset;
+- (BOOL)isInfoChanged;
 
 @end
 

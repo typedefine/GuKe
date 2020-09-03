@@ -15,10 +15,12 @@
 @property (nonatomic, strong) UIImageView *portraitImageView;
 @property (nonatomic, strong) UILabel *contentLabel;
 
-
 @end
 
 @implementation PatientChatCell
+{
+    PatientChatCellBlock _action;
+}
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -38,6 +40,8 @@
             make.top.equalTo(self.timeLabel.mas_bottom).offset(5);
         }];
         
+        [self.portraitImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)]];
+        
         [self.contentView addSubview:self.contentLabel];
         [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.portraitImageView).offset(10);
@@ -48,8 +52,16 @@
     return self;
 }
 
-- (void)configureCellWithData:(PatientMsgChatCellModel *)data
+- (void)tapAction
 {
+    if (_action) {
+        _action();
+    }
+}
+
+- (void)configureCellWithData:(PatientMsgChatCellModel *)data action:(PatientChatCellBlock)action
+{
+    _action = action;
     self.timeLabel.text = data.time;
     self.contentLabel.text = data.content;
 }
@@ -69,6 +81,7 @@
     if (!_portraitImageView) {
         _portraitImageView = [[UIImageView alloc] init];
         _portraitImageView.image = [UIImage imageNamed:@"default_avatar"];
+        _portraitImageView.userInteractionEnabled = YES;
     }
     return _portraitImageView;
 }

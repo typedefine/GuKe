@@ -87,12 +87,18 @@
 		892555A624E2DBB6002F7B5B /* GJObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 892555A524E2DBB6002F7B5B /* GJObject.m */; };
 		892555A924E2E009002F7B5B /* NSObject+DDC.m in Sources */ = {isa = PBXBuildFile; fileRef = 892555A824E2E009002F7B5B /* NSObject+DDC.m */; };
 		892555B124E423AD002F7B5B /* PatientBookInfoStateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 892555B024E423AD002F7B5B /* PatientBookInfoStateModel.m */; };
+		8932651C24FD4E4800FE7BBE /* PatientInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8932651B24FD4E4800FE7BBE /* PatientInfoController.m */; };
+		8932651F24FE861E00FE7BBE /* ZXFDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8932651E24FE861E00FE7BBE /* ZXFDatePicker.m */; };
+		893265242501316D00FE7BBE /* UIColor+HEX.m in Sources */ = {isa = PBXBuildFile; fileRef = 893265202501316D00FE7BBE /* UIColor+HEX.m */; };
+		893265252501316D00FE7BBE /* UIButton+EnlargeEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = 893265222501316D00FE7BBE /* UIButton+EnlargeEdge.m */; };
+		893265282501418B00FE7BBE /* ReplyPatientBookTimePopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 893265272501418B00FE7BBE /* ReplyPatientBookTimePopover.m */; };
 		898F1ADC24D46FD400397505 /* PatientInfoManageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1ADB24D46FD400397505 /* PatientInfoManageController.m */; };
 		898F1ADF24D6C77200397505 /* PatientInfoManagePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1ADE24D6C77200397505 /* PatientInfoManagePageModel.m */; };
 		898F1AE224D6DBF100397505 /* PatientInfoManageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1AE124D6DBF100397505 /* PatientInfoManageHeaderView.m */; };
 		898F1AE524D6DC6700397505 /* PatientFitMentionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1AE424D6DC6700397505 /* PatientFitMentionCell.m */; };
 		898F1AE824D6DC9600397505 /* PatientInfoManageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1AE724D6DC9600397505 /* PatientInfoManageCell.m */; };
 		898F1AEB24D6DCCD00397505 /* PatientBookInfoStateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1AEA24D6DCCD00397505 /* PatientBookInfoStateCell.m */; };
+		89B2B9A324F52C6A0062387D /* MsgChatInputBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B2B9A224F52C6A0062387D /* MsgChatInputBar.m */; };
 		89E52ED724F267E30052403B /* PatientBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52ED624F267E30052403B /* PatientBookController.m */; };
 		89E52EDA24F26ACC0052403B /* PatientBookPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52ED924F26ACC0052403B /* PatientBookPageModel.m */; };
 		89E52EDD24F26B2F0052403B /* PatientBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52EDC24F26B2F0052403B /* PatientBookCell.m */; };
@@ -1001,6 +1007,16 @@
 		892555A824E2E009002F7B5B /* NSObject+DDC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DDC.m"; sourceTree = "<group>"; };
 		892555AF24E423AD002F7B5B /* PatientBookInfoStateModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookInfoStateModel.h; sourceTree = "<group>"; };
 		892555B024E423AD002F7B5B /* PatientBookInfoStateModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientBookInfoStateModel.m; sourceTree = "<group>"; };
+		8932651A24FD4E4800FE7BBE /* PatientInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientInfoController.h; sourceTree = "<group>"; };
+		8932651B24FD4E4800FE7BBE /* PatientInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientInfoController.m; sourceTree = "<group>"; };
+		8932651D24FE861E00FE7BBE /* ZXFDatePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXFDatePicker.h; sourceTree = "<group>"; };
+		8932651E24FE861E00FE7BBE /* ZXFDatePicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXFDatePicker.m; sourceTree = "<group>"; };
+		893265202501316D00FE7BBE /* UIColor+HEX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HEX.m"; sourceTree = "<group>"; };
+		893265212501316D00FE7BBE /* UIColor+HEX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HEX.h"; sourceTree = "<group>"; };
+		893265222501316D00FE7BBE /* UIButton+EnlargeEdge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+EnlargeEdge.m"; sourceTree = "<group>"; };
+		893265232501316D00FE7BBE /* UIButton+EnlargeEdge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+EnlargeEdge.h"; sourceTree = "<group>"; };
+		893265262501418B00FE7BBE /* ReplyPatientBookTimePopover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReplyPatientBookTimePopover.h; sourceTree = "<group>"; };
+		893265272501418B00FE7BBE /* ReplyPatientBookTimePopover.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReplyPatientBookTimePopover.m; sourceTree = "<group>"; };
 		898F1ADA24D46FD400397505 /* PatientInfoManageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientInfoManageController.h; sourceTree = "<group>"; };
 		898F1ADB24D46FD400397505 /* PatientInfoManageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientInfoManageController.m; sourceTree = "<group>"; };
 		898F1ADD24D6C77200397505 /* PatientInfoManagePageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientInfoManagePageModel.h; sourceTree = "<group>"; };
@@ -1013,6 +1029,8 @@
 		898F1AE724D6DC9600397505 /* PatientInfoManageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientInfoManageCell.m; sourceTree = "<group>"; };
 		898F1AE924D6DCCD00397505 /* PatientBookInfoStateCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookInfoStateCell.h; sourceTree = "<group>"; };
 		898F1AEA24D6DCCD00397505 /* PatientBookInfoStateCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientBookInfoStateCell.m; sourceTree = "<group>"; };
+		89B2B9A124F52C6A0062387D /* MsgChatInputBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MsgChatInputBar.h; sourceTree = "<group>"; };
+		89B2B9A224F52C6A0062387D /* MsgChatInputBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MsgChatInputBar.m; sourceTree = "<group>"; };
 		89E52ED524F267E30052403B /* PatientBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookController.h; sourceTree = "<group>"; };
 		89E52ED624F267E30052403B /* PatientBookController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientBookController.m; sourceTree = "<group>"; };
 		89E52ED824F26ACC0052403B /* PatientBookPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookPageModel.h; sourceTree = "<group>"; };
@@ -2547,6 +2565,10 @@
 				89E52EDC24F26B2F0052403B /* PatientBookCell.m */,
 				89E52EDE24F26B670052403B /* PatientBookCellModel.h */,
 				89E52EDF24F26B670052403B /* PatientBookCellModel.m */,
+				8932651D24FE861E00FE7BBE /* ZXFDatePicker.h */,
+				8932651E24FE861E00FE7BBE /* ZXFDatePicker.m */,
+				893265262501418B00FE7BBE /* ReplyPatientBookTimePopover.h */,
+				893265272501418B00FE7BBE /* ReplyPatientBookTimePopover.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2591,6 +2613,7 @@
 		89203DC524CDA8B400D4D55E /* message */ = {
 			isa = PBXGroup;
 			children = (
+				89B2B9A424FB559D0062387D /* patient */,
 				89E52EE124F2B1320052403B /* chat */,
 				7F9A7F0124EE297900E5CDFA /* controller */,
 				7F9A7F0024EE297200E5CDFA /* model */,
@@ -2661,6 +2684,15 @@
 			path = patientRecord;
 			sourceTree = "<group>";
 		};
+		89B2B9A424FB559D0062387D /* patient */ = {
+			isa = PBXGroup;
+			children = (
+				8932651A24FD4E4800FE7BBE /* PatientInfoController.h */,
+				8932651B24FD4E4800FE7BBE /* PatientInfoController.m */,
+			);
+			path = patient;
+			sourceTree = "<group>";
+		};
 		89E52EE124F2B1320052403B /* chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -2676,6 +2708,8 @@
 				89E52EEC24F2D7750052403B /* PatientMsgChatCellModel.m */,
 				89E52EEE24F2D7A10052403B /* PatientMsgChatModel.h */,
 				89E52EEF24F2D7A10052403B /* PatientMsgChatModel.m */,
+				89B2B9A124F52C6A0062387D /* MsgChatInputBar.h */,
+				89B2B9A224F52C6A0062387D /* MsgChatInputBar.m */,
 			);
 			path = chat;
 			sourceTree = "<group>";
@@ -4690,6 +4724,10 @@
 		E30974F91F9DD20E00EC3F80 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				893265232501316D00FE7BBE /* UIButton+EnlargeEdge.h */,
+				893265222501316D00FE7BBE /* UIButton+EnlargeEdge.m */,
+				893265212501316D00FE7BBE /* UIColor+HEX.h */,
+				893265202501316D00FE7BBE /* UIColor+HEX.m */,
 				E30974FC1F9DD20E00EC3F80 /* NSString+containsString.h */,
 				E30974FD1F9DD20E00EC3F80 /* NSString+containsString.m */,
 				E30974FE1F9DD20E00EC3F80 /* UIResponder+Custom.h */,
@@ -5760,6 +5798,7 @@
 				TargetAttributes = {
 					9A08A85F1F300F8E00AF29EB = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 23P4287UJD;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -6093,6 +6132,7 @@
 				E3A105CB1FA18A6500EBEF1F /* TZImageManager.m in Sources */,
 				9A78C90C200C7BD9003D86BF /* WYYMainGroupTableViewCell.m in Sources */,
 				1FDF411C211AE52100A3E06D /* OrderDetailViewController.m in Sources */,
+				8932651C24FD4E4800FE7BBE /* PatientInfoController.m in Sources */,
 				892555A024D6FFEC002F7B5B /* PatientBookInfoStateCellModel.m in Sources */,
 				9A53878D20084D8B0084E772 /* NSDate+Category.m in Sources */,
 				E32291BC202C184500D00ACA /* ZJNOperationTableViewCell.m in Sources */,
@@ -6233,6 +6273,7 @@
 				1F1128DB2221265F00FD8CB6 /* MJPropertyKey.m in Sources */,
 				9A53879420084D8B0084E772 /* EaseEmoji.m in Sources */,
 				9A53894120084DC40084E772 /* UIViewController+SearchController.m in Sources */,
+				893265252501316D00FE7BBE /* UIButton+EnlargeEdge.m in Sources */,
 				9A8867262011885900F96753 /* WYYSearchYishengModel.m in Sources */,
 				9A38A4C31F4C2C290078B207 /* HuiYiXiangQingViewController.m in Sources */,
 				E30976A51F9DD20F00EC3F80 /* View+MASAdditions.m in Sources */,
@@ -6260,7 +6301,9 @@
 				9A3D1EF2201FF8E4008F219B /* WYYHuanZheXiangQingViewController.m in Sources */,
 				9A53878520084D8B0084E772 /* PSTGridLayoutItem.m in Sources */,
 				1FA5AFBE211B77A700FBF98B /* H9ViewController.m in Sources */,
+				893265242501316D00FE7BBE /* UIColor+HEX.m in Sources */,
 				9A53891820084DC40084E772 /* EMGroupMutesViewController.m in Sources */,
+				89B2B9A324F52C6A0062387D /* MsgChatInputBar.m in Sources */,
 				E357820420283A1A00ACAEA5 /* ZJNTitleAndInfoTableViewCell.m in Sources */,
 				E30976F21F9DD20F00EC3F80 /* YLGIFImage.m in Sources */,
 				9A53876620084D8A0084E772 /* MWPhotoBrowser.m in Sources */,
@@ -6391,6 +6434,7 @@
 				9AA0F4B0201713D300C97EF1 /* WYYShiPinDetailViewController.m in Sources */,
 				1F1D1FD322D83198000ACC5C /* ZYNetworkAccessibity.m in Sources */,
 				7F9A7EFE24EE252200E5CDFA /* PatientMessagePageModel.m in Sources */,
+				893265282501418B00FE7BBE /* ReplyPatientBookTimePopover.m in Sources */,
 				9A53878C20084D8B0084E772 /* EaseUserModel.m in Sources */,
 				9A756CA22011C5DF005FE5FB /* WYYzuZhiHuiYiViewController.m in Sources */,
 				9A530B281F46B62500BD6C7E /* FaBuHuiYiViewController.m in Sources */,
@@ -6599,6 +6643,7 @@
 				1F32983D22250B0C0048FB69 /* UIViewController+BackButtonHandler.m in Sources */,
 				9A697B611F345C630062F2FA /* PhotoChoseView.m in Sources */,
 				9A53894320084DC40084E772 /* EMAlertView.m in Sources */,
+				8932651F24FE861E00FE7BBE /* ZXFDatePicker.m in Sources */,
 				9A53879E20084D8B0084E772 /* EaseViewController.m in Sources */,
 				9A08A89F1F30116200AF29EB /* MainViewController.m in Sources */,
 				9A5388BE20084DC30084E772 /* CallResolutionViewController.m in Sources */,
@@ -6775,7 +6820,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 23P4287UJD;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6838,7 +6883,7 @@
 				CODE_SIGN_ENTITLEMENTS = GuKe/GuKe.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 23P4287UJD;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

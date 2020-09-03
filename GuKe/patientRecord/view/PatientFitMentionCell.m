@@ -47,10 +47,17 @@
     return self;
 }
 
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    self.placeholderLabel.hidden = NO;
+}
+
 - (void)configureCellWithData:(NSString *)data input:(inputBlock)input
 {
     if (data.isValidStringValue) {
         self.textView.text = data;
+        self.placeholderLabel.hidden = YES;
     }
     self.input = [input copy];
 }

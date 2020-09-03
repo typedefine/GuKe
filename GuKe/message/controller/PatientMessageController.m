@@ -108,7 +108,7 @@
     if (!_pageModel) {
         _pageModel = [[PatientMessagePageModel alloc] init];
         NSString *urlString, *msg;
-        urlString = DEBUG ? @"http://113.31.119.175/bones/app/msg/msg_list.json" : [NSString stringWithFormat:@"%@%@",requestUrl,patient_msg_list];
+        urlString = [NSString stringWithFormat:@"%@%@",requestUrl,patient_msg_list];
         msg = @"患者留言--留言信息";
         _pageModel.loadUrl = urlString;
         _pageModel.msgPrint = msg;

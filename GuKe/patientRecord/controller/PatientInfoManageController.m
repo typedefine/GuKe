@@ -44,6 +44,7 @@
         make.width.mas_equalTo(w);
     }];
     [self.previewButton addTarget:self action:@selector(preview) forControlEvents:UIControlEventTouchUpInside];
+    self.previewButton.hidden = YES;
     
     [self.view addSubview:self.saveButton];
     [self.saveButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -68,18 +69,15 @@
 
 - (void)getData
 {
-    NSString *urlString = DEBUG ? @"http://113.31.119.175/bones/app/patient/patient_info.json" : [NSString stringWithFormat:@"%@%@",requestUrl,patient_info];
-    NSString *hopitalId = [[NSUserDefaults standardUserDefaults]objectForKey:@"hospitalnumbar"];
-
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,patient_info];
     NSArray *keysArray = @[@"hospid",@"sessionid"];
-    NSArray *valueArray = @[hopitalId,sessionIding];
+    NSArray *valueArray = @[self.viewModel.hospid, self.viewModel.sessionid];
     NSDictionary *dic = [NSDictionary dictionaryWithObjects:valueArray forKeys:keysArray];
     [self showHudInView:self.view hint:nil];
     [ZJNRequestManager postWithUrlString:urlString parameters:dic success:^(id data) {
         NSLog(@"病例--信息管理%@",data);
         NSDictionary *dict = (NSDictionary *)data;
         if ([dict[@"retcode"] intValue] == 0) {
-            
             [self.viewModel configureWithData:dict[@"data"]];
         }
         [self hideHud];
@@ -99,12 +97,40 @@
 
 - (void)save
 {
-    
+    if (![self.viewModel isInfoChanged]) {
+        [self showHint:@"无任何修改，无需保存"];
+        return;
+    }
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,patient_info_modify];
+    PatientInfoManageSectionModel *sectionModel = (PatientInfoManageSectionModel *)[self.viewModel sectionModel:1];
+    NSDictionary *para = @{
+        @"hospid": self.viewModel.hospid,
+        @"sessionid": self.viewModel.sessionid,
+        @"hide_visit": sectionModel.cellModelList[0].select?@(1):@(0),
+        @"hide_surgical": sectionModel.cellModelList[1].select?@(1):@(0),
+        @"hide_revisit": sectionModel.cellModelList[2].select?@(1):@(0),
+        @"doctor_tips": ((PatienFitMentionSectionModel *)[self.viewModel sectionModel:0]).content
+    };
+    [self showHudInView:self.view hint:nil];
+    [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
+        NSLog(@"病例--信息管理-修改信息%@",data);
+        NSDictionary *dict = (NSDictionary *)data;
+        if ([dict[@"retcode"] intValue] == 0) {
+            [self showHint:@"保存成功"];
+//            [self.viewModel configureWithData:dict[@"data"]];
+        }
+        [self hideHud];
+        [self.collection reloadData];
+    } failure:^(NSError *error) {
+        [self hideHud];
+        NSLog(@"病例--信息管理-修改信息error:%@",error);
+    }];
 }
 
 - (void)cancel
 {
-    
+    [self.viewModel reset];
+    [self.collection reloadData];
 }
 
 
@@ -198,10 +224,10 @@
     
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-}
+//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//
+//}
 
 
 - (void)collectionView:(UICollectionView *)collectionView prefetchItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths
@@ -237,6 +263,7 @@
         _collection.delegate = self;
         _collection.dataSource = self;
         _collection.prefetchDataSource = self;
+        _collection.allowsSelection = NO;
     }
     return _collection;
 }
@@ -245,6 +272,9 @@
 {
     if (!_viewModel) {
         _viewModel = [[PatientInfoManagePageModel alloc] init];
+        NSString *hopitalId = [[NSUserDefaults standardUserDefaults]objectForKey:@"hospitalnumbar"];
+        _viewModel.hospid = hopitalId;
+        _viewModel.sessionid = sessionIding;
     }
     return _viewModel;
 }

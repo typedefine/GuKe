@@ -10,6 +10,7 @@
 #import "ZJNChangePatientBasicInfoModel.h"
 
 @interface ZJNChangePatientBasicInfoViewController : UIViewController
+@property (nonatomic, assign) BOOL isfromPatientMsg;
 @property (nonatomic ,strong)ZJNChangePatientBasicInfoModel *infoModel;
 @property (nonatomic ,copy)void(^refershPatientInfo)();
 @end

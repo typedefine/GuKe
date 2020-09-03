@@ -438,7 +438,6 @@
         //修改患者基本信息
         ZJNChangePatientBasicInfoViewController *viewC = [[ZJNChangePatientBasicInfoViewController alloc]init];
         viewC.infoModel = [[ZJNChangePatientBasicInfoModel alloc]initWithMedicalInfoModel:infoModel];
-    
         viewC.refershPatientInfo = ^{
             NSLog(@"刷新页面");
             [self makeData];

@@ -42,6 +42,8 @@
 #import "UIView+XPKit.h"
 #import "Tools.h"
 #import "NSObject+DDC.h"
+#import "UIColor+HEX.h"
+#import "UIButton+EnlargeEdge.h"
 
 //wang start
 #import <Hyphenate/Hyphenate.h>
@@ -156,9 +158,12 @@
 
 //正式 www.guxians.com
 #define imgPath    @"http://files.guxians.com/"
+
+#ifdef DEBUG
+#define requestUrl @"http://113.31.119.175/bones/"
+#else
 #define requestUrl @"https://www.guxians.com/bone/"
-
-
+#endif
 
 //我的患者--列表
 #define patientpatient_list @"/app/patient/patient_list.json"
@@ -480,14 +485,26 @@
 /* 病例--信息管理 */
 #define patient_info @"/app/patient/patient_info.json"
 
+/* 病例--修改患者就诊信息 */
+#define patient_modify @"/app/patient/patientcheck.json"
+
+/* 病例--信息管理-修改信息 */
+#define patient_info_modify @"/app/patient/updateshowinfo.json"
+
 /* 患者留言--留言信息 */
 #define patient_msg_list @"/app/msg/msg_list.json"
 
 /* 患者留言--留言详情 */
 #define patient_msg_record @"app/msg/msg_record.json"
 
+/* 患者留言--发送消息 */
+#define patient_msg_send @"app/msg/msg_send.json"
+
 /* 患者留言--预约就诊 */
 #define patient_msg_book @"/app/msg/msg_book.json"
+
+
+
 
 /**资讯收藏列表*/
 #define collectionlistinfo @"/app/collection/listinfo.json"

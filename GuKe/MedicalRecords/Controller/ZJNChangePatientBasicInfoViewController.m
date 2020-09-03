@@ -50,6 +50,8 @@
 
 }
 
+@property (nonatomic, strong) UIButton *naviRightButton;
+
 @end
 
 @implementation ZJNChangePatientBasicInfoViewController
@@ -57,6 +59,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"患者基本信息";
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.naviRightButton];
     
     [self initPatientInfo];
     titleArr = @[@[@"姓名",@"性别",@"民族",@"年龄",@"住院号"],@[],@[@"联系人",@"与本人关系",@"联系方式"],@[@"省市区",@"详细住址",@"身份证号码",@"入院时间",@"出院时间"],@[@""]];
@@ -69,8 +73,57 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
-    [ self makeAllAreaData ];
+    if (self.isfromPatientMsg) {
+        [self getData];
+    }
+    [ self makeAllAreaData];
     // Do any additional setup after loading the view.
+}
+
+- (UIButton *)naviRightButton
+{
+    if (!_naviRightButton) {
+        _naviRightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_naviRightButton setImage:[UIImage imageNamed:@"MORE"] forState:UIControlStateNormal];
+        [_naviRightButton addTarget:self action:@selector(naviRightButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _naviRightButton;
+}
+
+- (void)naviRightButtonAction
+{
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:nil message:@"患者编辑的基本信息" preferredStyle:UIAlertControllerStyleActionSheet];
+    [alertVC addAction:[UIAlertAction actionWithTitle:@"归档" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    
+    [alertVC addAction:[UIAlertAction actionWithTitle:@"打回" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    
+    [alertVC addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertVC animated:YES completion:nil];
+    
+}
+
+- (void)getData
+{
+    [self showHudInView:self.view hint:nil];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,patient_modify];
+    NSDictionary *para = @{@"sessionid":self.infoModel.sessionId, @"hospnumId":self.infoModel.hospnumId};
+    [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
+        NSLog(@"---患者基本信息--data:%@",data);
+        NSDictionary *dict = (NSDictionary *)data;
+        if ([dict[@"retcode"] intValue] == 0) {
+//            [self.pageModel configureWithData:dict[@"data"]];
+#warning 待修改
+        }
+        [self hideHud];
+        [_tableView reloadData];
+    } failure:^(NSError *error) {
+        [self hideHud];
+        NSLog(@"---患者基本信息--error:%@", error);
+    }];
 }
 
 #pragma mark  民族

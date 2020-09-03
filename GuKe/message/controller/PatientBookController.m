@@ -9,11 +9,15 @@
 #import "PatientBookController.h"
 #import "PatientBookCell.h"
 #import "PatientBookPageModel.h"
+#import "PatientInfoController.h"
+#import "ZJNChangePatientBasicInfoViewController.h"
+#import "ReplyPatientBookTimePopover.h"
 
 @interface PatientBookController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) PatientBookPageModel *pageModel;
+@property (nonatomic, strong) ReplyPatientBookTimePopover *replyPopover;
 
 @end
 
@@ -69,10 +73,32 @@
 {
     PatientBookCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([PatientBookCell class])];
     PatientBookCellModel *cellModel = self.pageModel.cellModelList[indexPath.row];
+    __weak typeof(self) weakSelf = self;
     [cell configureCellWithData:cellModel reply:^(PatientMessageModel *model) {
-        
+        [weakSelf.replyPopover showWithData:model reply:^(PatientMessageModel * _Nonnull model, NSDate * _Nonnull date) {
+                    
+        }];
     }];
     return cell;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PatientBookCellModel *cellModel = self.pageModel.cellModelList[indexPath.row];
+    ZJNChangePatientBasicInfoViewController *pvc = [[ZJNChangePatientBasicInfoViewController alloc] init];
+    pvc.isfromPatientMsg = YES;
+    ZJNChangePatientBasicInfoModel *model = [[ZJNChangePatientBasicInfoModel alloc]init];
+    model.sessionId = self.pageModel.sessionId;
+    model.hospnumId = cellModel.model.sender;
+    pvc.infoModel = model;
+    pvc.refershPatientInfo = ^{
+    };
+//    PatientInfoController *pvc = [[PatientInfoController alloc] init];
+//    pvc.sessionid = self.pageModel.sessionId;
+//    pvc.hospnumId = cellModel.model.sender;
+//    pvc.nickname = cellModel.model.realName;
+    [self.navigationController pushViewController:pvc animated:YES];
 }
 
 
@@ -94,13 +120,21 @@
     if (!_pageModel) {
         _pageModel = [[PatientBookPageModel alloc] init];
         NSString *urlString, *msg;
-        urlString = DEBUG ? @"http://113.31.119.175/bones/app/msg/msg_book.json" : [NSString stringWithFormat:@"%@%@",requestUrl,patient_msg_book];
+        urlString = [NSString stringWithFormat:@"%@%@",requestUrl,patient_msg_book];
         msg = @"患者留言--预约就诊";
         _pageModel.loadUrl = urlString;
         _pageModel.msgPrint = msg;
         _pageModel.sessionId = sessionIding;
     }
     return _pageModel;
+}
+
+- (ReplyPatientBookTimePopover *)replyPopover
+{
+    if (!_replyPopover) {
+        _replyPopover = [[ReplyPatientBookTimePopover alloc] init];
+    }
+    return _replyPopover;
 }
 
 /*

@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *sender;
 @property (nonatomic, copy) NSString *recipient;
 @property (nonatomic, copy) NSString *content;
-
+@property (nonatomic, assign) NSInteger type;
 @property (nonatomic, assign) NSInteger isRead;
 @property (nonatomic, copy) NSString *createTime;
 @property (nonatomic, copy) NSString *readTime;

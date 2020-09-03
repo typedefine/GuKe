@@ -15,7 +15,7 @@
     if (_model == model || !model) return;
     _model = model;
     self.content = model.content;
-    self.time = [Tools dateFormatterWithDateStringValue:model.createTime sourceFormatter:@"yyyy-MM-dd dd:mm:ss.s"];
+    self.time = [Tools dateFormatterWithTimeInterval:model.createTime];
 
 }
 

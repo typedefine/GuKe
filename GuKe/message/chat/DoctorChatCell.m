@@ -15,6 +15,7 @@
 @property (nonatomic, strong) UIImageView *portraitImageView;
 @property (nonatomic, strong) UILabel *contentLabel;
 @property (nonatomic, strong) UIButton *extraButton;
+@property (nonatomic, copy) DoctorChatAction extra;
 
 @end
 
@@ -63,8 +64,9 @@
     self.extraButton.hidden = YES;
 }
 
-- (void)configureCellWithData:(PatientMsgChatCellModel *)data
+- (void)configureCellWithData:(PatientMsgChatCellModel *)data action:(DoctorChatAction)action
 {
+    self.extra = [action copy];
     self.timeLabel.text = data.time;
     self.contentLabel.text = data.content;
     
@@ -77,6 +79,9 @@
 - (void)extraAction
 {
     NSLog(@"extra clicked");
+    if (self.extra) {
+        self.extra();
+    }
 }
 
 - (UIButton *)extraButton

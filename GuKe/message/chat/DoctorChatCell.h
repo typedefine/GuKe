@@ -10,10 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void (^ DoctorChatAction)();
+
 @class PatientMsgChatCellModel;
 @interface DoctorChatCell : UITableViewCell
 
-- (void)configureCellWithData:(PatientMsgChatCellModel *)data;
+- (void)configureCellWithData:(PatientMsgChatCellModel *)data action:(DoctorChatAction)action;
 
 @end
 

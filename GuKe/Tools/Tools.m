@@ -90,10 +90,18 @@
     return [self dateFormatterWithDate:date];
 }
 
-+(NSString *)dateFormatterWithTimeInterval:(NSString *)timeIntervalString
++(NSString *)dateFormatterWithMillTimeInterval:(NSString *)timeIntervalString
 {
     if (!timeIntervalString.isValidStringValue) return @"";
     NSTimeInterval timeInterval = [timeIntervalString doubleValue]/1000.0;
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+    return [self dateFormatterWithDate:date];
+}
+
++(NSString *)dateFormatterWithTimeInterval:(NSString *)timeIntervalString
+{
+    if (!timeIntervalString.isValidStringValue) return @"";
+    NSTimeInterval timeInterval = [timeIntervalString doubleValue];
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval];
     return [self dateFormatterWithDate:date];
 }

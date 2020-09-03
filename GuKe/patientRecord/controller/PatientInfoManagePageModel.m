@@ -102,6 +102,9 @@
 
 
 @implementation PatientInfoManagePageModel
+{
+    PatientInfoManageModel *_originalData;
+}
 
 @synthesize sectionModelList;
 
@@ -121,6 +124,7 @@
 - (void)configureWithData:(id)data
 {
     PatientInfoManageModel *model = [PatientInfoManageModel mj_objectWithKeyValues:data];
+    _originalData = model;
     PatienFitMentionSectionModel *fitMentionSectionModel =  (PatienFitMentionSectionModel *)[self sectionModel:0];
     if (model.remind.isValidStringValue) {
         fitMentionSectionModel.content = model.remind;
@@ -142,6 +146,65 @@
     
     PatientBookSectionModel *bookSectionModel =  (PatientBookSectionModel *)[self sectionModel:2];
     [bookSectionModel configureWithData:model.bookInfoStateList];
+}
+
+- (void)reset
+{
+    PatienFitMentionSectionModel *fitMentionSectionModel = ((PatienFitMentionSectionModel *)[self sectionModel:0]);
+    PatientInfoManageSectionModel *infoManageSectionModel =  (PatientInfoManageSectionModel *)[self sectionModel:1];
+    if(_originalData){
+        fitMentionSectionModel.content = _originalData.remind;
+        infoManageSectionModel.cellModelList[0].select = [_originalData.visit isEqualToString:@"1"];
+        infoManageSectionModel.cellModelList[1].select = [_originalData.operation isEqualToString:@"1"];
+        infoManageSectionModel.cellModelList[2].select = [_originalData.follow isEqualToString:@"1"];
+    }else{
+        fitMentionSectionModel.content = @"";
+        infoManageSectionModel.cellModelList[0].select = NO;
+        infoManageSectionModel.cellModelList[1].select = NO;
+        infoManageSectionModel.cellModelList[2].select = NO;
+    }
+}
+
+- (BOOL)isInfoChanged
+{
+    if (_originalData) {
+        __block PatientInfoManageModel *blockModel = _originalData;
+        __block PatientInfoManageSectionModel *blockInfoManageSectionModel =  (PatientInfoManageSectionModel *)[self sectionModel:1];
+         BOOL (^ _infoManage)(void) = ^(){
+//            __strong PatientInfoManageModel *model = blockModel;
+            BOOL isVisitModified = YES;
+            if (blockModel.visit.isValidStringValue && blockInfoManageSectionModel.cellModelList[0].select == [blockModel.visit isEqualToString:@"1"]) {
+                isVisitModified = NO;
+            }
+            BOOL isOperationModified = YES;
+            if (blockModel.operation.isValidStringValue && blockInfoManageSectionModel.cellModelList[1].select == [blockModel.operation isEqualToString:@"1"]) {
+                isOperationModified = NO;
+            }
+            BOOL isFollowModified = YES;
+            if (blockModel.follow.isValidStringValue && blockInfoManageSectionModel.cellModelList[2].select == [blockModel.follow isEqualToString:@"1"]) {
+                isFollowModified = NO;
+            }
+            return (BOOL)(isVisitModified || isOperationModified || isFollowModified);
+        };
+        
+        PatienFitMentionSectionModel *fitMentionSectionModel =  (PatienFitMentionSectionModel *)[self sectionModel:0];
+        if (fitMentionSectionModel.content.isValidStringValue) {
+            if (_originalData.remind.isValidStringValue && [fitMentionSectionModel.content isEqualToString:_originalData.remind]) {
+                return _infoManage();
+            }
+            return YES;
+        }else{
+            if (_originalData.remind.isValidStringValue) {
+                return YES;
+            }else{
+                return _infoManage();
+            }
+        }
+                
+    }else{
+        return YES;
+    }
+    return NO;
 }
 
 - (PatientRecordInfoSectionModel *)sectionModel:(NSInteger)section
