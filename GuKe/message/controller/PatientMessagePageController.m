@@ -26,6 +26,8 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
+    self.title = @"消息";
+    
     self.curIndex = 0;
     
     NSArray *titleArray = [NSArray arrayWithObjects:@"留言信息", @"预约就诊", nil];
@@ -43,11 +45,17 @@
     self.indicator.backgroundColor = greenC;
     [self.view addSubview:self.indicator];
     
-    self.bgScroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 40, ScreenWidth, ScreenHeight - 64 - 40)];
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 40, ScreenWidth, 5)];
+    line.backgroundColor = Color_rgba(240, 240, 240, 1);
+    [self.view addSubview:line];
+    
+    self.bgScroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 45, ScreenWidth, ScreenHeight - 64 - 45)];
     self.bgScroll.delegate = self;
-    self.bgScroll.contentSize = CGSizeMake(ScreenWidth * 2, ScreenHeight - 64 - 40);
+    self.bgScroll.contentSize = CGSizeMake(ScreenWidth * 2, ScreenHeight - 64 - 45);
     self.bgScroll.pagingEnabled = YES;
     [self.view addSubview:self.bgScroll];
+    
+    
 
     PatientMessageController *pmc = [[PatientMessageController alloc] init];
     pmc.view.frame = CGRectMake(0, 0, ScreenWidth, self.bgScroll.frame.size.height);

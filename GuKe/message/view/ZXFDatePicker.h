@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy, readwrite) NSString *title;
 @property (nonatomic, strong, readonly) NSDate *selectedDate;
+@property (nonatomic, assign) UIDatePickerMode mode;
 
 @property (nonatomic, weak) id<ZXFDatePickerDelegate> delegate;
 

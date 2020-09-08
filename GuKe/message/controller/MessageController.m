@@ -58,7 +58,7 @@
 - (NSArray *)pageList
 {
     if (!_pageList) {
-        _pageList = @[self.chatListVC, [[PatientMessagePageController alloc] init]];
+        _pageList = @[[[PatientMessagePageController alloc] init], self.chatListVC];
     }
     return _pageList;
 }
@@ -79,7 +79,7 @@
 - (UISegmentedControl *)segmentCtrl
 {
     if (!_segmentCtrl) {
-        _segmentCtrl = [[UISegmentedControl alloc] initWithItems:@[@"医友消息",@"患者留言"]];
+        _segmentCtrl = [[UISegmentedControl alloc] initWithItems:@[@"患者留言", @"医友消息"]];
         [_segmentCtrl setTitleTextAttributes:@{NSForegroundColorAttributeName:SetColor(0x06a27b)} forState:UIControlStateSelected];
         [_segmentCtrl setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColor.whiteColor} forState:UIControlStateNormal];
         [_segmentCtrl addTarget:self action:@selector(indexDidChangeForSegmentedControl:) forControlEvents:(UIControlEventValueChanged)];

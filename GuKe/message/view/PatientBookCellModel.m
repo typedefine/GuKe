@@ -17,7 +17,18 @@
     _model = model;
     self.patientName = model.realName;
     self.content = model.content;
-    self.replyTitle = model.isRead == 1 ? @"已回复" : @"回复";
+    [self updateMedicalTime:model.medicalTime];
+}
+
+- (void)updateMedicalTime:(NSString *)timeInterval
+{
+    if (timeInterval.isValidStringValue && timeInterval.doubleValue > 0) {
+        self.replyTitle =  @"已回复";
+        self.content = [NSString stringWithFormat:@"预约时间：%@",[Tools dateFormatInTheFutureWithTimeInterval:timeInterval]];
+    }else{
+        self.replyTitle =  @"回复";
+    }
+    
 }
 
 @end

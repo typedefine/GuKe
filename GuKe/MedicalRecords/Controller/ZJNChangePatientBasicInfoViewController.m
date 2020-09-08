@@ -50,7 +50,7 @@
 
 }
 
-@property (nonatomic, strong) UIButton *naviRightButton;
+//@property (nonatomic, strong) UIButton *naviRightButton;
 
 @end
 
@@ -60,7 +60,7 @@
     [super viewDidLoad];
     self.title = @"患者基本信息";
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.naviRightButton];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.naviRightButton];
     
     [self initPatientInfo];
     titleArr = @[@[@"姓名",@"性别",@"民族",@"年龄",@"住院号"],@[],@[@"联系人",@"与本人关系",@"联系方式"],@[@"省市区",@"详细住址",@"身份证号码",@"入院时间",@"出院时间"],@[@""]];
@@ -73,13 +73,16 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
+    /*
     if (self.isfromPatientMsg) {
         [self getData];
     }
+    */
     [ self makeAllAreaData];
     // Do any additional setup after loading the view.
 }
 
+/*
 - (UIButton *)naviRightButton
 {
     if (!_naviRightButton) {
@@ -94,11 +97,11 @@
 {
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:nil message:@"患者编辑的基本信息" preferredStyle:UIAlertControllerStyleActionSheet];
     [alertVC addAction:[UIAlertAction actionWithTitle:@"归档" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-        
+        [self checkIfSave:YES];
     }]];
     
     [alertVC addAction:[UIAlertAction actionWithTitle:@"打回" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
+        [self checkIfSave:NO];
     }]];
     
     [alertVC addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
@@ -106,26 +109,70 @@
     
 }
 
-- (void)getData
+#pragma mark 归档或打回
+- (void)checkIfSave:(BOOL)save
 {
     [self showHudInView:self.view hint:nil];
-    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,patient_modify];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,patient_info_archive];
+    NSDictionary *para = @{
+        @"sessionid":self.infoModel.sessionId,
+        @"hospnumId":self.infoModel.hospnumId,
+        @"archive": save ? @(1).stringValue : @(2).stringValue
+    };
+    [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
+        [self hideHud];
+        NSLog(@"---患者基本信息归档--data:%@",data);
+        NSDictionary *dict = (NSDictionary *)data;
+        if ([dict[@"retcode"] intValue] == 0) {
+            [self showHint:@"患者基本信息归档成功" inView:self.view];
+        }else{
+            [self showHint:dict[@"message"] inView:self.view];
+        }
+        
+    } failure:^(NSError *error) {
+        [self hideHud];
+        NSLog(@"---患者基本信息归档--error:%@", error);
+    }];
+}
+ */
+
+/*
+- (void)getData
+{
+    if (!self.infoModel.sessionId.isValidStringValue) {
+        NSLog(@"---患者基本信息--data:%@",@"sessionId不能为空");
+        return;
+    }
+    
+    if (!self.infoModel.hospnumId.isValidStringValue) {
+        NSLog(@"---患者基本信息--data:%@",@"hospnumId不能为空");
+        return;
+    }
+    
+    [self showHudInView:self.view hint:nil];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,patient_modify_info];
     NSDictionary *para = @{@"sessionid":self.infoModel.sessionId, @"hospnumId":self.infoModel.hospnumId};
     [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
+        [self hideHud];
         NSLog(@"---患者基本信息--data:%@",data);
         NSDictionary *dict = (NSDictionary *)data;
         if ([dict[@"retcode"] intValue] == 0) {
-//            [self.pageModel configureWithData:dict[@"data"]];
-#warning 待修改
+            ZJNChangePatientBasicInfoModel *model = [ZJNChangePatientBasicInfoModel mj_objectWithKeyValues:dict[@"data"]];
+            model.sessionId = self.infoModel.sessionId;
+            model.hospnumId = self.infoModel.hospnumId;
+            long age = (long)dict[@"data"][@"brith"];
+            if (age > 0) {
+                model.birth = @(age).stringValue;
+            }
+            self.infoModel = model;
+            [_tableView reloadData];
         }
-        [self hideHud];
-        [_tableView reloadData];
     } failure:^(NSError *error) {
         [self hideHud];
         NSLog(@"---患者基本信息--error:%@", error);
     }];
 }
-
+*/
 #pragma mark  民族
 - (void)requestNationFromServer{
     
@@ -460,13 +507,13 @@
             [selectAreaPick makeDatawithArray:AreaDataArray];
             [selectAreaPick ShowAreaPicker];
             __block  UITableView * WeakTv = tableView;
-            
+            __block typeof(_infoModel) blockModel = _infoModel;
             selectAreaPick.CertainBlock = ^(BOOL IsCertain, NSString *dateString, NSString *prvId, NSString *cityId, NSString *AreaId) {
                 if (IsCertain) {
-                    _infoModel.area = dateString;
-                    _infoModel.provinceId = prvId;
-                    _infoModel.cityId = cityId;
-                    _infoModel.districtId = AreaId;
+                    blockModel.area = dateString;
+                    blockModel.provinceId = prvId;
+                    blockModel.cityId = cityId;
+                    blockModel.districtId = AreaId;
                     [WeakTv reloadData];
                 }else{
                     

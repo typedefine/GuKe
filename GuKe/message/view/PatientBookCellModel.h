@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *replyTitle;
 @property (nonatomic, strong) PatientMessageModel *model;
 
+- (void)updateMedicalTime:(NSString *)timeInterval;
+
 
 @end
 

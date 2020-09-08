@@ -260,9 +260,8 @@
     
     if (sender.tag == 10) {
         
-
         styleRight = [NSString stringWithFormat:@"1"];
-        [self.issueButton setImage:[UIImage imageNamed:@"MORE"] forState:UIControlStateNormal];
+        [self.issueButton setImage:[UIImage imageNamed:@"分享"] forState:UIControlStateNormal];
     }else if (sender.tag == 11){
         
 

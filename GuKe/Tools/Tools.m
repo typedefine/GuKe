@@ -106,4 +106,14 @@
     return [self dateFormatterWithDate:date];
 }
 
++(NSString *)dateFormatInTheFutureWithTimeInterval:(NSString *)timeIntervalString
+{
+    if (!timeIntervalString.isValidStringValue) return @"";
+    NSTimeInterval timeInterval = [timeIntervalString doubleValue];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd dd:mm";
+    return [dateFormatter stringFromDate:date];
+}
+
 @end

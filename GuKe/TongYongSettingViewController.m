@@ -136,7 +136,10 @@
             
         }
     }else{
-        
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"logined"];
+        LoginViewController *forget = [[LoginViewController alloc]init];
+        [self presentViewController:forget animated:NO completion:nil];
+        /*
         //退出登录
         EMError *error = nil;
         error = [[EMClient sharedClient] logout:YES];
@@ -154,7 +157,7 @@
             [self presentViewController:forget animated:NO completion:nil];
             
         }
-        
+        */
     }
 }
 - (void)didPuchBtn:(UISwitch *)sender{

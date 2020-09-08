@@ -123,7 +123,7 @@
 //    }else{
 //        self.window.rootViewController = _loginView;
 //    }
-    
+    /*
     //start
     EMOptions *option = [EMOptions optionsWithAppkey:@"1126180111115795#mrbone"];
 //    NSString *apnsCertName = @"guxianshengdevelopment";
@@ -131,7 +131,7 @@
 //
     option.apnsCertName = apnsCertName;
     [[EMClient sharedClient]initializeSDKWithOptions:option];
-    
+    */
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         //注册推送, 用于iOS8以及iOS8之后的系统
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil];
@@ -146,14 +146,15 @@
             UIRemoteNotificationTypeAlert;
             [[UIApplication sharedApplication] registerForRemoteNotificationTypes:notificationTypes];
         }
-
+/*
     [[EMClient sharedClient]addDelegate:self delegateQueue:nil];
-    
+    */
     //注册登录状态监听
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(loginStateChange:)
-                                                 name:KNOTIFICATION_LOGINCHANGE
+                                                 name:key_login_notification
                                                object:nil];
+    /*
     [[EaseSDKHelper shareHelper]hyphenateApplication:application didFinishLaunchingWithOptions:launchOptions appkey:@"1126180111115795#mrbone" apnsCertName:apnsCertName otherConfig:@{kSDKConfigEnableConsoleLogger:[NSNumber numberWithBool:YES]}];
     
     [ChatDemoHelper shareHelper];
@@ -165,8 +166,12 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@YES];
     }
     //end
+    */
+    NSNumber *num = [[NSUserDefaults standardUserDefaults] objectForKey:@"logined"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:key_login_notification object:@(num && num.intValue == 1)];
+
     
-    
+#warning 登陆待处理
     //iOS10 注册APNs
     if (NSClassFromString(@"UNUserNotificationCenter")) {
         [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert completionHandler:^(BOOL granted, NSError *error) {
@@ -188,12 +193,13 @@
     BOOL loginSuccess = [notification.object boolValue];
     if(loginSuccess){
         GuKeViewController *view = [GuKeViewController new];
+        /*
         [ChatDemoHelper shareHelper].mainVC = view;
         
         [[ChatDemoHelper shareHelper] asyncGroupFromServer];
         [[ChatDemoHelper shareHelper] asyncConversationFromDB];
         [[ChatDemoHelper shareHelper] asyncPushOptions];
-        
+        */
         _dataSource = [[ApplyViewController shareController] dataSource];
         //[self acceptGroupInvitation];
         self.window.rootViewController = view;

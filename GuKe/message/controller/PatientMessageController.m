@@ -11,6 +11,7 @@
 #import "PatientMessagePageModel.h"
 #import "PatientMsgChatController.h"
 
+
 @interface PatientMessageController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -81,11 +82,8 @@
     msgChatVC.sessionid = self.pageModel.sessionId;
     msgChatVC.recipient = cellModel.model.sender;
     msgChatVC.nickname = cellModel.model.realName;
+    msgChatVC.hospnumId = cellModel.model.hospnumId;
     msgChatVC.hidesBottomBarWhenPushed = YES;
-//    msgChatVC.modalPresentationStyle = UIModalPresentationFullScreen;
-//    [self presentViewController:msgChatVC animated:YES completion:^{
-//
-//    }];
     [self.navigationController pushViewController:msgChatVC animated:YES];
 }
 

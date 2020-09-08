@@ -11,8 +11,8 @@
 #import "DoctorChatCell.h"
 #import "MsgChatInputBar.h"
 #import "PatientMsgChatPageModel.h"
-#import "PatientInfoController.h"
-#import "ZJNChangePatientBasicInfoViewController.h"
+//#import "ZJNChangePatientBasicInfoViewController.h"
+#import "ShuHouSUFangViewController.h"
 
 @interface PatientMsgChatController ()<UITableViewDelegate, UITableViewDataSource, MsgChatInputBarDelegate>
 
@@ -171,20 +171,29 @@
 
 - (void)patientInfoPage
 {
+    
+    NSString *strings = self.pageModel.hospnumId;
+    NSUserDefaults *defau = [NSUserDefaults standardUserDefaults];
+    [defau setObject:strings forKey:@"hospitalnumbar"];
+    [defau synchronize];
+    
+    ShuHouSUFangViewController *shuhuo = [[ShuHouSUFangViewController alloc]init];
+    shuhuo.numbers = 0;
+    shuhuo.infoDic = @{@"shares":@"0"};
+//    shuhuo.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:shuhuo animated:NO];
+    /*
     ZJNChangePatientBasicInfoViewController *pvc = [[ZJNChangePatientBasicInfoViewController alloc] init];
     pvc.isfromPatientMsg = YES;
     ZJNChangePatientBasicInfoModel *model = [[ZJNChangePatientBasicInfoModel alloc]init];
     model.sessionId = self.pageModel.sessionId;
-    model.hospnumId = self.pageModel.recipient;
+    model.hospnumId = self.pageModel.hospnumId;
     pvc.infoModel = model;
     pvc.refershPatientInfo = ^{
     };
     
-//    PatientInfoController *pvc = [[PatientInfoController alloc] init];
-//    pvc.sessionid = self.pageModel.sessionId;
-//    pvc.hospnumId = self.pageModel.recipient;
-//    pvc.nickname = self.nickname;
     [self.navigationController pushViewController:pvc animated:YES];
+     */
 }
 
 - (MsgChatInputBar *)bottomBar
@@ -224,6 +233,7 @@
         
         _pageModel.sessionId = self.sessionid;
         _pageModel.recipient = self.recipient;
+        _pageModel.hospnumId = self.hospnumId;
     }
     return _pageModel;
 }

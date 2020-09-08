@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *sessionId;
 @property (nonatomic, copy) NSString *recipient;
+@property (nonatomic, copy) NSString *hospnumId;//患者ID
 
 @property(nonatomic, strong) NSArray<PatientMsgChatCellModel *> *cellModelList;
 

@@ -8,7 +8,7 @@
 
 #import "ReplyPatientBookTimePopover.h"
 #import "PatientMessageModel.h"
-//#import "ZXFDatePicker.h"
+#import "ZXFDatePicker.h"
 
 @interface TimeItemView : UIView
 
@@ -91,7 +91,7 @@
 
 @end
 
-@interface ReplyPatientBookTimePopover ()//<ZXFDatePickerDelegate>
+@interface ReplyPatientBookTimePopover ()<ZXFDatePickerDelegate>
 
 @property (nonatomic, strong) PatientMessageModel *dataModel;
 @property (nonatomic, strong) UIView *contentView;
@@ -105,9 +105,7 @@
 @property (nonatomic, strong) UIButton *cancelButton;
 
 @property (nonatomic, copy) ReplyPatientBookTimeHandler reply;
-@property (nonatomic, strong) UIDatePicker *datePicker;
-@property (nonatomic, strong) NSDate *selectedDate;
-//@property (nonatomic, strong) ZXFDatePicker *picker;
+@property (nonatomic, strong) ZXFDatePicker *datePicker;
 
 @end
 
@@ -164,7 +162,7 @@
     [self addSubview:self.contentView];
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self);
-        make.centerY.equalTo(self).offset(-60);
+        make.centerY.equalTo(self).offset(-50);
         make.height.mas_equalTo(200);
         make.width.mas_equalTo(300);
     }];
@@ -178,7 +176,7 @@
     
     [self.monthView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.titleLabel.mas_bottom).offset(10);
-        make.right.equalTo(self.contentView.mas_centerX).offset(-5);
+        make.right.equalTo(self.contentView.mas_centerX);//.offset(-5)
         make.width.mas_equalTo(55);
         make.height.mas_equalTo(timeHeight);
     }];
@@ -186,7 +184,7 @@
     [self.yearView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.monthView);
         make.right.equalTo(self.monthView.mas_left).offset(-10);
-        make.width.mas_equalTo(70);
+        make.width.mas_equalTo(75);
         make.height.mas_equalTo(timeHeight);
     }];
     
@@ -200,7 +198,7 @@
     [self.dayPartView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.dayView);
         make.left.equalTo(self.dayView.mas_right).offset(10);
-        make.width.mas_equalTo(70);
+        make.width.mas_equalTo(65);
         make.height.mas_equalTo(timeHeight);
     }];
     
@@ -224,8 +222,7 @@
 
 - (void)updateReplyBookTime
 {
-    NSDate *date = self.datePicker.date;
-    self.selectedDate = date;
+    NSDate *date = self.datePicker.selectedDate;
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     unsigned int unitDayFlags = NSCalendarUnitYear| NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents *dateComps = [gregorian components:unitDayFlags fromDate:date];
@@ -243,8 +240,9 @@
 - (void)replyButtonAction
 {
     if (self.reply && self.dataModel) {
-        self.reply(self.dataModel, self.datePicker.date);
+        self.reply(self.dataModel, self.datePicker.selectedDate);
     }
+    [self dismiss];
 }
 
 - (void)cancelButtonAction
@@ -305,10 +303,7 @@
 
 - (void)pickDate
 {
-    if (self.selectedDate) {
-        self.datePicker.date = self.selectedDate;
-    }
-    [self.datePicker becomeFirstResponder];
+    [self.datePicker show];
 }
 
 
@@ -413,45 +408,17 @@
     }
     return _cancelButton;
 }
-- (UIDatePicker *)datePicker
+
+
+
+- (ZXFDatePicker *)datePicker
 {
     if (!_datePicker) {
-        _datePicker = [[UIDatePicker alloc] init];
-        _datePicker.backgroundColor = [UIColor whiteColor];
-        _datePicker.tintColor = SetColor(0x666666);
-//        1. "en_GB"英文 24小时
-//        2. "zh_GB"中文24小时
-//        3. ”zh_CN“中文12小时
-        _datePicker.locale = [NSLocale localeWithLocaleIdentifier:@"zh_CN"];
-        _datePicker.datePickerMode = UIDatePickerModeDate;
-        _datePicker.minimumDate = [NSDate date];
-        [_datePicker setDate:[NSDate date] animated:YES];
-        //监听DataPicker的滚动
-        [_datePicker addTarget:self action:@selector(dateChange:) forControlEvents:UIControlEventValueChanged];
+        _datePicker = [[ZXFDatePicker alloc] init];
+        _datePicker.title = @"请选择时间";
+        _datePicker.delegate = self;
     }
     return _datePicker;
-}
-
-- (void)dateChange:(UIDatePicker *)datePicker {
-    
-    [self updateReplyBookTime];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    //设置时间格式
-    formatter.dateFormat = @"yyyy年 MM月 dd日";
-    NSString *dateFormatterValue = [formatter  stringFromDate:datePicker.date];
-    NSLog(@"ZXFDatePicker------:%@",dateFormatterValue);
-}
-
-/*
-- (ZXFDatePicker *)picker
-{
-    if (!_picker) {
-        _picker = [[ZXFDatePicker alloc] init];
-        _picker.title = @"请选择时间";
-        _picker.delegate = self;
-    }
-    return _picker;
 }
 
 -(void)pickerView:(ZXFDatePicker *)pickerView didSelectWithselectedDate:(NSDate *)date
@@ -463,7 +430,6 @@
 {
     
 }
-*/
 
 /*
 // Only override drawRect: if you perform custom drawing.

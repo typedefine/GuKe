@@ -9,6 +9,34 @@
 #import "ZJNChangePatientBasicInfoModel.h"
 
 @implementation ZJNChangePatientBasicInfoModel
+
++ (NSDictionary *)mj_replacedKeyFromPropertyName
+{
+    return @{@"birth":@"brith"};
+}
+
+- (id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property
+{
+    id newValue = [super mj_newValueFromOldValue:oldValue property:property];
+    if (newValue && [property.name isEqualToString:@"birth"]) {
+        if ([newValue isMemberOfClass:[NSNumber class]]) {
+            return [(NSNumber *)newValue stringValue];
+        }else if ([newValue isMemberOfClass:[NSString class]]) {
+            return newValue;
+        }
+        return nil;
+    }
+    return newValue;
+}
+
+//- (NSString *)age
+//{
+//    if (self.birth > 0) {
+//        return @(self.birth).stringValue;
+//    }
+//    return @"";
+//}
+
 -(id)initWithMedicalInfoModel:(MedicalRecordsModel *)model{
     self = [super init];
     if (self) {

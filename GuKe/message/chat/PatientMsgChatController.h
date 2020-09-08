@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *nickname;
 @property (nonatomic, copy, nonnull) NSString *sessionid;//app端用户登录session
 @property (nonatomic, copy, nonnull) NSString *recipient;//消息列表接口返回的sender字段
+@property (nonatomic, copy, nonnull) NSString *hospnumId;//患者ID
 
 @end
 

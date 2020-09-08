@@ -9,9 +9,9 @@
 #import "PatientBookController.h"
 #import "PatientBookCell.h"
 #import "PatientBookPageModel.h"
-#import "PatientInfoController.h"
-#import "ZJNChangePatientBasicInfoViewController.h"
+//#import "ZJNChangePatientBasicInfoViewController.h"
 #import "ReplyPatientBookTimePopover.h"
+#import "ShuHouSUFangViewController.h"
 
 @interface PatientBookController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -72,33 +72,73 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PatientBookCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([PatientBookCell class])];
-    PatientBookCellModel *cellModel = self.pageModel.cellModelList[indexPath.row];
+    __block PatientBookCellModel *cellModel = self.pageModel.cellModelList[indexPath.row];
     __weak typeof(self) weakSelf = self;
     [cell configureCellWithData:cellModel reply:^(PatientMessageModel *model) {
         [weakSelf.replyPopover showWithData:model reply:^(PatientMessageModel * _Nonnull model, NSDate * _Nonnull date) {
-                    
+            [weakSelf replyWithData:cellModel date:date];
         }];
     }];
     return cell;
+}
+
+- (void)replyWithData:(PatientBookCellModel *)cellModel date:(NSDate *)date
+{
+    NSString *time = @(ceil([date timeIntervalSince1970])).stringValue;
+    NSDictionary *para = @{
+        @"sessionid":self.pageModel.sessionId,
+        @"recipient": cellModel.model.sender,
+        @"content": @"预约回复",
+        @"medicalTime": time
+    };
+    [self showHudInView:self.view hint:nil];
+    [ZJNRequestManager postWithUrlString:self.pageModel.replyUrl parameters:para success:^(id data) {
+        [self.tableView.mj_header endRefreshing];
+        NSLog(@"%@%@",self.pageModel.replyPrint, data);
+        NSDictionary *dict = (NSDictionary *)data;
+        if ([dict[@"retcode"] intValue] == 0) {
+            cellModel.model.medicalTime = time;
+            [cellModel updateMedicalTime:time];
+//            [self.pageModel configureWithData:dict[@"data"]];
+        }
+        [self hideHud];
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+        [self hideHud];
+        NSLog(@"%@error:%@", self.pageModel.replyPrint, error);
+    }];
+    
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PatientBookCellModel *cellModel = self.pageModel.cellModelList[indexPath.row];
+    
+    NSString *strings = cellModel.model.hospnumId;
+    NSUserDefaults *defau = [NSUserDefaults standardUserDefaults];
+    [defau setObject:strings forKey:@"hospitalnumbar"];
+    [defau synchronize];
+    
+    ShuHouSUFangViewController *shuhuo = [[ShuHouSUFangViewController alloc]init];
+    shuhuo.numbers = 0;
+    shuhuo.infoDic = @{@"shares":@"0"};
+    shuhuo.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:shuhuo animated:NO];
+    
+    
+    /*
     ZJNChangePatientBasicInfoViewController *pvc = [[ZJNChangePatientBasicInfoViewController alloc] init];
+    pvc.hidesBottomBarWhenPushed = YES;
     pvc.isfromPatientMsg = YES;
     ZJNChangePatientBasicInfoModel *model = [[ZJNChangePatientBasicInfoModel alloc]init];
     model.sessionId = self.pageModel.sessionId;
-    model.hospnumId = cellModel.model.sender;
+    model.hospnumId = cellModel.model.hospnumId;
     pvc.infoModel = model;
     pvc.refershPatientInfo = ^{
     };
-//    PatientInfoController *pvc = [[PatientInfoController alloc] init];
-//    pvc.sessionid = self.pageModel.sessionId;
-//    pvc.hospnumId = cellModel.model.sender;
-//    pvc.nickname = cellModel.model.realName;
     [self.navigationController pushViewController:pvc animated:YES];
+    */
 }
 
 
@@ -124,6 +164,12 @@
         msg = @"患者留言--预约就诊";
         _pageModel.loadUrl = urlString;
         _pageModel.msgPrint = msg;
+        
+        urlString = [NSString stringWithFormat:@"%@%@",requestUrl,patient_book_replied];
+        msg = @"患者留言--回复预览就诊";
+        _pageModel.replyUrl = urlString;
+        _pageModel.replyPrint = msg;
+        
         _pageModel.sessionId = sessionIding;
     }
     return _pageModel;

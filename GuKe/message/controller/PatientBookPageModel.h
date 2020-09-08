@@ -16,6 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *loadUrl;
 @property (nonatomic, copy) NSString *msgPrint;
+
+@property (nonatomic, copy) NSString *replyUrl;
+@property (nonatomic, copy) NSString *replyPrint;
+
 @property (nonatomic, copy) NSString *sessionId;
 
 @property(nonatomic, strong) NSArray<PatientBookCellModel *> *cellModelList;

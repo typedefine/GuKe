@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *msgId;//消息id
 @property (nonatomic, copy) NSString *sender;//发送者id
+@property (nonatomic, copy) NSString *hospnumId;//患者ID
 @property (nonatomic, copy) NSString *recipient;//接受者id，此处是医生自己
 @property (nonatomic, copy) NSString *content;//内容
 @property (nonatomic, assign) NSInteger isRead;//是否已读

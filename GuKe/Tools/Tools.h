@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 +(NSString *)dateFormatterWithTimeInterval:(NSString *)timeIntervalString;
 +(NSString *)dateFormatterWithDateStringValue:(NSString *)dateStringValue sourceFormatter:(NSString *)sourceFormatter;
 +(NSString *)dateFormatterWithDate:(NSDate *)date;
++(NSString *)dateFormatInTheFutureWithTimeInterval:(NSString *)timeIntervalString;
 
 @end
 

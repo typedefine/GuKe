@@ -15,7 +15,7 @@
 
 @interface PatientInfoManageController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching, UIScrollViewDelegate>
 
-@property (nonatomic, strong) UIButton *previewButton;
+//@property (nonatomic, strong) UIButton *previewButton;
 @property (nonatomic, strong) UIButton *saveButton;
 @property (nonatomic, strong) UIButton *cancelButton;
 @property (nonatomic, strong) UICollectionView *collection;
@@ -36,6 +36,7 @@
         make.edges.equalTo(self.view);
     }];
     
+    /*
     CGFloat w = 70.0f , x = w/2.0 + (ScreenWidth-3*w)/4.0f, bottomMargin = 20+TabbarAddHeight;
     [self.view addSubview:self.previewButton];
     [self.previewButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -45,11 +46,13 @@
     }];
     [self.previewButton addTarget:self action:@selector(preview) forControlEvents:UIControlEventTouchUpInside];
     self.previewButton.hidden = YES;
-    
+    */
+    CGFloat w = 70.0f , bottomMargin = 20+TabbarAddHeight;
+
     [self.view addSubview:self.saveButton];
     [self.saveButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.view).offset(-bottomMargin);
-        make.centerX.equalTo(self.previewButton.mas_right).offset(x);
+        make.right.equalTo(self.view.mas_centerX).offset(-40);
         make.width.mas_equalTo(w);
     }];
     [self.saveButton addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
@@ -57,7 +60,7 @@
     [self.view addSubview:self.cancelButton];
     [self.cancelButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.view).offset(-bottomMargin);
-        make.centerX.equalTo(self.saveButton.mas_right).offset(x);
+        make.left.equalTo(self.view.mas_centerX).offset(40);
         make.width.mas_equalTo(w);
     }];
     [self.cancelButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
@@ -89,11 +92,12 @@
     
 }
 
-
+/*
 - (void)preview
 {
     
 }
+*/
 
 - (void)save
 {
@@ -101,7 +105,7 @@
         [self showHint:@"无任何修改，无需保存"];
         return;
     }
-    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,patient_info_modify];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,patient_info_manage];
     PatientInfoManageSectionModel *sectionModel = (PatientInfoManageSectionModel *)[self.viewModel sectionModel:1];
     NSDictionary *para = @{
         @"hospid": self.viewModel.hospid,
@@ -279,21 +283,21 @@
     return _viewModel;
 }
 
-- (UIButton *)previewButton
-{
-    if (!_previewButton) {
-        _previewButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _previewButton.backgroundColor = [UIColor whiteColor];
-        _previewButton.layer.borderWidth = 1.0;
-        _previewButton.layer.borderColor = SetColor(0x666666).CGColor;
-        _previewButton.layer.masksToBounds = YES;
-        _previewButton.layer.cornerRadius = 5.0;
-        [_previewButton setTitle:@"预览" forState:UIControlStateNormal];
-        [_previewButton setTitleColor:titColor forState:UIControlStateNormal];
-        _previewButton.titleLabel.font = Font14;
-    }
-    return _previewButton;
-}
+//- (UIButton *)previewButton
+//{
+//    if (!_previewButton) {
+//        _previewButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        _previewButton.backgroundColor = [UIColor whiteColor];
+//        _previewButton.layer.borderWidth = 1.0;
+//        _previewButton.layer.borderColor = SetColor(0x666666).CGColor;
+//        _previewButton.layer.masksToBounds = YES;
+//        _previewButton.layer.cornerRadius = 5.0;
+//        [_previewButton setTitle:@"预览" forState:UIControlStateNormal];
+//        [_previewButton setTitleColor:titColor forState:UIControlStateNormal];
+//        _previewButton.titleLabel.font = Font14;
+//    }
+//    return _previewButton;
+//}
 
 
 - (UIButton *)saveButton

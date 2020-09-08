@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "MedicalRecordsModel.h"
-@interface ZJNChangePatientBasicInfoModel : NSObject
+#import "GJObject.h"
+@interface ZJNChangePatientBasicInfoModel : GJObject
 /** 唯一标识 */
 @property (nonatomic ,strong)NSString * sessionId;
 /** 住院主键 */
@@ -49,5 +50,9 @@
 @property (nonatomic ,strong)NSString * outTime;
 /** 患者基本信息图片路径 */
 @property (nonatomic ,strong)NSArray * jbxx;
+
+/** 身高 */
+@property (nonatomic, assign) NSInteger stature;
+
 -(id)initWithMedicalInfoModel:(MedicalRecordsModel *)model;
 @end

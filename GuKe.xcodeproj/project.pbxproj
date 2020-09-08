@@ -87,7 +87,6 @@
 		892555A624E2DBB6002F7B5B /* GJObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 892555A524E2DBB6002F7B5B /* GJObject.m */; };
 		892555A924E2E009002F7B5B /* NSObject+DDC.m in Sources */ = {isa = PBXBuildFile; fileRef = 892555A824E2E009002F7B5B /* NSObject+DDC.m */; };
 		892555B124E423AD002F7B5B /* PatientBookInfoStateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 892555B024E423AD002F7B5B /* PatientBookInfoStateModel.m */; };
-		8932651C24FD4E4800FE7BBE /* PatientInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8932651B24FD4E4800FE7BBE /* PatientInfoController.m */; };
 		8932651F24FE861E00FE7BBE /* ZXFDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8932651E24FE861E00FE7BBE /* ZXFDatePicker.m */; };
 		893265242501316D00FE7BBE /* UIColor+HEX.m in Sources */ = {isa = PBXBuildFile; fileRef = 893265202501316D00FE7BBE /* UIColor+HEX.m */; };
 		893265252501316D00FE7BBE /* UIButton+EnlargeEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = 893265222501316D00FE7BBE /* UIButton+EnlargeEdge.m */; };
@@ -1007,8 +1006,6 @@
 		892555A824E2E009002F7B5B /* NSObject+DDC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DDC.m"; sourceTree = "<group>"; };
 		892555AF24E423AD002F7B5B /* PatientBookInfoStateModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookInfoStateModel.h; sourceTree = "<group>"; };
 		892555B024E423AD002F7B5B /* PatientBookInfoStateModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientBookInfoStateModel.m; sourceTree = "<group>"; };
-		8932651A24FD4E4800FE7BBE /* PatientInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientInfoController.h; sourceTree = "<group>"; };
-		8932651B24FD4E4800FE7BBE /* PatientInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientInfoController.m; sourceTree = "<group>"; };
 		8932651D24FE861E00FE7BBE /* ZXFDatePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXFDatePicker.h; sourceTree = "<group>"; };
 		8932651E24FE861E00FE7BBE /* ZXFDatePicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXFDatePicker.m; sourceTree = "<group>"; };
 		893265202501316D00FE7BBE /* UIColor+HEX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HEX.m"; sourceTree = "<group>"; };
@@ -2613,7 +2610,6 @@
 		89203DC524CDA8B400D4D55E /* message */ = {
 			isa = PBXGroup;
 			children = (
-				89B2B9A424FB559D0062387D /* patient */,
 				89E52EE124F2B1320052403B /* chat */,
 				7F9A7F0124EE297900E5CDFA /* controller */,
 				7F9A7F0024EE297200E5CDFA /* model */,
@@ -2682,15 +2678,6 @@
 				892555AB24E42206002F7B5B /* controller */,
 			);
 			path = patientRecord;
-			sourceTree = "<group>";
-		};
-		89B2B9A424FB559D0062387D /* patient */ = {
-			isa = PBXGroup;
-			children = (
-				8932651A24FD4E4800FE7BBE /* PatientInfoController.h */,
-				8932651B24FD4E4800FE7BBE /* PatientInfoController.m */,
-			);
-			path = patient;
 			sourceTree = "<group>";
 		};
 		89E52EE124F2B1320052403B /* chat */ = {
@@ -6132,7 +6119,6 @@
 				E3A105CB1FA18A6500EBEF1F /* TZImageManager.m in Sources */,
 				9A78C90C200C7BD9003D86BF /* WYYMainGroupTableViewCell.m in Sources */,
 				1FDF411C211AE52100A3E06D /* OrderDetailViewController.m in Sources */,
-				8932651C24FD4E4800FE7BBE /* PatientInfoController.m in Sources */,
 				892555A024D6FFEC002F7B5B /* PatientBookInfoStateCellModel.m in Sources */,
 				9A53878D20084D8B0084E772 /* NSDate+Category.m in Sources */,
 				E32291BC202C184500D00ACA /* ZJNOperationTableViewCell.m in Sources */,
@@ -6860,6 +6846,7 @@
 					"$(PROJECT_DIR)/GuKe/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/GuKe/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);
+				MARKETING_VERSION = 1.2.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -6925,6 +6912,7 @@
 					"$(PROJECT_DIR)/GuKe/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/GuKe/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);
+				MARKETING_VERSION = 1.2.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",

@@ -223,13 +223,24 @@
 //        2. "zh_GB"中文24小时
 //        3. ”zh_CN“中文12小时
         _pickerView.locale = [NSLocale localeWithLocaleIdentifier:@"zh_CN"];
-        _pickerView.datePickerMode = UIDatePickerModeDate;
+        _pickerView.datePickerMode = UIDatePickerModeDateAndTime;
+        if (@available(iOS 13.4, *)) {
+            _pickerView.preferredDatePickerStyle = UIDatePickerStyleWheels;
+        }
         _pickerView.minimumDate = [NSDate date];
         [_pickerView setDate:[NSDate date] animated:YES];
         //监听DataPicker的滚动
         [_pickerView addTarget:self action:@selector(dateChange:) forControlEvents:UIControlEventValueChanged];
     }
     return _pickerView;
+}
+
+
+- (void)setMode:(UIDatePickerMode)mode
+{
+    if (_mode == mode) return;
+    _mode = mode;
+    self.pickerView.datePickerMode = mode;
 }
 
 

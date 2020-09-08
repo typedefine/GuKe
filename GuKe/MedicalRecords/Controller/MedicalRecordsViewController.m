@@ -42,9 +42,48 @@
     NSArray *contentArr;
     MWPhotoBrowser *browser;
 }
+
+
+@property (nonatomic, strong) UIButton *archiveButton;
+@property (nonatomic, strong) UIButton *returnButton;
+
 @end
 
 @implementation MedicalRecordsViewController
+
+- (UIButton *)archiveButton
+{
+    if (!_archiveButton) {
+        _archiveButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _archiveButton.backgroundColor = [UIColor whiteColor];
+        _archiveButton.layer.borderWidth = 1.0;
+        _archiveButton.layer.borderColor = SetColor(0x666666).CGColor;
+        _archiveButton.layer.masksToBounds = YES;
+        _archiveButton.layer.cornerRadius = 5.0;
+        [_archiveButton setTitle:@"归档" forState:UIControlStateNormal];
+        [_archiveButton setTitleColor:titColor forState:UIControlStateNormal];
+        _archiveButton.titleLabel.font = Font14;
+    }
+    return _archiveButton;
+}
+
+- (UIButton *)returnButton
+{
+    if (!_returnButton) {
+        _returnButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _returnButton.backgroundColor = [UIColor whiteColor];
+        _returnButton.layer.borderWidth = 1.0;
+        _returnButton.layer.borderColor = SetColor(0x666666).CGColor;
+        _returnButton.layer.masksToBounds = YES;
+        _returnButton.layer.cornerRadius = 5.0;
+        [_returnButton setTitle:@"打回" forState:UIControlStateNormal];
+        [_returnButton setTitleColor:titColor forState:UIControlStateNormal];
+        _returnButton.titleLabel.font = Font14;
+    }
+    return _returnButton;
+}
+
+
 -(instancetype)initWithDictionary:(NSDictionary *)patientInfoDic{
     self = [super init];
     if (self) {
@@ -60,9 +99,67 @@
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
     
+    CGFloat w = 70.0f , bottomMargin = 20+TabbarAddHeight;
+
+    [self.view addSubview:self.archiveButton];
+    [self.archiveButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).offset(-bottomMargin);
+        make.right.equalTo(self.view.mas_centerX).offset(-40);
+        make.width.mas_equalTo(w);
+    }];
+    [self.archiveButton addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:self.returnButton];
+    [self.returnButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).offset(-bottomMargin);
+        make.left.equalTo(self.view.mas_centerX).offset(40);
+        make.width.mas_equalTo(w);
+    }];
+    [self.returnButton addTarget:self action:@selector(retrunBack) forControlEvents:UIControlEventTouchUpInside];
+    
     [self makeData];
     // Do any additional setup after loading the view.
 }
+
+- (void)save
+{
+    [self checkIfSave:YES];
+}
+
+
+- (void)retrunBack
+{
+    [self checkIfSave:NO];
+}
+
+#pragma mark 归档或打回
+- (void)checkIfSave:(BOOL)save
+{
+    [self showHudInView:self.view hint:nil];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,patient_info_archive];
+    NSString *hopitals = [[NSUserDefaults standardUserDefaults]objectForKey:@"hospitalnumbar"];
+    NSDictionary *para = @{
+        @"sessionid":sessionIding,
+        @"hospid":hopitals,
+        @"archive": save ? @(1).stringValue : @(2).stringValue
+    };
+    [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
+        [self hideHud];
+        NSLog(@"---患者基本信息归档--data:%@",data);
+        NSDictionary *dict = (NSDictionary *)data;
+        if ([dict[@"retcode"] intValue] == 0) {
+            [self showHint:save?@"患者基本信息归档成功":@"已打回" inView:self.view];
+        }else{
+            [self showHint:dict[@"message"] inView:self.view];
+        }
+        
+    } failure:^(NSError *error) {
+        [self hideHud];
+        NSLog(@"---患者基本信息归档--error:%@", error);
+    }];
+}
+
+
 #pragma mark 数据请求 我的患者--就诊记录
 - (void)makeData{
     NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,patientpatient_visit];
@@ -83,7 +180,6 @@
                 [infoModel.forms addObject:mode];
              
             }
-            
             
             if (self.backHospitalIdBlock) {
                 NSDictionary *dic = @{@"id":infoModel.hospid,@"name":infoModel.doctorName};

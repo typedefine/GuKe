@@ -49,7 +49,7 @@
         [self.contentView addSubview:self.replyButton];
         [self.replyButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.portraitView);
-            make.right.equalTo(self.contentView.mas_right).offset(-20);
+            make.right.equalTo(self.contentView.mas_right).offset(-15);
             make.width.mas_equalTo(80);
             make.height.mas_equalTo(35);
         }];
