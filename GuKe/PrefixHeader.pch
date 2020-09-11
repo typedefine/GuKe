@@ -118,8 +118,6 @@
 
 #define Color_rgba(r, g, b, a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 
-#define key_login_notification @"login_status_notification"
-
 //sessionid//@"8ac282835dbfa82d015dbfa8c8d50000"
 #define sessionIding  [[NSUserDefaults standardUserDefaults]objectForKey:@"sessionIdUser"]
 //userid

@@ -20,8 +20,7 @@
 #import "ChatDemoHelper.h"
 #import "ApplyViewController.h"
 //end
-//#import "MessageController.h"
-#import "PatientMessagePageController.h"
+#import "MessageController.h"
 
 //两次提示的默认间隔
 static const CGFloat kDefaultPlaySoundInterval = 3.0;
@@ -59,13 +58,11 @@ static NSString *kGroupName = @"GroupName";
     [self addChildViewController:resource andTitle:@"首页" andImageName:@"icon1_1" andSelectedImage:@"icon1"];
     
     //消息
-    /*
+    
     _chatListVC = [[ConversationListController alloc] init];
     MessageController *msgController = [[MessageController alloc] init];
     msgController.chatListVC = _chatListVC;
-    */
-    PatientMessagePageController *pvc = [[PatientMessagePageController alloc] init];
-    [self addChildViewController:pvc andTitle:@"消息" andImageName:@"icon3_1" andSelectedImage:@"icon3"];
+    [self addChildViewController:msgController andTitle:@"消息" andImageName:@"icon3_1" andSelectedImage:@"icon3"];
     
     //资讯
     ZJNInfoViewController *class = [[ZJNInfoViewController alloc]init];

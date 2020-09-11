@@ -203,8 +203,19 @@
             detailDic = [[NSDictionary alloc]initWithDictionary:data[@"data"]];
             detailArr = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%@",[detailDic objectForKey:@"doctorName"]],[NSString stringWithFormat:@"%@",[detailDic objectForKey:@"hosptialName"]],[NSString stringWithFormat:@"%@",[detailDic objectForKey:@"deptName"]],[NSString stringWithFormat:@"%@",[detailDic objectForKey:@"titleName"]], nil];
             IsFrieds  = [NSString stringWithFormat:@"%@",data[@"data"][@"friend"]];
-            zhuanchangArr = [NSArray arrayWithArray:data[@"data"][@"specialty"]];
-            [detailTableview reloadData];
+            NSArray *tmp = [NSArray arrayWithArray:data[@"data"][@"specialty"]];
+            __block NSMutableArray *zcList = [NSMutableArray array];
+            [tmp enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([obj isValidStringValue]) {
+                    [zcList addObject:obj];
+                }
+            }];
+            zhuanchangArr = [zcList copy];
+            if (zhuanchangArr && zhuanchangArr.count > 0) {
+                detailTableview.delegate = self;
+                detailTableview.dataSource = self;
+                [detailTableview reloadData];
+            }
         }
         NSLog(@"医生详情%@",data);
     } failure:^(NSError *error) {
@@ -220,8 +231,6 @@
     }
     detailTableview.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self.view addSubview:detailTableview];
-    detailTableview.delegate = self;
-    detailTableview.dataSource = self;
     detailTableview.tableFooterView = [[UIView alloc]init];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

@@ -12,7 +12,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSString *callid;
-//+(AppDelegate*)shareInstance;
 -(void)toast:(NSString*)message;
 
 @end

@@ -266,7 +266,7 @@
                // [Utile setUILabel:labelThree data:nil setData:huifangStr color:greenC font:19 underLine:NO];
 
         }else if ([retcode isEqualToString:@"1"]){
-            [[NSNotificationCenter defaultCenter] postNotificationName:key_login_notification object:@NO];
+            [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@NO];
             [self showHint:data[@"message"]];
         }
         [mainTableview reloadData];

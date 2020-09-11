@@ -25,9 +25,7 @@
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    self.title = @"消息";
-    
+        
     self.curIndex = 0;
     
     NSArray *titleArray = [NSArray arrayWithObjects:@"留言信息", @"预约就诊", nil];

@@ -299,7 +299,6 @@
         NSString *retcode = [NSString stringWithFormat:@"%@",data[@"retcode"]];
   
         if ([retcode isEqualToString:@"0"]) {
-            [defaults setObject:@(1) forKey:@"logined"];
             [defaults setObject:data[@"data"][@"sessionId"] forKey:@"sessionIdUser"];
             
             [defaults setObject:phoneStr forKey:@"userPhone"];
@@ -313,15 +312,12 @@
             
             SetChatImgUrl(data[@"data"][@"portrait"]);
             SetChatUserName(data[@"data"][@"nickname"]);
-            
-            
             Synchronize;
-            [[NSNotificationCenter defaultCenter] postNotificationName:key_login_notification object:@(YES)];
             
 //            NSLog(@"%@",ChatImgUrl);
-            /*
+        
             [self makeLoginHuanXin:data[@"data"][@"userId"] password:data[@"data"][@"pwd"]];
-             */
+            
 //            GuKeViewController *viewC = [[GuKeViewController alloc]init];
 //            [UIApplication sharedApplication].keyWindow.rootViewController=viewC;
         }else{
