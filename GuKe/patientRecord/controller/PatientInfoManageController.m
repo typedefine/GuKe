@@ -107,14 +107,17 @@
     }
     NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,patient_info_manage];
     PatientInfoManageSectionModel *sectionModel = (PatientInfoManageSectionModel *)[self.viewModel sectionModel:1];
-    NSDictionary *para = @{
+    NSMutableDictionary *para = [@{
         @"hospid": self.viewModel.hospid,
         @"sessionid": self.viewModel.sessionid,
         @"hide_visit": sectionModel.cellModelList[0].select?@(1):@(0),
         @"hide_surgical": sectionModel.cellModelList[1].select?@(1):@(0),
-        @"hide_revisit": sectionModel.cellModelList[2].select?@(1):@(0),
-        @"doctor_tips": ((PatienFitMentionSectionModel *)[self.viewModel sectionModel:0]).content
-    };
+        @"hide_revisit": sectionModel.cellModelList[2].select?@(1):@(0)
+    } mutableCopy];
+    NSString *tips = ((PatienFitMentionSectionModel *)[self.viewModel sectionModel:0]).content;
+    if (tips.isValidStringValue) {
+        para[@"doctor_tips"] = tips;
+    }
     [self showHudInView:self.view hint:nil];
     [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
         NSLog(@"病例--信息管理-修改信息%@",data);
