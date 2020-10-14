@@ -1583,7 +1583,7 @@ typedef enum : NSUInteger {
     
     // Pop image picker
     self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    self.imagePicker.mediaTypes = @[(NSString *)kUTTypeImage];
+    self.imagePicker.mediaTypes = @[(NSString *)kUTTypeImage, (NSString *)kUTTypeVideo, (NSString *)kUTTypeMPEG2Video, (NSString *)kUTTypeAppleProtectedMPEG4Video];
     [self presentViewController:self.imagePicker animated:YES completion:NULL];
     
     self.isViewDidAppear = NO;

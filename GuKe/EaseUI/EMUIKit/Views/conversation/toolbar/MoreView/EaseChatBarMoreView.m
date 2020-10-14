@@ -112,8 +112,8 @@
 
 //    [_takePicButton setFrame:CGRectMake(insets * 3 + CHAT_BUTTON_SIZE.width * 2, 10, CHAT_BUTTON_SIZE.width , CHAT_BUTTON_SIZE.height)];
     [_takePicButton addTarget:self action:@selector(takePicAction) forControlEvents:UIControlEventTouchUpInside];
-    _takePicButton.tag = MOREVIEW_BUTTON_TAG + 2;
-    _maxIndex = 2;
+    _takePicButton.tag = MOREVIEW_BUTTON_TAG + 1;
+    _maxIndex = 1;
     [_scrollview addSubview:_takePicButton];
     
     CGRect frame = self.frame;
