@@ -22,6 +22,8 @@
 //end
 #import "MessageController.h"
 
+#import "WYYMainGroupViewController.h"   //我的群组
+
 //两次提示的默认间隔
 static const CGFloat kDefaultPlaySoundInterval = 3.0;
 static NSString *kMessageType = @"MessageType";
@@ -55,18 +57,21 @@ static NSString *kGroupName = @"GroupName";
     self.tabBar.translucent = NO ;
     //首页
     MainViewController *resource = [[MainViewController alloc]init];
-    [self addChildViewController:resource andTitle:@"首页" andImageName:@"icon1_1" andSelectedImage:@"icon1"];
+    [self addChildViewController:resource andTitle:@"首页" andImageName:@"icon_home" andSelectedImage:@"icon_home_selected"];
     
     //消息
     
     _chatListVC = [[ConversationListController alloc] init];
     MessageController *msgController = [[MessageController alloc] init];
     msgController.chatListVC = _chatListVC;
-    [self addChildViewController:msgController andTitle:@"消息" andImageName:@"icon3_1" andSelectedImage:@"icon3"];
+    [self addChildViewController:msgController andTitle:@"消息" andImageName:@"icon_message" andSelectedImage:@"icon_message_selected"];
+    
+    WYYMainGroupViewController *groupChatVC = [[WYYMainGroupViewController alloc] init];
+    [self addChildViewController:groupChatVC andTitle:@"群聊" andImageName:@"icon_group" andSelectedImage:@"icon_group_selected"];
     
     //资讯
     ZJNInfoViewController *class = [[ZJNInfoViewController alloc]init];
-    [self addChildViewController:class andTitle:@"资讯" andImageName:@"icon2_1" andSelectedImage:@"icon2"];
+    [self addChildViewController:class andTitle:@"资讯" andImageName:@"icon_news" andSelectedImage:@"icon_news_selected"];
     
 //    //随访
 //    SuFangViewController *main = [[SuFangViewController alloc]init];
@@ -74,7 +79,7 @@ static NSString *kGroupName = @"GroupName";
     
     //我的
     WoDeViewController *wode = [[WoDeViewController alloc]init];
-    [self addChildViewController:wode andTitle:@"我的" andImageName:@"icon4_1" andSelectedImage:@"icon4"];
+    [self addChildViewController:wode andTitle:@"我的" andImageName:@"icon_me" andSelectedImage:@"icon_me_selected"];
 
     //wang
     //获取未读消息数，此时并没有把self注册为SDK的delegate，读取出的未读数是上次退出程序时的

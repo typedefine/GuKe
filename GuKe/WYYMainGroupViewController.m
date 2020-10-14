@@ -25,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"我的群组";
+    self.navigationItem.title = @"我的群组";
     self.view.backgroundColor = [UIColor whiteColor];
     groupArr = [NSMutableArray array];
     GroupManager = [WYYFMDBManager shareWYYManager];
@@ -48,14 +48,10 @@
 }
 #pragma mark add tableview;
 - (void)makeAddtableview{
-    if (IS_IPGONE_X) {
-        groupTableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 86)];
-    }else{
-        groupTableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64)];
-    }
-    
+    groupTableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - NavBarHeight)];
     groupTableview.delegate = self;
     groupTableview.dataSource = self;
+    groupTableview.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 15)];
     groupTableview.tableFooterView = [[UIView alloc]init];
     [self.view addSubview:groupTableview];
 }

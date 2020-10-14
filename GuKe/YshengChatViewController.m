@@ -10,7 +10,7 @@
 #import "yshengChatTableViewCell.h"
 #import "WYYYIshengFriend.h"
 #import "ChatViewController.h"//聊天页面
-#import "WYYMainGroupViewController.h"   //我的群组
+//#import "WYYMainGroupViewController.h"   //我的群组
 #import "ZJNFindDoctorViewController.h"//找医生
 #import "WYYeMenShiPinViewController.h"//热门视频
 #import "WYYFMDBManager.h"
@@ -163,26 +163,25 @@
 
 #pragma mark add tableview
 - (void)makeAddTableview{
-    if (IS_IPGONE_X) {
-        chatTableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 86)style:UITableViewStyleGrouped];
-    }else{
-        chatTableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64)style:UITableViewStyleGrouped];
-    }
+    chatTableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - NavBarHeight)style:UITableViewStyleGrouped];
     
     chatTableview.delegate = self;
     chatTableview.dataSource = self;
+    chatTableview.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 10)];
     chatTableview.tableFooterView = [[UIView alloc]init];
     [self.view addSubview:chatTableview];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return sectionTitlesArray.count + 1;
+    return sectionTitlesArray.count; //+ 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0) {
-        return 1;
-    }else{
-        return [[itemArray objectAtIndex:section - 1] count];
-    }
+//    if (section == 0) {
+//        return 1;
+//    }else{
+//        return [[itemArray objectAtIndex:section - 1] count];
+//    }
+    
+    return [[itemArray objectAtIndex:section] count];
         
 }
 -(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView{
@@ -193,11 +192,11 @@
     return 57;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section == 0) {
-        return 0.01;
-    }else{
+//    if (section == 0) {
+//        return 0.01;
+//    }else{
         return 23;
-    } 
+//    }
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -207,20 +206,20 @@
     return nil;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    if (section == 0) {
-        return nil;
-    }else{
+//    if (section == 0) {
+//        return nil;
+//    }else{
         UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 23)];
         headerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         UILabel *titleLab = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 200, 23)];
-        titleLab.text = sectionTitlesArray[section - 1];
+        titleLab.text = sectionTitlesArray[section];
         titleLab.font = [UIFont systemFontOfSize:14];
         [headerView addSubview:titleLab];
         
 
         return headerView;
         
-    }
+//    }
     
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -230,33 +229,32 @@
         cellTwo = [[[NSBundle mainBundle]loadNibNamed:@"yshengChatTableViewCell" owner:self options:nil] lastObject];
         cellTwo.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    if (indexPath.section == 0) {
-        cellTwo.imgView.image = [UIImage imageNamed:@"医生好友_我的群组"];
-        cellTwo.nameLab.text = [NSString stringWithFormat:@"我的群组"];
-    }else{
+//    if (indexPath.section == 0) {
+//        cellTwo.imgView.image = [UIImage imageNamed:@"医生好友_我的群组"];
+//        cellTwo.nameLab.text = [NSString stringWithFormat:@"我的群组"];
+//    }else{
         
-        [cellTwo.imgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",imgPath,itemArray[indexPath.section - 1][indexPath.row][@"portrait"]]] placeholderImage:[UIImage imageNamed:@"doctorImage"]];
+        [cellTwo.imgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",imgPath,itemArray[indexPath.section][indexPath.row][@"portrait"]]] placeholderImage:[UIImage imageNamed:@"doctorImage"]];
         cellTwo.imgView.layer.masksToBounds = YES;
         cellTwo.imgView.layer.cornerRadius = 18.5;
-        cellTwo.nameLab.text = itemArray[indexPath.section - 1][indexPath.row][@"name"];
-    }
+        cellTwo.nameLab.text = itemArray[indexPath.section][indexPath.row][@"name"];
+//    }
     
     return cellTwo;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 0) {
-        WYYMainGroupViewController *group = [[WYYMainGroupViewController alloc]init];
-        group.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:group animated:NO];
-    }else{
+//    if (indexPath.section == 0) {
+//        WYYMainGroupViewController *group = [[WYYMainGroupViewController alloc]init];
+//        group.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:group animated:NO];
+//    }else{
         ChatViewController *chat = [[ChatViewController alloc]initWithConversationChatter:itemArray[indexPath.section - 1][indexPath.row][@"userId"] conversationType:EMConversationTypeChat];
-        chat.doctorId = itemArray[indexPath.section - 1][indexPath.row][@"doctorId"];
-        chat.title = itemArray[indexPath.section - 1][indexPath.row][@"name"];
+        chat.doctorId = itemArray[indexPath.section][indexPath.row][@"doctorId"];
+        chat.title = itemArray[indexPath.section][indexPath.row][@"name"];
         chat.hidesBottomBarWhenPushed =YES;
         [self.navigationController pushViewController:chat animated:NO];
         
-        
-    }
+//    }
     
 }
 - (void)didReceiveMemoryWarning {
