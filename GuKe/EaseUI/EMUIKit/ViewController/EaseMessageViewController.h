@@ -402,6 +402,13 @@ shouldSendHasReadAckForMessage:(EMMessage *)message
 - (instancetype)initWithConversationChatter:(NSString *)conversationChatter
                            conversationType:(EMConversationType)conversationType;
 
+
+/// 参看文件
+/// @param filePath 文件本地路径
+- (void)viewFile:(NSString *)filePath name:(NSString *)fileName;
+
+- (EMChatType)messageTypeFromConversationType;
+
 /*!
  @method
  @brief 下拉加载更多

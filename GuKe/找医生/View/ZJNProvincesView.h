@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 @protocol ZJNProvincesViewDelegate<NSObject>
 -(void)provincesViewSearchDoctorWithArea:(NSString *)area hospitalArr:(NSArray *)hospArr;
+-(void)provincesViewCanceled;
 @end
 @interface ZJNProvincesView : UIView
 @property (nonatomic ,weak)id<ZJNProvincesViewDelegate>delegate;

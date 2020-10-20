@@ -188,6 +188,21 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo;
                           messageType:(EMChatType)messageType
                            messageExt:(NSDictionary *)messageExt;
 
+
+
+
+/// 构建待发送的文件消息
+/// @param data 文件二进制数据
+/// @param fileName 文件名
+/// @param to 消息的接收方环信id
+/// @param messageType 消息的聊天类型
+/// @param messageExt 消息的扩展属性
++ (EMMessage *)getFileMessageWithData:(NSData *)data
+                             fileName:(NSString *)fileName
+                                   to:(NSString *)to
+                          messageType:(EMChatType)messageType
+                           messageExt:(NSDictionary *)messageExt;
+
 #pragma mark - call
 
 @end

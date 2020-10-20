@@ -89,6 +89,25 @@
         [self.delegate zjnDeptViewSelectedDepartmentWithID:dic[@"deptId"]];
     }
 }
+
+
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+{
+    if (point.y > _tableView.frame.size.height) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(zjnDeptViewCanceled)]) {
+            [self.delegate zjnDeptViewCanceled];
+        }
+        if (self.hidden) {
+            return [super hitTest:point withEvent:event];
+        }else{
+            self.hidden = YES;
+            return _tableView;
+        }
+    }
+    return [super hitTest:point withEvent:event];
+}
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

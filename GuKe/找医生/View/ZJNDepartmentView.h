@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 @protocol ZJNDepartmentViewDelegate<NSObject>
 -(void)zjnDeptViewSelectedDepartmentWithID:(NSString *)deptID;
+-(void)zjnDeptViewCanceled;
+
 @end
 @interface ZJNDepartmentView : UIView
 @property (nonatomic ,weak)id<ZJNDepartmentViewDelegate>delegate;

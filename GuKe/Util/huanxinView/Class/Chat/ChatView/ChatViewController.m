@@ -25,7 +25,11 @@
 #import "WYYHuanZheXiangQingViewController.h"//患者详情
 #import "WYYYishengDetailViewController.h"//医生详情
 #import "WYYGroupDetailViewController.h"//群聊详情
-@interface ChatViewController ()<UIAlertViewDelegate,EMClientDelegate, EMChooseViewDelegate>
+#import "ICouldManager.h"
+#import "ViewFileController.h"
+#import "GuKeNavigationViewController.h"
+
+@interface ChatViewController ()<UIAlertViewDelegate,EMClientDelegate, EMChooseViewDelegate, UIDocumentPickerDelegate>
 {
     UIMenuItem *_copyMenuItem;
     UIMenuItem *_deleteMenuItem;
@@ -39,6 +43,7 @@
 
 @property (nonatomic) NSMutableDictionary *emotionDic;
 @property (nonatomic, copy) EaseSelectAtTargetCallback selectedCallback;
+
 
 @end
 
@@ -201,7 +206,6 @@
         if ([self.messsagesSource count] > 0) {
             startMessageId = [(EMMessage *)self.messsagesSource.firstObject messageId];
         }
-        
         NSLog(@"startMessageID ------- %@",startMessageId);
         [EMClient.sharedClient.chatManager asyncFetchHistoryMessagesFromServer:self.conversation.conversationId
                                                               conversationType:self.conversation.type
@@ -216,6 +220,7 @@
         [super tableViewDidTriggerHeaderRefresh];
     }
 }
+
 
 #pragma mark - setup subviews
 
@@ -260,14 +265,99 @@
     }
 }
 
+#pragma mark -viewfile
+
+
+- (void)viewFile:(NSString *)filePath name:(NSString *)fileName
+{
+    ViewFileController *webVC = [[ViewFileController alloc] init];
+    webVC.fileUrl = [NSURL fileURLWithPath:filePath];
+    webVC.title = fileName;
+//    webVC.modalPresentationStyle = UIModalPresentationPageSheet;
+    GuKeNavigationViewController *nav = [[GuKeNavigationViewController alloc]initWithRootViewController:webVC];
+    [self presentViewController:nav animated:YES completion:nil];
+    
+}
+
+
+#pragma mark - uploadfile
+
+- (void)selectUploadFileFromICouldDrive
+{
+    NSArray *documentTypes = @[
+        @"public.content",
+        @"public.text",
+        @"public.source-code",
+        @"public.image",
+        @"public.audiovisual-content",
+        @"com.adobe.pdf",
+        @"com.apple.keynote.key",
+        @"com.microsoft.word.doc",
+        @"com.microsoft.excel.xls",
+        @"com.microsoft.powerpoint.ppt"
+    ];
+    UIDocumentPickerViewController *documentPicker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:documentTypes inMode:UIDocumentPickerModeOpen];
+    documentPicker.delegate = self;
+    [self presentViewController:documentPicker animated:YES completion:nil];
+}
+
+
+- (void)documentPickerWasCancelled:(UIDocumentPickerViewController *)controller
+{
+    
+}
+
+
+#if defined(__IPHONE_11_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_11_0
+
+- (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentsAtURLs:(NSArray<NSURL *> *)urls
+{
+    [self documentPicker:controller handlerWithUrl:urls.firstObject];
+//    [controller dismissViewControllerAnimated:YES completion:nil];
+}
+
+#else
+
+- (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentAtURL:(NSURL *)url
+{
+    [self documentPicker:controller handlerWithUrl:url];
+//    [controller dismissViewControllerAnimated:YES completion:nil];
+}
+
+#endif
+
+- (void)documentPicker:(UIDocumentPickerViewController *)controller handlerWithUrl:(NSURL *)url
+{
+    NSString *fileName = url.lastPathComponent;
+    if ([ICouldManager iCouldEnable]) {
+        [ICouldManager downloadFileWithDocumentUrl:url completion:^(NSData * _Nonnull data) {
+            [self uploadFileWithName:fileName fileData:data];
+        }];
+    }
+}
+
+
+- (void)uploadFileWithName:(NSString *)fileName fileData:(NSData *)data
+{
+    NSDictionary *dic = @{@"userPic":[NSString stringWithFormat:@"%@%@",imgPath,ChatImgUrl],@"userName":[NSString stringWithFormat:@"%@",ChatUserName]};
+    EMMessage *message = [EaseSDKHelper getFileMessageWithData:data fileName:fileName to:self.conversation.conversationId messageType:[self messageTypeFromConversationType] messageExt:dic];
+    [self sendFileMessageWith:message];
+}
+
+
+
 #pragma mark - EaseMessageViewControllerDelegate
 
+//- (BOOL)messageViewController:(EaseMessageViewController *)viewController didSelectMessageModel:(id<IMessageModel>)messageModel
+//{
+//    return YES;
+//}
 
 - (void)messageViewController:(EaseMessageViewController *)viewController didSelectMoreView:(EaseChatBarMoreView *)moreView AtIndex:(NSInteger)index
 {
     if (index == 2) {
         //file
-        
+        [self selectUploadFileFromICouldDrive];
     }
 }
 

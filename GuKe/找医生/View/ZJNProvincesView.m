@@ -30,7 +30,7 @@
 -(id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.2];
+        self.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.3];
         
         _provinceArr = [NSMutableArray array];
         _cityArr     = [NSMutableArray array];
@@ -56,7 +56,7 @@
         [self addSubview:self.provinceTableView];
         [self addSubview:self.cityTableView];
         [self addSubview:self.areaTableView];
-        [self getDataFromService];
+//        [self getDataFromService];
     }
     return self;
 }
@@ -268,6 +268,25 @@
         }
     }
 }
+
+
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+{
+    if (point.y > _provinceTableView.frame.size.height) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(provincesViewCanceled)]) {
+            [self.delegate provincesViewCanceled];
+        }
+        if (self.hidden) {
+            return [super hitTest:point withEvent:event];
+        }else{
+            self.hidden = YES;
+            return _provinceTableView;
+        }
+    }
+    return [super hitTest:point withEvent:event];
+}
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

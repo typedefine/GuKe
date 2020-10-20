@@ -232,6 +232,11 @@
                 ret = NSLocalizedString(@"视频消息", @"[video]");
             } break;
                 
+            case EMMessageBodyTypeFile:
+            {
+                ret = NSLocalizedString(@"文件消息", @"[file]");
+            } break;
+                
             default:
                 break;
         }

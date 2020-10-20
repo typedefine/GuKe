@@ -29,6 +29,7 @@
 
 #import "WYYFMDBManager.h"
 #import "WYYYIshengFriend.h"
+#import <AVKit/AVKit.h>
 
 #define KHintAdjustY    50
 
@@ -531,6 +532,11 @@ typedef enum : NSUInteger {
     return mp4Url;
 }
 
+- (EMChatType)messageTypeFromConversationType
+{
+    return [self _messageTypeFromConversationType];
+}
+
 /*!
  @method
  @brief 通过当前会话类型，返回消息聊天类型
@@ -621,6 +627,29 @@ typedef enum : NSUInteger {
     {
         EMVoiceMessageBody *voiceBody = (EMVoiceMessageBody*)messageBody;
         if (voiceBody.downloadStatus > EMDownloadStatusSuccessed)
+        {
+            //download the message attachment
+            if (isCustomDownload) {
+                [self _customDownloadMessageFile:message];
+            } else {
+                if (isAutoDownloadThumbnail) {
+                    [[EMClient sharedClient].chatManager downloadMessageAttachment:message progress:nil completion:^(EMMessage *message, EMError *error) {
+                        if (!error) {
+                            [weakSelf _reloadTableViewDataWithMessage:message];
+                        }
+                        else {
+                            [weakSelf showHint:NSEaseLocalizedString(@"message.voiceFail", @"voice for failure!")];
+                        }
+                    }];
+                }
+            }
+        }
+    }
+    
+    else if ([messageBody type] == EMMessageBodyTypeFile)
+    {
+        EMFileMessageBody *fileBody = (EMFileMessageBody*)messageBody;
+        if (fileBody.downloadStatus > EMDownloadStatusSuccessed)
         {
             //download the message attachment
             if (isCustomDownload) {
@@ -755,26 +784,31 @@ typedef enum : NSUInteger {
     
     EMVideoMessageBody *videoBody = (EMVideoMessageBody*)model.message.body;
     
-    NSString *localPath = [model.fileLocalPath length] > 0 ? model.fileLocalPath : videoBody.localPath;
+    __weak NSString *localPath = [model.fileLocalPath length] > 0 ? model.fileLocalPath : videoBody.localPath;
     if ([localPath length] == 0) {
         [self showHint:NSEaseLocalizedString(@"message.videoFail", @"video for failure!")];
         return;
     }
     
+    __weak typeof(self) weakSelf = self;
+    __weak typeof(model) weakModel = model;
     dispatch_block_t block = ^{
         //send the acknowledgement
-        [self _sendHasReadResponseForMessages:@[model.message]
+        [self _sendHasReadResponseForMessages:@[weakModel.message]
                                        isRead:YES];
         
         NSURL *videoURL = [NSURL fileURLWithPath:localPath];
-        MPMoviePlayerViewController *moviePlayerController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
-        [moviePlayerController.moviePlayer prepareToPlay];
-        moviePlayerController.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
-        [self presentMoviePlayerViewControllerAnimated:moviePlayerController];
+//        MPMoviePlayerViewController *moviePlayerController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
+//        [moviePlayerController.moviePlayer prepareToPlay];
+//        moviePlayerController.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
+//        [weakSelf presentMoviePlayerViewControllerAnimated:moviePlayerController];
+        AVPlayerViewController *avVC = [[AVPlayerViewController alloc] init];
+        avVC.player = [AVPlayer playerWithURL:videoURL];
+        [weakSelf presentViewController:avVC animated:YES completion:nil];
     };
     
     BOOL isCustomDownload = !([EMClient sharedClient].options.isAutoTransferMessageAttachments);
-    __weak typeof(self) weakSelf = self;
+//    __weak typeof(self) weakSelf = self;
     void (^completion)(EMMessage *aMessage, EMError *error) = ^(EMMessage *aMessage, EMError *error) {
         if (!error)
         {
@@ -1267,6 +1301,11 @@ typedef enum : NSUInteger {
     [[EaseSDKHelper shareHelper] setIsShowingimagePicker:NO];
 }
 
+- (void)viewFile:(NSString *)filePath
+{
+    
+}
+
 #pragma mark - EaseMessageCellDelegate
 
 - (void)messageCellSelected:(id<IMessageModel>)model
@@ -1305,7 +1344,8 @@ typedef enum : NSUInteger {
         case EMMessageBodyTypeFile:
         {
             _scrollToBottomWhenAppear = NO;
-            [self showHint:@"Custom implementation!"];
+            [self viewFile:model.fileLocalPath name:model.fileName];
+//            [self showHint:@"Custom implementation!"];
         }
             break;
         default:
@@ -1583,7 +1623,7 @@ typedef enum : NSUInteger {
     
     // Pop image picker
     self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    self.imagePicker.mediaTypes = @[(NSString *)kUTTypeImage, (NSString *)kUTTypeVideo, (NSString *)kUTTypeMPEG2Video, (NSString *)kUTTypeAppleProtectedMPEG4Video];
+    self.imagePicker.mediaTypes = @[(NSString *)kUTTypeImage, (NSString *)kUTTypeMovie, (NSString *)kUTTypeVideo, (NSString *)kUTTypeMPEG2Video, (NSString *)kUTTypeAppleProtectedMPEG4Video];
     [self presentViewController:self.imagePicker animated:YES completion:NULL];
     
     self.isViewDidAppear = NO;

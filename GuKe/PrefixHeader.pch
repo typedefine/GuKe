@@ -173,7 +173,7 @@
 #define imgPath    @"http://files.guxians.com/"
 
 #ifdef DEBUG
-#define requestUrl @"http://113.31.119.175/bones/"
+#define requestUrl @"http://113.31.119.175/bone/"
 #else
 #define requestUrl @"https://www.guxians.com/bone/"
 #endif

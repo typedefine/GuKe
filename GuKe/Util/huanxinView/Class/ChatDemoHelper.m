@@ -138,8 +138,9 @@ static ChatDemoHelper *helper = nil;
 }
 
 - (BOOL)isFetchHistoryChange{
-    NSUserDefaults *uDefaults = [NSUserDefaults standardUserDefaults];
-    return [uDefaults boolForKey:@"isFetchHistory"];
+    return YES;
+//    NSUserDefaults *uDefaults = [NSUserDefaults standardUserDefaults];
+//    return [uDefaults boolForKey:@"isFetchHistory"];
 }
 
 #pragma mark - EMClientDelegate

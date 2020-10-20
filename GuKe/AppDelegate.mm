@@ -132,7 +132,7 @@
     NSString *apnsCertName = @"develop";
 //
     option.apnsCertName = apnsCertName;
-    [[EMClient sharedClient]initializeSDKWithOptions:option];
+    [[EMClient sharedClient] initializeSDKWithOptions:option];
 
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         //注册推送, 用于iOS8以及iOS8之后的系统
@@ -157,7 +157,7 @@
                                                  name:KNOTIFICATION_LOGINCHANGE
                                                object:nil];
     
-    [[EaseSDKHelper shareHelper]hyphenateApplication:application didFinishLaunchingWithOptions:launchOptions appkey:@"1126180111115795#mrbone" apnsCertName:apnsCertName otherConfig:@{kSDKConfigEnableConsoleLogger:[NSNumber numberWithBool:YES]}];
+    [[EaseSDKHelper shareHelper] hyphenateApplication:application didFinishLaunchingWithOptions:launchOptions appkey:@"1126180111115795#mrbone" apnsCertName:apnsCertName otherConfig:@{kSDKConfigEnableConsoleLogger:[NSNumber numberWithBool:YES]}];
     
     [ChatDemoHelper shareHelper];
     BOOL isAutoLogin = [EMClient sharedClient].options.isAutoLogin;

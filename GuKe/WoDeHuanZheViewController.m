@@ -117,7 +117,7 @@
     }
     stringOne = [ SeleUidArray componentsJoinedByString:@","];
     NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,patientpatient_list];
-    NSString *pageStr = [NSString stringWithFormat:@"%ld",page];
+    NSString *pageStr = [NSString stringWithFormat:@"%ld",(long)page];
     NSArray *keysArray = @[@"doctorid",@"sessionid",@"jointid",@"time",@"patientname",@"page"];
     NSArray *valueArray = @[UserId,sessionIding,stringOne,inTime,StrSearch,pageStr];
     NSDictionary *dic = [NSDictionary dictionaryWithObjects:valueArray forKeys:keysArray];

@@ -114,6 +114,10 @@
 		893A3DD2253762A200570FB5 /* BQMM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30975371F9DD20E00EC3F80 /* BQMM.framework */; };
 		893A3DD52537643700570FB5 /* KeyboardStateListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 893A3DD42537643700570FB5 /* KeyboardStateListener.m */; };
 		893A3DD62537707A00570FB5 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30975551F9DD20E00EC3F80 /* IJKMediaFramework.framework */; };
+		893A3DDA253A27C600570FB5 /* ICouldManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 893A3DD9253A27C600570FB5 /* ICouldManager.m */; };
+		893A3DDD253A27FB00570FB5 /* ZXFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 893A3DDC253A27FB00570FB5 /* ZXFDocument.m */; };
+		893A3DDF253B67BB00570FB5 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 893A3DDE253B67BB00570FB5 /* CloudKit.framework */; };
+		893A3DE3253B762700570FB5 /* ViewFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893A3DE2253B762700570FB5 /* ViewFileController.m */; };
 		898F1ADC24D46FD400397505 /* PatientInfoManageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1ADB24D46FD400397505 /* PatientInfoManageController.m */; };
 		898F1ADF24D6C77200397505 /* PatientInfoManagePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1ADE24D6C77200397505 /* PatientInfoManagePageModel.m */; };
 		898F1AE224D6DBF100397505 /* PatientInfoManageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1AE124D6DBF100397505 /* PatientInfoManageHeaderView.m */; };
@@ -1071,6 +1075,13 @@
 		893A3DC62537591E00570FB5 /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
 		893A3DD32537643700570FB5 /* KeyboardStateListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardStateListener.h; sourceTree = "<group>"; };
 		893A3DD42537643700570FB5 /* KeyboardStateListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardStateListener.m; sourceTree = "<group>"; };
+		893A3DD8253A27C600570FB5 /* ICouldManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ICouldManager.h; sourceTree = "<group>"; };
+		893A3DD9253A27C600570FB5 /* ICouldManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ICouldManager.m; sourceTree = "<group>"; };
+		893A3DDB253A27FB00570FB5 /* ZXFDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXFDocument.h; sourceTree = "<group>"; };
+		893A3DDC253A27FB00570FB5 /* ZXFDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXFDocument.m; sourceTree = "<group>"; };
+		893A3DDE253B67BB00570FB5 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		893A3DE1253B762700570FB5 /* ViewFileController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewFileController.h; sourceTree = "<group>"; };
+		893A3DE2253B762700570FB5 /* ViewFileController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewFileController.m; sourceTree = "<group>"; };
 		898F1ADA24D46FD400397505 /* PatientInfoManageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientInfoManageController.h; sourceTree = "<group>"; };
 		898F1ADB24D46FD400397505 /* PatientInfoManageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientInfoManageController.m; sourceTree = "<group>"; };
 		898F1ADD24D6C77200397505 /* PatientInfoManagePageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientInfoManagePageModel.h; sourceTree = "<group>"; };
@@ -2386,6 +2397,7 @@
 				E308BB401F67783000399B76 /* CoreVideo.framework in Frameworks */,
 				E3669D601FA9572C0011DCF1 /* libSocialDingDing.a in Frameworks */,
 				E308B4AD1F6764CC00399B76 /* AudioToolbox.framework in Frameworks */,
+				893A3DDF253B67BB00570FB5 /* CloudKit.framework in Frameworks */,
 				9A53896420084DC40084E772 /* Bolts.framework in Frameworks */,
 				E308BB441F67787300399B76 /* libbz2.1.0.tbd in Frameworks */,
 				E30976E61F9DD20F00EC3F80 /* MOBFoundation.framework in Frameworks */,
@@ -2667,6 +2679,7 @@
 		89203DC524CDA8B400D4D55E /* message */ = {
 			isa = PBXGroup;
 			children = (
+				893A3DE0253B75E500570FB5 /* IM */,
 				89E52EE124F2B1320052403B /* chat */,
 				7F9A7F0124EE297900E5CDFA /* controller */,
 				7F9A7F0024EE297200E5CDFA /* model */,
@@ -2795,6 +2808,26 @@
 				E30976371F9DD20E00EC3F80 /* Custom */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		893A3DD7253A276900570FB5 /* iCloudFileManager */ = {
+			isa = PBXGroup;
+			children = (
+				893A3DD8253A27C600570FB5 /* ICouldManager.h */,
+				893A3DD9253A27C600570FB5 /* ICouldManager.m */,
+				893A3DDB253A27FB00570FB5 /* ZXFDocument.h */,
+				893A3DDC253A27FB00570FB5 /* ZXFDocument.m */,
+			);
+			path = iCloudFileManager;
+			sourceTree = "<group>";
+		};
+		893A3DE0253B75E500570FB5 /* IM */ = {
+			isa = PBXGroup;
+			children = (
+				893A3DE1253B762700570FB5 /* ViewFileController.h */,
+				893A3DE2253B762700570FB5 /* ViewFileController.m */,
+			);
+			path = IM;
 			sourceTree = "<group>";
 		};
 		898F1AD924D46F5D00397505 /* patientRecord */ = {
@@ -3349,6 +3382,7 @@
 		9A15E9C11F3BE48E008890F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				893A3DDE253B67BB00570FB5 /* CloudKit.framework */,
 				1FBA7123211D76A5001D1F71 /* CoreMotion.framework */,
 				1FBA7121211D7670001D1F71 /* CoreText.framework */,
 				1FBA711F211D7664001D1F71 /* QuartzCore.framework */,
@@ -4781,6 +4815,7 @@
 		E30974F81F9DD20E00EC3F80 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				893A3DD7253A276900570FB5 /* iCloudFileManager */,
 				893A3DD32537643700570FB5 /* KeyboardStateListener.h */,
 				893A3DD42537643700570FB5 /* KeyboardStateListener.m */,
 				89162EAC24E4389800698B84 /* Tools */,
@@ -6472,6 +6507,7 @@
 				89162EAA24E4293700698B84 /* PatientInfoManageModel.m in Sources */,
 				9ACE974820184F050028FC9D /* ZJNDepartmentView.m in Sources */,
 				E3BC82161F7D17D300F0F38F /* MedicalContentTableViewCell.m in Sources */,
+				893A3DDD253A27FB00570FB5 /* ZXFDocument.m in Sources */,
 				9A949BE12010427600AE1A60 /* WYYAddYiShengDetailViewController.m in Sources */,
 				9A08A9031F302B2E00AF29EB /* MJRefreshComponent.m in Sources */,
 				9AF6D9EA1F5CF16800C52F9B /* SfPingfenViewController.m in Sources */,
@@ -6643,6 +6679,7 @@
 				E30976D91F9DD20F00EC3F80 /* PKShortVideoSession.m in Sources */,
 				9A53891020084DC40084E772 /* GroupListViewController.m in Sources */,
 				E3F4B0F41F7C814800CB16ED /* ZJNChoosePicturesTableViewCell.m in Sources */,
+				893A3DDA253A27C600570FB5 /* ICouldManager.m in Sources */,
 				E3A105C91FA18A6500EBEF1F /* TZGifPhotoPreviewController.m in Sources */,
 				E30976761F9DD20F00EC3F80 /* IQUITextFieldView+Additions.m in Sources */,
 				E3DF94161F7A22CA001E1963 /* PersonInfoTableViewCell.m in Sources */,
@@ -6673,6 +6710,7 @@
 				89162EB824ED761500698B84 /* PatientMessageCell.m in Sources */,
 				893A3DB8253757C400570FB5 /* UIImageView+CornerRadius.m in Sources */,
 				9A3CB5031F4FC2A1001F0252 /* ShouShuListViewController.m in Sources */,
+				893A3DE3253B762700570FB5 /* ViewFileController.m in Sources */,
 				9A77987B200DC7EA00EFCF67 /* WYYGroupOneTableViewCell.m in Sources */,
 				E3D450831FCBDCA10032E5D1 /* ZJNSignUpMeetingIntroduceTableViewCell.m in Sources */,
 				9A53893820084DC40084E772 /* BaseTableViewCell.m in Sources */,

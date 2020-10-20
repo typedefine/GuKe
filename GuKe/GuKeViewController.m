@@ -66,8 +66,8 @@ static NSString *kGroupName = @"GroupName";
     msgController.chatListVC = _chatListVC;
     [self addChildViewController:msgController andTitle:@"消息" andImageName:@"icon_message" andSelectedImage:@"icon_message_selected"];
     
-    WYYMainGroupViewController *groupChatVC = [[WYYMainGroupViewController alloc] init];
-    [self addChildViewController:groupChatVC andTitle:@"群聊" andImageName:@"icon_group" andSelectedImage:@"icon_group_selected"];
+//    WYYMainGroupViewController *groupChatVC = [[WYYMainGroupViewController alloc] init];
+//    [self addChildViewController:groupChatVC andTitle:@"群聊" andImageName:@"icon_group" andSelectedImage:@"icon_group_selected"];
     
     //资讯
     ZJNInfoViewController *class = [[ZJNInfoViewController alloc]init];

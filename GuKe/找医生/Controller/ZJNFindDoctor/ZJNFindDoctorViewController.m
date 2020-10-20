@@ -164,7 +164,6 @@
 -(void)threeButtonClick:(UIButton *)button
 {
     
-    
     if (button.selected) {
         recordButton.selected = NO;
     }else{
@@ -200,11 +199,21 @@
 }
 //
 -(void)searchButtonClick{
-    WYYZhaoYishengTwoViewController *viewC = [[WYYZhaoYishengTwoViewController alloc]init];
+    WYYZhaoYishengTwoViewController *viewC = [[WYYZhaoYishengTwoViewController alloc] init];
     viewC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:viewC animated:YES];
 }
-#pragma mark--ZJNProvincesViewDelegate
+#pragma mark -ZJNProvincesViewDelegate
+
+- (void)provincesViewCanceled
+{
+    UIButton *button = (UIButton *)[self.view viewWithTag:10];
+    button.selected = NO;
+//    if (recordButton == button) {
+//        recordButton.selected = NO;
+//    }
+}
+
 -(void)provincesViewSearchDoctorWithArea:(NSString *)area hospitalArr:(NSArray *)hospArr{
     areaStr = area;
     
@@ -214,9 +223,17 @@
     [self threeButtonClick:button];
     UIButton *buttsons = (UIButton *)[self.view viewWithTag:11];
     [self threeButtonClick:buttsons];
- 
 }
+
+
 #pragma mark--ZJNHospitalsViewDelegate
+
+- (void)zjnHospitalsViewCanceled
+{
+    UIButton *buttson = (UIButton *)[self.view viewWithTag:11];
+    buttson.selected = NO;
+}
+
 -(void)zjnHospitalsViewSelectedHospitalWithHospitalName:(NSString *)hospitalName departmentArr:(NSArray *)deptArr{
     [self.departmentView reloadDataWithDeptArray:deptArr];
 
@@ -230,6 +247,13 @@
 
 }
 #pragma mark--ZJNDepartmentViewDelegate
+
+- (void)zjnDeptViewCanceled
+{
+    UIButton *buttson = (UIButton *)[self.view viewWithTag:12];
+    buttson.selected = NO;
+}
+
 -(void)zjnDeptViewSelectedDepartmentWithID:(NSString *)deptID{
     UIButton *button = (UIButton *)[self.view viewWithTag:12];
     [self threeButtonClick:button];
@@ -239,7 +263,7 @@
     [self getDataFromServiceWithDeptId:deptID];
 }
 -(void)getDataFromServiceWithDeptId:(NSString *)deptId{
-    NSString *pageStr = [NSString stringWithFormat:@"%ld",page];
+    NSString *pageStr = [NSString stringWithFormat:@"%ld",(long)page];
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",requestUrl,userpatienthuanxindoclist];
     NSArray *keysArr = @[@"sessionId",@"doctorName",@"deptId",@"page"];
     NSArray *valuesArr = @[sessionIding,hospStr,deptId,pageStr];
@@ -272,6 +296,10 @@
         [self hideHud];
     }];
 }
+
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
