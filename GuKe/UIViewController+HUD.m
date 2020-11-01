@@ -111,7 +111,6 @@ static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
 
 - (void)hideHud{
     [[self HUD] hideAnimated:YES];
-    
 }
 
 - (void)ShowNoDataViewWithStr:(NSString *) ShowStr yOffset:(float)yOffset{

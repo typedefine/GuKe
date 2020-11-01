@@ -10,7 +10,8 @@
 #import "ZJNSelectHospODeptTableViewCell.h"
 
 @interface ZJNDepartmentView()<UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic ,strong)NSArray *deptArr;
+@property (nonatomic, copy) NSString *hospitalId;
+@property (nonatomic ,strong)NSMutableArray *deptArr;
 @property (nonatomic ,strong)UITableView *tableView;
 
 @end
@@ -23,10 +24,33 @@
     }
     return self;
 }
--(void)reloadDataWithDeptArray:(NSArray *)deptArr{
-    _deptArr = deptArr;
+-(void)loadDataWithHospitalId:(NSNumber *)hospitalId completion:(void (^)())completion
+{
+    if (!hospitalId.isValidObjectValue || (self.hospitalId.isValidObjectValue && [self.hospitalId intValue] == [hospitalId intValue])) {
+        completion();
+        return;
+    }
+    self.hospitalId = hospitalId.stringValue;
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",requestUrl,url_hospital_department];
+    NSDictionary *dic = @{@"sessionId":sessionIding, @"hospitalId":self.hospitalId};
+   
+    [ZJNRequestManager postWithUrlString:urlStr parameters:dic success:^(id data) {
+        NSLog(@"%@",data);
+        completion();
+        NSString *retcode = [NSString stringWithFormat:@"%@",data[@"retcode"]];
+        if ([retcode isEqualToString:@"0000"] || [retcode isEqualToString:@"0"]) {
+            self.deptArr = [NSMutableArray arrayWithArray:data[@"data"]];
+            [self.tableView reloadData];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+        completion();
+    }];
+    
     [self.tableView reloadData];
 }
+
+
 -(UITableView *)tableView{
     if (!_tableView) {
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 360) style:UITableViewStylePlain];

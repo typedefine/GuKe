@@ -9,28 +9,53 @@
 #import "ZJNHospitalsView.h"
 #import "ZJNSelectHospODeptTableViewCell.h"
 @interface ZJNHospitalsView()<UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic ,strong)NSArray *hospArr;
+@property (nonatomic, copy) NSString *areaCode;
+@property (nonatomic, strong) NSMutableArray *hospArr;
 @property (nonatomic ,strong)UITableView *tableView;
 @end
 @implementation ZJNHospitalsView
 -(id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
+//        self.hospArr = [NSMutableArray array];
         self.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.2];
         [self addSubview:self.tableView];
     }
     return self;
 }
--(void)reloadDataWithHospitalArray:(NSArray *)hospArr{
-    _hospArr = hospArr;
-    [self.tableView reloadData];
+
+-(void)loadDataWithAreaCode:(NSNumber *)code completion:(void (^)())completion
+{
+    if (!code.isValidObjectValue || (self.areaCode.isValidObjectValue && [self.areaCode intValue] == [code intValue])) {
+        completion();
+        return;
+    }
+    self.areaCode = code.stringValue;
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",requestUrl,url_region_hospital];
+    NSDictionary *dic = @{@"sessionId":sessionIding, @"countyId":self.areaCode};
+   
+    [ZJNRequestManager postWithUrlString:urlStr parameters:dic success:^(id data) {
+        NSLog(@"%@",data);
+        completion();
+        NSString *retcode = [NSString stringWithFormat:@"%@",data[@"retcode"]];
+        if ([retcode isEqualToString:@"0000"]) {
+            self.hospArr = [NSMutableArray arrayWithArray:data[@"data"]];
+            [self.tableView reloadData];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+        completion();
+    }];
 }
+
+
 -(UITableView *)tableView{
     if (!_tableView) {
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 360) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.showsVerticalScrollIndicator = NO;
+        [_tableView registerClass:[ZJNSelectHospODeptTableViewCell class] forCellReuseIdentifier:NSStringFromClass([ZJNSelectHospODeptTableViewCell class])];
         if ([_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
             [_tableView setSeparatorInset:UIEdgeInsetsZero];
         }
@@ -71,20 +96,20 @@
     return nil;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellid = @"cellid";
-    ZJNSelectHospODeptTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellid];
-    if (!cell) {
-        cell = [[ZJNSelectHospODeptTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
-    }
+//    static NSString *cellid = @"cellid";
+    ZJNSelectHospODeptTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ZJNSelectHospODeptTableViewCell class])];
+//    if (!cell) {
+//        cell = [[ZJNSelectHospODeptTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
+//    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     NSDictionary *dic = _hospArr[indexPath.row];
-    cell.contentLabel.text = dic[@"hospName"];
+    cell.contentLabel.text = dic[@"hospitalName"];
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSDictionary *dic = _hospArr[indexPath.row];
-    if (self.delegate && [self.delegate respondsToSelector:@selector(zjnHospitalsViewSelectedHospitalWithHospitalName:departmentArr:)]) {
-        [self.delegate zjnHospitalsViewSelectedHospitalWithHospitalName:dic[@"hospName"] departmentArr:dic[@"dept"]];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(zjnHospitalsViewSelectedHospitalWithHospitalName:hospitalId:)]) {
+        [self.delegate zjnHospitalsViewSelectedHospitalWithHospitalName:dic[@"hospitalName"] hospitalId:dic[@"hospitalId"]];
     }
 }
 

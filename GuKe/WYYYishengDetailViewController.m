@@ -211,11 +211,11 @@
                 }
             }];
             zhuanchangArr = [zcList copy];
-            if (zhuanchangArr && zhuanchangArr.count > 0) {
+//            if (zhuanchangArr && zhuanchangArr.count > 0) {
                 detailTableview.delegate = self;
                 detailTableview.dataSource = self;
                 [detailTableview reloadData];
-            }
+//            }
         }
         NSLog(@"医生详情%@",data);
     } failure:^(NSError *error) {

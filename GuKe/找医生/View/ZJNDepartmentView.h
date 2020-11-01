@@ -14,5 +14,5 @@
 @end
 @interface ZJNDepartmentView : UIView
 @property (nonatomic ,weak)id<ZJNDepartmentViewDelegate>delegate;
--(void)reloadDataWithDeptArray:(NSArray *)deptArr;
+-(void)loadDataWithHospitalId:(NSNumber *)hospitalId completion:(void (^)())completion;
 @end

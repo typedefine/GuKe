@@ -51,8 +51,8 @@
     [self.view addSubview:self.hospitalsView];
     [self.view addSubview:self.departmentView];
     
-    [self getDataFromServiceWithDeptId:deptStr];
-    
+//    [self getDataFromServiceWithDeptId:deptStr];
+    [self.tableView.mj_header beginRefreshing];
     // Do any additional setup after loading the view.
 }
 
@@ -83,15 +83,16 @@
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 40, ScreenWidth, ScreenHeight-NavBarHeight-TabbarAddHeight-40) style:UITableViewStylePlain];
         _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             page = 1;
-            [self getDataFromServiceWithDeptId:deptStr];
+            [self getDataFromService];
         }];
         _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
             page += 1;
-            [self getDataFromServiceWithDeptId:deptStr];
+            [self getDataFromService];
         }];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.showsVerticalScrollIndicator = NO;
+        _tableView.alwaysBounceVertical = YES;
     }
     return _tableView;
 }
@@ -214,15 +215,18 @@
 //    }
 }
 
--(void)provincesViewSearchDoctorWithArea:(NSString *)area hospitalArr:(NSArray *)hospArr{
+-(void)provincesViewSearchDoctorWithArea:(NSString *)area code:(NSString *)code{
     areaStr = area;
-    
     NSLog(@"%@",area);
-    [self.hospitalsView reloadDataWithHospitalArray:hospArr];
     UIButton *button = (UIButton *)[self.view viewWithTag:10];
     [self threeButtonClick:button];
     UIButton *buttsons = (UIButton *)[self.view viewWithTag:11];
     [self threeButtonClick:buttsons];
+    [self showHudInView:self.view hint:nil];
+    __weak typeof(self) weakSelf = self;
+    [self.hospitalsView loadDataWithAreaCode:code completion:^{
+        [weakSelf hideHud];
+    }];
 }
 
 
@@ -234,16 +238,21 @@
     buttson.selected = NO;
 }
 
--(void)zjnHospitalsViewSelectedHospitalWithHospitalName:(NSString *)hospitalName departmentArr:(NSArray *)deptArr{
-    [self.departmentView reloadDataWithDeptArray:deptArr];
+-(void)zjnHospitalsViewSelectedHospitalWithHospitalName:(NSString *)hospitalName hospitalId:(NSNumber *)hospitalId
+{
+    [self showHudInView:self.view hint:nil];
+    __weak typeof(self) weakSelf = self;
+    [self.departmentView loadDataWithHospitalId:hospitalId completion:^{
+        [weakSelf hideHud];
+    }];
 
     UIButton *button = (UIButton *)[self.view viewWithTag:11];
     [self threeButtonClick:button];
     hospStr = hospitalName;
     NSLog(@"%@",hospitalName);
-   
+    deptStr = @"";
     page = 1;
-    [self getDataFromServiceWithDeptId:@""];
+    [self.tableView.mj_header beginRefreshing];
 
 }
 #pragma mark--ZJNDepartmentViewDelegate
@@ -260,15 +269,16 @@
     NSLog(@"%@",deptID);
     deptStr = deptID;
     page = 1;
-    [self getDataFromServiceWithDeptId:deptID];
+    [self.tableView.mj_header beginRefreshing];
 }
--(void)getDataFromServiceWithDeptId:(NSString *)deptId{
+-(void)getDataFromService
+{
     NSString *pageStr = [NSString stringWithFormat:@"%ld",(long)page];
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",requestUrl,userpatienthuanxindoclist];
     NSArray *keysArr = @[@"sessionId",@"doctorName",@"deptId",@"page"];
-    NSArray *valuesArr = @[sessionIding,hospStr,deptId,pageStr];
+    NSArray *valuesArr = @[sessionIding,hospStr,deptStr,pageStr];
     NSDictionary *dic = [NSDictionary dictionaryWithObjects:valuesArr forKeys:keysArr];
-    [self showHudInView:self.view hint:nil];
+//    [self showHudInView:self.view hint:nil];
     [ZJNRequestManager postWithUrlString:urlStr parameters:dic success:^(id data) {
         NSLog(@"%@",data);
         NSString *retcode = [NSString stringWithFormat:@"%@",data[@"retcode"]];
@@ -293,7 +303,7 @@
         [self showHint:@"请求服务器失败"];
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
-        [self hideHud];
+//        [self hideHud];
     }];
 }
 

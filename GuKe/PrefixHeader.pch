@@ -403,7 +403,14 @@
 /**省市区医院科室五级联动*/
 #define userpatienthuanxinlist  @"/app/userpatienthuanxin/list.json"
 
+/**获取省市区*/
+ #define url_provice_city_county @"/app/userpatienthuanxin/listarea.json"
 
+/**根据区ID获取医院*/
+ #define url_region_hospital @"/app/userpatienthuanxin/hospbycounty.json"
+
+/**根据医院id获取科室*/
+ #define url_hospital_department @"/app/department/list.json"
 
 
 /**医生添加医生申请*/

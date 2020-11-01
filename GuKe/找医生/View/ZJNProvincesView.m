@@ -39,29 +39,36 @@
         proviceStr   = @"";
         cityStr      = @"";
         areaStr      = @"";
-        
-        NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
-        NSString *filePath = [path stringByAppendingPathComponent:@"Provinces.plist"];
-        NSData *provincesData = [NSData dataWithContentsOfFile:filePath];
-        NSDictionary *provincesDic = [NSKeyedUnarchiver unarchiveObjectWithData:provincesData];
-        if (provincesDic) {
-            NSArray *proviceArr = provincesDic[@"data"];
-            [_provinceArr addObjectsFromArray:proviceArr];
-            NSArray *cityArr = proviceArr[0][@"city"];
-            [_cityArr addObjectsFromArray:cityArr];
-            NSArray *areaArr = cityArr[0][@"county"];
-            [_areaArr addObjectsFromArray:areaArr];
-        }
-        
         [self addSubview:self.provinceTableView];
         [self addSubview:self.cityTableView];
         [self addSubview:self.areaTableView];
-//        [self getDataFromService];
+        [self loadData];
     }
     return self;
 }
+
+
+- (void)loadData
+{
+    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+    NSString *filePath = [path stringByAppendingPathComponent:@"Provinces.plist"];
+    NSData *provincesData = [NSData dataWithContentsOfFile:filePath];
+    NSDictionary *provincesDic = [NSKeyedUnarchiver unarchiveObjectWithData:provincesData];
+    if (provincesDic) {
+        NSArray *proviceArr = provincesDic[@"data"];
+        [_provinceArr addObjectsFromArray:proviceArr];
+        NSArray *cityArr = proviceArr[0][@"city"];
+        [_cityArr addObjectsFromArray:cityArr];
+        NSArray *areaArr = cityArr[0][@"county"];
+        [_areaArr addObjectsFromArray:areaArr];
+    }else{
+        [self getDataFromService];
+    }
+}
+
+
 -(void)getDataFromService{
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@",requestUrl,userpatienthuanxinlist];
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",requestUrl,url_provice_city_county];//userpatienthuanxinlist
     NSDictionary *dic = @{@"sessionId":sessionIding};
     [ZJNRequestManager postWithUrlString:urlStr parameters:dic success:^(id data) {
         NSLog(@"%@",data);
@@ -99,6 +106,8 @@
         NSLog(@"%@",error);
     }];
 }
+
+
 -(void)localProvincesInfoWithData:(NSData *)data{
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
     NSString *filePath = [path stringByAppendingPathComponent:@"Provinces.plist"];
@@ -263,8 +272,8 @@
     }else{
         NSDictionary *dic = _areaArr[indexPath.row];
         areaStr = dic[@"countyName"];
-        if (self.delegate && [self.delegate respondsToSelector:@selector(provincesViewSearchDoctorWithArea:hospitalArr:)]) {
-            [self.delegate provincesViewSearchDoctorWithArea:areaStr hospitalArr:dic[@"hosp"]];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(provincesViewSearchDoctorWithArea:code:)]) {
+            [self.delegate provincesViewSearchDoctorWithArea:areaStr code:dic[@"countyId"]];
         }
     }
 }
@@ -276,12 +285,12 @@
         if (self.delegate && [self.delegate respondsToSelector:@selector(provincesViewCanceled)]) {
             [self.delegate provincesViewCanceled];
         }
-        if (self.hidden) {
-            return [super hitTest:point withEvent:event];
-        }else{
+//        if (self.hidden) {
+//            return [super hitTest:point withEvent:event];
+//        }else{
             self.hidden = YES;
             return _provinceTableView;
-        }
+//        }
     }
     return [super hitTest:point withEvent:event];
 }

@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 @protocol ZJNHospitalsViewDelegate<NSObject>
--(void)zjnHospitalsViewSelectedHospitalWithHospitalName:(NSString *)hospitalName departmentArr:(NSArray *)deptArr;
+-(void)zjnHospitalsViewSelectedHospitalWithHospitalName:(NSString *)hospitalName hospitalId:(NSNumber *)hospitalId;
 -(void)zjnHospitalsViewCanceled;
 @end
 @interface ZJNHospitalsView : UIView
 @property (nonatomic ,weak)id<ZJNHospitalsViewDelegate>delegate;
--(void)reloadDataWithHospitalArray:(NSArray *)hospArr;
+-(void)loadDataWithAreaCode:(NSString *)code completion:(void (^)())completion;
 @end
