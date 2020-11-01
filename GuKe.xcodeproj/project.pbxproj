@@ -125,6 +125,7 @@
 		898F1AE824D6DC9600397505 /* PatientInfoManageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1AE724D6DC9600397505 /* PatientInfoManageCell.m */; };
 		898F1AEB24D6DCCD00397505 /* PatientBookInfoStateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1AEA24D6DCCD00397505 /* PatientBookInfoStateCell.m */; };
 		89B2B9A324F52C6A0062387D /* MsgChatInputBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B2B9A224F52C6A0062387D /* MsgChatInputBar.m */; };
+		89D3611F254EFA7800CAD02C /* WorkGroupsInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D3611E254EFA7800CAD02C /* WorkGroupsInfoController.m */; };
 		89E52ED724F267E30052403B /* PatientBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52ED624F267E30052403B /* PatientBookController.m */; };
 		89E52EDA24F26ACC0052403B /* PatientBookPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52ED924F26ACC0052403B /* PatientBookPageModel.m */; };
 		89E52EDD24F26B2F0052403B /* PatientBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52EDC24F26B2F0052403B /* PatientBookCell.m */; };
@@ -1096,6 +1097,8 @@
 		898F1AEA24D6DCCD00397505 /* PatientBookInfoStateCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientBookInfoStateCell.m; sourceTree = "<group>"; };
 		89B2B9A124F52C6A0062387D /* MsgChatInputBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MsgChatInputBar.h; sourceTree = "<group>"; };
 		89B2B9A224F52C6A0062387D /* MsgChatInputBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MsgChatInputBar.m; sourceTree = "<group>"; };
+		89D3611D254EFA7800CAD02C /* WorkGroupsInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkGroupsInfoController.h; sourceTree = "<group>"; };
+		89D3611E254EFA7800CAD02C /* WorkGroupsInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkGroupsInfoController.m; sourceTree = "<group>"; };
 		89E52ED524F267E30052403B /* PatientBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookController.h; sourceTree = "<group>"; };
 		89E52ED624F267E30052403B /* PatientBookController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientBookController.m; sourceTree = "<group>"; };
 		89E52ED824F26ACC0052403B /* PatientBookPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookPageModel.h; sourceTree = "<group>"; };
@@ -2679,8 +2682,8 @@
 		89203DC524CDA8B400D4D55E /* message */ = {
 			isa = PBXGroup;
 			children = (
-				893A3DE0253B75E500570FB5 /* IM */,
-				89E52EE124F2B1320052403B /* chat */,
+				9A538977200854A10084E772 /* im */,
+				89E52EE124F2B1320052403B /* msg */,
 				7F9A7F0124EE297900E5CDFA /* controller */,
 				7F9A7F0024EE297200E5CDFA /* model */,
 				7F9A7EFF24EE296800E5CDFA /* view */,
@@ -2821,15 +2824,6 @@
 			path = iCloudFileManager;
 			sourceTree = "<group>";
 		};
-		893A3DE0253B75E500570FB5 /* IM */ = {
-			isa = PBXGroup;
-			children = (
-				893A3DE1253B762700570FB5 /* ViewFileController.h */,
-				893A3DE2253B762700570FB5 /* ViewFileController.m */,
-			);
-			path = IM;
-			sourceTree = "<group>";
-		};
 		898F1AD924D46F5D00397505 /* patientRecord */ = {
 			isa = PBXGroup;
 			children = (
@@ -2840,7 +2834,7 @@
 			path = patientRecord;
 			sourceTree = "<group>";
 		};
-		89E52EE124F2B1320052403B /* chat */ = {
+		89E52EE124F2B1320052403B /* msg */ = {
 			isa = PBXGroup;
 			children = (
 				89162EB324ED70C300698B84 /* PatientMsgChatController.h */,
@@ -2858,7 +2852,7 @@
 				89B2B9A124F52C6A0062387D /* MsgChatInputBar.h */,
 				89B2B9A224F52C6A0062387D /* MsgChatInputBar.m */,
 			);
-			path = chat;
+			path = msg;
 			sourceTree = "<group>";
 		};
 		9A08A8571F300F8E00AF29EB = {
@@ -2931,7 +2925,6 @@
 			children = (
 				9ACE972D20184F040028FC9D /* 找医生 */,
 				9A756CA32011E0B5005FE5FB /* 热门视频WYYRenMenShiPin */,
-				9A538977200854A10084E772 /* YishengChat */,
 				9A08A8A21F30119800AF29EB /* mainmodel */,
 				9A08A8A11F30119100AF29EB /* mainview */,
 				9A08A89B1F30114300AF29EB /* maincontroller */,
@@ -4404,9 +4397,13 @@
 			path = "zh-Hans.lproj";
 			sourceTree = "<group>";
 		};
-		9A538977200854A10084E772 /* YishengChat */ = {
+		9A538977200854A10084E772 /* im */ = {
 			isa = PBXGroup;
 			children = (
+				893A3DE1253B762700570FB5 /* ViewFileController.h */,
+				893A3DE2253B762700570FB5 /* ViewFileController.m */,
+				89D3611D254EFA7800CAD02C /* WorkGroupsInfoController.h */,
+				89D3611E254EFA7800CAD02C /* WorkGroupsInfoController.m */,
 				9A8867232011882900F96753 /* YshengchatModel */,
 				9A53897B20085D150084E772 /* Yshengchatview */,
 				9A538978200854C40084E772 /* YshengChatViewController.h */,
@@ -4430,7 +4427,8 @@
 				9A54BB64200ED73300CF0844 /* WYYYishengDetailViewController.h */,
 				9A54BB65200ED73300CF0844 /* WYYYishengDetailViewController.m */,
 			);
-			name = YishengChat;
+			name = im;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		9A53897B20085D150084E772 /* Yshengchatview */ = {
@@ -6491,6 +6489,7 @@
 				E30976A61F9DD20F00EC3F80 /* ViewController+MASAdditions.m in Sources */,
 				9A53876420084D8A0084E772 /* MWGridViewController.m in Sources */,
 				892555B124E423AD002F7B5B /* PatientBookInfoStateModel.m in Sources */,
+				89D3611F254EFA7800CAD02C /* WorkGroupsInfoController.m in Sources */,
 				9A1E386F1F32C2D60063FC2A /* TongYongSettingViewController.m in Sources */,
 				9A5387A120084D8B0084E772 /* EaseCustomMessageCell.m in Sources */,
 				9A42C4D31F53B8D8008D41C4 /* SuiFangJiLuTableViewCell.m in Sources */,
