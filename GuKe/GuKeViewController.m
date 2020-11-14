@@ -23,6 +23,7 @@
 #import "MessageController.h"
 
 #import "WYYMainGroupViewController.h"   //我的群组
+#import "WorkGroupsInfoController.h"
 
 //两次提示的默认间隔
 static const CGFloat kDefaultPlaySoundInterval = 3.0;
@@ -66,8 +67,9 @@ static NSString *kGroupName = @"GroupName";
     msgController.chatListVC = _chatListVC;
     [self addChildViewController:msgController andTitle:@"消息" andImageName:@"icon_message" andSelectedImage:@"icon_message_selected"];
     
-    WYYMainGroupViewController *groupChatVC = [[WYYMainGroupViewController alloc] init];
-    [self addChildViewController:groupChatVC andTitle:@"群聊" andImageName:@"icon_group" andSelectedImage:@"icon_group_selected"];
+//    WYYMainGroupViewController *groupChatVC = [[WYYMainGroupViewController alloc] init];
+    WorkGroupsInfoController *groupInfoVC = [[WorkGroupsInfoController alloc] init];
+    [self addChildViewController:groupInfoVC andTitle:@"工作站" andImageName:@"icon_group" andSelectedImage:@"icon_group_selected"];
     
     //资讯
     ZJNInfoViewController *class = [[ZJNInfoViewController alloc]init];
