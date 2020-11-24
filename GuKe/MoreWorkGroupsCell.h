@@ -1,8 +1,8 @@
 //
-//  WorkGroupsCell.h
+//  MoreWorkGroupsCell.h
 //  GuKe
 //
-//  Created by yb on 2020/11/2.
+//  Created by yb on 2020/11/15.
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WorkGroupsCell : UITableViewCell
+@interface MoreWorkGroupsCell : UICollectionViewCell
 
 @end
 

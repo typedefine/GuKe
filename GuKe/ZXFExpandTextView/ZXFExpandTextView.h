@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^ ZXFExpandTextViewBlock)(void);
+typedef void (^ ZXFExpandTextViewBlock)(BOOL expand);
 
 @class ZXFExpandTextViewModel;
 

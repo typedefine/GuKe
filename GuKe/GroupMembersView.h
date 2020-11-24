@@ -1,20 +1,20 @@
 //
-//  WorkSpaceTitleView.h
+//  GroupMemberView.h
 //  GuKe
 //
-//  Created by yb on 2020/11/2.
+//  Created by yb on 2020/11/22.
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+@class UserInfoModel;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WorkSpaceTitleView : UITableViewHeaderFooterView
+@interface GroupMembersView : UIView
 
 @property (nonatomic, copy) NSString *title;
 
-//- (void)setUp;
 
 @end
 

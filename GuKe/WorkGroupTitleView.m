@@ -10,22 +10,52 @@
 
 @interface WorkGroupTitleView ()
 
+@property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIButton *addWorkSpaceBtn;
 
 @end
 
 @implementation WorkGroupTitleView
 
+- (instancetype)init
+{
+    if (self = [super init]) {
+        [self setUp];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    if (self = [super initWithCoder:coder]) {
+        [self setUp];
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    if (self = [super initWithFrame:frame]) {
+        [self setUp];
+    }
+    return self;
+}
 
 - (void)setUp
 {
-    [super setUp];
+    [self addSubview:self.titleLabel];
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self);
+        make.left.equalTo(self).with.offset(20);
+    }];
     
     [self addSubview:self.addWorkSpaceBtn];
     [self.addWorkSpaceBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
         make.right.equalTo(self).with.offset(-20);
     }];
+    self.title = @"工作室";
+    self.subTitle = @"申请开通工作室";
     [self.addWorkSpaceBtn addTarget:self action:@selector(addWorkSpace) forControlEvents:UIControlEventTouchUpInside];
 }
 
@@ -34,6 +64,25 @@
     if (self.action) {
         self.action();
     }
+}
+
+- (void)setTitle:(NSString *)title
+{
+    _title = title;
+    
+    if (title != nil) {
+        self.titleLabel.text = title;
+    }
+}
+
+- (UILabel *)titleLabel
+{
+    if (!_titleLabel) {
+        _titleLabel = [[UILabel alloc] init];
+        _titleLabel.font = [UIFont systemFontOfSize:17 weight:UIFontWeightMedium];
+        _titleLabel.textColor = [UIColor colorWithHex:0x3C3E3D];
+    }
+    return _titleLabel;
 }
 
 - (void)setSubTitle:(NSString *)subTitle

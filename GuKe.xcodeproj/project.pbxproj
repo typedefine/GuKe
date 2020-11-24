@@ -74,6 +74,11 @@
 		7F9A7EFB24EE1FB000E5CDFA /* PatientMessageCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9A7EFA24EE1FB000E5CDFA /* PatientMessageCellModel.m */; };
 		7F9A7EFE24EE252200E5CDFA /* PatientMessagePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9A7EFD24EE252200E5CDFA /* PatientMessagePageModel.m */; };
 		7F9A7F0424EE2A1A00E5CDFA /* PatientMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9A7F0324EE2A1A00E5CDFA /* PatientMessageModel.m */; };
+		89076ACC2561281700DD24D6 /* WorkGroupItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89076ACB2561281700DD24D6 /* WorkGroupItemCell.m */; };
+		89076AF82561656200DD24D6 /* UIView+Corner.m in Sources */ = {isa = PBXBuildFile; fileRef = 89076AF72561656200DD24D6 /* UIView+Corner.m */; };
+		89076AFB2561702100DD24D6 /* UIImageView+Corner.m in Sources */ = {isa = PBXBuildFile; fileRef = 89076AFA2561702100DD24D6 /* UIImageView+Corner.m */; };
+		89076AFE2561772000DD24D6 /* MoreWorkGroupsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89076AFD2561772000DD24D6 /* MoreWorkGroupsCell.m */; };
+		89076B01256185D500DD24D6 /* WorkGroupItemCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89076B00256185D500DD24D6 /* WorkGroupItemCellModel.m */; };
 		89162EAA24E4293700698B84 /* PatientInfoManageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EA924E4293700698B84 /* PatientInfoManageModel.m */; };
 		89162EAF24E438B400698B84 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EAE24E438B400698B84 /* Tools.m */; };
 		89162EB224ED70A400698B84 /* PatientMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EB124ED70A400698B84 /* PatientMessageController.m */; };
@@ -88,6 +93,13 @@
 		892555B124E423AD002F7B5B /* PatientBookInfoStateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 892555B024E423AD002F7B5B /* PatientBookInfoStateModel.m */; };
 		892952CA25583A1800757689 /* ZXFExpandTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 892952C925583A1800757689 /* ZXFExpandTextView.m */; };
 		892952EA25599B1600757689 /* ZXFExpandTextViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 892952E925599B1600757689 /* ZXFExpandTextViewModel.m */; };
+		892D0E9C256A734500D5722C /* AllGroupsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D0E9B256A734500D5722C /* AllGroupsController.m */; };
+		892D0E9F256A752D00D5722C /* AllGroupsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D0E9E256A752D00D5722C /* AllGroupsHeaderView.m */; };
+		892D0EA2256AB36B00D5722C /* WorkGroupInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D0EA1256AB36B00D5722C /* WorkGroupInfoController.m */; };
+		892D0EA9256AB67D00D5722C /* GroupMembersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D0EA8256AB67D00D5722C /* GroupMembersView.m */; };
+		892D0EAC256ABB1E00D5722C /* GroupMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D0EAB256ABB1E00D5722C /* GroupMemberCell.m */; };
+		892D0EAF256ABB6F00D5722C /* MoreGroupMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D0EAE256ABB6F00D5722C /* MoreGroupMemberCell.m */; };
+		892D0EB2256AC67000D5722C /* WorkGroupSupporterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 892D0EB1256AC67000D5722C /* WorkGroupSupporterView.m */; };
 		8932651F24FE861E00FE7BBE /* ZXFDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8932651E24FE861E00FE7BBE /* ZXFDatePicker.m */; };
 		893265242501316D00FE7BBE /* UIColor+HEX.m in Sources */ = {isa = PBXBuildFile; fileRef = 893265202501316D00FE7BBE /* UIColor+HEX.m */; };
 		893265252501316D00FE7BBE /* UIButton+EnlargeEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = 893265222501316D00FE7BBE /* UIButton+EnlargeEdge.m */; };
@@ -121,7 +133,7 @@
 		893A3DDF253B67BB00570FB5 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 893A3DDE253B67BB00570FB5 /* CloudKit.framework */; };
 		893A3DE3253B762700570FB5 /* ViewFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893A3DE2253B762700570FB5 /* ViewFileController.m */; };
 		89690CA7255060D000063BEC /* WorkSpaceInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89690CA6255060D000063BEC /* WorkSpaceInfoCell.m */; };
-		89690CAA2550617C00063BEC /* WorkGroupsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89690CA92550617C00063BEC /* WorkGroupsCell.m */; };
+		89690CAA2550617C00063BEC /* WorkGroupsFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 89690CA92550617C00063BEC /* WorkGroupsFooter.m */; };
 		898F1ADC24D46FD400397505 /* PatientInfoManageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1ADB24D46FD400397505 /* PatientInfoManageController.m */; };
 		898F1ADF24D6C77200397505 /* PatientInfoManagePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1ADE24D6C77200397505 /* PatientInfoManagePageModel.m */; };
 		898F1AE224D6DBF100397505 /* PatientInfoManageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1AE124D6DBF100397505 /* PatientInfoManageHeaderView.m */; };
@@ -129,10 +141,10 @@
 		898F1AE824D6DC9600397505 /* PatientInfoManageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1AE724D6DC9600397505 /* PatientInfoManageCell.m */; };
 		898F1AEB24D6DCCD00397505 /* PatientBookInfoStateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1AEA24D6DCCD00397505 /* PatientBookInfoStateCell.m */; };
 		89B2B9A324F52C6A0062387D /* MsgChatInputBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B2B9A224F52C6A0062387D /* MsgChatInputBar.m */; };
-		89D3611F254EFA7800CAD02C /* WorkGroupsInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D3611E254EFA7800CAD02C /* WorkGroupsInfoController.m */; };
+		89D3611F254EFA7800CAD02C /* WorkSpaceInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D3611E254EFA7800CAD02C /* WorkSpaceInfoController.m */; };
 		89D36123254F141D00CAD02C /* WorkSpaceTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D36122254F141D00CAD02C /* WorkSpaceTitleView.m */; };
 		89D36126254F16D100CAD02C /* WorkGroupTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D36125254F16D100CAD02C /* WorkGroupTitleView.m */; };
-		89D36129254F1ABE00CAD02C /* WorkGroupsInfoPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D36128254F1ABE00CAD02C /* WorkGroupsInfoPageModel.m */; };
+		89D36129254F1ABE00CAD02C /* WorkSpaceInfoPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D36128254F1ABE00CAD02C /* WorkSpaceInfoPageModel.m */; };
 		89D3612C2550715200CAD02C /* WorkSpaceInfoCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D3612B2550715200CAD02C /* WorkSpaceInfoCellModel.m */; };
 		89E52ED724F267E30052403B /* PatientBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52ED624F267E30052403B /* PatientBookController.m */; };
 		89E52EDA24F26ACC0052403B /* PatientBookPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52ED924F26ACC0052403B /* PatientBookPageModel.m */; };
@@ -1014,6 +1026,16 @@
 		7F9A7EFD24EE252200E5CDFA /* PatientMessagePageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientMessagePageModel.m; sourceTree = "<group>"; };
 		7F9A7F0224EE2A1A00E5CDFA /* PatientMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientMessageModel.h; sourceTree = "<group>"; };
 		7F9A7F0324EE2A1A00E5CDFA /* PatientMessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientMessageModel.m; sourceTree = "<group>"; };
+		89076ACA2561281700DD24D6 /* WorkGroupItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkGroupItemCell.h; sourceTree = "<group>"; };
+		89076ACB2561281700DD24D6 /* WorkGroupItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkGroupItemCell.m; sourceTree = "<group>"; };
+		89076AF62561656200DD24D6 /* UIView+Corner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Corner.h"; sourceTree = "<group>"; };
+		89076AF72561656200DD24D6 /* UIView+Corner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Corner.m"; sourceTree = "<group>"; };
+		89076AF92561702100DD24D6 /* UIImageView+Corner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Corner.h"; sourceTree = "<group>"; };
+		89076AFA2561702100DD24D6 /* UIImageView+Corner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Corner.m"; sourceTree = "<group>"; };
+		89076AFC2561772000DD24D6 /* MoreWorkGroupsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoreWorkGroupsCell.h; sourceTree = "<group>"; };
+		89076AFD2561772000DD24D6 /* MoreWorkGroupsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoreWorkGroupsCell.m; sourceTree = "<group>"; };
+		89076AFF256185D500DD24D6 /* WorkGroupItemCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkGroupItemCellModel.h; sourceTree = "<group>"; };
+		89076B00256185D500DD24D6 /* WorkGroupItemCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkGroupItemCellModel.m; sourceTree = "<group>"; };
 		89162EA824E4293700698B84 /* PatientInfoManageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientInfoManageModel.h; sourceTree = "<group>"; };
 		89162EA924E4293700698B84 /* PatientInfoManageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientInfoManageModel.m; sourceTree = "<group>"; };
 		89162EAD24E438B400698B84 /* Tools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
@@ -1042,6 +1064,20 @@
 		892952C925583A1800757689 /* ZXFExpandTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXFExpandTextView.m; sourceTree = "<group>"; };
 		892952E825599B1600757689 /* ZXFExpandTextViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXFExpandTextViewModel.h; sourceTree = "<group>"; };
 		892952E925599B1600757689 /* ZXFExpandTextViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXFExpandTextViewModel.m; sourceTree = "<group>"; };
+		892D0E9A256A734500D5722C /* AllGroupsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllGroupsController.h; sourceTree = "<group>"; };
+		892D0E9B256A734500D5722C /* AllGroupsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllGroupsController.m; sourceTree = "<group>"; };
+		892D0E9D256A752D00D5722C /* AllGroupsHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllGroupsHeaderView.h; sourceTree = "<group>"; };
+		892D0E9E256A752D00D5722C /* AllGroupsHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllGroupsHeaderView.m; sourceTree = "<group>"; };
+		892D0EA0256AB36B00D5722C /* WorkGroupInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkGroupInfoController.h; sourceTree = "<group>"; };
+		892D0EA1256AB36B00D5722C /* WorkGroupInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkGroupInfoController.m; sourceTree = "<group>"; };
+		892D0EA7256AB67D00D5722C /* GroupMembersView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupMembersView.h; sourceTree = "<group>"; };
+		892D0EA8256AB67D00D5722C /* GroupMembersView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupMembersView.m; sourceTree = "<group>"; };
+		892D0EAA256ABB1E00D5722C /* GroupMemberCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupMemberCell.h; sourceTree = "<group>"; };
+		892D0EAB256ABB1E00D5722C /* GroupMemberCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupMemberCell.m; sourceTree = "<group>"; };
+		892D0EAD256ABB6F00D5722C /* MoreGroupMemberCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoreGroupMemberCell.h; sourceTree = "<group>"; };
+		892D0EAE256ABB6F00D5722C /* MoreGroupMemberCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoreGroupMemberCell.m; sourceTree = "<group>"; };
+		892D0EB0256AC67000D5722C /* WorkGroupSupporterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkGroupSupporterView.h; sourceTree = "<group>"; };
+		892D0EB1256AC67000D5722C /* WorkGroupSupporterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkGroupSupporterView.m; sourceTree = "<group>"; };
 		8932651D24FE861E00FE7BBE /* ZXFDatePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXFDatePicker.h; sourceTree = "<group>"; };
 		8932651E24FE861E00FE7BBE /* ZXFDatePicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXFDatePicker.m; sourceTree = "<group>"; };
 		893265202501316D00FE7BBE /* UIColor+HEX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HEX.m"; sourceTree = "<group>"; };
@@ -1097,8 +1133,8 @@
 		893A3DE2253B762700570FB5 /* ViewFileController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewFileController.m; sourceTree = "<group>"; };
 		89690CA5255060D000063BEC /* WorkSpaceInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WorkSpaceInfoCell.h; path = patientRecord/WorkSpaceInfoCell.h; sourceTree = "<group>"; };
 		89690CA6255060D000063BEC /* WorkSpaceInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WorkSpaceInfoCell.m; path = patientRecord/WorkSpaceInfoCell.m; sourceTree = "<group>"; };
-		89690CA82550617C00063BEC /* WorkGroupsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkGroupsCell.h; sourceTree = "<group>"; };
-		89690CA92550617C00063BEC /* WorkGroupsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkGroupsCell.m; sourceTree = "<group>"; };
+		89690CA82550617C00063BEC /* WorkGroupsFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkGroupsFooter.h; sourceTree = "<group>"; };
+		89690CA92550617C00063BEC /* WorkGroupsFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkGroupsFooter.m; sourceTree = "<group>"; };
 		898F1ADA24D46FD400397505 /* PatientInfoManageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientInfoManageController.h; sourceTree = "<group>"; };
 		898F1ADB24D46FD400397505 /* PatientInfoManageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientInfoManageController.m; sourceTree = "<group>"; };
 		898F1ADD24D6C77200397505 /* PatientInfoManagePageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientInfoManagePageModel.h; sourceTree = "<group>"; };
@@ -1113,14 +1149,14 @@
 		898F1AEA24D6DCCD00397505 /* PatientBookInfoStateCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientBookInfoStateCell.m; sourceTree = "<group>"; };
 		89B2B9A124F52C6A0062387D /* MsgChatInputBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MsgChatInputBar.h; sourceTree = "<group>"; };
 		89B2B9A224F52C6A0062387D /* MsgChatInputBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MsgChatInputBar.m; sourceTree = "<group>"; };
-		89D3611D254EFA7800CAD02C /* WorkGroupsInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkGroupsInfoController.h; sourceTree = "<group>"; };
-		89D3611E254EFA7800CAD02C /* WorkGroupsInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkGroupsInfoController.m; sourceTree = "<group>"; };
+		89D3611D254EFA7800CAD02C /* WorkSpaceInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkSpaceInfoController.h; sourceTree = "<group>"; };
+		89D3611E254EFA7800CAD02C /* WorkSpaceInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkSpaceInfoController.m; sourceTree = "<group>"; };
 		89D36121254F141D00CAD02C /* WorkSpaceTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkSpaceTitleView.h; sourceTree = "<group>"; };
 		89D36122254F141D00CAD02C /* WorkSpaceTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkSpaceTitleView.m; sourceTree = "<group>"; };
 		89D36124254F16D100CAD02C /* WorkGroupTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkGroupTitleView.h; sourceTree = "<group>"; };
 		89D36125254F16D100CAD02C /* WorkGroupTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkGroupTitleView.m; sourceTree = "<group>"; };
-		89D36127254F1ABE00CAD02C /* WorkGroupsInfoPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkGroupsInfoPageModel.h; sourceTree = "<group>"; };
-		89D36128254F1ABE00CAD02C /* WorkGroupsInfoPageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkGroupsInfoPageModel.m; sourceTree = "<group>"; };
+		89D36127254F1ABE00CAD02C /* WorkSpaceInfoPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkSpaceInfoPageModel.h; sourceTree = "<group>"; };
+		89D36128254F1ABE00CAD02C /* WorkSpaceInfoPageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkSpaceInfoPageModel.m; sourceTree = "<group>"; };
 		89D3612A2550715200CAD02C /* WorkSpaceInfoCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkSpaceInfoCellModel.h; sourceTree = "<group>"; };
 		89D3612B2550715200CAD02C /* WorkSpaceInfoCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkSpaceInfoCellModel.m; sourceTree = "<group>"; };
 		89E52ED524F267E30052403B /* PatientBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookController.h; sourceTree = "<group>"; };
@@ -2778,6 +2814,61 @@
 			path = ZXFExpandTextView;
 			sourceTree = "<group>";
 		};
+		892D0EA3256AB5AE00D5722C /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				89D3611D254EFA7800CAD02C /* WorkSpaceInfoController.h */,
+				89D3611E254EFA7800CAD02C /* WorkSpaceInfoController.m */,
+				89D36127254F1ABE00CAD02C /* WorkSpaceInfoPageModel.h */,
+				89D36128254F1ABE00CAD02C /* WorkSpaceInfoPageModel.m */,
+				892D0EA0256AB36B00D5722C /* WorkGroupInfoController.h */,
+				892D0EA1256AB36B00D5722C /* WorkGroupInfoController.m */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		892D0EA4256AB5B700D5722C /* view */ = {
+			isa = PBXGroup;
+			children = (
+				89D36121254F141D00CAD02C /* WorkSpaceTitleView.h */,
+				89D36122254F141D00CAD02C /* WorkSpaceTitleView.m */,
+				89690CA5255060D000063BEC /* WorkSpaceInfoCell.h */,
+				89690CA6255060D000063BEC /* WorkSpaceInfoCell.m */,
+				89D3612A2550715200CAD02C /* WorkSpaceInfoCellModel.h */,
+				89D3612B2550715200CAD02C /* WorkSpaceInfoCellModel.m */,
+				89D36124254F16D100CAD02C /* WorkGroupTitleView.h */,
+				89D36125254F16D100CAD02C /* WorkGroupTitleView.m */,
+				89690CA82550617C00063BEC /* WorkGroupsFooter.h */,
+				89690CA92550617C00063BEC /* WorkGroupsFooter.m */,
+				89076ACA2561281700DD24D6 /* WorkGroupItemCell.h */,
+				89076ACB2561281700DD24D6 /* WorkGroupItemCell.m */,
+				89076AFF256185D500DD24D6 /* WorkGroupItemCellModel.h */,
+				89076B00256185D500DD24D6 /* WorkGroupItemCellModel.m */,
+				89076AFC2561772000DD24D6 /* MoreWorkGroupsCell.h */,
+				89076AFD2561772000DD24D6 /* MoreWorkGroupsCell.m */,
+				892D0E9A256A734500D5722C /* AllGroupsController.h */,
+				892D0E9B256A734500D5722C /* AllGroupsController.m */,
+				892D0E9D256A752D00D5722C /* AllGroupsHeaderView.h */,
+				892D0E9E256A752D00D5722C /* AllGroupsHeaderView.m */,
+				892D0EA7256AB67D00D5722C /* GroupMembersView.h */,
+				892D0EA8256AB67D00D5722C /* GroupMembersView.m */,
+				892D0EAA256ABB1E00D5722C /* GroupMemberCell.h */,
+				892D0EAB256ABB1E00D5722C /* GroupMemberCell.m */,
+				892D0EAD256ABB6F00D5722C /* MoreGroupMemberCell.h */,
+				892D0EAE256ABB6F00D5722C /* MoreGroupMemberCell.m */,
+				892D0EB0256AC67000D5722C /* WorkGroupSupporterView.h */,
+				892D0EB1256AC67000D5722C /* WorkGroupSupporterView.m */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		892D0EA5256AB5BE00D5722C /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 		893A3D912537434800570FB5 /* FakeNavBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -2873,20 +2964,9 @@
 		89D36120254F12F700CAD02C /* workplace */ = {
 			isa = PBXGroup;
 			children = (
-				89D3611D254EFA7800CAD02C /* WorkGroupsInfoController.h */,
-				89D3611E254EFA7800CAD02C /* WorkGroupsInfoController.m */,
-				89D36121254F141D00CAD02C /* WorkSpaceTitleView.h */,
-				89D36122254F141D00CAD02C /* WorkSpaceTitleView.m */,
-				89690CA5255060D000063BEC /* WorkSpaceInfoCell.h */,
-				89690CA6255060D000063BEC /* WorkSpaceInfoCell.m */,
-				89D3612A2550715200CAD02C /* WorkSpaceInfoCellModel.h */,
-				89D3612B2550715200CAD02C /* WorkSpaceInfoCellModel.m */,
-				89D36124254F16D100CAD02C /* WorkGroupTitleView.h */,
-				89D36125254F16D100CAD02C /* WorkGroupTitleView.m */,
-				89690CA82550617C00063BEC /* WorkGroupsCell.h */,
-				89690CA92550617C00063BEC /* WorkGroupsCell.m */,
-				89D36127254F1ABE00CAD02C /* WorkGroupsInfoPageModel.h */,
-				89D36128254F1ABE00CAD02C /* WorkGroupsInfoPageModel.m */,
+				892D0EA5256AB5BE00D5722C /* model */,
+				892D0EA4256AB5B700D5722C /* view */,
+				892D0EA3256AB5AE00D5722C /* controller */,
 			);
 			name = workplace;
 			sourceTree = "<group>";
@@ -4931,6 +5011,10 @@
 				E30974FD1F9DD20E00EC3F80 /* NSString+containsString.m */,
 				E30974FE1F9DD20E00EC3F80 /* UIResponder+Custom.h */,
 				E30974FF1F9DD20E00EC3F80 /* UIResponder+Custom.m */,
+				89076AF62561656200DD24D6 /* UIView+Corner.h */,
+				89076AF72561656200DD24D6 /* UIView+Corner.m */,
+				89076AF92561702100DD24D6 /* UIImageView+Corner.h */,
+				89076AFA2561702100DD24D6 /* UIImageView+Corner.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -6314,6 +6398,7 @@
 				9A397CBD1F31BCF60089F5DC /* HuiYiJiLuViewController.m in Sources */,
 				E3A105CD1FA18A6500EBEF1F /* TZImagePickerController.m in Sources */,
 				1F1128D82221265E00FD8CB6 /* NSObject+MJProperty.m in Sources */,
+				892D0EA2256AB36B00D5722C /* WorkGroupInfoController.m in Sources */,
 				9A53893320084DC40084E772 /* RealtimeSearchUtil.m in Sources */,
 				1F7E8A3F2252E47000E3D185 /* MessageModels.m in Sources */,
 				9A53879920084D8B0084E772 /* EaseConversationListViewController.m in Sources */,
@@ -6408,6 +6493,7 @@
 				89162EB524ED70C300698B84 /* PatientMsgChatController.m in Sources */,
 				89E52EED24F2D7750052403B /* PatientMsgChatCellModel.m in Sources */,
 				9A53877B20084D8B0084E772 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
+				892D0EAF256ABB6F00D5722C /* MoreGroupMemberCell.m in Sources */,
 				9A53874A20084D8A0084E772 /* EMVoiceConverter.mm in Sources */,
 				9A54BB6A200F184600CF0844 /* WYYYiShengOneTableViewCell.m in Sources */,
 				9A1E385E1F32AFC70063FC2A /* ZiXunModel.m in Sources */,
@@ -6429,7 +6515,7 @@
 				9A53878120084D8B0084E772 /* PSTCollectionViewItemKey.m in Sources */,
 				9A08A96F1F304BB200AF29EB /* ForgetMiMaViewController.m in Sources */,
 				9A53892420084DC40084E772 /* SearchMessageViewController.m in Sources */,
-				89690CAA2550617C00063BEC /* WorkGroupsCell.m in Sources */,
+				89690CAA2550617C00063BEC /* WorkGroupsFooter.m in Sources */,
 				1F1128DA2221265F00FD8CB6 /* NSString+MJExtension.m in Sources */,
 				1F1128D42221265E00FD8CB6 /* NSObject+MJKeyValue.m in Sources */,
 				9A779896200DDD8000EFCF67 /* WYYZhaoYishengTwoViewController.m in Sources */,
@@ -6438,6 +6524,7 @@
 				E30976881F9DD20F00EC3F80 /* MMTextAttachment.m in Sources */,
 				E309767C1F9DD20F00EC3F80 /* IQTextView.m in Sources */,
 				893A3DA22537434800570FB5 /* DDCImageViewerScrollView.m in Sources */,
+				892D0EAC256ABB1E00D5722C /* GroupMemberCell.m in Sources */,
 				9AA389352012E2E800452C39 /* WYYYIshengFriend.m in Sources */,
 				1F1128DC2221265F00FD8CB6 /* MJFoundation.m in Sources */,
 				E3F4B1021F7CCF5300CB16ED /* PatientsBasicInfoTableViewCell.m in Sources */,
@@ -6448,6 +6535,7 @@
 				9A53891620084DC40084E772 /* EMGroupInfoViewController.m in Sources */,
 				9A949BDE2010423F00AE1A60 /* WYYHuanZheDetaiViewController.m in Sources */,
 				9A53877A20084D8B0084E772 /* UIView+EMWebCacheOperation.m in Sources */,
+				89076B01256185D500DD24D6 /* WorkGroupItemCellModel.m in Sources */,
 				9A5DCAC9201EBF2500608A76 /* WYYHuanZheListTableViewCell.m in Sources */,
 				9A667D5820214FD500365644 /* WYYDetailOneTableViewCell.m in Sources */,
 				E30CCACC1F8F638800AD846F /* ZJNDoctorInfoViewController.m in Sources */,
@@ -6469,6 +6557,7 @@
 				9A53879420084D8B0084E772 /* EaseEmoji.m in Sources */,
 				9A53894120084DC40084E772 /* UIViewController+SearchController.m in Sources */,
 				893265252501316D00FE7BBE /* UIButton+EnlargeEdge.m in Sources */,
+				892D0E9F256A752D00D5722C /* AllGroupsHeaderView.m in Sources */,
 				9A8867262011885900F96753 /* WYYSearchYishengModel.m in Sources */,
 				9A38A4C31F4C2C290078B207 /* HuiYiXiangQingViewController.m in Sources */,
 				E30976A51F9DD20F00EC3F80 /* View+MASAdditions.m in Sources */,
@@ -6502,6 +6591,7 @@
 				9A53891820084DC40084E772 /* EMGroupMutesViewController.m in Sources */,
 				89B2B9A324F52C6A0062387D /* MsgChatInputBar.m in Sources */,
 				E357820420283A1A00ACAEA5 /* ZJNTitleAndInfoTableViewCell.m in Sources */,
+				89076ACC2561281700DD24D6 /* WorkGroupItemCell.m in Sources */,
 				E30976F21F9DD20F00EC3F80 /* YLGIFImage.m in Sources */,
 				9A53876620084D8A0084E772 /* MWPhotoBrowser.m in Sources */,
 				9AFE60031F330D64001F10D1 /* SuiFangTableViewCell.m in Sources */,
@@ -6550,7 +6640,7 @@
 				E30976A61F9DD20F00EC3F80 /* ViewController+MASAdditions.m in Sources */,
 				9A53876420084D8A0084E772 /* MWGridViewController.m in Sources */,
 				892555B124E423AD002F7B5B /* PatientBookInfoStateModel.m in Sources */,
-				89D3611F254EFA7800CAD02C /* WorkGroupsInfoController.m in Sources */,
+				89D3611F254EFA7800CAD02C /* WorkSpaceInfoController.m in Sources */,
 				9A1E386F1F32C2D60063FC2A /* TongYongSettingViewController.m in Sources */,
 				9A5387A120084D8B0084E772 /* EaseCustomMessageCell.m in Sources */,
 				9A42C4D31F53B8D8008D41C4 /* SuiFangJiLuTableViewCell.m in Sources */,
@@ -6774,8 +6864,9 @@
 				9A3CB5031F4FC2A1001F0252 /* ShouShuListViewController.m in Sources */,
 				893A3DE3253B762700570FB5 /* ViewFileController.m in Sources */,
 				9A77987B200DC7EA00EFCF67 /* WYYGroupOneTableViewCell.m in Sources */,
+				89076AF82561656200DD24D6 /* UIView+Corner.m in Sources */,
 				E3D450831FCBDCA10032E5D1 /* ZJNSignUpMeetingIntroduceTableViewCell.m in Sources */,
-				89D36129254F1ABE00CAD02C /* WorkGroupsInfoPageModel.m in Sources */,
+				89D36129254F1ABE00CAD02C /* WorkSpaceInfoPageModel.m in Sources */,
 				9A53893820084DC40084E772 /* BaseTableViewCell.m in Sources */,
 				E30976A41F9DD20F00EC3F80 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				9AF6D9EF1F5CF17600C52F9B /* HssPingfenViewController.m in Sources */,
@@ -6814,6 +6905,8 @@
 				E30976701F9DD20F00EC3F80 /* NSString+containsString.m in Sources */,
 				1FA455322064ABC200CF0DD1 /* MineCollectViewController.m in Sources */,
 				893A3DAA25374ACB00570FB5 /* PGImageUtility.m in Sources */,
+				892D0EA9256AB67D00D5722C /* GroupMembersView.m in Sources */,
+				89076AFB2561702100DD24D6 /* UIImageView+Corner.m in Sources */,
 				9A08A8AF1F30126D00AF29EB /* WoDeViewController.m in Sources */,
 				E3BC820C1F7D0DE700F0F38F /* MedicalLifeSignsTableViewCell.m in Sources */,
 				892555A624E2DBB6002F7B5B /* GJObject.m in Sources */,
@@ -6839,7 +6932,9 @@
 				9A53877220084D8A0084E772 /* MKAnnotationView+EMWebCache.m in Sources */,
 				9A77988A200DD19C00EFCF67 /* WYYQunLiaoOneTableViewCell.m in Sources */,
 				9ACE974920184F050028FC9D /* ZJNFindDoctorTableViewCell.m in Sources */,
+				892D0EB2256AC67000D5722C /* WorkGroupSupporterView.m in Sources */,
 				E30976A21F9DD20F00EC3F80 /* MASViewConstraint.m in Sources */,
+				89076AFE2561772000DD24D6 /* MoreWorkGroupsCell.m in Sources */,
 				9A53890E20084DC40084E772 /* ContactView.m in Sources */,
 				9A5387B020084D8B0084E772 /* EaseFaceView.m in Sources */,
 				E30976751F9DD20F00EC3F80 /* IQUIScrollView+Additions.m in Sources */,
@@ -6851,6 +6946,7 @@
 				893A3DA12537434800570FB5 /* FakeNavBar.m in Sources */,
 				9A53879020084D8B0084E772 /* UIViewController+DismissKeyboard.m in Sources */,
 				E30976A31F9DD20F00EC3F80 /* NSArray+MASAdditions.m in Sources */,
+				892D0E9C256A734500D5722C /* AllGroupsController.m in Sources */,
 				9A53893720084DC40084E772 /* UserProfileViewController.m in Sources */,
 				9A08A96A1F304B9B00AF29EB /* LoginViewController.m in Sources */,
 				E309767D1F9DD20F00EC3F80 /* IQBarButtonItem.m in Sources */,

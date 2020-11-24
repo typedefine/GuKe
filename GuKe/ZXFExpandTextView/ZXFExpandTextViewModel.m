@@ -14,10 +14,11 @@
 //    NSMutableAttributedString *_lestxt, *_fultxt;
 //}
 //
-//- (instancetype)init
-//{
-//    if (self = [super init]) {
-//        _lineNumForContraction = 0;
+- (instancetype)init
+{
+    if (self = [super init]) {
+        _constractTextMaxLength = 60;
+        _lineNumForContraction = 0;
 //        _lessText = @"";
 //        _lestxt = [[NSMutableAttributedString alloc] init];
 //        _fullText = @"";
@@ -28,9 +29,9 @@
 //        _font = [UIFont systemFontOfSize:15];
 //        _textColor = [UIColor colorWithHex:0x3C3E3D];
 //        _tintColor = greenC;
-//    }
-//    return self;
-//}
+    }
+    return self;
+}
 //
 //- (NSString *)text
 //{

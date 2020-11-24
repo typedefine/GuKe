@@ -26,6 +26,7 @@
         self.contentView.clipsToBounds = YES;
         [self.contentView addSubview:self.coverIV];
         [self.contentView addSubview:self.expandTextView];
+        [self addSubviewConstrains];
     }
     return self;
 }
@@ -55,47 +56,67 @@
     return _expandTextView;
 }
 
-- (void)layoutSubviews
+
+- (void)addSubviewConstrains
 {
-    [super layoutSubviews];
     CGFloat sidePadding = 20;
     CGFloat w = ScreenWidth - sidePadding * 2;
     CGFloat h = (140.0/335.0) * w;
-    self.coverIV.frame = CGRectMake(sidePadding, 5, w, h);
-//    [self.coverIV mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerX.equalTo(self.contentView);
-//        make.top.equalTo(self.contentView).offset(5);
-//        make.height.mas_equalTo(h);
-//        make.width.mas_equalTo(w);
-//    }];
-//
+    
+    [self.coverIV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.contentView);
+        make.top.equalTo(self.contentView).offset(5);
+        make.height.mas_equalTo(h);
+        make.width.mas_equalTo(w);
+    }];
+
 //    [self.expandTextView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.coverIV.mas_bottom).offset(20);
+//        make.top.equalTo(self.coverIV.mas_bottom).offset(15);
 //        make.left.equalTo(self.contentView).offset(sidePadding);
 //        make.right.equalTo(self.contentView).offset(-sidePadding);
-//        make.bottom.equalTo(self.contentView).offset(-20);
-//        make.height.mas_equalTo(20*4);
+//        make.bottom.equalTo(self.contentView).offset(-5);
 //    }];
-    CGRect exf = self.coverIV.frame;
-    exf.origin.y += exf.size.height + 20;
-    exf.size.height = 80;//[self.expandTextView systemLayoutSizeFittingSize: UILayoutFittingCompressedSize].height;
-    self.expandTextView.frame = exf;
-    CGRect viewRect = self.expandTextView.bounds;
-    viewRect.size.height = exf.origin.y + exf.size.height + 20;
-    self.bounds = viewRect;
     
+//    self.coverIV.frame = CGRectMake(sidePadding, 5, w, h);
+//
+//    CGRect exf = self.coverIV.frame;
+//    exf.origin.y += exf.size.height + 20;
+//    exf.size.height = 80;//[self.expandTextView systemLayoutSizeFittingSize: UILayoutFittingCompressedSize].height;
+//    self.expandTextView.frame = exf;
+//    CGRect viewRect = self.expandTextView.bounds;
+//    viewRect.size.height += exf.origin.y + 20;
+//    self.bounds = viewRect;
 }
 
+//- (void)layoutSubviews
+//{
+//    [super layoutSubviews];
+//
+//
+//
+//}
 
-- (void)configWithData:(WorkSpaceInfoCellModel *)data
+
+- (void)configWithData:(WorkSpaceInfoCellModel *)data expand:(void (^ )(BOOL))expand
 {
     [self.coverIV sd_setImageWithURL:[NSURL URLWithString:data.imgUrl] placeholderImage:[UIImage imageNamed:@"灰_bg"]];
 //    self.infoLabel.text = data.content;
     if (!data.content.isValidStringValue) return;
     
-    [self.expandTextView configureWithModel:data.textModel expand:^{
-    
+    [self.expandTextView configureWithModel:data.textModel expand:^(BOOL expanded){
+        if (expand != nil) {
+            expand(expanded);
+        }
+        [self layoutIfNeeded];
     }];
+    
+    [self.expandTextView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.coverIV.mas_bottom).offset(15);
+        make.left.equalTo(self.contentView).offset(20);
+        make.right.equalTo(self.contentView).offset(-20);
+        make.bottom.equalTo(self.contentView).offset(-5);
+    }];
+    
 }
 
 @end

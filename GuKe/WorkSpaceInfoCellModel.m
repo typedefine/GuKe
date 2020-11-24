@@ -15,7 +15,8 @@
 {
     if (self = [super init]) {
         self.textModel = [[ZXFExpandTextViewModel alloc] init];
-        self.textModel.lineNumForContraction = 4;
+        self.textModel.lineNumForContraction = 5;
+        self.textModel.constractTextMaxLength = 62;
     }
     return self;
 }
@@ -28,7 +29,7 @@
 
 - (void)setExpanded:(BOOL)expanded
 {
-    self.expanded = expanded;
+    self.textModel.expanded = expanded;
 }
 
 - (NSString *)content

@@ -59,6 +59,11 @@
 #import <Parse/Parse.h>
 #import "TTGlobalUICommon.h"
 #import "MWPhotoBrowser.h"
+
+//zxf
+#import "UIView+Corner.h"
+#import "UIImageView+CornerRadius.h"
+
 #define DEMO_CALL 1
 //end
 // Include any system framework and library headers here that should be included in all compilation units.
@@ -94,6 +99,41 @@
 #define TabbarHeight (ScreenHeight == 812.0 ? 83 : 49)
 /** tabbar增加的高度 */
 #define TabbarAddHeight (ScreenHeight == 812.0 ? 17 : 0)
+
+
+#define DeviceIsIphoneX IS_IPGONE_X
+
+#define NAVBAR_HI              44.0f
+#define TABBAR_HI             (DeviceIsIphoneX ? 83.0f : 49.0f)
+#define STATUSBAR_HI          (DeviceIsIphoneX ? 44.0f : 20.0f)
+#define HOME_INDICATOR_HEIGHT (DeviceIsIphoneX ? 34.f : 0.f)
+#define SAFE_AREA_TOP         (DeviceIsIphoneX ? 44.0f : 0.0f)
+#define SAFE_AREA_BOTTOM      (DeviceIsIphoneX ? 34.f : 0.f)
+
+
+#define DEVICE_WIDTH [UIScreen mainScreen].bounds.size.width
+#define DEVICE_HEIGHT [UIScreen mainScreen].bounds.size.height
+
+#define IS_IPHONE_DEVICE   [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone
+#define IS_IPAD_DEVICE   [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad
+#define IS_TV_DEVICE   [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomTV
+#define IS_NOT_IPAD_IPHONE_CARPLAY_TV_DEVICE  [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomUnspecified
+
+
+#define DEVICE_IS_HORIZONTAL (DEVICE_WIDTH > DEVICE_HEIGHT)
+
+#define SAFE_AREA_WIDTH    (DEVICE_IS_HORIZONTAL?DEVICE_WIDTH-SAFE_AREA_BOTTOM-SAFE_AREA_TOP:DEVICE_WIDTH)
+#define SAFE_AREA_HEIGHT   (DEVICE_IS_HORIZONTAL?DEVICE_HEIGHT:DEVICE_HEIGHT-SAFE_AREA_BOTTOM-SAFE_AREA_TOP)
+
+#define IPHONE_X_SCALE(X) ((X)*(SAFE_AREA_WIDTH/ (DEVICE_IS_HORIZONTAL ? 667. : 375.)))
+#define IPHONE_Y_SCALE(Y) ((Y)*(SAFE_AREA_HEIGHT/ (DEVICE_IS_HORIZONTAL ? 375. : 667.)))
+#define IPAD_X_SCALE(X)   ((X)*(DEVICE_WIDTH/ (DEVICE_IS_HORIZONTAL ? 1024. : 768.)))
+#define IPAD_Y_SCALE(Y)   ((Y)*(DEVICE_HEIGHT/ (DEVICE_IS_HORIZONTAL ? 768. : 1024.)))
+#define X_SCALER(IPHONE, IPAD) (IS_IPHONE_DEVICE?IPHONE_X_SCALE(IPHONE):IPAD_X_SCALE(IPAD))
+#define Y_SCALER(IPHONE, IPAD) (IS_IPHONE_DEVICE?IPHONE_Y_SCALE(IPHONE):IPAD_Y_SCALE(IPAD))
+
+#define X_SPACE(IPHONE, IPAD) (IS_IPHONE_DEVICE?IPHONE:IPAD)
+#define Y_SPACE(IPHONE, IPAD) (IS_IPHONE_DEVICE?IPHONE:IPAD)
 
 //
 //// 导航栏 加 状态栏

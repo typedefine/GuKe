@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WorkSpaceInfoCell : UITableViewCell
 
-- (void)configWithData:(WorkSpaceInfoCellModel *)data;
+- (void)configWithData:(WorkSpaceInfoCellModel *)data expand:(void (^ )(BOOL))expand;
 
 @end
 

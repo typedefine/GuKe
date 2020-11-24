@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZXFExpandTextViewModel : NSObject
 
+@property (nonatomic, assign) NSInteger constractTextMaxLength;
 @property (nonatomic, assign) BOOL expanded;
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, assign) NSUInteger lineNumForContraction;

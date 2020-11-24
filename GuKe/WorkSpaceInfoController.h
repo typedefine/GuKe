@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WorkGroupsInfoController : BaseViewController
+@interface WorkSpaceInfoController : BaseViewController
 
 @end
 

@@ -34,6 +34,7 @@
         make.centerY.equalTo(self);
         make.left.equalTo(self).with.offset(20);
     }];
+    self.title = @"骨先生工作站";
 }
 
 - (void)setTitle:(NSString *)title
