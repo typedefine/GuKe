@@ -6,41 +6,30 @@
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "WorkSpaceInfoCell.h"
-#import "WorkSpaceInfoCellModel.h"
+#import "ExpandTextCell.h"
+#import "ExpandTextCellModel.h"
 #import "ZXFExpandTextView.h"
 
-@interface WorkSpaceInfoCell ()
+@interface ExpandTextCell ()
 
-@property (nonatomic, strong) UIImageView *coverIV;
+
 @property (nonatomic, strong) ZXFExpandTextView *expandTextView;
 
 
 @end
 
-@implementation WorkSpaceInfoCell
+@implementation ExpandTextCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.contentView.clipsToBounds = YES;
-        [self.contentView addSubview:self.coverIV];
         [self.contentView addSubview:self.expandTextView];
         [self addSubviewConstrains];
     }
     return self;
 }
 
-- (UIImageView *)coverIV
-{
-    if (!_coverIV) {
-        _coverIV = [[UIImageView alloc] init];
-        _coverIV.contentMode = UIViewContentModeScaleAspectFill;
-        _coverIV.clipsToBounds = YES;
-        _coverIV.layer.cornerRadius = 5;
-    }
-    return _coverIV;
-}
 
 - (ZXFExpandTextView *)expandTextView
 {
@@ -59,15 +48,11 @@
 
 - (void)addSubviewConstrains
 {
-    CGFloat sidePadding = 20;
-    CGFloat w = ScreenWidth - sidePadding * 2;
-    CGFloat h = (140.0/335.0) * w;
-    
-    [self.coverIV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.contentView);
-        make.top.equalTo(self.contentView).offset(5);
-        make.height.mas_equalTo(h);
-        make.width.mas_equalTo(w);
+    [self.expandTextView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.contentView).offset(10);
+        make.left.equalTo(self.contentView).offset(20);
+        make.right.equalTo(self.contentView).offset(-20);
+        make.bottom.equalTo(self.contentView).offset(-5);
     }];
 
 //    [self.expandTextView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -97,9 +82,9 @@
 //}
 
 
-- (void)configWithData:(WorkSpaceInfoCellModel *)data expand:(void (^ )(BOOL))expand
+- (void)configWithData:(ExpandTextCellModel *)data expand:(void (^ )(BOOL))expand
 {
-    [self.coverIV sd_setImageWithURL:[NSURL URLWithString:data.imgUrl] placeholderImage:[UIImage imageNamed:@"灰_bg"]];
+    
 //    self.infoLabel.text = data.content;
     if (!data.content.isValidStringValue) return;
     
@@ -111,7 +96,7 @@
     }];
     
     [self.expandTextView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.coverIV.mas_bottom).offset(15);
+        make.top.equalTo(self.contentView).offset(10);
         make.left.equalTo(self.contentView).offset(20);
         make.right.equalTo(self.contentView).offset(-20);
         make.bottom.equalTo(self.contentView).offset(-5);

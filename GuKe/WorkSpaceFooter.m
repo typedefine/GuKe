@@ -6,11 +6,11 @@
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "WorkGroupsFooter.h"
+#import "WorkSpaceFooter.h"
 #import "WorkGroupItemCell.h"
 #import "MoreWorkGroupsCell.h"
 
-@interface WorkGroupsFooter ()<UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
+@interface WorkSpaceFooter ()<UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 
 
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation WorkGroupsFooter
+@implementation WorkSpaceFooter
 
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -64,10 +64,10 @@
     }];
 }
 
-- (WorkGroupTitleView *)titleView
+- (WorkGroupsTitleView *)titleView
 {
     if (!_titleView) {
-        _titleView = [[WorkGroupTitleView alloc] init];
+        _titleView = [[WorkGroupsTitleView alloc] init];
     }
     return _titleView;
 }

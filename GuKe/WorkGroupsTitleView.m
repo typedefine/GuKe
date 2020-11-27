@@ -6,16 +6,16 @@
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "WorkGroupTitleView.h"
+#import "WorkGroupsTitleView.h"
 
-@interface WorkGroupTitleView ()
+@interface WorkGroupsTitleView ()
 
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIButton *addWorkSpaceBtn;
 
 @end
 
-@implementation WorkGroupTitleView
+@implementation WorkGroupsTitleView
 
 - (instancetype)init
 {

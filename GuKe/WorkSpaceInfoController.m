@@ -7,17 +7,18 @@
 //
 
 #import "WorkSpaceInfoController.h"
-#import "WorkGroupTitleView.h"
-#import "WorkSpaceTitleView.h"
 #import "WorkSpaceInfoPageModel.h"
-#import "WorkSpaceInfoCell.h"
-#import "WorkGroupsFooter.h"
+#import "ExpandTextCell.h"
+#import "WorkSpaceHeaderView.h"
+#import "WorkSpaceFooter.h"
 #import "AllGroupsController.h"
+#import "WorkGroupInfoController.h"
 
 @interface WorkSpaceInfoController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) WorkGroupsFooter *footerView;
+@property (nonatomic, strong) WorkSpaceHeaderView *headerView;
+@property (nonatomic, strong) WorkSpaceFooter *footerView;
 @property (nonatomic, strong) WorkSpaceInfoPageModel *pageModel;
 
 @end
@@ -38,23 +39,10 @@
     [self loadServerData];
 }
 
-
-//- (void)viewDidLayoutSubviews
-//{
-//    [super viewDidLayoutSubviews];
-//
-//}
-//- (void)updateViewConstraints
-//{
-//    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.equalTo(self.view);
-//    }];
-//    [super updateViewConstraints];
-//}
-
 - (void)loadServerData
 {
     [self.pageModel configareWithData:nil];
+    self.headerView.coverImgUrl = self.pageModel.workSpaceModel.imgUrl;
     [self.footerView configureWithTarget:self action:@selector(groupAction:) groups:self.pageModel.workGroups];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -70,6 +58,9 @@
         [self.navigationController pushViewController:vc animated:YES];
     }else{
         NSLog(@"查看工作室%@",groupId);
+        WorkGroupInfoController *vc = [[WorkGroupInfoController alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
@@ -83,20 +74,6 @@
 {
     return 1;
 }
-
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    return [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass([WorkSpaceTitleView class])];
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    UITableViewHeaderFooterView *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass([UITableViewHeaderFooterView class])];
-    footer.contentView.backgroundColor = [UIColor whiteColor];
-    return footer;
-}
-
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 //{
@@ -114,7 +91,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
         typeof(self) weakSelf = self;
-        WorkSpaceInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([WorkSpaceInfoCell class])];
+        ExpandTextCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ExpandTextCell class])];
         [cell configWithData:self.pageModel.workSpaceModel expand:^(BOOL expanded){
             [weakSelf.tableView beginUpdates];
             weakSelf.pageModel.workSpaceModel.expanded = expanded;
@@ -133,13 +110,10 @@
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];//CGRectMake(0, 0, ScreenWidth, ScreenHeight - NavBarHeight-TabbarHeight)
         _tableView.allowsSelection = NO;
-        [_tableView registerClass:[WorkSpaceTitleView class] forHeaderFooterViewReuseIdentifier:NSStringFromClass([WorkSpaceTitleView class])];
-        [_tableView  registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:NSStringFromClass([UITableViewHeaderFooterView class])];
-        [_tableView registerClass:[WorkSpaceInfoCell class] forCellReuseIdentifier:NSStringFromClass([WorkSpaceInfoCell class])];
-        _tableView.sectionHeaderHeight = 50;
-        _tableView.sectionFooterHeight = 0.01;
+        [_tableView registerClass:[ExpandTextCell class] forCellReuseIdentifier:NSStringFromClass([ExpandTextCell class])];
         _tableView.rowHeight = UITableViewAutomaticDimension;
-        _tableView.estimatedRowHeight = IPHONE_Y_SCALE(160);
+        _tableView.estimatedRowHeight = IPHONE_Y_SCALE(100);
+        _tableView.tableHeaderView = self.headerView;
         _tableView.tableFooterView = self.footerView;
 //        if (@available(iOS 11.0, *)) {
 //            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -151,10 +125,18 @@
     return _tableView;
 }
 
-- (WorkGroupsFooter *)footerView
+- (WorkSpaceHeaderView *)headerView
+{
+    if (!_headerView) {
+        _headerView = [[WorkSpaceHeaderView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, IPHONE_Y_SCALE(210))];
+    }
+    return _headerView;
+}
+
+- (WorkSpaceFooter *)footerView
 {
     if (!_footerView) {
-        _footerView = [[WorkGroupsFooter alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, IPHONE_Y_SCALE(220))];
+        _footerView = [[WorkSpaceFooter alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, IPHONE_Y_SCALE(220))];
         __weak typeof(self) weakSelf = self;
         _footerView.titleView.action = ^(){
             [weakSelf addNewGroup];

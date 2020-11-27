@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WorkGroupTitleView.h"
+#import "WorkGroupsTitleView.h"
 @class WorkGroupItemCellModel;
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WorkGroupsFooter : UIView
+@interface WorkSpaceFooter : UIView
 
-@property (nonatomic, strong) WorkGroupTitleView *titleView;
+@property (nonatomic, strong) WorkGroupsTitleView *titleView;
 
 - (void)configureWithTarget:(id)target action:(SEL)action groups:(NSArray<WorkGroupItemCellModel *> *)groups;
 

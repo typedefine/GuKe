@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WorkSpaceInfoCellModel.h"
+#import "ExpandTextCellModel.h"
 @class WorkGroupItemCellModel;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WorkSpaceInfoPageModel : NSObject
 
 //@property (nonatomic, copy) NSString *workSpacetitle;
-@property (nonatomic, strong) WorkSpaceInfoCellModel *workSpaceModel;
+@property (nonatomic, strong) ExpandTextCellModel *workSpaceModel;
 
 //@property (nonatomic, copy) NSString *workGrouptitle;
 //@property (nonatomic, copy) NSString *addGroupActionTitle;

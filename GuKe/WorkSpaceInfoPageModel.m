@@ -43,10 +43,10 @@
     self.workGroups = [items copy];
 }
 
-- (WorkSpaceInfoCellModel *)workSpaceModel
+- (ExpandTextCellModel *)workSpaceModel
 {
     if (!_workSpaceModel) {
-        _workSpaceModel = [[WorkSpaceInfoCellModel alloc] init];
+        _workSpaceModel = [[ExpandTextCellModel alloc] init];
     }
     return _workSpaceModel;
 }

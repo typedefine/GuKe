@@ -29,10 +29,10 @@
 {
     self.contentView.backgroundColor = [UIColor whiteColor];
     
-    [self addSubview:self.titleLabel];
+    [self.contentView addSubview:self.titleLabel];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self);
-        make.left.equalTo(self).with.offset(20);
+        make.centerY.equalTo(self.contentView);
+        make.left.equalTo(self.contentView).with.offset(20);
     }];
     self.title = @"骨先生工作站";
 }

@@ -6,10 +6,10 @@
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "WorkSpaceInfoCellModel.h"
+#import "ExpandTextCellModel.h"
 #import "ZXFExpandTextViewModel.h"
 
-@implementation WorkSpaceInfoCellModel
+@implementation ExpandTextCellModel
 
 - (instancetype)init
 {

@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *title;
 
+- (void)configureWithTarget:(id)target action:(SEL)action members:(NSArray<UserInfoModel *> *)members;
 
 @end
 

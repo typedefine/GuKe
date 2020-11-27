@@ -10,11 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class WorkSpaceInfoCellModel;
+@class ExpandTextCellModel;
 
-@interface WorkSpaceInfoCell : UITableViewCell
+@interface ExpandTextCell : UITableViewCell
 
-- (void)configWithData:(WorkSpaceInfoCellModel *)data expand:(void (^ )(BOOL))expand;
+- (void)configWithData:(ExpandTextCellModel *)data expand:(void (^ )(BOOL))expand;
 
 @end
 

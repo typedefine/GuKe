@@ -19,6 +19,8 @@
     
     UINavigationBar *bar = [UINavigationBar appearance];
     bar.barTintColor = SetColor(0x06a27b);
+    bar.layer.borderColor = [UIColor clearColor].CGColor;
+    bar.layer.borderWidth = 1.5f;
     bar.translucent = NO;
     [bar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
