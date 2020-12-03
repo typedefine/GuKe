@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WorkGroupInfoPageModel : NSObject
 
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *logoUrl;
 @property (nonatomic, strong) ExpandTextCellModel *infoCellModel;
 
 @property (nonatomic, strong) NSArray<UserInfoModel *> *members;

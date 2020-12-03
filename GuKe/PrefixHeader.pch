@@ -456,6 +456,9 @@
 /**医生添加医生申请*/
 #define doctorhuanxinaddHuan @"/app/doctorhuanxin/addHuan.json"
 
+/**工作站主页*/
+#define UrlPath_workplace @"/app/chatgroups/groups.json"
+
 
 /**删除好友*/
 #define userpatienthuanxindeletefriend @"/app/userpatienthuanxin/deletefriend.json"

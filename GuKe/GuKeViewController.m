@@ -70,6 +70,7 @@ static NSString *kGroupName = @"GroupName";
 //    WYYMainGroupViewController *groupChatVC = [[WYYMainGroupViewController alloc] init];
     WorkSpaceInfoController *groupInfoVC = [[WorkSpaceInfoController alloc] init];
     [self addChildViewController:groupInfoVC andTitle:@"工作站" andImageName:@"icon_group" andSelectedImage:@"icon_group_selected"];
+//    groupInfoVC.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     
     //资讯
     ZJNInfoViewController *class = [[ZJNInfoViewController alloc]init];

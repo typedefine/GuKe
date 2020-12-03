@@ -1,66 +1,90 @@
 //
-//  WorkGroupsInfoController.m
+//  WorkSpaceView.m
 //  GuKe
 //
-//  Created by yb on 2020/11/1.
+//  Created by yb on 2020/11/29.
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "WorkSpaceInfoController.h"
-#import "WorkSpaceInfoPageModel.h"
+#import "WorkSpaceInfoView.h"
+#import "WorkSpaceInfoViewModel.h"
 #import "ExpandTextCell.h"
 #import "WorkSpaceHeaderView.h"
 #import "WorkSpaceFooter.h"
 #import "AllGroupsController.h"
 #import "WorkGroupInfoController.h"
 
-@interface WorkSpaceInfoController ()<UITableViewDataSource, UITableViewDelegate>
+@interface WorkSpaceInfoView ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) WorkSpaceHeaderView *headerView;
 @property (nonatomic, strong) WorkSpaceFooter *footerView;
-@property (nonatomic, strong) WorkSpaceInfoPageModel *pageModel;
+@property (nonatomic, strong) WorkSpaceInfoViewModel *viewModel;
 
 @end
 
-@implementation WorkSpaceInfoController
+@implementation WorkSpaceInfoView
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    self.navigationItem.title = @"工作站";
-    
-    [self.view addSubview:self.tableView];
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
-    }];
-
-    [self loadServerData];
+- (instancetype)init
+{
+    if (self = [super init]) {
+        [self setUp];
+    }
+    return self;
 }
 
-- (void)loadServerData
+- (instancetype)initWithCoder:(NSCoder *)coder
 {
-    [self.pageModel configareWithData:nil];
-    self.headerView.coverImgUrl = self.pageModel.workSpaceModel.imgUrl;
-    [self.footerView configureWithTarget:self action:@selector(groupAction:) groups:self.pageModel.workGroups];
+    if (self = [super initWithCoder:coder]) {
+        [self setUp];
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    if (self = [super initWithFrame:frame]) {
+        [self setUp];
+    }
+    return self;
+}
+
+- (void)setUp
+{
+    [self addSubview:self.tableView];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self);
+    }];
+}
+
+- (void)lookforGroup
+{
+    
+}
+
+- (void)configareWithData:(WorkSpaceInfoViewModel *)data;
+{
+    self.viewModel = data;
+    self.headerView.coverImgUrl = data.headerImgUrl;
+    [self.footerView configureWithTarget:self action:@selector(groupAction:) groups:data.groups];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView reloadData];
-    
 }
+
+
 - (void)groupAction:(NSString *)groupId
 {
     if ([groupId isEqualToString:@"all"]) {
         NSLog(@"查看全部工作室");
         AllGroupsController *vc = [[AllGroupsController alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
+        [self.viewModel.targetController.navigationController pushViewController:vc animated:YES];
     }else{
         NSLog(@"查看工作室%@",groupId);
         WorkGroupInfoController *vc = [[WorkGroupInfoController alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
+        [self.viewModel.targetController.navigationController pushViewController:vc animated:YES];
     }
 }
 
@@ -92,9 +116,9 @@
 {
         typeof(self) weakSelf = self;
         ExpandTextCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ExpandTextCell class])];
-        [cell configWithData:self.pageModel.workSpaceModel expand:^(BOOL expanded){
+        [cell configWithData:self.viewModel.textModel expand:^(BOOL expanded){
             [weakSelf.tableView beginUpdates];
-            weakSelf.pageModel.workSpaceModel.expanded = expanded;
+            weakSelf.viewModel.textModel.expanded = expanded;
         
             [weakSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
            
@@ -150,25 +174,5 @@
     NSLog(@"申请开通工作室");
 }
 
-
-- (WorkSpaceInfoPageModel *)pageModel
-{
-    if (!_pageModel) {
-        _pageModel = [[WorkSpaceInfoPageModel alloc] init];
-        
-    }
-    return _pageModel;
-}
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

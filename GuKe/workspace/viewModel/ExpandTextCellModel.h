@@ -12,7 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 @class ZXFExpandTextViewModel;
 @interface ExpandTextCellModel : NSObject
 
-@property (nonatomic, copy) NSString *imgUrl;
 //@property (nonatomic, copy) NSString *displayContent;
 @property (nonatomic, copy) NSString *content;
 @property (nonatomic, assign) BOOL expanded;

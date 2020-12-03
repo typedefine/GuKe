@@ -58,6 +58,8 @@
 - (void)loadServerData
 {
     [self.pageModel configareWithData:nil];
+    self.headerView.title = self.pageModel.name;
+    self.headerView.logoUrl = self.pageModel.logoUrl;
     [self.footerView.membersview configureWithTarget:self action:@selector(memberAction:) members:self.pageModel.members];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
