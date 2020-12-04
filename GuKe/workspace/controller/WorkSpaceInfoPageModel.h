@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class WorkSpaceInfoViewModel;
+#import "WorkSpaceInfoViewModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *sessionid;
 @property (nonatomic, strong) WorkSpaceInfoViewModel *infoViewModel;
 
-- (void)configareWithData:(id)data;
+//- (void)configareWithData:(NSDictionary *)data;
 
 @end
 

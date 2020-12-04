@@ -8,7 +8,7 @@
 
 #import "WorkSpaceInfoPageModel.h"
 #import "WorkGroupItemCellModel.h"
-#import "WorkSpaceInfoViewModel.h"
+
 
 @implementation WorkSpaceInfoPageModel
 
@@ -23,7 +23,7 @@
 }
 
 
-- (void)configareWithData:(id)data
+- (void)configareWithData:(NSDictionary *)data
 {
     [self.infoViewModel configareWithData:nil];
 }

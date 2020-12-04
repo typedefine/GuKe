@@ -9,6 +9,8 @@
 #import "WorkSpaceInfoController.h"
 #import "WorkSpaceInfoPageModel.h"
 #import "WorkSpaceInfoView.h"
+#import "WorkSpaceBlankView.h"
+#import "AllGroupsController.h"
 
 @interface WorkSpaceInfoController ()
 
@@ -16,6 +18,7 @@
 
 @property (nonatomic, strong) WorkSpaceInfoPageModel *pageModel;
 @property (nonatomic, strong) WorkSpaceInfoView *infoView;
+@property (nonatomic, strong) WorkSpaceBlankView *blankView;
 
 @end
 
@@ -52,7 +55,9 @@
 
 - (void)lookforGroup
 {
-    
+    AllGroupsController *vc = [[AllGroupsController alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)loadServerData
@@ -74,7 +79,7 @@
                 {
                     self.naviRightButton.hidden = YES;
                     self.infoView.hidden = NO;
-                    [self.pageModel configareWithData:nil];
+                    [self.pageModel.infoViewModel configareWithData:dict];
                     [self.infoView removeFromSuperview];
                     [self.view addSubview:self.infoView];
                     [self.infoView mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -92,14 +97,21 @@
                     break;
 
                 case 3://创建的工作室在审核中
-                {
-                    self.naviRightButton.hidden = NO;
-                }
-                    break;
-
                 case 4://加入申请在审核中
                 {
                     self.naviRightButton.hidden = NO;
+                    self.blankView.hidden = NO;
+                    [self.blankView removeFromSuperview];
+                    [self.view addSubview:self.blankView];
+                    [self.blankView mas_remakeConstraints:^(MASConstraintMaker *make) {
+                        make.edges.equalTo(self.view);
+                    }];
+                    if (status == 3) {
+                        self.blankView.title = @"您创建的工作室正在审核，请耐心等待";
+                    }else{
+                        self.blankView.title = @"您申请的工作室正在审核，请耐心等待";
+                    }
+                    self.blankView.subTitle = @"您也可以点击右上角加入其他工作室";
                 }
                     break;
 
@@ -149,6 +161,15 @@
         _infoView.hidden = YES;
     }
     return _infoView;
+}
+
+- (WorkSpaceBlankView *)blankView
+{
+    if (!_blankView) {
+        _blankView = [[WorkSpaceBlankView alloc] init];
+        _blankView.hidden = YES;
+    }
+    return _blankView;
 }
 
 /*

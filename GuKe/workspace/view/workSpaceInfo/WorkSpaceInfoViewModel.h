@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray<WorkGroupItemCellModel *> *groups;
 
 
-- (void)configareWithData:(id)data;
+- (void)configareWithData:(NSDictionary *)data;
 
 @end
 

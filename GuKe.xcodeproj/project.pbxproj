@@ -120,6 +120,12 @@
 		893A3DDD253A27FB00570FB5 /* ZXFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 893A3DDC253A27FB00570FB5 /* ZXFDocument.m */; };
 		893A3DDF253B67BB00570FB5 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 893A3DDE253B67BB00570FB5 /* CloudKit.framework */; };
 		893A3DE3253B762700570FB5 /* ViewFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893A3DE2253B762700570FB5 /* ViewFileController.m */; };
+		89490956257A8FBA00E91C66 /* WorkGroupListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89490955257A8FBA00E91C66 /* WorkGroupListView.m */; };
+		8949095A257A91BA00E91C66 /* GroupListSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89490959257A91BA00E91C66 /* GroupListSectionHeaderView.m */; };
+		8949095D257A91DA00E91C66 /* GroupListSectionFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8949095C257A91DA00E91C66 /* GroupListSectionFooterView.m */; };
+		89490960257A921F00E91C66 /* GroupListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8949095F257A921F00E91C66 /* GroupListCell.m */; };
+		89490963257A927600E91C66 /* WorkGroupListItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89490962257A927600E91C66 /* WorkGroupListItemView.m */; };
+		89490966257A935300E91C66 /* WorkGroupListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89490965257A935300E91C66 /* WorkGroupListViewModel.m */; };
 		894C7D492579396F00EF9ABE /* GroupMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C7D182579396F00EF9ABE /* GroupMemberCell.m */; };
 		894C7D4A2579396F00EF9ABE /* WorkSpaceHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C7D1A2579396F00EF9ABE /* WorkSpaceHeaderView.m */; };
 		894C7D4B2579396F00EF9ABE /* WorkSpaceTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C7D1B2579396F00EF9ABE /* WorkSpaceTitleView.m */; };
@@ -1114,6 +1120,18 @@
 		893A3DDE253B67BB00570FB5 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		893A3DE1253B762700570FB5 /* ViewFileController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewFileController.h; sourceTree = "<group>"; };
 		893A3DE2253B762700570FB5 /* ViewFileController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewFileController.m; sourceTree = "<group>"; };
+		89490954257A8FBA00E91C66 /* WorkGroupListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkGroupListView.h; sourceTree = "<group>"; };
+		89490955257A8FBA00E91C66 /* WorkGroupListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkGroupListView.m; sourceTree = "<group>"; };
+		89490958257A91BA00E91C66 /* GroupListSectionHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupListSectionHeaderView.h; sourceTree = "<group>"; };
+		89490959257A91BA00E91C66 /* GroupListSectionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupListSectionHeaderView.m; sourceTree = "<group>"; };
+		8949095B257A91DA00E91C66 /* GroupListSectionFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupListSectionFooterView.h; sourceTree = "<group>"; };
+		8949095C257A91DA00E91C66 /* GroupListSectionFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupListSectionFooterView.m; sourceTree = "<group>"; };
+		8949095E257A921F00E91C66 /* GroupListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupListCell.h; sourceTree = "<group>"; };
+		8949095F257A921F00E91C66 /* GroupListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupListCell.m; sourceTree = "<group>"; };
+		89490961257A927600E91C66 /* WorkGroupListItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkGroupListItemView.h; sourceTree = "<group>"; };
+		89490962257A927600E91C66 /* WorkGroupListItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkGroupListItemView.m; sourceTree = "<group>"; };
+		89490964257A935300E91C66 /* WorkGroupListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkGroupListViewModel.h; sourceTree = "<group>"; };
+		89490965257A935300E91C66 /* WorkGroupListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkGroupListViewModel.m; sourceTree = "<group>"; };
 		894C7D142579396F00EF9ABE /* WorkGroupSupporterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkGroupSupporterView.h; sourceTree = "<group>"; };
 		894C7D152579396F00EF9ABE /* WorkGroupInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkGroupInfoController.h; sourceTree = "<group>"; };
 		894C7D162579396F00EF9ABE /* WorkGroupHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkGroupHeaderView.h; sourceTree = "<group>"; };
@@ -2905,13 +2923,93 @@
 			path = iCloudFileManager;
 			sourceTree = "<group>";
 		};
+		89490957257A915B00E91C66 /* groupList */ = {
+			isa = PBXGroup;
+			children = (
+				89490954257A8FBA00E91C66 /* WorkGroupListView.h */,
+				89490955257A8FBA00E91C66 /* WorkGroupListView.m */,
+				89490964257A935300E91C66 /* WorkGroupListViewModel.h */,
+				89490965257A935300E91C66 /* WorkGroupListViewModel.m */,
+				89490961257A927600E91C66 /* WorkGroupListItemView.h */,
+				89490962257A927600E91C66 /* WorkGroupListItemView.m */,
+				89490958257A91BA00E91C66 /* GroupListSectionHeaderView.h */,
+				89490959257A91BA00E91C66 /* GroupListSectionHeaderView.m */,
+				8949095B257A91DA00E91C66 /* GroupListSectionFooterView.h */,
+				8949095C257A91DA00E91C66 /* GroupListSectionFooterView.m */,
+				8949095E257A921F00E91C66 /* GroupListCell.h */,
+				8949095F257A921F00E91C66 /* GroupListCell.m */,
+			);
+			path = groupList;
+			sourceTree = "<group>";
+		};
+		89490967257A938100E91C66 /* workSpaceInfo */ = {
+			isa = PBXGroup;
+			children = (
+				894C7D412579396F00EF9ABE /* WorkGroupsTitleView.h */,
+				894C7D262579396F00EF9ABE /* WorkGroupsTitleView.m */,
+				894C7D3F2579396F00EF9ABE /* WorkSpaceInfoView.h */,
+				894C7D272579396F00EF9ABE /* WorkSpaceInfoView.m */,
+				894C7D192579396F00EF9ABE /* WorkSpaceInfoViewModel.h */,
+				894C7D322579396F00EF9ABE /* WorkSpaceInfoViewModel.m */,
+				894C7D3E2579396F00EF9ABE /* WorkSpaceHeaderView.h */,
+				894C7D1A2579396F00EF9ABE /* WorkSpaceHeaderView.m */,
+				894C7D482579396F00EF9ABE /* WorkSpaceFooter.h */,
+				894C7D282579396F00EF9ABE /* WorkSpaceFooter.m */,
+				894C7D1C2579396F00EF9ABE /* WorkGroupItemCell.h */,
+				894C7D3C2579396F00EF9ABE /* WorkGroupItemCell.m */,
+				894C7D292579396F00EF9ABE /* WorkGroupItemCellModel.h */,
+				894C7D472579396F00EF9ABE /* WorkGroupItemCellModel.m */,
+				894C7D422579396F00EF9ABE /* MoreWorkGroupsCell.h */,
+				894C7D242579396F00EF9ABE /* MoreWorkGroupsCell.m */,
+			);
+			path = workSpaceInfo;
+			sourceTree = "<group>";
+		};
+		89490968257A95AA00E91C66 /* workGroupInfo */ = {
+			isa = PBXGroup;
+			children = (
+				894C7D162579396F00EF9ABE /* WorkGroupHeaderView.h */,
+				894C7D352579396F00EF9ABE /* WorkGroupHeaderView.m */,
+				894C7D142579396F00EF9ABE /* WorkGroupSupporterView.h */,
+				894C7D362579396F00EF9ABE /* WorkGroupSupporterView.m */,
+				894C7D3A2579396F00EF9ABE /* WorkGroupFooterView.h */,
+				894C7D1E2579396F00EF9ABE /* WorkGroupFooterView.m */,
+				894C7D392579396F00EF9ABE /* GroupMembersView.h */,
+				894C7D202579396F00EF9ABE /* GroupMembersView.m */,
+				894C7D312579396F00EF9ABE /* GroupMemberCell.h */,
+				894C7D182579396F00EF9ABE /* GroupMemberCell.m */,
+				894C7D462579396F00EF9ABE /* MoreGroupMemberCell.h */,
+				894C7D2F2579396F00EF9ABE /* MoreGroupMemberCell.m */,
+			);
+			path = workGroupInfo;
+			sourceTree = "<group>";
+		};
+		89490969257A969A00E91C66 /* allGroup */ = {
+			isa = PBXGroup;
+			children = (
+				894C7D1D2579396F00EF9ABE /* AllGroupsHeaderView.h */,
+				894C7D3B2579396F00EF9ABE /* AllGroupsHeaderView.m */,
+			);
+			path = allGroup;
+			sourceTree = "<group>";
+		};
+		8949096A257A96D900E91C66 /* ExpandTextCell */ = {
+			isa = PBXGroup;
+			children = (
+				894C7D172579396F00EF9ABE /* ExpandTextCell.h */,
+				894C7D332579396F00EF9ABE /* ExpandTextCell.m */,
+				894C7D222579396F00EF9ABE /* ExpandTextCellModel.h */,
+				894C7D432579396F00EF9ABE /* ExpandTextCellModel.m */,
+			);
+			path = ExpandTextCell;
+			sourceTree = "<group>";
+		};
 		894C7D132579396F00EF9ABE /* workspace */ = {
 			isa = PBXGroup;
 			children = (
-				894C7D66257939D700EF9ABE /* viewModel */,
+				894C7D632579398100EF9ABE /* controller */,
 				894C7D65257939B300EF9ABE /* model */,
 				894C7D64257939AB00EF9ABE /* view */,
-				894C7D632579398100EF9ABE /* controller */,
 			);
 			path = workspace;
 			sourceTree = "<group>";
@@ -2934,8 +3032,12 @@
 				894C7D382579396F00EF9ABE /* AllGroupsController.m */,
 				894C7D442579396F00EF9ABE /* WorkSpaceInfoController.h */,
 				894C7D232579396F00EF9ABE /* WorkSpaceInfoController.m */,
+				894C7D372579396F00EF9ABE /* WorkSpaceInfoPageModel.h */,
+				894C7D1F2579396F00EF9ABE /* WorkSpaceInfoPageModel.m */,
 				894C7D342579396F00EF9ABE /* WorkGroupInfoController.m */,
 				894C7D152579396F00EF9ABE /* WorkGroupInfoController.h */,
+				894C7D402579396F00EF9ABE /* WorkGroupInfoPageModel.h */,
+				894C7D252579396F00EF9ABE /* WorkGroupInfoPageModel.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -2943,39 +3045,16 @@
 		894C7D64257939AB00EF9ABE /* view */ = {
 			isa = PBXGroup;
 			children = (
+				8949096A257A96D900E91C66 /* ExpandTextCell */,
+				89490969257A969A00E91C66 /* allGroup */,
+				89490968257A95AA00E91C66 /* workGroupInfo */,
+				89490967257A938100E91C66 /* workSpaceInfo */,
+				89490957257A915B00E91C66 /* groupList */,
 				894C7D2A2579396F00EF9ABE /* ZXFExpandTextView */,
-				894C7D3E2579396F00EF9ABE /* WorkSpaceHeaderView.h */,
-				894C7D1A2579396F00EF9ABE /* WorkSpaceHeaderView.m */,
 				894C7D302579396F00EF9ABE /* WorkSpaceBlankView.h */,
 				894C7D452579396F00EF9ABE /* WorkSpaceBlankView.m */,
-				894C7D272579396F00EF9ABE /* WorkSpaceInfoView.m */,
 				894C7D3D2579396F00EF9ABE /* WorkSpaceTitleView.h */,
 				894C7D1B2579396F00EF9ABE /* WorkSpaceTitleView.m */,
-				894C7D482579396F00EF9ABE /* WorkSpaceFooter.h */,
-				894C7D282579396F00EF9ABE /* WorkSpaceFooter.m */,
-				894C7D3F2579396F00EF9ABE /* WorkSpaceInfoView.h */,
-				894C7D412579396F00EF9ABE /* WorkGroupsTitleView.h */,
-				894C7D262579396F00EF9ABE /* WorkGroupsTitleView.m */,
-				894C7D422579396F00EF9ABE /* MoreWorkGroupsCell.h */,
-				894C7D242579396F00EF9ABE /* MoreWorkGroupsCell.m */,
-				894C7D3C2579396F00EF9ABE /* WorkGroupItemCell.m */,
-				894C7D392579396F00EF9ABE /* GroupMembersView.h */,
-				894C7D202579396F00EF9ABE /* GroupMembersView.m */,
-				894C7D312579396F00EF9ABE /* GroupMemberCell.h */,
-				894C7D182579396F00EF9ABE /* GroupMemberCell.m */,
-				894C7D462579396F00EF9ABE /* MoreGroupMemberCell.h */,
-				894C7D2F2579396F00EF9ABE /* MoreGroupMemberCell.m */,
-				894C7D1C2579396F00EF9ABE /* WorkGroupItemCell.h */,
-				894C7D1D2579396F00EF9ABE /* AllGroupsHeaderView.h */,
-				894C7D3B2579396F00EF9ABE /* AllGroupsHeaderView.m */,
-				894C7D3A2579396F00EF9ABE /* WorkGroupFooterView.h */,
-				894C7D1E2579396F00EF9ABE /* WorkGroupFooterView.m */,
-				894C7D142579396F00EF9ABE /* WorkGroupSupporterView.h */,
-				894C7D362579396F00EF9ABE /* WorkGroupSupporterView.m */,
-				894C7D162579396F00EF9ABE /* WorkGroupHeaderView.h */,
-				894C7D352579396F00EF9ABE /* WorkGroupHeaderView.m */,
-				894C7D172579396F00EF9ABE /* ExpandTextCell.h */,
-				894C7D332579396F00EF9ABE /* ExpandTextCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2985,23 +3064,6 @@
 			children = (
 			);
 			path = model;
-			sourceTree = "<group>";
-		};
-		894C7D66257939D700EF9ABE /* viewModel */ = {
-			isa = PBXGroup;
-			children = (
-				894C7D372579396F00EF9ABE /* WorkSpaceInfoPageModel.h */,
-				894C7D1F2579396F00EF9ABE /* WorkSpaceInfoPageModel.m */,
-				894C7D402579396F00EF9ABE /* WorkGroupInfoPageModel.h */,
-				894C7D252579396F00EF9ABE /* WorkGroupInfoPageModel.m */,
-				894C7D192579396F00EF9ABE /* WorkSpaceInfoViewModel.h */,
-				894C7D322579396F00EF9ABE /* WorkSpaceInfoViewModel.m */,
-				894C7D222579396F00EF9ABE /* ExpandTextCellModel.h */,
-				894C7D432579396F00EF9ABE /* ExpandTextCellModel.m */,
-				894C7D292579396F00EF9ABE /* WorkGroupItemCellModel.h */,
-				894C7D472579396F00EF9ABE /* WorkGroupItemCellModel.m */,
-			);
-			path = viewModel;
 			sourceTree = "<group>";
 		};
 		898F1AD924D46F5D00397505 /* patientRecord */ = {
@@ -6465,6 +6527,7 @@
 				E3E895A32021BB11004C2DB2 /* ZJNMRSharesTableViewCell.m in Sources */,
 				9A53892220084DC40084E772 /* PublicGroupListViewController.m in Sources */,
 				9A08A9071F302B2E00AF29EB /* MJRefreshAutoNormalFooter.m in Sources */,
+				8949095A257A91BA00E91C66 /* GroupListSectionHeaderView.m in Sources */,
 				9A1E38791F32CFE60063FC2A /* ChangeGeRenInfoViewController.m in Sources */,
 				9A53876E20084D8A0084E772 /* EMSDWebImageDownloader.m in Sources */,
 				E3F4B0F71F7CB54900CB16ED /* ZJNScrollTableViewCell.m in Sources */,
@@ -6570,6 +6633,7 @@
 				E309767C1F9DD20F00EC3F80 /* IQTextView.m in Sources */,
 				893A3DA22537434800570FB5 /* DDCImageViewerScrollView.m in Sources */,
 				9AA389352012E2E800452C39 /* WYYYIshengFriend.m in Sources */,
+				89490960257A921F00E91C66 /* GroupListCell.m in Sources */,
 				1F1128DC2221265F00FD8CB6 /* MJFoundation.m in Sources */,
 				894C7D592579396F00EF9ABE /* ExpandTextCell.m in Sources */,
 				E3F4B1021F7CCF5300CB16ED /* PatientsBasicInfoTableViewCell.m in Sources */,
@@ -6601,6 +6665,7 @@
 				9A53879420084D8B0084E772 /* EaseEmoji.m in Sources */,
 				9A53894120084DC40084E772 /* UIViewController+SearchController.m in Sources */,
 				893265252501316D00FE7BBE /* UIButton+EnlargeEdge.m in Sources */,
+				89490956257A8FBA00E91C66 /* WorkGroupListView.m in Sources */,
 				9A8867262011885900F96753 /* WYYSearchYishengModel.m in Sources */,
 				9A38A4C31F4C2C290078B207 /* HuiYiXiangQingViewController.m in Sources */,
 				E30976A51F9DD20F00EC3F80 /* View+MASAdditions.m in Sources */,
@@ -6633,6 +6698,7 @@
 				9A53878520084D8B0084E772 /* PSTGridLayoutItem.m in Sources */,
 				1FA5AFBE211B77A700FBF98B /* H9ViewController.m in Sources */,
 				893265242501316D00FE7BBE /* UIColor+HEX.m in Sources */,
+				8949095D257A91DA00E91C66 /* GroupListSectionFooterView.m in Sources */,
 				9A53891820084DC40084E772 /* EMGroupMutesViewController.m in Sources */,
 				89B2B9A324F52C6A0062387D /* MsgChatInputBar.m in Sources */,
 				E357820420283A1A00ACAEA5 /* ZJNTitleAndInfoTableViewCell.m in Sources */,
@@ -6739,6 +6805,7 @@
 				9A08A9871F30533B00AF29EB /* UIView+SDExtension.m in Sources */,
 				E3D30D75204401F400876D44 /* ZJNChangePatientBodyInfoViewController.m in Sources */,
 				9A53874820084D8A0084E772 /* amrFileCodec.mm in Sources */,
+				89490966257A935300E91C66 /* WorkGroupListViewModel.m in Sources */,
 				1FEC9D7B22DED4850060E3E1 /* CountButton.m in Sources */,
 				9A08A8D01F302B2900AF29EB /* UIImage+extension.m in Sources */,
 				9A53874420084D8A0084E772 /* EMCDDeviceManager+Microphone.m in Sources */,
@@ -6782,6 +6849,7 @@
 				9A53878C20084D8B0084E772 /* EaseUserModel.m in Sources */,
 				9A756CA22011C5DF005FE5FB /* WYYzuZhiHuiYiViewController.m in Sources */,
 				9A530B281F46B62500BD6C7E /* FaBuHuiYiViewController.m in Sources */,
+				89490963257A927600E91C66 /* WorkGroupListItemView.m in Sources */,
 				898F1ADF24D6C77200397505 /* PatientInfoManagePageModel.m in Sources */,
 				1F374E172240846D001B6D01 /* SysmessageViewController.m in Sources */,
 				E3577A881FFCC95E00E4A738 /* ZJNInfoListView.m in Sources */,

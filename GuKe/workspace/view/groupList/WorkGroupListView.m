@@ -1,29 +1,23 @@
 //
-//  WorkSpaceView.m
+//  WorkGroupListView.m
 //  GuKe
 //
-//  Created by yb on 2020/11/29.
+//  Created by yb on 2020/12/4.
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "WorkSpaceInfoView.h"
-#import "WorkSpaceInfoViewModel.h"
+#import "WorkGroupListView.h"
 #import "ExpandTextCell.h"
-#import "WorkSpaceHeaderView.h"
-#import "WorkSpaceFooter.h"
-#import "AllGroupsController.h"
 #import "WorkGroupInfoController.h"
 
-@interface WorkSpaceInfoView ()<UITableViewDataSource, UITableViewDelegate>
+@interface WorkGroupListView ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) WorkSpaceHeaderView *headerView;
-@property (nonatomic, strong) WorkSpaceFooter *footerView;
-@property (nonatomic, strong) WorkSpaceInfoViewModel *viewModel;
+
 
 @end
 
-@implementation WorkSpaceInfoView
+@implementation WorkGroupListView
 
 - (instancetype)init
 {
@@ -56,12 +50,7 @@
         make.edges.equalTo(self);
     }];
 }
-
-- (void)lookforGroup
-{
-    
-}
-
+/*
 - (void)configareWithData:(WorkSpaceInfoViewModel *)data;
 {
     self.viewModel = data;
@@ -128,7 +117,7 @@
     
 }
 
-
+*/
 - (UITableView *)tableView
 {
     if (!_tableView) {
@@ -137,8 +126,8 @@
         [_tableView registerClass:[ExpandTextCell class] forCellReuseIdentifier:NSStringFromClass([ExpandTextCell class])];
         _tableView.rowHeight = UITableViewAutomaticDimension;
         _tableView.estimatedRowHeight = IPHONE_Y_SCALE(100);
-        _tableView.tableHeaderView = self.headerView;
-        _tableView.tableFooterView = self.footerView;
+        _tableView.tableHeaderView = [[UIView alloc] init];
+        _tableView.tableFooterView = [[UIView alloc] init];
 //        if (@available(iOS 11.0, *)) {
 //            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
 //        } else {
@@ -149,30 +138,7 @@
     return _tableView;
 }
 
-- (WorkSpaceHeaderView *)headerView
-{
-    if (!_headerView) {
-        _headerView = [[WorkSpaceHeaderView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, IPHONE_Y_SCALE(210))];
-    }
-    return _headerView;
-}
 
-- (WorkSpaceFooter *)footerView
-{
-    if (!_footerView) {
-        _footerView = [[WorkSpaceFooter alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, IPHONE_Y_SCALE(220))];
-        __weak typeof(self) weakSelf = self;
-        _footerView.titleView.action = ^(){
-            [weakSelf addNewGroup];
-        };
-    }
-    return _footerView;
-}
-
-- (void)addNewGroup
-{
-    NSLog(@"申请开通工作室");
-}
 
 
 @end
