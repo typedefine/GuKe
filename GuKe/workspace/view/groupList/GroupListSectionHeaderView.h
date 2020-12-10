@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class GroupUnionInfoModel;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GroupListSectionHeaderView : UITableViewHeaderFooterView
 
-
+- (void)configWithData:(GroupUnionInfoModel *)data;
 
 @end
 

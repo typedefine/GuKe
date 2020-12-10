@@ -9,6 +9,8 @@
 #import "WorkSpaceInfoController.h"
 #import "WorkSpaceInfoPageModel.h"
 #import "WorkSpaceInfoView.h"
+#import "WorkGroupListView.h"
+
 #import "WorkSpaceBlankView.h"
 #import "AllGroupsController.h"
 
@@ -18,6 +20,7 @@
 
 @property (nonatomic, strong) WorkSpaceInfoPageModel *pageModel;
 @property (nonatomic, strong) WorkSpaceInfoView *infoView;
+@property (nonatomic, strong) WorkGroupListView *groupListView;
 @property (nonatomic, strong) WorkSpaceBlankView *blankView;
 
 @end
@@ -79,13 +82,12 @@
                 {
                     self.naviRightButton.hidden = YES;
                     self.infoView.hidden = NO;
-                    [self.pageModel.infoViewModel configareWithData:dict];
                     [self.infoView removeFromSuperview];
                     [self.view addSubview:self.infoView];
                     [self.infoView mas_remakeConstraints:^(MASConstraintMaker *make) {
                         make.edges.equalTo(self.view);
                     }];
-                    [self.infoView configareWithData:self.pageModel.infoViewModel];
+                    [self.infoView configareWithTargetController:self data:dict];
         
                 }
                     break;
@@ -93,6 +95,14 @@
                 case 2://已加入工作室
                 {
                     self.naviRightButton.hidden = NO;
+                    self.groupListView.hidden = NO;
+                   
+                    [self.groupListView removeFromSuperview];
+                    [self.view addSubview:self.groupListView];
+                    [self.groupListView mas_remakeConstraints:^(MASConstraintMaker *make) {
+                        make.edges.equalTo(self.view);
+                    }];
+                    [self.groupListView configareWithTargetController:self data:dict[@"data"]];
                 }
                     break;
 
@@ -127,18 +137,6 @@
 }
 
 
-
-- (WorkSpaceInfoPageModel *)pageModel
-{
-    if (!_pageModel) {
-        _pageModel = [[WorkSpaceInfoPageModel alloc] init];
-        _pageModel.sessionid = sessionIding;
-        _pageModel.targetController = self;
-    }
-    return _pageModel;
-}
-
-
 - (UIButton *)naviRightButton
 {
     if (!_naviRightButton) {
@@ -162,6 +160,29 @@
     }
     return _infoView;
 }
+
+
+- (WorkGroupListView *)groupListView
+{
+    if (!_groupListView) {
+        _groupListView = [[WorkGroupListView alloc] init];
+        _groupListView.hidden = YES;
+    }
+    return _groupListView;
+}
+
+
+- (WorkSpaceInfoPageModel *)pageModel
+{
+    if (!_pageModel) {
+        _pageModel = [[WorkSpaceInfoPageModel alloc] init];
+        _pageModel.sessionid = sessionIding;
+//        _pageModel.targetController = self;
+    }
+    return _pageModel;
+}
+
+
 
 - (WorkSpaceBlankView *)blankView
 {

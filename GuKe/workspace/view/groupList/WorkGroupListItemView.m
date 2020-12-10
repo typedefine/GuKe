@@ -10,11 +10,63 @@
 
 @implementation WorkGroupListItemView
 
+- (instancetype)init
+{
+    if (self = [super init]) {
+        [self setUp];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    if (self = [super initWithCoder:coder]) {
+        [self setUp];
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    if (self = [super initWithFrame:frame]) {
+        [self setUp];
+    }
+    return self;
+}
+
+- (void)setUp
+{
+    [self addSubview:self.imageView];
+    [self addSubview:self.titleLabel];
+    [self addSubview:self.subTitleLabel];
+    
+    [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self);
+        make.centerY.equalTo(self);
+        make.width.mas_equalTo(IPHONE_X_SCALE(20));
+        make.height.mas_equalTo(IPHONE_X_SCALE(17));
+    }];
+    
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self);
+        make.left.equalTo(self.imageView.mas_right).offset(IPHONE_X_SCALE(7));
+        
+    }];
+    
+    [self.subTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self);
+        make.left.equalTo(self.titleLabel.mas_right).offset(IPHONE_X_SCALE(14));
+        
+    }];
+}
+
+
 - (UIImageView *)imageView
 {
     if (!_imageView) {
         _imageView = [[UIImageView alloc] init];
-        _imageView.contentMode = UIViewContentModeScaleAspectFit;
+        _imageView.image = [UIImage imageNamed:@"icon_group"];
+//        _imageView.contentMode = UIViewContentModeScaleAspectFit;
 //        _imageView.image = [UIImage imageNamed:@"workspace_blank"];
     }
     return _imageView;

@@ -7,7 +7,6 @@
 //
 
 #import "WorkSpaceInfoPageModel.h"
-#import "WorkGroupItemCellModel.h"
 
 
 @implementation WorkSpaceInfoPageModel
@@ -23,23 +22,33 @@
 }
 
 
-- (void)configareWithData:(NSDictionary *)data
-{
-    [self.infoViewModel configareWithData:nil];
-}
+//- (void)configareWithData:(NSDictionary *)data
+//{
+//    [self.infoViewModel configareWithData:data];
+//}
 
-- (WorkSpaceInfoViewModel *)infoViewModel
-{
-    if (!_infoViewModel) {
-        _infoViewModel = [[WorkSpaceInfoViewModel alloc] init];
-    }
-    return _infoViewModel;
-}
+//- (WorkSpaceInfoViewModel *)infoViewModel
+//{
+//    if (!_infoViewModel) {
+//        _infoViewModel = [[WorkSpaceInfoViewModel alloc] init];
+//    }
+//    return _infoViewModel;
+//}
+//
+//
+//- (WorkGroupListViewModel *)listViewModel
+//{
+//    if (!_listViewModel) {
+//        _listViewModel = [[WorkGroupListViewModel alloc] init];
+//    }
+//    return _listViewModel;
+//}
 
-- (void)setTargetController:(UIViewController *)targetController
-{
-    _targetController = targetController;
-    self.infoViewModel.targetController = targetController;
-}
+//- (void)setTargetController:(UIViewController *)targetController
+//{
+//    _targetController = targetController;
+//    self.infoViewModel.targetController = targetController;
+//    self.listViewModel.targetController = targetController;
+//}
 
 @end

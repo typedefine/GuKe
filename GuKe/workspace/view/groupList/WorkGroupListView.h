@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class WorkGroupListViewModel;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WorkGroupListView : UIView
+
+- (void)configareWithTargetController:(UIViewController*)targetController data:(NSArray *)data;
 
 @end
 

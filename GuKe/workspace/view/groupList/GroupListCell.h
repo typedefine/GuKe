@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class GroupInfoModel;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GroupListCell : UITableViewCell
+
+- (void)configWithData:(GroupInfoModel *)data;
 
 @end
 

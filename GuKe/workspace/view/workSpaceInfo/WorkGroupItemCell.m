@@ -14,7 +14,7 @@
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIButton *detailButton;
-@property (nonatomic, strong) WorkGroupItemCellModel *cellModel;
+@property (nonatomic, strong) GroupInfoModel *cellModel;
 
 @end
 
@@ -78,12 +78,12 @@
 //    }
 }
 
-- (void)configCellWithData:(WorkGroupItemCellModel *)dataModel
+- (void)configCellWithData:(GroupInfoModel *)dataModel
 {
     self.cellModel = dataModel;
     if (dataModel) {
-        [self.imageView sd_setImageWithURL:[NSURL URLWithString:dataModel.avatarUrl] placeholderImage:[UIImage imageNamed:@"default_avatar"]];
-        self.titleLabel.text = dataModel.title;
+        [self.imageView sd_setImageWithURL:[NSURL URLWithString:dataModel.portrait] placeholderImage:[UIImage imageNamed:@"default_avatar"]];
+        self.titleLabel.text = dataModel.groupname;
     }
 }
 

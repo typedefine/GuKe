@@ -13,7 +13,7 @@
 @interface AllGroupsController ()<UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchBarDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) NSArray<WorkGroupItemCellModel *> *groups;
+@property (nonatomic, strong) NSArray<GroupInfoModel *> *groups;
 
 @end
 
@@ -44,10 +44,10 @@
     ];
     NSMutableArray *items = [NSMutableArray arrayWithCapacity:ids.count];
     for (int i=0; i<ids.count; i++) {
-        WorkGroupItemCellModel *itemModel = [[WorkGroupItemCellModel alloc] init];
-        itemModel.groupId = ids[i];
-        itemModel.title = titles[i];
-        itemModel.avatarUrl = imgs[i];
+        GroupInfoModel *itemModel = [[GroupInfoModel alloc] init];
+        itemModel.groupid = [ids[i] integerValue];
+        itemModel.groupname = titles[i];
+        itemModel.portrait = imgs[i];
         [items addObject:itemModel];
     }
     self.groups = [items copy];

@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WorkGroupInfoController : BaseViewController
 
+@property (nonatomic, copy) NSString *groupId;
+
 @end
 
 NS_ASSUME_NONNULL_END

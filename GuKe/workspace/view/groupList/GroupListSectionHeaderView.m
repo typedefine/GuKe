@@ -8,6 +8,7 @@
 
 #import "GroupListSectionHeaderView.h"
 #import "WorkGroupListItemView.h"
+#import "GroupUnionInfoModel.h"
 
 @interface GroupListSectionHeaderView ()
 @property (nonatomic, strong) WorkGroupListItemView *mainView;
@@ -16,12 +17,50 @@
 
 @implementation GroupListSectionHeaderView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
+        self.contentView.backgroundColor = [UIColor whiteColor];
+        
+        [self.contentView addSubview:self.mainView];
+        [self.mainView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.contentView).offset(IPHONE_X_SCALE(20));
+            make.right.equalTo(self.contentView).offset(-IPHONE_X_SCALE(20));
+            make.centerY.equalTo(self.contentView);
+        }];
+        CGFloat r = IPHONE_X_SCALE(33);
+        [self.mainView.imageView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(r);
+            make.height.mas_equalTo(r);
+            make.centerY.equalTo(self.mainView);
+        }];
+        self.mainView.imageView.clipsToBounds = YES;
+        self.mainView.imageView.layer.cornerRadius = r/2.0f;
+        
+        self.mainView.titleLabel.font = [UIFont systemFontOfSize:17 weight:UIFontWeightMedium];
+        self.mainView.titleLabel.textColor = [UIColor colorWithHex:0x3C3E3D];
+//        [self.mainView.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+//            make.centerY.equalTo(self.mainView.imageView);
+//        }];
+    }
+    return self;
 }
-*/
+
+- (void)configWithData:(GroupUnionInfoModel *)data
+{
+    if (!data) return;
+    [self.mainView.imageView sd_setImageWithURL:[NSURL URLWithString:data.portrait] placeholderImage:[UIImage imageNamed:@"icon_group"]];
+    self.mainView.titleLabel.text = data.groupname;
+    self.mainView.subTitleLabel.text = data.countTitle;
+}
+
+- (WorkGroupListItemView *)mainView
+{
+    if (!_mainView) {
+        _mainView = [[WorkGroupListItemView alloc] init];
+    }
+    return _mainView;
+}
+
 
 @end

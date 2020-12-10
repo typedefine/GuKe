@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WorkGroupItemCellModel.h"
+#import "GroupInfoModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WorkGroupItemCell : UICollectionViewCell
 
-- (void)configCellWithData:(WorkGroupItemCellModel *)dataModel;
+- (void)configCellWithData:(GroupInfoModel *)dataModel;
 
 @end
 

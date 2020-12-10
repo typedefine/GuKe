@@ -7,7 +7,7 @@
 //
 
 #import "WorkSpaceInfoViewModel.h"
-#import "WorkGroupItemCellModel.h"
+#import "GroupInfoModel.h"
 
 @implementation WorkSpaceInfoViewModel
 
@@ -20,10 +20,7 @@
     NSMutableArray *items = [NSMutableArray arrayWithCapacity:groups.count];
     for (int i=0; i<groups.count; i++) {
         NSDictionary *d = groups[i];
-        WorkGroupItemCellModel *itemModel = [[WorkGroupItemCellModel alloc] init];
-        itemModel.groupId = d[@"groupid"];
-        itemModel.title = d[@"groupname"];
-        itemModel.avatarUrl = d[@"portrait"];
+        GroupInfoModel *itemModel = [GroupInfoModel mj_objectWithKeyValues:d];
         [items addObject:itemModel];
     }
     self.groups = [items copy];

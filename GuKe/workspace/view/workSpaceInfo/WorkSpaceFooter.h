@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "WorkGroupsTitleView.h"
-@class WorkGroupItemCellModel;
+@class GroupInfoModel;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WorkSpaceFooter : UIView
 
 @property (nonatomic, strong) WorkGroupsTitleView *titleView;
 
-- (void)configureWithTarget:(id)target action:(SEL)action groups:(NSArray<WorkGroupItemCellModel *> *)groups;
+- (void)configureWithTarget:(id)target action:(SEL)action groups:(NSArray<GroupInfoModel *> *)groups;
 
 @end
 

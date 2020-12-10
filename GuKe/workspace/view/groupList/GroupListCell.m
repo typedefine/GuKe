@@ -8,6 +8,7 @@
 
 #import "GroupListCell.h"
 #import "WorkGroupListItemView.h"
+#import "GroupInfoModel.h"
 
 @interface GroupListCell ()
 
@@ -17,15 +18,34 @@
 
 @implementation GroupListCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        self.selectionStyle = UITableViewCellSeparatorStyleNone;
+        [self.contentView addSubview:self.mainView];
+        [self.mainView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.contentView).offset(IPHONE_X_SCALE(20));
+            make.right.equalTo(self.contentView).offset(-IPHONE_X_SCALE(20));
+            make.centerY.equalTo(self.contentView);
+        }];
+    }
+    return self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+- (void)configWithData:(GroupInfoModel *)data
+{
+    if (!data) return;
+    [self.mainView.imageView sd_setImageWithURL:[NSURL URLWithString:data.portrait] placeholderImage:[UIImage imageNamed:@"icon_group"]];
+    self.mainView.titleLabel.text = data.groupname;
+    self.mainView.subTitleLabel.text = data.countTitle;
+}
 
-    // Configure the view for the selected state
+- (WorkGroupListItemView *)mainView
+{
+    if (!_mainView) {
+        _mainView = [[WorkGroupListItemView alloc] init];
+    }
+    return _mainView;
 }
 
 @end

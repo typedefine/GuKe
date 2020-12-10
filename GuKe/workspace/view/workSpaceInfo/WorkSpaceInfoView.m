@@ -20,6 +20,7 @@
 @property (nonatomic, strong) WorkSpaceHeaderView *headerView;
 @property (nonatomic, strong) WorkSpaceFooter *footerView;
 @property (nonatomic, strong) WorkSpaceInfoViewModel *viewModel;
+@property (nonatomic, strong) UIViewController *targetController;
 
 @end
 
@@ -57,11 +58,12 @@
     }];
 }
 
-- (void)configareWithData:(WorkSpaceInfoViewModel *)data;
+- (void)configareWithTargetController:(UIViewController*)targetController data:(NSDictionary *)data
 {
-    self.viewModel = data;
-    self.headerView.coverImgUrl = data.headerImgUrl;
-    [self.footerView configureWithTarget:self action:@selector(groupAction:) groups:data.groups];
+    self.targetController = targetController;
+    [self.viewModel configareWithData:data];
+    self.headerView.coverImgUrl = self.viewModel.headerImgUrl;
+    [self.footerView configureWithTarget:self action:@selector(groupAction:) groups:self.viewModel.groups];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView reloadData];
@@ -74,12 +76,13 @@
         NSLog(@"查看全部工作室");
         AllGroupsController *vc = [[AllGroupsController alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
-        [self.viewModel.targetController.navigationController pushViewController:vc animated:YES];
+        [self.targetController.navigationController pushViewController:vc animated:YES];
     }else{
         NSLog(@"查看工作室%@",groupId);
         WorkGroupInfoController *vc = [[WorkGroupInfoController alloc] init];
+        vc.groupId = groupId;
         vc.hidesBottomBarWhenPushed = YES;
-        [self.viewModel.targetController.navigationController pushViewController:vc animated:YES];
+        [self.targetController.navigationController pushViewController:vc animated:YES];
     }
 }
 

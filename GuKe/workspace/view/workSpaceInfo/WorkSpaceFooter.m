@@ -14,9 +14,9 @@
 
 
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic) id target;
+@property (nonatomic, weak) id target;
 @property (nonatomic) SEL action;
-@property (nonatomic, strong) NSArray<WorkGroupItemCellModel *> *groups;
+@property (nonatomic, strong) NSArray<GroupInfoModel *> *groups;
 
 @end
 
@@ -92,7 +92,7 @@
     return _collectionView;
 }
 
-- (void)configureWithTarget:(id)target action:(SEL)action groups:(NSArray<WorkGroupItemCellModel *> *)groups
+- (void)configureWithTarget:(id)target action:(SEL)action groups:(NSArray<GroupInfoModel *> *)groups
 {
     self.target = target;
     self.action = action;
@@ -129,7 +129,7 @@
         if ([self.target respondsToSelector:self.action]) {
             NSString *Id = @"all";
             if (indexPath.item < self.groups.count) {
-                Id = self.groups[indexPath.item].groupId;
+                Id = @(self.groups[indexPath.item].groupid).stringValue;
             }
             [self.target performSelector:self.action withObject:Id];
         }
