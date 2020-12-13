@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WorkGroupsTitleView.h"
+#import "WorkStudiosTitleView.h"
 @class GroupInfoModel;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WorkSpaceFooter : UIView
 
-@property (nonatomic, strong) WorkGroupsTitleView *titleView;
+@property (nonatomic, strong) WorkStudiosTitleView *titleView;
 
 - (void)configureWithTarget:(id)target action:(SEL)action groups:(NSArray<GroupInfoModel *> *)groups;
 

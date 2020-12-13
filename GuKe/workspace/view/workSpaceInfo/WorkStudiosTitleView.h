@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WorkGroupsTitleView : UIView
+@interface WorkStudiosTitleView : UIView
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *subTitle;

@@ -6,16 +6,16 @@
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "MoreWorkGroupsCell.h"
+#import "MoreWorkStudiosCell.h"
 
-@interface MoreWorkGroupsCell ()
+@interface MoreWorkStudiosCell ()
 
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIImageView *imageView;
 
 @end
 
-@implementation MoreWorkGroupsCell
+@implementation MoreWorkStudiosCell
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

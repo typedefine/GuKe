@@ -10,7 +10,7 @@
 #import "GroupInfoModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WorkGroupItemCell : UICollectionViewCell
+@interface WorkStudioItemCell : UICollectionViewCell
 
 - (void)configCellWithData:(GroupInfoModel *)dataModel;
 

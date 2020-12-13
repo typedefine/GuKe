@@ -8,7 +8,7 @@
 
 #import "WorkStudioInfoController.h"
 #import "WorkStudioHeaderView.h"
-#import "WorkGroupFooterView.h"
+#import "WorkStudioFooterView.h"
 #import "ExpandTextCell.h"
 #import "WorkStudioInfoPageModel.h"
 
@@ -16,7 +16,7 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) WorkStudioHeaderView *headerView;
-@property (nonatomic, strong) WorkGroupFooterView *footerView;
+@property (nonatomic, strong) WorkStudioFooterView *footerView;
 @property (nonatomic, strong) WorkStudioInfoPageModel *pageModel;
 @property (nonatomic, strong) UIButton *joinButton;
 
@@ -160,10 +160,10 @@
     return _headerView;
 }
 
-- (WorkGroupFooterView *)footerView
+- (WorkStudioFooterView *)footerView
 {
     if (!_footerView) {
-        _footerView = [[WorkGroupFooterView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, IPHONE_Y_SCALE(280))];
+        _footerView = [[WorkStudioFooterView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, IPHONE_Y_SCALE(280))];
     }
     return _footerView;
 }

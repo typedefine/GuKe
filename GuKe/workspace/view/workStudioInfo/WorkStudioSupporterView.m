@@ -6,15 +6,15 @@
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "WorkGroupSupporterView.h"
+#import "WorkStudioSupporterView.h"
 
-@interface WorkGroupSupporterView ()
+@interface WorkStudioSupporterView ()
 
 @property (nonatomic, strong) UILabel *titleLabel;
 
 @end
 
-@implementation WorkGroupSupporterView
+@implementation WorkStudioSupporterView
 
 
 - (instancetype)initWithFrame:(CGRect)frame

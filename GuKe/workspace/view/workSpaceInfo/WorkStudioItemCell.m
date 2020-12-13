@@ -6,10 +6,10 @@
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "WorkGroupItemCell.h"
+#import "WorkStudioItemCell.h"
 
 
-@interface WorkGroupItemCell ()
+@interface WorkStudioItemCell ()
 
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UILabel *titleLabel;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation WorkGroupItemCell
+@implementation WorkStudioItemCell
 
 
 - (instancetype)initWithFrame:(CGRect)frame

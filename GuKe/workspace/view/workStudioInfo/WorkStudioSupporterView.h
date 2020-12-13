@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WorkGroupSupporterView : UIView
+@interface WorkStudioSupporterView : UIView
 
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UIImageView *logoView;

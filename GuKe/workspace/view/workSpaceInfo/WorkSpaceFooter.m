@@ -7,8 +7,8 @@
 //
 
 #import "WorkSpaceFooter.h"
-#import "WorkGroupItemCell.h"
-#import "MoreWorkGroupsCell.h"
+#import "WorkStudioItemCell.h"
+#import "MoreWorkStudiosCell.h"
 
 @interface WorkSpaceFooter ()<UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 
@@ -64,10 +64,10 @@
     }];
 }
 
-- (WorkGroupsTitleView *)titleView
+- (WorkStudiosTitleView *)titleView
 {
     if (!_titleView) {
-        _titleView = [[WorkGroupsTitleView alloc] init];
+        _titleView = [[WorkStudiosTitleView alloc] init];
     }
     return _titleView;
 }
@@ -86,8 +86,8 @@
         _collectionView.backgroundColor = [UIColor whiteColor];
 //        _collectionView.allowsSelection = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
-        [_collectionView registerClass:[WorkGroupItemCell class] forCellWithReuseIdentifier:NSStringFromClass([WorkGroupItemCell class])];
-        [_collectionView registerClass:[MoreWorkGroupsCell class] forCellWithReuseIdentifier:NSStringFromClass([MoreWorkGroupsCell class])];
+        [_collectionView registerClass:[WorkStudioItemCell class] forCellWithReuseIdentifier:NSStringFromClass([WorkStudioItemCell class])];
+        [_collectionView registerClass:[MoreWorkStudiosCell class] forCellWithReuseIdentifier:NSStringFromClass([MoreWorkStudiosCell class])];
     }
     return _collectionView;
 }
@@ -115,9 +115,9 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.item == self.groups.count) {
-        return [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([MoreWorkGroupsCell class]) forIndexPath:indexPath];
+        return [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([MoreWorkStudiosCell class]) forIndexPath:indexPath];
     }
-    WorkGroupItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([WorkGroupItemCell class]) forIndexPath:indexPath];
+    WorkStudioItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([WorkStudioItemCell class]) forIndexPath:indexPath];
     [cell configCellWithData:self.groups[indexPath.item]];
     return cell;
 }

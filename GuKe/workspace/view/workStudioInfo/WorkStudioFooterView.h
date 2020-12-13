@@ -10,14 +10,14 @@
 //@class GroupMembersView;
 //@class WorkGroupSupporterView;
 #import "GroupMembersView.h"
-#import "WorkGroupSupporterView.h"
+#import "WorkStudioSupporterView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WorkGroupFooterView : UIView
+@interface WorkStudioFooterView : UIView
 
 @property (nonatomic, strong) GroupMembersView *membersview;
-@property (nonatomic, strong) WorkGroupSupporterView *supporterView;
+@property (nonatomic, strong) WorkStudioSupporterView *supporterView;
 
 @end
 

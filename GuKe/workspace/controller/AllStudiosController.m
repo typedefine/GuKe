@@ -8,7 +8,7 @@
 
 #import "AllStudiosController.h"
 #import "AllStudiosHeaderView.h"
-#import "WorkGroupItemCell.h"
+#import "WorkStudioItemCell.h"
 #import "WorkStudioInfoController.h"
 
 @interface AllStudiosController ()<UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchBarDelegate>
@@ -73,7 +73,7 @@
 //        _collectionView.allowsSelection = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
         [_collectionView registerClass:[AllStudiosHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([AllStudiosHeaderView class])];
-        [_collectionView registerClass:[WorkGroupItemCell class] forCellWithReuseIdentifier:NSStringFromClass([WorkGroupItemCell class])];
+        [_collectionView registerClass:[WorkStudioItemCell class] forCellWithReuseIdentifier:NSStringFromClass([WorkStudioItemCell class])];
     }
     return _collectionView;
 }
@@ -101,7 +101,7 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    WorkGroupItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([WorkGroupItemCell class]) forIndexPath:indexPath];
+    WorkStudioItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([WorkStudioItemCell class]) forIndexPath:indexPath];
     [cell configCellWithData:self.groups[indexPath.item]];
     return cell;
 }

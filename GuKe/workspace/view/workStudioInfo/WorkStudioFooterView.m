@@ -6,10 +6,10 @@
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "WorkGroupFooterView.h"
+#import "WorkStudioFooterView.h"
 
 
-@implementation WorkGroupFooterView
+@implementation WorkStudioFooterView
 
 
 - (instancetype)init
@@ -70,10 +70,10 @@
     return _membersview;
 }
 
-- (WorkGroupSupporterView *)supporterView
+- (WorkStudioSupporterView *)supporterView
 {
     if (!_supporterView) {
-        _supporterView = [[WorkGroupSupporterView alloc] init];
+        _supporterView = [[WorkStudioSupporterView alloc] init];
     }
     return _supporterView;
 }
