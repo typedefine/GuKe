@@ -6,18 +6,19 @@
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "AllGroupsController.h"
-#import "AllGroupsHeaderView.h"
+#import "AllStudiosController.h"
+#import "AllStudiosHeaderView.h"
 #import "WorkGroupItemCell.h"
+#import "WorkStudioInfoController.h"
 
-@interface AllGroupsController ()<UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchBarDelegate>
+@interface AllStudiosController ()<UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchBarDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray<GroupInfoModel *> *groups;
 
 @end
 
-@implementation AllGroupsController
+@implementation AllStudiosController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -71,7 +72,7 @@
         _collectionView.backgroundColor = [UIColor whiteColor];
 //        _collectionView.allowsSelection = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
-        [_collectionView registerClass:[AllGroupsHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([AllGroupsHeaderView class])];
+        [_collectionView registerClass:[AllStudiosHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([AllStudiosHeaderView class])];
         [_collectionView registerClass:[WorkGroupItemCell class] forCellWithReuseIdentifier:NSStringFromClass([WorkGroupItemCell class])];
     }
     return _collectionView;
@@ -86,7 +87,7 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-        AllGroupsHeaderView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([AllGroupsHeaderView class]) forIndexPath:indexPath];
+        AllStudiosHeaderView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([AllStudiosHeaderView class]) forIndexPath:indexPath];
         header.searchBar.delegate = self;
         return header;
     }
@@ -107,7 +108,11 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-   
+    GroupInfoModel *model = self.groups[indexPath.item];
+    WorkStudioInfoController *vc = [[WorkStudioInfoController alloc] init];
+    vc.groupId = @(model.ID).stringValue;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 

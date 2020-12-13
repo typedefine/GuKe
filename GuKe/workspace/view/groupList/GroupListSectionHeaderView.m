@@ -12,6 +12,7 @@
 
 @interface GroupListSectionHeaderView ()
 @property (nonatomic, strong) WorkGroupListItemView *mainView;
+@property (nonatomic, copy) GroupListSectionAction action;
 @end
 
 
@@ -42,16 +43,26 @@
 //        [self.mainView.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
 //            make.centerY.equalTo(self.mainView.imageView);
 //        }];
+        [self.contentView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)]];
+
     }
     return self;
 }
 
-- (void)configWithData:(GroupUnionInfoModel *)data
+- (void)configWithData:(GroupUnionInfoModel *)data action:(GroupListSectionAction)action
 {
     if (!data) return;
+    self.action = [action copy];
     [self.mainView.imageView sd_setImageWithURL:[NSURL URLWithString:data.portrait] placeholderImage:[UIImage imageNamed:@"icon_group"]];
     self.mainView.titleLabel.text = data.groupname;
     self.mainView.subTitleLabel.text = data.countTitle;
+}
+
+- (void)tapAction
+{
+    if (self.action) {
+        self.action();
+    }
 }
 
 - (WorkGroupListItemView *)mainView

@@ -11,8 +11,8 @@
 #import "ExpandTextCell.h"
 #import "WorkSpaceHeaderView.h"
 #import "WorkSpaceFooter.h"
-#import "AllGroupsController.h"
-#import "WorkGroupInfoController.h"
+#import "AllStudiosController.h"
+#import "WorkStudioInfoController.h"
 
 @interface WorkSpaceInfoView ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -74,12 +74,12 @@
 {
     if ([groupId isEqualToString:@"all"]) {
         NSLog(@"查看全部工作室");
-        AllGroupsController *vc = [[AllGroupsController alloc] init];
+        AllStudiosController *vc = [[AllStudiosController alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         [self.targetController.navigationController pushViewController:vc animated:YES];
     }else{
         NSLog(@"查看工作室%@",groupId);
-        WorkGroupInfoController *vc = [[WorkGroupInfoController alloc] init];
+        WorkStudioInfoController *vc = [[WorkStudioInfoController alloc] init];
         vc.groupId = groupId;
         vc.hidesBottomBarWhenPushed = YES;
         [self.targetController.navigationController pushViewController:vc animated:YES];

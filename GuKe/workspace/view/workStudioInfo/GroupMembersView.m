@@ -50,17 +50,17 @@
     self.backgroundColor = [UIColor whiteColor];
     [self addSubview:self.titleLabel];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self).offset(IPHONE_Y_SCALE(15));
+        make.top.equalTo(self).offset(IPHONE_Y_SCALE(5));
         make.height.mas_equalTo(IPHONE_Y_SCALE(20));
-        make.left.right.mas_equalTo(self);
+        make.left.equalTo(self);
     }];
     
     [self addSubview:self.collectionView];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self);
-        make.top.equalTo(self.titleLabel.mas_bottom).offset(IPHONE_Y_SCALE(15));
+        make.top.equalTo(self.titleLabel.mas_bottom).offset(IPHONE_Y_SCALE(20));
         make.bottom.equalTo(self.mas_bottom).offset(IPHONE_Y_SCALE(25));
-//        make.height.mas_equalTo(IPHONE_Y_SCALE(160));
+//        make.height.mas_equalTo(IPHONE_Y_SCALE(140));
     }];
     
 }
@@ -84,6 +84,7 @@
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightMedium];
         _titleLabel.textColor = [UIColor colorWithHex:0x3C3E3D];
+        _titleLabel.text = @"工作室成员";
     }
     return _titleLabel;
 }
@@ -94,17 +95,18 @@
 {
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.minimumLineSpacing = IPHONE_X_SCALE(10);
-//        layout.minimumInteritemSpacing = 10;
-        layout.sectionInset = UIEdgeInsetsMake(5, 20, 5, 20);
-        layout.estimatedItemSize = CGSizeMake(IPHONE_X_SCALE(105), IPHONE_Y_SCALE(150));
-        layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        layout.minimumLineSpacing = IPHONE_Y_SCALE(19);
+        layout.minimumInteritemSpacing = IPHONE_X_SCALE(25);
+//        layout.sectionInset = UIEdgeInsetsMake(5, 20, 5, 20);
+        layout.estimatedItemSize = CGSizeMake(IPHONE_X_SCALE(35), IPHONE_X_SCALE(35));
+        layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         _collectionView.backgroundColor = [UIColor whiteColor];
 //        _collectionView.allowsSelection = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
         [_collectionView registerClass:[GroupMemberCell class] forCellWithReuseIdentifier:NSStringFromClass([GroupMemberCell class])];
         [_collectionView registerClass:[MoreGroupMemberCell class] forCellWithReuseIdentifier:NSStringFromClass([MoreGroupMemberCell class])];
+        _collectionView.scrollEnabled = NO;
     }
     return _collectionView;
 }

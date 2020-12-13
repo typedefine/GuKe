@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WorkGroupHeaderView : UIView
+@interface WorkStudioHeaderView : UIView
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *logoUrl;

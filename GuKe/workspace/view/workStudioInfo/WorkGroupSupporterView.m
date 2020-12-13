@@ -48,7 +48,7 @@
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(IPHONE_Y_SCALE(5));
         make.height.mas_equalTo(IPHONE_Y_SCALE(20));
-        make.left.right.mas_equalTo(self);
+        make.left.equalTo(self);
     }];
     CGFloat r = IPHONE_X_SCALE(50);
     [self addSubview:self.logoView];
@@ -88,6 +88,15 @@
         _titleLabel.text = @"赞助商";
     }
     return _titleLabel;
+}
+
+- (UIImageView *)logoView
+{
+    if (!_logoView) {
+        _logoView = [[UIImageView alloc] init];
+        _logoView.contentMode = UIViewContentModeScaleAspectFill;
+    }
+    return _logoView;
 }
 
 

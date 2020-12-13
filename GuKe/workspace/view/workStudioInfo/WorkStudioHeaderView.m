@@ -6,9 +6,9 @@
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "WorkGroupHeaderView.h"
+#import "WorkStudioHeaderView.h"
 
-@interface WorkGroupHeaderView ()
+@interface WorkStudioHeaderView ()
 
 @property (nonatomic, strong) UIView *topView;
 @property (nonatomic, strong) UIImageView *logoView;
@@ -16,7 +16,7 @@
 
 @end
 
-@implementation WorkGroupHeaderView
+@implementation WorkStudioHeaderView
 
 - (instancetype)init
 {
@@ -99,7 +99,7 @@
 {
     if (!_topView) {
         _topView = [[UIView alloc] init];
-        _topView.backgroundColor = greenC;
+        _topView.backgroundColor = [UIColor whiteColor];
     }
     return _topView;
 }

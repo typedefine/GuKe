@@ -6,16 +6,16 @@
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "AllGroupsHeaderView.h"
+#import "AllStudiosHeaderView.h"
 
-@interface AllGroupsHeaderView()
+@interface AllStudiosHeaderView()
 
 @property (nonatomic, strong) UILabel *titleLabel;
 
 
 @end
 
-@implementation AllGroupsHeaderView
+@implementation AllStudiosHeaderView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

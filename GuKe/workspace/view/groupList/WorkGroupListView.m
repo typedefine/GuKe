@@ -11,7 +11,8 @@
 #import "GroupListSectionHeaderView.h"
 #import "GroupListSectionFooterView.h"
 #import "WorkGroupListViewModel.h"
-#import "WorkGroupInfoController.h"
+#import "WorkStudioInfoController.h"
+#import "WYYNewFriendViewController.h"
 
 @interface WorkGroupListView ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -75,8 +76,20 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     GroupListSectionHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass([GroupListSectionHeaderView class])];
-    [header configWithData:self.viewModel.groupList[section]];
+    __weak typeof(self) weakSelf = self;
+    [header configWithData:self.viewModel.groupList[section] action:^{
+        [weakSelf enterGroupInfoFromSection:section];
+    }];
     return header;
+}
+
+- (void)enterGroupInfoFromSection:(NSInteger)section
+{
+    GroupUnionInfoModel *model = self.viewModel.groupList[section];
+    WorkStudioInfoController *vc = [[WorkStudioInfoController alloc] init];
+    vc.groupId = @(model.ID).stringValue;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.targetController.navigationController pushViewController:vc animated:YES];
 }
 
 
@@ -99,6 +112,9 @@
 - (void)newFriends
 {
     NSLog(@"新申请好友 ");
+    WYYNewFriendViewController *vc = [[WYYNewFriendViewController alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.targetController.navigationController pushViewController:vc animated:YES];
 }
 
 
@@ -131,7 +147,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     GroupInfoModel *model = self.viewModel.groupList[indexPath.section].children[indexPath.row];
-    WorkGroupInfoController *vc = [[WorkGroupInfoController alloc] init];
+    WorkStudioInfoController *vc = [[WorkStudioInfoController alloc] init];
     vc.groupId = @(model.ID).stringValue;
     vc.hidesBottomBarWhenPushed = YES;
     [self.targetController.navigationController pushViewController:vc animated:YES];

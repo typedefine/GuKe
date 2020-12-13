@@ -13,7 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WorkGroupInfoPageModel : NSObject
+@interface WorkStudioInfoPageModel : NSObject
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *logoUrl;

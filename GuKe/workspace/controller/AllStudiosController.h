@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AllGroupsController : BaseViewController
+@interface AllStudiosController : BaseViewController
 
 @end
 

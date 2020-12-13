@@ -12,7 +12,7 @@
 #import "WorkGroupListView.h"
 
 #import "WorkSpaceBlankView.h"
-#import "AllGroupsController.h"
+#import "AllStudiosController.h"
 
 @interface WorkSpaceInfoController ()
 
@@ -58,7 +58,7 @@
 
 - (void)lookforGroup
 {
-    AllGroupsController *vc = [[AllGroupsController alloc] init];
+    AllStudiosController *vc = [[AllStudiosController alloc] init];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }

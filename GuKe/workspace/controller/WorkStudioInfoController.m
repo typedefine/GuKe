@@ -6,29 +6,29 @@
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "WorkGroupInfoController.h"
-#import "WorkGroupHeaderView.h"
+#import "WorkStudioInfoController.h"
+#import "WorkStudioHeaderView.h"
 #import "WorkGroupFooterView.h"
 #import "ExpandTextCell.h"
-#import "WorkGroupInfoPageModel.h"
+#import "WorkStudioInfoPageModel.h"
 
-@interface WorkGroupInfoController ()<UITableViewDataSource, UITableViewDelegate>
+@interface WorkStudioInfoController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) WorkGroupHeaderView *headerView;
+@property (nonatomic, strong) WorkStudioHeaderView *headerView;
 @property (nonatomic, strong) WorkGroupFooterView *footerView;
-@property (nonatomic, strong) WorkGroupInfoPageModel *pageModel;
+@property (nonatomic, strong) WorkStudioInfoPageModel *pageModel;
 @property (nonatomic, strong) UIButton *joinButton;
 
 @end
 
-@implementation WorkGroupInfoController
+@implementation WorkStudioInfoController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.navigationItem.title = @"工作站";
+    self.navigationItem.title = @"工作室介绍";
     
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -61,17 +61,27 @@
     self.headerView.title = self.pageModel.name;
     self.headerView.logoUrl = self.pageModel.logoUrl;
     [self.footerView.membersview configureWithTarget:self action:@selector(memberAction:) members:self.pageModel.members];
+    self.footerView.supporterView.nameLabel.text = @"民安医疗器械有限公司";
+    NSString *logoUrl = @"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2559140773,3124438031&fm=26&gp=0.jpg";
+    [self.footerView.supporterView.logoView sd_setImageWithURL:[NSURL URLWithString:logoUrl] placeholderImage:[UIImage imageNamed:@"default_avatar"]];
+    [self.footerView.supporterView.detailButton addTarget:self action:@selector(supportDetail) forControlEvents:UIControlEventTouchUpInside];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView reloadData];
 }
+
+- (void)supportDetail
+{
+    
+}
+
 - (void)memberAction:(NSString *)memberId
 {
     if ([memberId isEqualToString:@"all"]) {
-        NSLog(@"查看全部工作室");
+        NSLog(@"查看全部医生");
       
     }else{
-        NSLog(@"查看工作室%@",memberId);
+        NSLog(@"查看医生%@",memberId);
     }
 }
 
@@ -142,10 +152,10 @@
     return _tableView;
 }
 
-- (WorkGroupHeaderView *)headerView
+- (WorkStudioHeaderView *)headerView
 {
     if (!_headerView) {
-        _headerView = [[WorkGroupHeaderView alloc] init];
+        _headerView = [[WorkStudioHeaderView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, IPHONE_Y_SCALE(80))];
     }
     return _headerView;
 }
@@ -153,7 +163,7 @@
 - (WorkGroupFooterView *)footerView
 {
     if (!_footerView) {
-        _footerView = [[WorkGroupFooterView alloc] init];//WithFrame:CGRectMake(0, 0, ScreenWidth, IPHONE_Y_SCALE(220))
+        _footerView = [[WorkGroupFooterView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, IPHONE_Y_SCALE(280))];
     }
     return _footerView;
 }
@@ -171,10 +181,10 @@
 
 
 
-- (WorkGroupInfoPageModel *)pageModel
+- (WorkStudioInfoPageModel *)pageModel
 {
     if (!_pageModel) {
-        _pageModel = [[WorkGroupInfoPageModel alloc] init];
+        _pageModel = [[WorkStudioInfoPageModel alloc] init];
         
     }
     return _pageModel;
