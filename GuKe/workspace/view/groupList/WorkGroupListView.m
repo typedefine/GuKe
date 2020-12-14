@@ -12,6 +12,7 @@
 #import "GroupListSectionFooterView.h"
 #import "WorkGroupListViewModel.h"
 #import "WorkStudioInfoController.h"
+#import "WorkGroupInfoController.h"
 #import "WYYNewFriendViewController.h"
 
 @interface WorkGroupListView ()<UITableViewDataSource, UITableViewDelegate>
@@ -147,7 +148,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     GroupInfoModel *model = self.viewModel.groupList[indexPath.section].children[indexPath.row];
-    WorkStudioInfoController *vc = [[WorkStudioInfoController alloc] init];
+    WorkGroupInfoController *vc = [[WorkGroupInfoController alloc] init];
     vc.groupId = @(model.ID).stringValue;
     vc.hidesBottomBarWhenPushed = YES;
     [self.targetController.navigationController pushViewController:vc animated:YES];
