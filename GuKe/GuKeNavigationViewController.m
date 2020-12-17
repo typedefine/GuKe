@@ -18,7 +18,7 @@
     [super viewDidLoad];
     
     UINavigationBar *bar = [UINavigationBar appearance];
-    bar.barTintColor = SetColor(0x06a27b);
+    bar.barTintColor = greenC;
     bar.layer.borderColor = [UIColor clearColor].CGColor;
     bar.layer.borderWidth = 1.5f;
     bar.translucent = NO;
@@ -41,12 +41,27 @@
     
         [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-1000, 0)forBarMetrics:UIBarMetricsDefault];
     }
+//    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];//设置背景
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
     
-    
+//    [self.navigationBar setBackgroundImage:[self createImageWithColor:[UIColor clearColor]] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     
 
     // Do any additional setup after loading the view from its nib.
 }
+
+//- (UIImage *)createImageWithColor:(UIColor *)color
+//{
+//    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+//    UIGraphicsBeginImageContext(rect.size);
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+//    CGContextSetFillColorWithColor(context, [color CGColor]);
+//    CGContextFillRect(context, rect);
+//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    return image;
+//}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

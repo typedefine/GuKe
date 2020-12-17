@@ -19,15 +19,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A53DE2A9-3627-464C-A4BD-0FCA73A97651"
+            uuid = "2C5492AC-DA85-47C8-AA81-5AE96287CDA9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GuKe/workspace/controller/WorkGroupInfoController.m"
+            filePath = "GuKe/workspace/controller/WorkStudioInfoController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74">
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "-memberView:didSelectAtIndex:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -167,7 +167,10 @@
 
 #define detailTextColor SetColor(0x666666)
 
-#define greenC SetColor(0x06a27b)
+#define defaultBlankTextColor SetColor(0xEAEAEA)
+
+//#define greenC SetColor(0x06a27b)
+#define greenC SetColor(0x31B173)
 
 #define Color_rgba(r, g, b, a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 

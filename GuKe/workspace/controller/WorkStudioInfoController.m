@@ -12,7 +12,7 @@
 #import "ExpandTextCell.h"
 #import "WorkStudioInfoPageModel.h"
 
-@interface WorkStudioInfoController ()<UITableViewDataSource, UITableViewDelegate>
+@interface WorkStudioInfoController ()<UITableViewDataSource, UITableViewDelegate, GroupMembersViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) WorkStudioHeaderView *headerView;
@@ -58,13 +58,18 @@
 - (void)loadServerData
 {
     [self.pageModel configareWithData:nil];
+//    [self.tableView beginUpdates];
     self.headerView.title = self.pageModel.name;
     self.headerView.logoUrl = self.pageModel.logoUrl;
-    [self.footerView.membersview configureWithTarget:self action:@selector(memberAction:) members:self.pageModel.members];
+    self.footerView.membersView.delegate = self;
+    [self.footerView.membersView reloadData];
+//    [self.footerView.membersView configureWithTarget:self action:@selector(memberAction:) members:self.pageModel.members];
     self.footerView.supporterView.nameLabel.text = @"民安医疗器械有限公司";
     NSString *logoUrl = @"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2559140773,3124438031&fm=26&gp=0.jpg";
     [self.footerView.supporterView.logoView sd_setImageWithURL:[NSURL URLWithString:logoUrl] placeholderImage:[UIImage imageNamed:@"default_avatar"]];
     [self.footerView.supporterView.detailButton addTarget:self action:@selector(supportDetail) forControlEvents:UIControlEventTouchUpInside];
+//    [self.tableView endUpdates];
+//    self.tableView.tableFooterView = self.footerView;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView reloadData];
@@ -75,15 +80,15 @@
     
 }
 
-- (void)memberAction:(NSString *)memberId
-{
-    if ([memberId isEqualToString:@"all"]) {
-        NSLog(@"查看全部医生");
-      
-    }else{
-        NSLog(@"查看医生%@",memberId);
-    }
-}
+//- (void)memberAction:(NSString *)memberId
+//{
+//    if ([memberId isEqualToString:@"all"]) {
+//        NSLog(@"查看全部医生");
+//
+//    }else{
+//        NSLog(@"查看医生%@",memberId);
+//    }
+//}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -166,6 +171,36 @@
         _footerView = [[WorkStudioFooterView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, IPHONE_Y_SCALE(280))];
     }
     return _footerView;
+}
+
+- (NSString *)titleInMemberView:(GroupMembersView *)membersView
+{
+    return @"工作组成员";
+}
+
+-(CGSize)itemSizeInMemberView:(GroupMembersView *)membersView
+{
+    return CGSizeMake(IPHONE_X_SCALE(35), IPHONE_X_SCALE(35));
+}
+
+- (CGFloat)minimumLineSpacingInMemberView:(GroupMembersView *)membersView
+{
+    return IPHONE_Y_SCALE(19);
+}
+
+- (CGFloat)minimumInteritemSpacingInMemberView:(GroupMembersView *)membersView
+{
+    return IPHONE_X_SCALE(25);
+}
+
+- (NSArray<UserInfoModel *> *)membersInView:(GroupMembersView *)membersView
+{
+    return self.pageModel.members;
+}
+
+- (void)memberView:(GroupMembersView *)membersView didSelectAtIndex:(NSInteger)index
+{
+    
 }
 
 - (UIButton *)joinButton

@@ -154,6 +154,7 @@
 		894C7D602579396F00EF9ABE /* ExpandTextCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C7D432579396F00EF9ABE /* ExpandTextCellModel.m */; };
 		894C7D612579396F00EF9ABE /* WorkSpaceBlankView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C7D452579396F00EF9ABE /* WorkSpaceBlankView.m */; };
 		897E8DCF25866FE5005E3AD7 /* WorkGroupInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E8DCE25866FE5005E3AD7 /* WorkGroupInfoController.m */; };
+		897E8DD32587D25D005E3AD7 /* WorkGroupInfoPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E8DD22587D25D005E3AD7 /* WorkGroupInfoPageModel.m */; };
 		898F1ADC24D46FD400397505 /* PatientInfoManageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1ADB24D46FD400397505 /* PatientInfoManageController.m */; };
 		898F1ADF24D6C77200397505 /* PatientInfoManagePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1ADE24D6C77200397505 /* PatientInfoManagePageModel.m */; };
 		898F1AE224D6DBF100397505 /* PatientInfoManageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1AE124D6DBF100397505 /* PatientInfoManageHeaderView.m */; };
@@ -1190,6 +1191,8 @@
 		894C7D482579396F00EF9ABE /* WorkSpaceFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkSpaceFooter.h; sourceTree = "<group>"; };
 		897E8DCD25866FE5005E3AD7 /* WorkGroupInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkGroupInfoController.h; sourceTree = "<group>"; };
 		897E8DCE25866FE5005E3AD7 /* WorkGroupInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkGroupInfoController.m; sourceTree = "<group>"; };
+		897E8DD12587D25D005E3AD7 /* WorkGroupInfoPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkGroupInfoPageModel.h; sourceTree = "<group>"; };
+		897E8DD22587D25D005E3AD7 /* WorkGroupInfoPageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkGroupInfoPageModel.m; sourceTree = "<group>"; };
 		898F1ADA24D46FD400397505 /* PatientInfoManageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientInfoManageController.h; sourceTree = "<group>"; };
 		898F1ADB24D46FD400397505 /* PatientInfoManageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientInfoManageController.m; sourceTree = "<group>"; };
 		898F1ADD24D6C77200397505 /* PatientInfoManagePageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientInfoManagePageModel.h; sourceTree = "<group>"; };
@@ -2980,12 +2983,6 @@
 				894C7D362579396F00EF9ABE /* WorkStudioSupporterView.m */,
 				894C7D3A2579396F00EF9ABE /* WorkStudioFooterView.h */,
 				894C7D1E2579396F00EF9ABE /* WorkStudioFooterView.m */,
-				894C7D392579396F00EF9ABE /* GroupMembersView.h */,
-				894C7D202579396F00EF9ABE /* GroupMembersView.m */,
-				894C7D312579396F00EF9ABE /* GroupMemberCell.h */,
-				894C7D182579396F00EF9ABE /* GroupMemberCell.m */,
-				894C7D462579396F00EF9ABE /* MoreGroupMemberCell.h */,
-				894C7D2F2579396F00EF9ABE /* MoreGroupMemberCell.m */,
 			);
 			path = workStudioInfo;
 			sourceTree = "<group>";
@@ -3046,6 +3043,8 @@
 				894C7D252579396F00EF9ABE /* WorkStudioInfoPageModel.m */,
 				897E8DCD25866FE5005E3AD7 /* WorkGroupInfoController.h */,
 				897E8DCE25866FE5005E3AD7 /* WorkGroupInfoController.m */,
+				897E8DD12587D25D005E3AD7 /* WorkGroupInfoPageModel.h */,
+				897E8DD22587D25D005E3AD7 /* WorkGroupInfoPageModel.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -3053,6 +3052,7 @@
 		894C7D64257939AB00EF9ABE /* view */ = {
 			isa = PBXGroup;
 			children = (
+				897E8DD02587C76D005E3AD7 /* membersView */,
 				8949096A257A96D900E91C66 /* ExpandTextCell */,
 				89490969257A969A00E91C66 /* allStudios */,
 				89490968257A95AA00E91C66 /* workStudioInfo */,
@@ -3074,6 +3074,19 @@
 				893D9F9C257D16B0003FCB82 /* GroupInfoModel.m */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		897E8DD02587C76D005E3AD7 /* membersView */ = {
+			isa = PBXGroup;
+			children = (
+				894C7D392579396F00EF9ABE /* GroupMembersView.h */,
+				894C7D202579396F00EF9ABE /* GroupMembersView.m */,
+				894C7D312579396F00EF9ABE /* GroupMemberCell.h */,
+				894C7D182579396F00EF9ABE /* GroupMemberCell.m */,
+				894C7D462579396F00EF9ABE /* MoreGroupMemberCell.h */,
+				894C7D2F2579396F00EF9ABE /* MoreGroupMemberCell.m */,
+			);
+			path = membersView;
 			sourceTree = "<group>";
 		};
 		898F1AD924D46F5D00397505 /* patientRecord */ = {
@@ -6837,6 +6850,7 @@
 				9A53873F20084D8A0084E772 /* EaseUI.m in Sources */,
 				9A53876520084D8A0084E772 /* MWPhoto.m in Sources */,
 				E30976711F9DD20F00EC3F80 /* UIResponder+Custom.m in Sources */,
+				897E8DD32587D25D005E3AD7 /* WorkGroupInfoPageModel.m in Sources */,
 				9A53892D20084DC40084E772 /* ContactListSelectViewController.m in Sources */,
 				E30976791F9DD20F00EC3F80 /* IQUIWindow+Hierarchy.m in Sources */,
 				E30976D51F9DD20F00EC3F80 /* PKFullScreenPlayerViewController.m in Sources */,

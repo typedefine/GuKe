@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WorkStudioFooterView : UIView
 
-@property (nonatomic, strong) GroupMembersView *membersview;
+@property (nonatomic, strong) GroupMembersView *membersView;
 @property (nonatomic, strong) WorkStudioSupporterView *supporterView;
 
 @end

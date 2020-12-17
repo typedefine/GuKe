@@ -55,7 +55,7 @@
     CGFloat r = IPHONE_X_SCALE(65);
     [self addSubview:self.logoView];
     [self.logoView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self).offset(IPHONE_Y_SCALE(15));
+        make.top.equalTo(self).offset(IPHONE_Y_SCALE(10));
         make.left.equalTo(self).with.offset(20);
         make.size.mas_equalTo(r);
     }];
@@ -99,7 +99,7 @@
 {
     if (!_topView) {
         _topView = [[UIView alloc] init];
-        _topView.backgroundColor = [UIColor whiteColor];
+        _topView.backgroundColor = greenC;//[UIColor whiteColor];
     }
     return _topView;
 }
