@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BAA8B0C25908B6A0074A2A3 /* ZXFInputField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA8B0B25908B6A0074A2A3 /* ZXFInputField.m */; };
+		1BAA8B0F25908B960074A2A3 /* CreateWordStudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA8B0E25908B960074A2A3 /* CreateWordStudioController.m */; };
 		1F1128AC2221246E00FD8CB6 /* Details.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1128A02221246E00FD8CB6 /* Details.m */; };
 		1F1128AD2221246E00FD8CB6 /* ChooseAreasBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1128A12221246E00FD8CB6 /* ChooseAreasBase.m */; };
 		1F1128AE2221246E00FD8CB6 /* ChooseModelChildren.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1128A22221246E00FD8CB6 /* ChooseModelChildren.m */; };
@@ -920,6 +922,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1BAA8B0A25908B6A0074A2A3 /* ZXFInputField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXFInputField.h; sourceTree = "<group>"; };
+		1BAA8B0B25908B6A0074A2A3 /* ZXFInputField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXFInputField.m; sourceTree = "<group>"; };
+		1BAA8B0D25908B960074A2A3 /* CreateWordStudioController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateWordStudioController.h; sourceTree = "<group>"; };
+		1BAA8B0E25908B960074A2A3 /* CreateWordStudioController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateWordStudioController.m; sourceTree = "<group>"; };
 		1F11289E2221246E00FD8CB6 /* ChooseModelChildren.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseModelChildren.h; sourceTree = "<group>"; };
 		1F11289F2221246E00FD8CB6 /* ChooseAreasChidren.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseAreasChidren.h; sourceTree = "<group>"; };
 		1F1128A02221246E00FD8CB6 /* Details.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Details.m; sourceTree = "<group>"; };
@@ -3045,6 +3051,8 @@
 				897E8DCE25866FE5005E3AD7 /* WorkGroupInfoController.m */,
 				897E8DD12587D25D005E3AD7 /* WorkGroupInfoPageModel.h */,
 				897E8DD22587D25D005E3AD7 /* WorkGroupInfoPageModel.m */,
+				1BAA8B0D25908B960074A2A3 /* CreateWordStudioController.h */,
+				1BAA8B0E25908B960074A2A3 /* CreateWordStudioController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -3063,6 +3071,8 @@
 				894C7D452579396F00EF9ABE /* WorkSpaceBlankView.m */,
 				894C7D3D2579396F00EF9ABE /* WorkSpaceTitleView.h */,
 				894C7D1B2579396F00EF9ABE /* WorkSpaceTitleView.m */,
+				1BAA8B0A25908B6A0074A2A3 /* ZXFInputField.h */,
+				1BAA8B0B25908B6A0074A2A3 /* ZXFInputField.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -6559,6 +6569,7 @@
 				9A779893200DDC8600EFCF67 /* WYYZhaoYishengViewController.m in Sources */,
 				E3F964201F7F97DC00924F8A /* ZJNArrowTableViewCell.m in Sources */,
 				9A53877F20084D8B0084E772 /* PSTCollectionViewData.m in Sources */,
+				1BAA8B0C25908B6A0074A2A3 /* ZXFInputField.m in Sources */,
 				E30976F01F9DD20F00EC3F80 /* TFHppleElement.m in Sources */,
 				E3D35C0B2022E17E00A6FB9F /* ZJNAddPatientRequestModel.m in Sources */,
 				E309767E1F9DD20F00EC3F80 /* IQPreviousNextView.m in Sources */,
@@ -6712,6 +6723,7 @@
 				9A397CB81F31BA750089F5DC /* BaoMingRenYuanTableViewCell.m in Sources */,
 				9A53876320084D8A0084E772 /* MWGridCell.m in Sources */,
 				9A53896720084DC40084E772 /* UIImageView+HeadImage.m in Sources */,
+				1BAA8B0F25908B960074A2A3 /* CreateWordStudioController.m in Sources */,
 				9ACE974C20184F050028FC9D /* ZJNSelectHospODeptTableViewCell.m in Sources */,
 				9A53892A20084DC40084E772 /* EMChatroomBansViewController.m in Sources */,
 				9A53892F20084DC40084E772 /* AddFriendCell.m in Sources */,
