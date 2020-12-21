@@ -128,12 +128,29 @@
                 default:
                     break;
             }
+        }else{
+            [self addErrorViewWithMsg:dict[@"message"]];
         }
     } failure:^(NSError *error) {
         [self hideHud];
         NSLog(@"病例--信息管理-修改信息error:%@",error);
+        [self addErrorViewWithMsg:@"请求响应失败"];
     }];
     
+}
+
+- (void)addErrorViewWithMsg:(NSString *)msg
+{
+//    self.naviRightButton.hidden = NO;
+    self.blankView.hidden = NO;
+    [self.blankView removeFromSuperview];
+    [self.view addSubview:self.blankView];
+    [self.blankView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    self.blankView.title = @"点击重试";
+    self.blankView.subTitle = msg;
+    [self.blankView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(loadServerData)]];
 }
 
 
