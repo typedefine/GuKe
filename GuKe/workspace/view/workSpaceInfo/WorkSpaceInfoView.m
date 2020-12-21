@@ -13,6 +13,7 @@
 #import "WorkSpaceFooter.h"
 #import "AllStudiosController.h"
 #import "WorkStudioInfoController.h"
+#import "CreateWordStudioController.h"
 
 @interface WorkSpaceInfoView ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -170,6 +171,9 @@
 - (void)addNewGroup
 {
     NSLog(@"申请开通工作室");
+    CreateWordStudioController *vc = [[CreateWordStudioController alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.targetController.navigationController pushViewController:vc animated:YES];
 }
 
 
