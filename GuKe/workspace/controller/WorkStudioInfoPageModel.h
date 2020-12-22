@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ExpandTextCellModel.h"
 #import "UserInfoModel.h"
-//@class UserInfoModel;
+#import "GroupInfoModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,11 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *logoUrl;
+@property (nonatomic, strong) GroupInfoModel *model;
 @property (nonatomic, strong) ExpandTextCellModel *infoCellModel;
 
 @property (nonatomic, strong) NSArray<UserInfoModel *> *members;
 
-- (void)configareWithData:(id)data;
+- (void)configareWithData:(NSDictionary *)data;
 
 @end
 

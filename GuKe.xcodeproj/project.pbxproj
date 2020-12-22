@@ -76,6 +76,10 @@
 		7F9A7EFB24EE1FB000E5CDFA /* PatientMessageCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9A7EFA24EE1FB000E5CDFA /* PatientMessageCellModel.m */; };
 		7F9A7EFE24EE252200E5CDFA /* PatientMessagePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9A7EFD24EE252200E5CDFA /* PatientMessagePageModel.m */; };
 		7F9A7F0424EE2A1A00E5CDFA /* PatientMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9A7F0324EE2A1A00E5CDFA /* PatientMessageModel.m */; };
+		8906E0F3259248190098A2AC /* StudioInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8906E0F2259248190098A2AC /* StudioInfoModel.m */; };
+		8906E0F625924A830098A2AC /* ZXFInputFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8906E0F525924A830098A2AC /* ZXFInputFieldCell.m */; };
+		8906E0FA25924E060098A2AC /* ZXFInputImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8906E0F925924E060098A2AC /* ZXFInputImageCell.m */; };
+		8906E0FD259256F10098A2AC /* ZXFInputViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8906E0FC259256F10098A2AC /* ZXFInputViewCell.m */; };
 		89076AF82561656200DD24D6 /* UIView+Corner.m in Sources */ = {isa = PBXBuildFile; fileRef = 89076AF72561656200DD24D6 /* UIView+Corner.m */; };
 		89076AFB2561702100DD24D6 /* UIImageView+Corner.m in Sources */ = {isa = PBXBuildFile; fileRef = 89076AFA2561702100DD24D6 /* UIImageView+Corner.m */; };
 		89162EAA24E4293700698B84 /* PatientInfoManageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EA924E4293700698B84 /* PatientInfoManageModel.m */; };
@@ -83,6 +87,7 @@
 		89162EB224ED70A400698B84 /* PatientMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EB124ED70A400698B84 /* PatientMessageController.m */; };
 		89162EB524ED70C300698B84 /* PatientMsgChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EB424ED70C300698B84 /* PatientMsgChatController.m */; };
 		89162EB824ED761500698B84 /* PatientMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EB724ED761500698B84 /* PatientMessageCell.m */; };
+		891BD9CB25925E57002C39E4 /* CreateWordStudioPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 891BD9CA25925E57002C39E4 /* CreateWordStudioPageModel.m */; };
 		89203DC424CDA86E00D4D55E /* PatientMessagePageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89203DC324CDA86E00D4D55E /* PatientMessagePageController.m */; };
 		89203DC824CDB98F00D4D55E /* MessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89203DC724CDB98F00D4D55E /* MessageController.m */; };
 		892555A024D6FFEC002F7B5B /* PatientBookInfoStateCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8925559F24D6FFEC002F7B5B /* PatientBookInfoStateCellModel.m */; };
@@ -1048,6 +1053,14 @@
 		7F9A7EFD24EE252200E5CDFA /* PatientMessagePageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientMessagePageModel.m; sourceTree = "<group>"; };
 		7F9A7F0224EE2A1A00E5CDFA /* PatientMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientMessageModel.h; sourceTree = "<group>"; };
 		7F9A7F0324EE2A1A00E5CDFA /* PatientMessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientMessageModel.m; sourceTree = "<group>"; };
+		8906E0F1259248190098A2AC /* StudioInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StudioInfoModel.h; sourceTree = "<group>"; };
+		8906E0F2259248190098A2AC /* StudioInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudioInfoModel.m; sourceTree = "<group>"; };
+		8906E0F425924A830098A2AC /* ZXFInputFieldCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXFInputFieldCell.h; sourceTree = "<group>"; };
+		8906E0F525924A830098A2AC /* ZXFInputFieldCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXFInputFieldCell.m; sourceTree = "<group>"; };
+		8906E0F825924E060098A2AC /* ZXFInputImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXFInputImageCell.h; sourceTree = "<group>"; };
+		8906E0F925924E060098A2AC /* ZXFInputImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXFInputImageCell.m; sourceTree = "<group>"; };
+		8906E0FB259256F10098A2AC /* ZXFInputViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXFInputViewCell.h; sourceTree = "<group>"; };
+		8906E0FC259256F10098A2AC /* ZXFInputViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXFInputViewCell.m; sourceTree = "<group>"; };
 		89076AF62561656200DD24D6 /* UIView+Corner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Corner.h"; sourceTree = "<group>"; };
 		89076AF72561656200DD24D6 /* UIView+Corner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Corner.m"; sourceTree = "<group>"; };
 		89076AF92561702100DD24D6 /* UIImageView+Corner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Corner.h"; sourceTree = "<group>"; };
@@ -1062,6 +1075,8 @@
 		89162EB424ED70C300698B84 /* PatientMsgChatController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientMsgChatController.m; sourceTree = "<group>"; };
 		89162EB624ED761500698B84 /* PatientMessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientMessageCell.h; sourceTree = "<group>"; };
 		89162EB724ED761500698B84 /* PatientMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientMessageCell.m; sourceTree = "<group>"; };
+		891BD9C925925E57002C39E4 /* CreateWordStudioPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateWordStudioPageModel.h; sourceTree = "<group>"; };
+		891BD9CA25925E57002C39E4 /* CreateWordStudioPageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateWordStudioPageModel.m; sourceTree = "<group>"; };
 		89203DC224CDA86E00D4D55E /* PatientMessagePageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientMessagePageController.h; sourceTree = "<group>"; };
 		89203DC324CDA86E00D4D55E /* PatientMessagePageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientMessagePageController.m; sourceTree = "<group>"; };
 		89203DC624CDB98F00D4D55E /* MessageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageController.h; sourceTree = "<group>"; };
@@ -2784,6 +2799,21 @@
 			path = controller;
 			sourceTree = "<group>";
 		};
+		8906E0F725924C830098A2AC /* createStudio */ = {
+			isa = PBXGroup;
+			children = (
+				1BAA8B0A25908B6A0074A2A3 /* ZXFInputField.h */,
+				1BAA8B0B25908B6A0074A2A3 /* ZXFInputField.m */,
+				8906E0F425924A830098A2AC /* ZXFInputFieldCell.h */,
+				8906E0F525924A830098A2AC /* ZXFInputFieldCell.m */,
+				8906E0F825924E060098A2AC /* ZXFInputImageCell.h */,
+				8906E0F925924E060098A2AC /* ZXFInputImageCell.m */,
+				8906E0FB259256F10098A2AC /* ZXFInputViewCell.h */,
+				8906E0FC259256F10098A2AC /* ZXFInputViewCell.m */,
+			);
+			path = createStudio;
+			sourceTree = "<group>";
+		};
 		89162EAC24E4389800698B84 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -3053,6 +3083,8 @@
 				897E8DD22587D25D005E3AD7 /* WorkGroupInfoPageModel.m */,
 				1BAA8B0D25908B960074A2A3 /* CreateWordStudioController.h */,
 				1BAA8B0E25908B960074A2A3 /* CreateWordStudioController.m */,
+				891BD9C925925E57002C39E4 /* CreateWordStudioPageModel.h */,
+				891BD9CA25925E57002C39E4 /* CreateWordStudioPageModel.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -3060,6 +3092,7 @@
 		894C7D64257939AB00EF9ABE /* view */ = {
 			isa = PBXGroup;
 			children = (
+				8906E0F725924C830098A2AC /* createStudio */,
 				897E8DD02587C76D005E3AD7 /* membersView */,
 				8949096A257A96D900E91C66 /* ExpandTextCell */,
 				89490969257A969A00E91C66 /* allStudios */,
@@ -3071,8 +3104,6 @@
 				894C7D452579396F00EF9ABE /* WorkSpaceBlankView.m */,
 				894C7D3D2579396F00EF9ABE /* WorkSpaceTitleView.h */,
 				894C7D1B2579396F00EF9ABE /* WorkSpaceTitleView.m */,
-				1BAA8B0A25908B6A0074A2A3 /* ZXFInputField.h */,
-				1BAA8B0B25908B6A0074A2A3 /* ZXFInputField.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -3082,6 +3113,8 @@
 			children = (
 				893D9F9B257D16B0003FCB82 /* GroupInfoModel.h */,
 				893D9F9C257D16B0003FCB82 /* GroupInfoModel.m */,
+				8906E0F1259248190098A2AC /* StudioInfoModel.h */,
+				8906E0F2259248190098A2AC /* StudioInfoModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -6750,6 +6783,7 @@
 				9A53892720084DC40084E772 /* EMCreateChatroomController.m in Sources */,
 				894C7D5C2579396F00EF9ABE /* WorkStudioSupporterView.m in Sources */,
 				9A53879120084D8B0084E772 /* EaseChineseToPinyin.m in Sources */,
+				8906E0F625924A830098A2AC /* ZXFInputFieldCell.m in Sources */,
 				9A1E386B1F32B06E0063FC2A /* xsqbanner.m in Sources */,
 				9A779885200DC81200EFCF67 /* WYYGroupThreeTableViewCell.m in Sources */,
 				9A667D5D20214FFE00365644 /* WYYDetailTwoTableViewCell.m in Sources */,
@@ -6757,6 +6791,7 @@
 				9A5387A620084D8B0084E772 /* EaseBubbleView+Image.m in Sources */,
 				9A78C908200C7848003D86BF /* WYYMainGroupViewController.m in Sources */,
 				893A3DCD2537591E00570FB5 /* NSString+Util.m in Sources */,
+				8906E0FD259256F10098A2AC /* ZXFInputViewCell.m in Sources */,
 				9A08A9531F302B3600AF29EB /* AFURLResponseSerialization.m in Sources */,
 				9A53877920084D8B0084E772 /* UIImageView+EMWebCache.m in Sources */,
 				E3A105D01FA18A6500EBEF1F /* TZPhotoPreviewCell.m in Sources */,
@@ -6769,6 +6804,7 @@
 				E3F964251F7F9A5900924F8A /* ZJNSingleSelectTableViewCell.m in Sources */,
 				898F1AEB24D6DCCD00397505 /* PatientBookInfoStateCell.m in Sources */,
 				9A5387A320084D8B0084E772 /* EaseMessageTimeCell.m in Sources */,
+				8906E0FA25924E060098A2AC /* ZXFInputImageCell.m in Sources */,
 				894C7D5D2579396F00EF9ABE /* AllStudiosController.m in Sources */,
 				894C7D5B2579396F00EF9ABE /* WorkStudioHeaderView.m in Sources */,
 				9A53891E20084DC40084E772 /* GroupSettingViewController.m in Sources */,
@@ -6888,6 +6924,7 @@
 				9A530B281F46B62500BD6C7E /* FaBuHuiYiViewController.m in Sources */,
 				89490963257A927600E91C66 /* WorkGroupListItemView.m in Sources */,
 				898F1ADF24D6C77200397505 /* PatientInfoManagePageModel.m in Sources */,
+				891BD9CB25925E57002C39E4 /* CreateWordStudioPageModel.m in Sources */,
 				1F374E172240846D001B6D01 /* SysmessageViewController.m in Sources */,
 				E3577A881FFCC95E00E4A738 /* ZJNInfoListView.m in Sources */,
 				E346BE351F7BC1BB00E776B8 /* ZJNGradeTableViewCell.m in Sources */,
@@ -7084,6 +7121,7 @@
 				9AC05308201AF6AF0086EC91 /* WYYMainTableViewCell.m in Sources */,
 				1F1128D92221265F00FD8CB6 /* NSObject+MJClass.m in Sources */,
 				E3A105CA1FA18A6500EBEF1F /* TZImageCropManager.m in Sources */,
+				8906E0F3259248190098A2AC /* StudioInfoModel.m in Sources */,
 				9A53894020084DC40084E772 /* EMSearchResultController.m in Sources */,
 				9A667D662021A2E000365644 /* WYYDetailHuanModel.m in Sources */,
 				9A53877220084D8A0084E772 /* MKAnnotationView+EMWebCache.m in Sources */,

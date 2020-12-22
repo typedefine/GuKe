@@ -11,6 +11,7 @@
 @interface ZXFInputField ()<UITextFieldDelegate>
 
 @property(nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *placeholder;
 @property(nonatomic, copy) void (^ completion)(NSString *text);
 @property (nonatomic, strong) UITextField *textField;
 @property(nonatomic, strong) UILabel *leftLabel;
@@ -62,6 +63,10 @@
     }
     
     if (placeholder.isValidStringValue) {
+        self.placeholder = placeholder;
+    }
+    
+    if (placeholder.isValidStringValue) {
         self.textField.placeholder = placeholder;
     }
     self.completion = [completion copy];
@@ -93,9 +98,20 @@
 {
     if (!_textField) {
         _textField = [[UITextField alloc] init];
+        _textField.textColor = detailTextColor;
+        
         _textField.delegate = self;
     }
     return _textField;
+}
+
+- (void)setPlaceholder:(NSString *)placeholder
+{
+    _placeholder = placeholder;
+    self.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeholder attributes:@{
+        NSFontAttributeName : [UIFont systemFontOfSize:15 weight:UIFontWeightRegular],
+        NSForegroundColorAttributeName:[UIColor colorWithHex:0xD0D0D0]
+    }];
 }
 
 - (void)setTitle:(NSString *)title
@@ -108,6 +124,8 @@
 {
     if (!_leftLabel) {
         _leftLabel = [[UILabel alloc] init];
+        _leftLabel.textColor = [UIColor colorWithHex:0x3C3E3D];
+        _leftLabel.font = [UIFont systemFontOfSize:15 weight:UIFontWeightRegular];
     }
     return _leftLabel;
 }

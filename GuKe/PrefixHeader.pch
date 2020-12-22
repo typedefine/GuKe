@@ -462,6 +462,9 @@
 /**工作站主页*/
 #define UrlPath_workplace @"/app/chatgroups/groups.json"
 
+/**工作站主页*/
+#define UrlPath_workstudio @"/app/chatgroups/groupinfo.json"
+
 
 /**删除好友*/
 #define userpatienthuanxindeletefriend @"/app/userpatienthuanxin/deletefriend.json"

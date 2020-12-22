@@ -88,7 +88,7 @@
 {
     GroupUnionInfoModel *model = self.viewModel.groupList[section];
     WorkStudioInfoController *vc = [[WorkStudioInfoController alloc] init];
-    vc.groupId = @(model.ID).stringValue;
+    vc.groupId = @(model.groupid).stringValue;
     vc.hidesBottomBarWhenPushed = YES;
     [self.targetController.navigationController pushViewController:vc animated:YES];
 }
@@ -149,7 +149,7 @@
 {
     GroupInfoModel *model = self.viewModel.groupList[indexPath.section].children[indexPath.row];
     WorkGroupInfoController *vc = [[WorkGroupInfoController alloc] init];
-    vc.groupId = @(model.ID).stringValue;
+    vc.groupId = @(model.groupid).stringValue;
     vc.hidesBottomBarWhenPushed = YES;
     [self.targetController.navigationController pushViewController:vc animated:YES];
 }

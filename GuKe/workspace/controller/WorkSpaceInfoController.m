@@ -133,7 +133,7 @@
         }
     } failure:^(NSError *error) {
         [self hideHud];
-        NSLog(@"病例--信息管理-修改信息error:%@",error);
+        NSLog(@"获取工作站error:%@",error);
         [self addErrorViewWithMsg:@"请求响应失败"];
     }];
     

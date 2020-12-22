@@ -7,12 +7,17 @@
 //
 
 #import "GroupInfoModel.h"
-
+#import "UserInfoModel.h"
 @implementation GroupInfoModel
 
 + (NSDictionary *)mj_replacedKeyFromPropertyName
 {
     return @{@"ID" : @"id"};
+}
+
++ (NSDictionary *)mj_objectClassInArray
+{
+    return @{@"members":[UserInfoModel class]};
 }
 
 - (NSString *)countTitle

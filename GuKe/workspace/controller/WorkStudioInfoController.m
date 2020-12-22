@@ -55,6 +55,31 @@
     
 }
 
+
+- (void)loadServerData
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,UrlPath_workstudio];
+    NSMutableDictionary *para = [@{
+        @"sessionId": sessionIding,
+        @"groupid":self.groupId
+    } mutableCopy];
+   
+    [self showHudInView:self.view hint:nil];
+    [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
+        NSLog(@"工作室介绍-->%@",data);
+        [self hideHud];
+        NSDictionary *dict = (NSDictionary *)data;
+        if ([dict[@"retcode"] isEqual:@"0000"]) {
+           
+        }
+    } failure:^(NSError *error) {
+        [self hideHud];
+        NSLog(@"工作室介绍error:%@",error);
+    }];
+    
+}
+
+/*
 - (void)loadServerData
 {
     [self.pageModel configareWithData:nil];
@@ -74,7 +99,7 @@
     self.tableView.dataSource = self;
     [self.tableView reloadData];
 }
-
+*/
 - (void)supportDetail
 {
     
