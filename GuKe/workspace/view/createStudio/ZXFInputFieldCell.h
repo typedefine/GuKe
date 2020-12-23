@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZXFInputBaseCell.h"
+//@class ZXFInputBaseCell;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ZXFInputFieldCell : UITableViewCell
+@interface ZXFInputFieldCell : ZXFInputBaseCell
 
 - (void)configWithTitle:(NSString *)title
             placeholder:(NSString *)placeholder

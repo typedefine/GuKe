@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZXFInputBaseCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 typedef void (^ inputAction)(NSString *text);
 
-@interface ZXFInputViewCell : UITableViewCell
+@interface ZXFInputViewCell : ZXFInputBaseCell
 
 - (void)configureWithTitle:(NSString *)title content:(NSString *)content input:(inputAction)input;
 

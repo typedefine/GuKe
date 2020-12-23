@@ -11,7 +11,7 @@
 
 @interface ZXFInputViewCell ()<UITextViewDelegate>
 
-@property (nonatomic, strong) UILabel *titleLabel;
+
 @property (nonatomic, strong) UITextView *textView;
 @property (nonatomic, strong) UILabel *placeholderLabel;
 @property (nonatomic, copy) inputAction input;
@@ -21,28 +21,15 @@
 @implementation ZXFInputViewCell
 
 
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self setup];
-    }
-    return self;
-}
 
 - (void)setup
 {
-    self.contentView.backgroundColor = [UIColor whiteColor];
-    
-    [self.contentView addSubview:self.titleLabel];
-    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentView);
-        make.left.equalTo(self.contentView).offset(IPHONE_X_SCALE(20));
-        make.height.mas_equalTo(20);
-    }];
+    [super setup];
     
     UIView *bgView = [[UIView alloc] init];
-    bgView.layer.borderWidth = 1.0f;
-    bgView.layer.borderColor = SetColor(0x333333).CGColor;
+    bgView.backgroundColor = [UIColor colorWithHex:0xF5F5F5];
+//    bgView.layer.borderWidth = 1.0f;
+//    bgView.layer.borderColor = SetColor(0x333333).CGColor;
     [self.contentView addSubview:bgView];
     [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.titleLabel.mas_bottom).offset(5);
@@ -122,15 +109,7 @@
     return _placeholderLabel;
 }
 
-- (UILabel *)titleLabel
-{
-    if (!_titleLabel) {
-        _titleLabel = [[UILabel alloc] init];
-        _titleLabel.font = [UIFont systemFontOfSize:15 weight:UIFontWeightRegular];
-        _titleLabel.textColor = [UIColor colorWithHex:0x3C3E3D];
-    }
-    return _titleLabel;
-}
+
 
 
 @end

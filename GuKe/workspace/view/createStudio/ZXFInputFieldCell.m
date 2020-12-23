@@ -7,41 +7,96 @@
 //
 
 #import "ZXFInputFieldCell.h"
-#import "ZXFInputField.h"
+//#import "ZXFInputBaseCell.h"
 
-@interface ZXFInputFieldCell ()
 
-@property (nonatomic, strong) ZXFInputField *inputField;
+@interface ZXFInputFieldCell ()<UITextFieldDelegate>
+
+@property(nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *placeholder;
+@property(nonatomic, copy) void (^ completion)(NSString *text);
+@property (nonatomic, strong) UITextField *textField;
 
 @end
 
 @implementation ZXFInputFieldCell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (void)setup
 {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self.contentView addSubview:self.inputField];
-        [self.inputField mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self.contentView);
-        }];
-    }
-    return self;
+    [self.contentView addSubview:self.textField];
+    [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.titleLabel.mas_right).offset(IPHONE_X_SCALE(20));
+        make.right.equalTo(self.contentView).offset(-IPHONE_X_SCALE(20));
+        make.centerY.equalTo(self.contentView);
+    }];
 }
+
 
 - (void)configWithTitle:(NSString *)title
             placeholder:(NSString *)placeholder
              completion:(void (^)(NSString *text))completion
 {
-    [self.inputField configWithTitle:title placeholder:placeholder completion:completion];
-}
-
-- (ZXFInputField *)inputField
-{
-    if (!_inputField) {
-        _inputField = [[ZXFInputField alloc] init];
+    if (title.isValidStringValue) {
+        self.title = title;
     }
-    return _inputField;
+    
+    if (placeholder.isValidStringValue) {
+        self.placeholder = placeholder;
+    }
+    
+    if (placeholder.isValidStringValue) {
+        self.textField.placeholder = placeholder;
+    }
+    self.completion = [completion copy];
+    
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (self.completion) {
+        self.completion(textField.text);
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.textField resignFirstResponder];
+//    [self.textField endEditing:YES];
+    return YES;
+}
+
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    return YES;
+}
+
+
+- (UITextField *)textField
+{
+    if (!_textField) {
+        _textField = [[UITextField alloc] init];
+        _textField.textColor = detailTextColor;
+        
+        _textField.delegate = self;
+    }
+    return _textField;
+}
+
+- (void)setPlaceholder:(NSString *)placeholder
+{
+    _placeholder = placeholder;
+    self.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeholder attributes:@{
+        NSFontAttributeName : [UIFont systemFontOfSize:15 weight:UIFontWeightRegular],
+        NSForegroundColorAttributeName:[UIColor colorWithHex:0xD0D0D0]
+    }];
+}
+
+- (void)setTitle:(NSString *)title
+{
+    _title = title;
+    self.titleLabel.text = title;
+}
 
 @end
+
