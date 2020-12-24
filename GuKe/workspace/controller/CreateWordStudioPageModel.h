@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CreateWordStudioPageModel : NSObject
 
 //@property(nonatomic, copy) NSString *title;
-@property(nonatomic, strong) NSArray<ZXFInputCellModel> *cellModelList;
+@property(nonatomic, strong) NSArray<ZXFInputCellModel *> *cellModelList;
 
 @end
 

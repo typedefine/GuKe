@@ -12,6 +12,7 @@
 
 @interface ZXFInputFieldCell ()<UITextFieldDelegate>
 
+@property (nonatomic, strong) UILabel *titleLabel;
 @property(nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *placeholder;
 @property(nonatomic, copy) void (^ completion)(NSString *text);
@@ -21,8 +22,25 @@
 
 @implementation ZXFInputFieldCell
 
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self setup];
+        
+    }
+    return self;
+}
+
 - (void)setup
 {
+    [self.contentView addSubview:self.titleLabel];
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.contentView);
+        make.left.equalTo(self.contentView).offset(IPHONE_X_SCALE(20));
+        make.width.mas_equalTo(IPHONE_X_SCALE(100));
+//        make.height.mas_equalTo(20);
+    }];
+    
     [self.contentView addSubview:self.textField];
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.titleLabel.mas_right).offset(IPHONE_X_SCALE(20));
@@ -77,7 +95,7 @@
     if (!_textField) {
         _textField = [[UITextField alloc] init];
         _textField.textColor = detailTextColor;
-        
+        _textField.textAlignment =NSTextAlignmentLeft;
         _textField.delegate = self;
     }
     return _textField;
@@ -95,8 +113,28 @@
 - (void)setTitle:(NSString *)title
 {
     _title = title;
-    self.titleLabel.text = title;
+    if (title.isValidStringValue) {
+        self.titleLabel.text = title;
+        CGFloat w = [Tools sizeOfText:title andMaxSize:CGSizeMake(CGFLOAT_MAX, 20) andFont:self.titleLabel.font].width + 5;
+        [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.contentView);
+            make.left.equalTo(self.contentView).offset(IPHONE_X_SCALE(20));
+            make.width.mas_equalTo(w);
+        }];
+    }
+    
 }
+
+- (UILabel *)titleLabel
+{
+    if (!_titleLabel) {
+        _titleLabel = [[UILabel alloc] init];
+        _titleLabel.font = [UIFont systemFontOfSize:15 weight:UIFontWeightRegular];
+        _titleLabel.textColor = [UIColor colorWithHex:0x3C3E3D];
+    }
+    return _titleLabel;
+}
+
 
 @end
 

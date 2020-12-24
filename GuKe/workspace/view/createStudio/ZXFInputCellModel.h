@@ -22,6 +22,7 @@ typedef NS_ENUM(NSUInteger, ZXFInputCellType){
 @property(nonatomic, copy) NSString *placeholder;
 @property(nonatomic, copy) NSString *content;
 @property(nonatomic, assign) ZXFInputCellType cellType;
+@property (nonatomic, assign) CGFloat height;
 
 @end
 

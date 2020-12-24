@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ZXFInputBaseCell.h";
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ZXFInputImageCell : ZXFInputBaseCell
+@interface ZXFInputImageCell : UITableViewCell
+
+- (void)configureWithTitle:(NSString *)title indicate:(NSString *)indicate imgUrl:(NSString *)imgUrl completion:(void (^)(id data))completion;
 
 @end
 

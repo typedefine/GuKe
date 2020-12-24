@@ -10,4 +10,12 @@
 
 @implementation ZXFInputCellModel
 
+- (instancetype)init
+{
+    if (self = [super init]) {
+        _height = IPHONE_X_SCALE(50);
+    }
+    return self;
+}
+
 @end

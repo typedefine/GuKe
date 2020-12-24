@@ -13,6 +13,7 @@
 
 #import "WorkSpaceBlankView.h"
 #import "AllStudiosController.h"
+#import "CreateWordStudioController.h"
 
 @interface WorkSpaceInfoController ()
 
@@ -58,9 +59,12 @@
 
 - (void)lookforGroup
 {
-    AllStudiosController *vc = [[AllStudiosController alloc] init];
-    vc.hidesBottomBarWhenPushed = YES;
+    CreateWordStudioController *vc = [[CreateWordStudioController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
+//    return;
+//    AllStudiosController *vc = [[AllStudiosController alloc] init];
+//    vc.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)loadServerData

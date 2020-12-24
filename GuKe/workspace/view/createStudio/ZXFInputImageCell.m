@@ -92,33 +92,61 @@
 
 @interface ZXFInputImageCell ()
 
+@property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) ZXFInputImageView *indicateView;
+@property (nonatomic, copy) void (^ pickAction)(id data);
 
 @end
 
 @implementation ZXFInputImageCell
 
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self setup];
+    }
+    return self;
+}
+
 
 - (void)setup
 {
-    [super setup];
-//    [self.contentView addSubview:self.titleLabel];
-//    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(self.contentView).offset(IPHONE_X_SCALE(20));
-//        make.top.equalTo(self.contentView).offset(IPHONE_Y_SCALE(5));
-//    }];
+    [self.contentView addSubview:self.titleLabel];
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView).offset(IPHONE_X_SCALE(20));
+        make.top.equalTo(self.contentView).offset(IPHONE_X_SCALE(5));
+    }];
     
     [self.contentView addSubview:self.indicateView];
     [self.indicateView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.titleLabel);
-        make.centerX.equalTo(self.contentView);
+        make.left.equalTo(self.titleLabel.mas_right).offset(IPHONE_X_SCALE(15));
         make.size.mas_equalTo(IPHONE_X_SCALE(100));
     }];
 }
 
+- (void)configureWithTitle:(NSString *)title indicate:(NSString *)indicate imgUrl:(NSString *)imgUrl completion:(void (^)(id data))completion
+{
+    if (title.isValidStringValue) {
+        self.titleLabel.text = title;
+        CGFloat w = [Tools sizeOfText:title andMaxSize:CGSizeMake(CGFLOAT_MAX, 20) andFont:self.titleLabel.font].width + 5;
+        [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.contentView).offset(IPHONE_X_SCALE(5));
+            make.left.equalTo(self.contentView).offset(IPHONE_X_SCALE(20));
+            make.width.mas_equalTo(w);
+        }];
+    }
+    self.indicateView.indicateLabel.text = indicate;
+    self.indicateView.imgUrl = imgUrl;
+    self.pickAction = [completion copy];
+}
+
+
 - (void)pick
 {
-    
+    if (self.pickAction) {
+        self.pickAction(nil);
+    }
 }
 
 - (ZXFInputImageView *)indicateView
@@ -130,6 +158,17 @@
     }
     return _indicateView;
 }
+
+- (UILabel *)titleLabel
+{
+    if (!_titleLabel) {
+        _titleLabel = [[UILabel alloc] init];
+        _titleLabel.font = [UIFont systemFontOfSize:15 weight:UIFontWeightRegular];
+        _titleLabel.textColor = [UIColor colorWithHex:0x3C3E3D];
+    }
+    return _titleLabel;
+}
+
 
 
 @end

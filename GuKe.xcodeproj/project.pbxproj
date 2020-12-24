@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1B3114322593667C00B1859E /* ZXFInputCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3114312593667C00B1859E /* ZXFInputCellModel.m */; };
-		1B31143525936BD100B1859E /* ZXFInputBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B31143425936BD100B1859E /* ZXFInputBaseCell.m */; };
 		1BAA8B0C25908B6A0074A2A3 /* ZXFInputField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA8B0B25908B6A0074A2A3 /* ZXFInputField.m */; };
 		1BAA8B0F25908B960074A2A3 /* CreateWordStudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA8B0E25908B960074A2A3 /* CreateWordStudioController.m */; };
 		1F1128AC2221246E00FD8CB6 /* Details.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1128A02221246E00FD8CB6 /* Details.m */; };
@@ -931,8 +930,6 @@
 /* Begin PBXFileReference section */
 		1B3114302593667C00B1859E /* ZXFInputCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXFInputCellModel.h; sourceTree = "<group>"; };
 		1B3114312593667C00B1859E /* ZXFInputCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXFInputCellModel.m; sourceTree = "<group>"; };
-		1B31143325936BD100B1859E /* ZXFInputBaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXFInputBaseCell.h; sourceTree = "<group>"; };
-		1B31143425936BD100B1859E /* ZXFInputBaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXFInputBaseCell.m; sourceTree = "<group>"; };
 		1BAA8B0A25908B6A0074A2A3 /* ZXFInputField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXFInputField.h; sourceTree = "<group>"; };
 		1BAA8B0B25908B6A0074A2A3 /* ZXFInputField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXFInputField.m; sourceTree = "<group>"; };
 		1BAA8B0D25908B960074A2A3 /* CreateWordStudioController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateWordStudioController.h; sourceTree = "<group>"; };
@@ -2810,8 +2807,6 @@
 			children = (
 				1BAA8B0A25908B6A0074A2A3 /* ZXFInputField.h */,
 				1BAA8B0B25908B6A0074A2A3 /* ZXFInputField.m */,
-				1B31143325936BD100B1859E /* ZXFInputBaseCell.h */,
-				1B31143425936BD100B1859E /* ZXFInputBaseCell.m */,
 				8906E0F425924A830098A2AC /* ZXFInputFieldCell.h */,
 				8906E0F525924A830098A2AC /* ZXFInputFieldCell.m */,
 				8906E0F825924E060098A2AC /* ZXFInputImageCell.h */,
@@ -6792,7 +6787,6 @@
 				9A53876C20084D8A0084E772 /* EMSDWebImageCompat.m in Sources */,
 				E30976771F9DD20F00EC3F80 /* IQUIView+Hierarchy.m in Sources */,
 				9A53892720084DC40084E772 /* EMCreateChatroomController.m in Sources */,
-				1B31143525936BD100B1859E /* ZXFInputBaseCell.m in Sources */,
 				894C7D5C2579396F00EF9ABE /* WorkStudioSupporterView.m in Sources */,
 				9A53879120084D8B0084E772 /* EaseChineseToPinyin.m in Sources */,
 				8906E0F625924A830098A2AC /* ZXFInputFieldCell.m in Sources */,
