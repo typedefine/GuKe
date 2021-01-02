@@ -129,7 +129,7 @@
         if ([self.target respondsToSelector:self.action]) {
             NSString *Id = @"all";
             if (indexPath.item < self.groups.count) {
-                Id = @(self.groups[indexPath.item].groupid).stringValue;
+                Id = @(self.groups[indexPath.item].groupId).stringValue;
             }
             [self.target performSelector:self.action withObject:Id];
         }

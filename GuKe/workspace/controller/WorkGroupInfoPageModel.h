@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "UserInfoModel.h"
+#import "GroupInfoModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WorkGroupInfoPageModel : NSObject
@@ -15,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *des;
 @property (nonatomic, strong) NSArray<UserInfoModel *> *members;
+@property (nonatomic, strong) GroupInfoModel *model;
 
 - (void)configareWithData:(id)data;
 

@@ -82,8 +82,8 @@
 {
     self.cellModel = dataModel;
     if (dataModel) {
-        [self.imageView sd_setImageWithURL:[NSURL URLWithString:dataModel.portrait] placeholderImage:[UIImage imageNamed:@"default_avatar"]];
-        self.titleLabel.text = dataModel.groupname;
+        [self.imageView sd_setImageWithURL:[NSURL URLWithString:dataModel.groupPortrait] placeholderImage:[UIImage imageNamed:@"default_avatar"]];
+        self.titleLabel.text = dataModel.groupName;
     }
 }
 

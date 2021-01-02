@@ -64,6 +64,7 @@
     _imgUrl = imgUrl;
     self.addLabel.hidden = imgUrl.isValidStringValue;
     self.indicateLabel.hidden = imgUrl.isValidStringValue;
+//    [self sd_setImageWithURL:[NSURL URLWithString:imgUrl]];
 }
 
 - (UILabel *)addLabel
@@ -90,10 +91,14 @@
 
 @end
 
-@interface ZXFInputImageCell ()
+@interface ZXFInputImageCell ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate,UIActionSheetDelegate>
 
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) ZXFInputImageView *indicateView;
+@property (nonatomic, strong) UIImagePickerController *imagePickController;//选择图像
+@property (nonatomic, weak) UIViewController *targetController;
+@property (nonatomic, copy) NSString *imgUrl;
+@property (nonatomic, copy) NSString *imgData;
 @property (nonatomic, copy) void (^ pickAction)(id data);
 
 @end
@@ -125,11 +130,21 @@
     }];
 }
 
-- (void)configureWithTitle:(NSString *)title indicate:(NSString *)indicate imgUrl:(NSString *)imgUrl completion:(void (^)(id data))completion
+- (void)prepareForReuse
 {
+    [super prepareForReuse];
+    self.indicateView.imgUrl = nil;
+}
+
+- (void)configureWithTarget:(UIViewController *)targetController
+                      title:(NSString *)title
+                   indicate:(NSString *)indicate
+                 completion:(void (^)(id data))completion
+{
+    self.targetController = targetController;
     if (title.isValidStringValue) {
         self.titleLabel.text = title;
-        CGFloat w = [Tools sizeOfText:title andMaxSize:CGSizeMake(CGFLOAT_MAX, 20) andFont:self.titleLabel.font].width + 5;
+        CGFloat w = [Tools sizeOfText:title andMaxSize:CGSizeMake(CGFLOAT_MAX, 20) andFont:self.titleLabel.font].width + 2;
         [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.contentView).offset(IPHONE_X_SCALE(5));
             make.left.equalTo(self.contentView).offset(IPHONE_X_SCALE(20));
@@ -137,24 +152,107 @@
         }];
     }
     self.indicateView.indicateLabel.text = indicate;
-    self.indicateView.imgUrl = imgUrl;
     self.pickAction = [completion copy];
 }
 
 
-- (void)pick
+#pragma mark -- 调用系统相机
+// 调用相机
+- (void)addPicEventWithSourceType:(UIImagePickerControllerSourceType)sourceType
 {
-    if (self.pickAction) {
-        self.pickAction(nil);
+    // 先设定sourceType为相机，然后判断相机是否可用（ipod）没相机，不可用将sourceType设定为相片库
+    if (![UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
+        sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
+    self.imagePickController.sourceType = sourceType;
+    
+    [self.targetController presentViewController:self.imagePickController animated:YES completion:^{
+        
+    }];
 }
+// delegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [picker dismissViewControllerAnimated:YES completion:^{
+    }];
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    
+    
+    [self performSelector:@selector(uploadImageToOSS:)
+               withObject:image
+               afterDelay:0.5];
+}
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+// 照片处理
+- (void)uploadImageToOSS:(UIImage *)image {
+    self.indicateView.image = image;
+    [self setNeedsDisplay];
+//    [self layoutIfNeeded];
+    NSData *data = UIImageJPEGRepresentation(image, proportion);
+    self.imgData = [data base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+    
+    //上传图片
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,uploadimageUpload];
+    NSArray *keysArray = @[@"fromFile"];
+    NSArray *valueArray = @[self.imgData];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjects:valueArray forKeys:keysArray];
+    [ZJNRequestManager postWithUrlString:urlString parameters:dic success:^(id data) {
+        NSLog(@"%@",data);
+        NSString *retcode = [NSString stringWithFormat:@"%@",data[@"retcode"]];
+        if ([retcode isEqualToString:@"0"]) {
+            NSArray *arrays = [NSArray arrayWithArray:data[@"data"]];
+            self.imgUrl = [arrays componentsJoinedByString:@","];
+            if (self.pickAction && self.imgUrl) {
+                self.pickAction(self.imgUrl);
+            }
+        }
+    
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+}
+
+#pragma mark  图像
+- (void)chosePhoto
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"更改头像" message:nil preferredStyle: UIAlertControllerStyleActionSheet];
+    
+    __weak typeof(self) weakSelf = self;
+    UIAlertAction *photoAction = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"拍照");
+        
+        [weakSelf addPicEventWithSourceType:UIImagePickerControllerSourceTypeCamera];
+    }];
+    
+    UIAlertAction *pictureAction = [UIAlertAction actionWithTitle:@"从图库选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"图库");
+        
+        [weakSelf addPicEventWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"取消");
+    }];
+    
+    [alert addAction:photoAction];
+    [alert addAction:pictureAction];
+    [alert addAction:cancelAction];
+    //弹出提示框；
+    [self.targetController presentViewController:alert animated:YES completion:nil];
+}
+
 
 - (ZXFInputImageView *)indicateView
 {
     if (!_indicateView) {
         _indicateView = [[ZXFInputImageView alloc] init];
         _indicateView.backgroundColor = [UIColor colorWithHex:0xF5F5F5];
-        [_indicateView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pick)]];
+        [_indicateView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chosePhoto)]];
     }
     return _indicateView;
 }
@@ -169,6 +267,15 @@
     return _titleLabel;
 }
 
+- (UIImagePickerController *)imagePickController
+{
+    if (!_imagePickController) {
+        _imagePickController = [[UIImagePickerController alloc] init];
+        _imagePickController.delegate = self;
+        _imagePickController.allowsEditing = YES;
+    }
+    return _imagePickController;
+}
 
 
 @end

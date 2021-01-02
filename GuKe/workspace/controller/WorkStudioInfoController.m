@@ -70,7 +70,17 @@
         [self hideHud];
         NSDictionary *dict = (NSDictionary *)data;
         if ([dict[@"retcode"] isEqual:@"0000"]) {
-           
+            [self.pageModel configareWithData:dict[@"data"]];
+            self.headerView.title = self.pageModel.name;
+            self.headerView.logoUrl = self.pageModel.logoUrl;
+            self.footerView.membersView.delegate = self;
+            [self.footerView.membersView reloadData];
+            self.footerView.supporterView.nameLabel.text = self.pageModel.supporterName;
+            [self.footerView.supporterView.logoView sd_setImageWithURL:[NSURL URLWithString:self.pageModel.model.sponsorLogo] placeholderImage:[UIImage imageNamed:@"default_avatar"]];
+            [self.footerView.supporterView.detailButton addTarget:self action:@selector(supportDetail) forControlEvents:UIControlEventTouchUpInside];
+            self.tableView.delegate = self;
+            self.tableView.dataSource = self;
+            [self.tableView reloadData];
         }
     } failure:^(NSError *error) {
         [self hideHud];
@@ -116,7 +126,7 @@
 //}
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
@@ -129,6 +139,11 @@
     return footer;
 }
 
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 //{
@@ -197,6 +212,9 @@
     }
     return _footerView;
 }
+
+
+#pragma mark GroupMembersViewDelegate
 
 - (NSString *)titleInMemberView:(GroupMembersView *)membersView
 {

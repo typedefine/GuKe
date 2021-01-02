@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class GroupUnionInfoModel;
+@class GroupInfoModel;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,7 +15,7 @@ typedef void(^ GroupListSectionAction)();
 
 @interface GroupListSectionHeaderView : UITableViewHeaderFooterView
 
-- (void)configWithData:(GroupUnionInfoModel *)data action:(GroupListSectionAction)action;
+- (void)configWithData:(GroupInfoModel *)data action:(GroupListSectionAction)action;
 
 @end
 

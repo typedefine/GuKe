@@ -16,16 +16,14 @@
 
 @property (nonatomic, strong) UITableView *table;
 @property (nonatomic, strong) CreateWordStudioPageModel *pageModel;
-
+@property (nonatomic, strong) UIButton *createStudioButton;
 @end
 
 @implementation CreateWordStudioController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self addSubViews];
-    
 }
 
 - (void)addSubViews
@@ -38,6 +36,23 @@
     self.table.delegate = self;
     self.table.dataSource = self;
     [self.table reloadData];
+    
+    CGFloat h = IPHONE_X_SCALE(40);
+    [self.view addSubview:self.createStudioButton];
+    [self.createStudioButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view).offset(IPHONE_X_SCALE(20));
+        make.right.equalTo(self.view).offset(-IPHONE_X_SCALE(20));
+        make.height.mas_equalTo(h);
+        make.bottom.equalTo(self.view).offset(-10);
+    }];
+    self.createStudioButton.clipsToBounds = YES;
+    self.createStudioButton.layer.cornerRadius = h/2.0f;
+    [self.createStudioButton addTarget:self action:@selector(createWorkStudio) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)createWorkStudio
+{
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -53,29 +68,28 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ZXFInputCellModel *m = self.pageModel.cellModelList[indexPath.row];
-    __weak typeof(self) weakSelf = self;
+    __block ZXFInputCellModel *m = self.pageModel.cellModelList[indexPath.row];
+//    __weak typeof(self) weakSelf = self;
 //    __weak NSIndexPath *weakIndexPath = indexPath;
     switch (m.cellType) {
         case ZXFInputCellTypeImagePick:
         {
             ZXFInputImageCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ZXFInputImageCell class])];
-            [cell configureWithTitle:m.title indicate:m.placeholder imgUrl:m.content completion:^(id  _Nonnull data) {
-                            
+            [cell configureWithTarget:self title:m.title indicate:m.placeholder completion:^(id  _Nonnull data) {
+                m.content = data;
             }];
             return cell;
         }
-            break;
         
         case ZXFInputCellTypeTextView:
         {
             ZXFInputViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ZXFInputViewCell class])];
             [cell configureWithTitle:m.title content:m.content input:^(NSString * _Nonnull text) {
 //                [weakSelf.table scrollToRowAtIndexPath:weakIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+                m.content = text;
             }];
             return cell;
         }
-            break;
             
         default:
         {
@@ -84,10 +98,10 @@
 //                if (weakIndexPath.row >= weakSelf.pageModel.cellModelList.count-3) {
 //                    [weakSelf.table scrollToRowAtIndexPath:weakIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 //                }
+                m.content = text;
             }];
             return cell;
         }
-            break;
     }
     return nil;
 }
@@ -104,6 +118,17 @@
         [_table registerClass:[ZXFInputViewCell class] forCellReuseIdentifier:NSStringFromClass([ZXFInputViewCell class])];
     }
     return _table;
+}
+
+- (UIButton *)createStudioButton
+{
+    if (!_createStudioButton) {
+        _createStudioButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_createStudioButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_createStudioButton setTitle:@"创建" forState:UIControlStateNormal];
+        _createStudioButton.titleLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightRegular];
+    }
+    return _createStudioButton;
 }
 
 - (CreateWordStudioPageModel *)pageModel

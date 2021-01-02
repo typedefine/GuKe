@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GroupUnionInfoModel.h"
+#import "GroupInfoModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WorkGroupListViewModel : NSObject
 
-@property (nonatomic, strong) NSArray<GroupUnionInfoModel *> *groupList;
+@property (nonatomic, strong) NSArray<GroupInfoModel *> *groupList;
 
 - (void)configareWithData:(NSArray *)data;
 

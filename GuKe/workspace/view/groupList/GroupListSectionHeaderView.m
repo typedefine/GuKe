@@ -8,7 +8,7 @@
 
 #import "GroupListSectionHeaderView.h"
 #import "WorkGroupListItemView.h"
-#import "GroupUnionInfoModel.h"
+#import "GroupInfoModel.h"
 
 @interface GroupListSectionHeaderView ()
 @property (nonatomic, strong) WorkGroupListItemView *mainView;
@@ -49,12 +49,12 @@
     return self;
 }
 
-- (void)configWithData:(GroupUnionInfoModel *)data action:(GroupListSectionAction)action
+- (void)configWithData:(GroupInfoModel *)data action:(GroupListSectionAction)action
 {
     if (!data) return;
     self.action = [action copy];
-    [self.mainView.imageView sd_setImageWithURL:[NSURL URLWithString:data.portrait] placeholderImage:[UIImage imageNamed:@"icon_group"]];
-    self.mainView.titleLabel.text = data.groupname;
+    [self.mainView.imageView sd_setImageWithURL:[NSURL URLWithString:data.groupPortrait] placeholderImage:[UIImage imageNamed:@"icon_group"]];
+    self.mainView.titleLabel.text = data.groupName;
     self.mainView.subTitleLabel.text = data.countTitle;
 }
 

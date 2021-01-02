@@ -39,13 +39,16 @@
     [self addSubview:self.imageView];
     [self addSubview:self.titleLabel];
     [self addSubview:self.subTitleLabel];
-    
+    CGFloat r = IPHONE_X_SCALE(20);
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self);
         make.centerY.equalTo(self);
-        make.width.mas_equalTo(IPHONE_X_SCALE(20));
-        make.height.mas_equalTo(IPHONE_X_SCALE(17));
+        make.size.mas_equalTo(r);
+//        make.width.mas_equalTo(IPHONE_X_SCALE(20));
+//        make.height.mas_equalTo(IPHONE_X_SCALE(17));
     }];
+    self.imageView.clipsToBounds = YES;
+    self.imageView.layer.cornerRadius = r/2.0f;
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);

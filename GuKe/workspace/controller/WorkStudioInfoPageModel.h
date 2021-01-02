@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *logoUrl;
+@property (nonatomic, copy) NSString *supporterName;
+@property (nonatomic, copy) NSString *supporterLogo;
+@property (nonatomic, copy) NSString *supporterUrl;
 @property (nonatomic, strong) GroupInfoModel *model;
 @property (nonatomic, strong) ExpandTextCellModel *infoCellModel;
 

@@ -46,9 +46,9 @@
     NSMutableArray *items = [NSMutableArray arrayWithCapacity:ids.count];
     for (int i=0; i<ids.count; i++) {
         GroupInfoModel *itemModel = [[GroupInfoModel alloc] init];
-        itemModel.groupid = [ids[i] integerValue];
-        itemModel.groupname = titles[i];
-        itemModel.portrait = imgs[i];
+        itemModel.groupId = [ids[i] integerValue];
+        itemModel.groupName = titles[i];
+        itemModel.groupPortrait = imgs[i];
         [items addObject:itemModel];
     }
     self.groups = [items copy];
@@ -110,7 +110,7 @@
 {
     GroupInfoModel *model = self.groups[indexPath.item];
     WorkStudioInfoController *vc = [[WorkStudioInfoController alloc] init];
-    vc.groupId = @(model.groupid).stringValue;
+    vc.groupId = @(model.groupId).stringValue;
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
     

@@ -6,7 +6,7 @@
 //  Copyright © 2020 shangyukeji. All rights reserved.
 //
 
-#import "WorkSpaceInfoController.h"
+#import "WorkSpaceController.h"
 #import "WorkSpaceInfoPageModel.h"
 #import "WorkSpaceInfoView.h"
 #import "WorkGroupListView.h"
@@ -15,7 +15,7 @@
 #import "AllStudiosController.h"
 #import "CreateWordStudioController.h"
 
-@interface WorkSpaceInfoController ()
+@interface WorkSpaceController ()
 
 @property (nonatomic, strong) UIButton *naviRightButton;
 
@@ -26,7 +26,7 @@
 
 @end
 
-@implementation WorkSpaceInfoController
+@implementation WorkSpaceController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -59,12 +59,12 @@
 
 - (void)lookforGroup
 {
-    CreateWordStudioController *vc = [[CreateWordStudioController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
-//    return;
-//    AllStudiosController *vc = [[AllStudiosController alloc] init];
-//    vc.hidesBottomBarWhenPushed = YES;
+//    CreateWordStudioController *vc = [[CreateWordStudioController alloc] init];
 //    [self.navigationController pushViewController:vc animated:YES];
+//    return;
+    AllStudiosController *vc = [[AllStudiosController alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)loadServerData

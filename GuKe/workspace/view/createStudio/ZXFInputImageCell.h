@@ -11,7 +11,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZXFInputImageCell : UITableViewCell
 
-- (void)configureWithTitle:(NSString *)title indicate:(NSString *)indicate imgUrl:(NSString *)imgUrl completion:(void (^)(id data))completion;
+- (void)configureWithTarget:(UIViewController *)targetController
+                      title:(NSString *)title
+                   indicate:(NSString *)indicate
+                 completion:(void (^)(id data))completion;
 
 @end
 

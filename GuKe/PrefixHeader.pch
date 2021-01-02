@@ -214,6 +214,7 @@
 
 //正式 www.guxians.com
 #define imgPath    @"http://files.guxians.com/"
+#define imgFullUrl(path) (path && ((NSString *)path).length > 0 ? [NSString stringWithFormat:@"http://files.guxians.com/%@",path] : @"")
 
 #ifdef DEBUG
 #define requestUrl @"http://113.31.119.175/bone/"
@@ -463,7 +464,7 @@
 #define UrlPath_workplace @"/app/chatgroups/groups.json"
 
 /**工作站主页*/
-#define UrlPath_workstudio @"/app/chatgroups/groupinfo.json"
+#define UrlPath_workstudio @"app/chatgroups/groupintro.json"//@"/app/chatgroups/groupinfo.json"
 
 
 /**删除好友*/

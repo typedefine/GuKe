@@ -35,8 +35,8 @@
 - (void)configWithData:(GroupInfoModel *)data
 {
     if (!data) return;
-    [self.mainView.imageView sd_setImageWithURL:[NSURL URLWithString:data.portrait] placeholderImage:[UIImage imageNamed:@"icon_group"]];
-    self.mainView.titleLabel.text = data.groupname;
+    [self.mainView.imageView sd_setImageWithURL:[NSURL URLWithString:data.groupPortrait] placeholderImage:[UIImage imageNamed:@"icon_group"]];
+    self.mainView.titleLabel.text = data.groupName;
     self.mainView.subTitleLabel.text = data.countTitle;
 }
 

@@ -86,9 +86,9 @@
 
 - (void)enterGroupInfoFromSection:(NSInteger)section
 {
-    GroupUnionInfoModel *model = self.viewModel.groupList[section];
+    GroupInfoModel *model = self.viewModel.groupList[section];
     WorkStudioInfoController *vc = [[WorkStudioInfoController alloc] init];
-    vc.groupId = @(model.groupid).stringValue;
+    vc.groupId = @(model.groupId).stringValue;
     vc.hidesBottomBarWhenPushed = YES;
     [self.targetController.navigationController pushViewController:vc animated:YES];
 }
@@ -121,7 +121,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.viewModel.groupList[section].children.count;
+    return self.viewModel.groupList[section].chatroom.count;
 }
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -140,16 +140,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     GroupListCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([GroupListCell class])];
-    [cell configWithData:self.viewModel.groupList[indexPath.section].children[indexPath.row]];
+    [cell configWithData:self.viewModel.groupList[indexPath.section].chatroom[indexPath.row]];
     return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    GroupInfoModel *model = self.viewModel.groupList[indexPath.section].children[indexPath.row];
+    GroupInfoModel *model = self.viewModel.groupList[indexPath.section].chatroom[indexPath.row];
     WorkGroupInfoController *vc = [[WorkGroupInfoController alloc] init];
-    vc.groupId = @(model.groupid).stringValue;
+    vc.groupId = @(model.groupId).stringValue;
     vc.hidesBottomBarWhenPushed = YES;
     [self.targetController.navigationController pushViewController:vc animated:YES];
 }

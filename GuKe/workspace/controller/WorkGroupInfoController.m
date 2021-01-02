@@ -33,8 +33,8 @@
     
     [self setupSubViews];
     
-    [self performSelector:@selector(loadData) withObject:nil afterDelay:2];
-//    [self loadData];
+//    [self performSelector:@selector(loadData) withObject:nil afterDelay:2];
+    [self loadData];
 }
 
 - (void)setupSubViews
@@ -75,24 +75,43 @@
 
 - (void)loadData
 {
-    [self.pageModel configareWithData:nil];
-    [self setDisplayViewColor:[UIColor clearColor]];
-    self.nameView.text  = self.pageModel.name;
-    
-    CGRect f = self.desView.frame;
-    f.size.height = [Tools sizeOfText:self.pageModel.des andMaxSize:CGSizeMake(f.size.width, CGFLOAT_MAX) andFont:self.desView.font].height + 15;
-    self.desView.frame = f;
-    self.desView.text = self.pageModel.des;
-    
-    self.topView.frame = CGRectMake(0, 0, ScreenWidth, f.size.height + f.origin.y + 70);
-    
-    f.origin.y += f.size.height + 25;
-    f.size = self.middleView.frame.size;
-    self.middleView.frame = f;
-//    [self.membersView configureWithTarget:self action:@selector(viewMembersAction:) members:self.pageModel.members];
-    [self.membersView reloadData];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,UrlPath_workstudio];
+    NSMutableDictionary *para = [@{
+        @"sessionId": sessionIding,
+        @"groupid":self.groupId
+    } mutableCopy];
+   
+    [self showHudInView:self.view hint:nil];
+    [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
+        NSLog(@"工作组介绍-->%@",data);
+        [self hideHud];
+        NSDictionary *dict = (NSDictionary *)data;
+        if ([dict[@"retcode"] isEqual:@"0000"]) {
+            [self.pageModel configareWithData:dict[@"data"]];
+            [self setDisplayViewColor:[UIColor clearColor]];
+            self.nameView.text  = self.pageModel.name;
+            
+            CGRect f = self.desView.frame;
+            f.size.height = [Tools sizeOfText:self.pageModel.des andMaxSize:CGSizeMake(f.size.width, CGFLOAT_MAX) andFont:self.desView.font].height + 15;
+            self.desView.frame = f;
+            self.desView.text = self.pageModel.des;
+            
+            self.topView.frame = CGRectMake(0, 0, ScreenWidth, f.size.height + f.origin.y + 70);
+            
+            f.origin.y += f.size.height + 25;
+            f.size = self.middleView.frame.size;
+            self.middleView.frame = f;
+        //    [self.membersView configureWithTarget:self action:@selector(viewMembersAction:) members:self.pageModel.members];
+            [self.membersView reloadData];
+        }
+    } failure:^(NSError *error) {
+        [self hideHud];
+        NSLog(@"工作组介绍error:%@",error);
+    }];
+   
 }
 
+#pragma mark GroupMembersViewDelegate
 
 - (NSString *)titleInMemberView:(GroupMembersView *)membersView
 {

@@ -49,9 +49,9 @@
     [self.contentView addSubview:bgView];
     [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.titleLabel.mas_top);
-        make.left.equalTo(self.titleLabel.mas_right).offset(15);
-        make.right.bottom.equalTo(self.contentView).offset(-IPHONE_X_SCALE(15));
-        make.bottom.equalTo(self.contentView).offset(-10);
+        make.left.equalTo(self.titleLabel.mas_right).offset(IPHONE_X_SCALE(15));
+        make.right.equalTo(self.contentView).offset(-IPHONE_X_SCALE(15));
+        make.bottom.equalTo(self.contentView).offset(-IPHONE_X_SCALE(10));
     }];
     
     [bgView addSubview:self.textView];
@@ -66,11 +66,12 @@
         make.top.equalTo(self.textView).offset(8);
     }];
     
-    [self.textView addSubview:self.countLabel];
+    [bgView addSubview:self.countLabel];
     [self.countLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.textView).offset(-5);
-        make.bottom.equalTo(self.textView).offset(-5);
-        make.width.mas_equalTo(60);
+        make.right.bottom.equalTo(self.textView);//.offset(-5);
+//        make..equalTo(self.textView).offset(-5);
+//        make.width.mas_equalTo(60);
+//        make.height.mas_equalTo(15);
     }];
 }
 
@@ -112,7 +113,7 @@
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    if (range.location+range.length > self.maxCount) {
+    if (range.location+text.length > self.maxCount) {
         return NO;
     }
     return YES;
@@ -159,7 +160,7 @@
 {
     if (!_countLabel) {
         _countLabel = [[UILabel alloc] init];
-        _countLabel.textAlignment = NSTextAlignmentRight;
+//        _countLabel.textAlignment = NSTextAlignmentRight;
         _countLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightRegular];
         _countLabel.textColor = [UIColor colorWithHex:0x8C8C8C];
     }
