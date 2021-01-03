@@ -80,63 +80,56 @@
 
 - (void)loadServerData
 {
-    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,UrlPath_workplace];
-    NSMutableDictionary *para = [@{
-        @"sessionId": self.pageModel.sessionid,
-    } mutableCopy];
-   
-    [self showHudInView:self.view hint:nil];
-    [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
-        NSLog(@"获取工作站-->%@",data);
-        [self hideHud];
-        [self.pageModel configareWithData:data];
-        if ([self.pageModel.model.retcode isEqualToString:@"0000"]) {
-            NSInteger status = self.pageModel.model.status;
+    __weak typeof(self) weakSelf = self;
+    void (^ complet)(WorkSpaceInfoModel *data) = ^(WorkSpaceInfoModel *data){
+        weakSelf.pageModel.model = data;
+        if ([weakSelf.pageModel.model.retcode isEqualToString:@"0000"]) {
+            NSInteger status = weakSelf.pageModel.model.status;
             switch (status) {
                 case 1://未开通任何工作室
                 {
-                    self.naviRightButton.hidden = YES;
-                    self.infoView.hidden = NO;
-                    [self.infoView removeFromSuperview];
-                    [self.view addSubview:self.infoView];
-                    [self.infoView mas_remakeConstraints:^(MASConstraintMaker *make) {
-                        make.edges.equalTo(self.view);
+                    weakSelf.naviRightButton.hidden = YES;
+                    weakSelf.infoView.hidden = NO;
+                    [weakSelf.infoView removeFromSuperview];
+                    [weakSelf.view addSubview:weakSelf.infoView];
+                    [weakSelf.infoView mas_remakeConstraints:^(MASConstraintMaker *make) {
+                        make.edges.equalTo(weakSelf.view);
                     }];
-                    [self.infoView configareWithTargetController:self data:self.pageModel.model];
+                    [weakSelf.infoView configareWithTargetController:weakSelf data:self.pageModel.model];
         
                 }
                     break;
 
                 case 2://已加入工作室
                 {
-                    self.naviRightButton.hidden = NO;
-                    self.groupListView.hidden = NO;
+                    weakSelf.naviRightButton.hidden = NO;
+                    weakSelf.groupListView.hidden = NO;
                    
-                    [self.groupListView removeFromSuperview];
-                    [self.view addSubview:self.groupListView];
-                    [self.groupListView mas_remakeConstraints:^(MASConstraintMaker *make) {
-                        make.edges.equalTo(self.view);
+                    [weakSelf.groupListView removeFromSuperview];
+                    [weakSelf.view addSubview:weakSelf.groupListView];
+                    [weakSelf.groupListView mas_remakeConstraints:^(MASConstraintMaker *make) {
+                        make.edges.equalTo(weakSelf.view);
                     }];
-                    [self.groupListView configareWithTargetController:self data:self.pageModel.model];
+                    [weakSelf.groupListView configareWithTargetController:weakSelf data:weakSelf.pageModel.model];
                 }
                     break;
 
                 case 3://创建的工作室在审核中
                 case 4://加入申请在审核中
                 {
-                    self.naviRightButton.hidden = NO;
-                    self.blankView.hidden = NO;
-                    [self.blankView removeFromSuperview];
-                    [self.view addSubview:self.blankView];
-                    [self.blankView mas_remakeConstraints:^(MASConstraintMaker *make) {
-                        make.edges.equalTo(self.view);
+                    weakSelf.naviRightButton.hidden = NO;
+                    weakSelf.blankView.hidden = NO;
+                    [weakSelf.blankView removeFromSuperview];
+                    [weakSelf.view addSubview:weakSelf.blankView];
+                    [weakSelf.blankView mas_remakeConstraints:^(MASConstraintMaker *make) {
+                        make.edges.equalTo(weakSelf.view);
                     }];
                     if (status == 3) {
-                        self.blankView.title = @"您创建的工作室正在审核，请耐心等待";
+                        weakSelf.blankView.title = @"您创建的工作室正在审核，请耐心等待";
                     }else{
-                        self.blankView.title = @"您申请的工作室正在审核，请耐心等待";
+                        weakSelf.blankView.title = @"您申请的工作室正在审核，请耐心等待";
                     }
-                    self.blankView.subTitle = @"您也可以点击右上角加入其他工作室";
+                    weakSelf.blankView.subTitle = @"您也可以点击右上角加入其他工作室";
                 }
                     break;
 
@@ -144,13 +137,41 @@
                     break;
             }
         }else{
-            [self addErrorViewWithMsg:self.pageModel.model.message];
+            [weakSelf addErrorViewWithMsg:weakSelf.pageModel.model.message];
         }
-    } failure:^(NSError *error) {
-        [self hideHud];
-        NSLog(@"获取工作站error:%@",error);
-        [self addErrorViewWithMsg:@"请求响应失败"];
-    }];
+    };
+   
+    WorkSpaceInfoModel *model = [[GuKeCache shareCache] objectForKey:kWorkStudioGroup];
+    if (model) {
+        complet(model);
+    }else{
+        [self showHudInView:self.view hint:nil];
+        [[GuKeCache shareCache] loadWorkSpaceDataWithSuccess:^(id data) {
+            NSLog(@"获取工作站-->%@",data);
+            [self hideHud];
+            complet(data);
+        } failure:^(NSError *error) {
+            NSLog(@"获取工作站error:%@",error);
+            [self addErrorViewWithMsg:@"请求响应失败"];
+        }];
+    }
+    
+    //    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,UrlPath_workplace];
+    //    NSMutableDictionary *para = [@{
+    //        @"sessionId": self.pageModel.sessionid,
+    //    } mutableCopy];
+    
+//    [self showHudInView:self.view hint:nil];
+//    [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
+//        NSLog(@"获取工作站-->%@",data);
+//        [self hideHud];
+//        [self.pageModel configareWithData:data];
+//
+//    } failure:^(NSError *error) {
+//        [self hideHud];
+//        NSLog(@"获取工作站error:%@",error);
+//        [self addErrorViewWithMsg:@"请求响应失败"];
+//    }];
     
 }
 

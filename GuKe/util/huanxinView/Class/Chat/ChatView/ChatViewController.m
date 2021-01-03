@@ -29,6 +29,8 @@
 #import "GuKeNavigationViewController.h"
 #import "WorkStudioInfoController.h"
 #import "WorkGroupInfoController.h"
+#import "WorkSpaceInfoModel.h"
+#import "GroupInfoModel.h"
 
 @interface ChatViewController ()<UIAlertViewDelegate,EMClientDelegate, EMChooseViewDelegate, UIDocumentPickerDelegate>
 {
@@ -38,6 +40,7 @@
     UIMenuItem *_recallItem;
     NSString *isDoctor;// 0医生 1患者
     NSString *doctorID;//医生id
+    NSInteger _groupType;
 }
 
 @property (nonatomic) BOOL isPlayingAudio;
@@ -78,7 +81,26 @@
                 [backButtons setImage:[UIImage imageNamed:@"man"] forState:normal];
                 [self makeUseridData];
             }else{
-                [backButtons setImage:[UIImage imageNamed:@"group"] forState:normal];
+                
+                WorkSpaceInfoModel *m =  [[GuKeCache shareCache] objectForKey:kWorkStudioGroup];
+                if (m) {
+                    for (GroupInfoModel *studio in m.groups) {
+                        if ([@(studio.groupId).stringValue isEqualToString:self.conversation.conversationId]) {
+                            _groupType = studio.groupType;
+                            break;
+                        }else{
+                            for (GroupInfoModel *group in studio.chatroom) {
+                                if ([@(group.groupId).stringValue isEqualToString:self.conversation.conversationId]) {
+                                    _groupType = group.groupType;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }else{
+                    _groupType = 0;
+                }
+                [backButtons setImage:[UIImage imageNamed:_groupType>=1? @"MORE":@"group"] forState:normal];
             }
         }
     
@@ -105,7 +127,8 @@
     
 }
 #pragma mark 根据user_id 判断医生还是患者
-- (void)makeUseridData{
+- (void)makeUseridData
+{
     NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,doctorhuanxinDistinguish];
     NSArray *keysArray = @[@"userId"];
     NSArray *valueArray = @[self.conversation.conversationId];
@@ -140,12 +163,22 @@
         }
         
     }else{
-//        WYYGroupDetailViewController *group = [[WYYGroupDetailViewController alloc]init];
-//        group.groupID = self.conversation.conversationId;
-        WorkStudioInfoController *vc = [[WorkStudioInfoController alloc] init];
-        vc.groupId = self.conversation.conversationId;
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:NO];
+        if (_groupType == 1) {
+            WorkStudioInfoController *vc = [[WorkStudioInfoController alloc] init];
+            vc.groupId = self.conversation.conversationId;
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:NO];
+        }else if(_groupType > 1){
+            WorkGroupInfoController *vc = [[WorkGroupInfoController alloc] init];
+            vc.groupId = self.conversation.conversationId;
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:NO];
+        }else{
+            WYYGroupDetailViewController *group = [[WYYGroupDetailViewController alloc]init];
+            group.groupID = self.conversation.conversationId;
+            group.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:group animated:NO];
+        }
     }
     
 }

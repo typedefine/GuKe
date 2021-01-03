@@ -25,9 +25,9 @@
 #import "WYYFMDBManager.h"
 #import "WYYYIshengFriend.h"
 #import "moduleDate.h"
-
 #import "ZYNetworkAccessibity.h"
 //end
+
 @interface AppDelegate ()<EMChatManagerDelegate,EMContactManagerDelegate,EMClientDelegate,WXApiDelegate>{
     WYYFMDBManager *_db;
     NSArray *_dataSource;
@@ -202,7 +202,8 @@
         [self.window makeKeyAndVisible];
 //    登录成功 开始计时
         [moduleDate ShareModuleDate];
-
+        [[GuKeCache shareCache] loadLocalInfo];
+        [[GuKeCache shareCache] loadWorkSpaceDataWithSuccess:nil failure:nil];
     }else{
         if (CommitData) {
             //    退出登录 上传数据

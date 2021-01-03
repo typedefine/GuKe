@@ -89,6 +89,10 @@
 		8910831825A059B3002C5959 /* CreateGroupPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910831725A059B3002C5959 /* CreateGroupPageModel.m */; };
 		8910831B25A0C69A002C5959 /* WorkSpaceInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910831A25A0C69A002C5959 /* WorkSpaceInfoModel.m */; };
 		8910831E25A0CD23002C5959 /* WorkSpaceInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910831D25A0CD23002C5959 /* WorkSpaceInfoController.m */; };
+		8910832225A22DE6002C5959 /* GuKeCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910832025A2200F002C5959 /* GuKeCache.m */; };
+		8910832625A2401A002C5959 /* GroupOperationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910832525A2401A002C5959 /* GroupOperationController.m */; };
+		8910832925A2408F002C5959 /* GroupOperationPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910832825A2408F002C5959 /* GroupOperationPageModel.m */; };
+		8910832C25A24313002C5959 /* GroupOperationItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910832B25A24313002C5959 /* GroupOperationItemModel.m */; };
 		89162EAA24E4293700698B84 /* PatientInfoManageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EA924E4293700698B84 /* PatientInfoManageModel.m */; };
 		89162EAF24E438B400698B84 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EAE24E438B400698B84 /* Tools.m */; };
 		89162EB224ED70A400698B84 /* PatientMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EB124ED70A400698B84 /* PatientMessageController.m */; };
@@ -1084,6 +1088,14 @@
 		8910831A25A0C69A002C5959 /* WorkSpaceInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkSpaceInfoModel.m; sourceTree = "<group>"; };
 		8910831C25A0CD23002C5959 /* WorkSpaceInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkSpaceInfoController.h; sourceTree = "<group>"; };
 		8910831D25A0CD23002C5959 /* WorkSpaceInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkSpaceInfoController.m; sourceTree = "<group>"; };
+		8910831F25A2200F002C5959 /* GuKeCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuKeCache.h; sourceTree = "<group>"; };
+		8910832025A2200F002C5959 /* GuKeCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuKeCache.m; sourceTree = "<group>"; };
+		8910832425A2401A002C5959 /* GroupOperationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupOperationController.h; sourceTree = "<group>"; };
+		8910832525A2401A002C5959 /* GroupOperationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupOperationController.m; sourceTree = "<group>"; };
+		8910832725A2408F002C5959 /* GroupOperationPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupOperationPageModel.h; sourceTree = "<group>"; };
+		8910832825A2408F002C5959 /* GroupOperationPageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupOperationPageModel.m; sourceTree = "<group>"; };
+		8910832A25A24313002C5959 /* GroupOperationItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupOperationItemModel.h; sourceTree = "<group>"; };
+		8910832B25A24313002C5959 /* GroupOperationItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupOperationItemModel.m; sourceTree = "<group>"; };
 		89162EA824E4293700698B84 /* PatientInfoManageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientInfoManageModel.h; sourceTree = "<group>"; };
 		89162EA924E4293700698B84 /* PatientInfoManageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientInfoManageModel.m; sourceTree = "<group>"; };
 		89162EAD24E438B400698B84 /* Tools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
@@ -2840,6 +2852,19 @@
 			path = createStudio;
 			sourceTree = "<group>";
 		};
+		8910832325A23FA8002C5959 /* groupPopover */ = {
+			isa = PBXGroup;
+			children = (
+				8910832425A2401A002C5959 /* GroupOperationController.h */,
+				8910832525A2401A002C5959 /* GroupOperationController.m */,
+				8910832725A2408F002C5959 /* GroupOperationPageModel.h */,
+				8910832825A2408F002C5959 /* GroupOperationPageModel.m */,
+				8910832A25A24313002C5959 /* GroupOperationItemModel.h */,
+				8910832B25A24313002C5959 /* GroupOperationItemModel.m */,
+			);
+			path = groupPopover;
+			sourceTree = "<group>";
+		};
 		89162EAC24E4389800698B84 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -3070,6 +3095,7 @@
 		894C7D132579396F00EF9ABE /* workspace */ = {
 			isa = PBXGroup;
 			children = (
+				8910832325A23FA8002C5959 /* groupPopover */,
 				894C7D632579398100EF9ABE /* controller */,
 				894C7D65257939B300EF9ABE /* model */,
 				894C7D64257939AB00EF9ABE /* view */,
@@ -5153,6 +5179,8 @@
 		E30974F81F9DD20E00EC3F80 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				8910831F25A2200F002C5959 /* GuKeCache.h */,
+				8910832025A2200F002C5959 /* GuKeCache.m */,
 				893A3DD7253A276900570FB5 /* iCloudFileManager */,
 				893A3DD32537643700570FB5 /* KeyboardStateListener.h */,
 				893A3DD42537643700570FB5 /* KeyboardStateListener.m */,
@@ -6675,6 +6703,7 @@
 				E30976EA1F9DD20F00EC3F80 /* SUNSlideSwitchView.m in Sources */,
 				E30976921F9DD20F00EC3F80 /* HPTextViewInternal.m in Sources */,
 				9A5387AD20084D8B0084E772 /* EaseChatToolbarItem.m in Sources */,
+				8910832625A2401A002C5959 /* GroupOperationController.m in Sources */,
 				E30976F71F9DD20F00EC3F80 /* LeftLTextFiledView.m in Sources */,
 				9A77989A200DF01A00EFCF67 /* WYYSouSuoYishengTableViewCell.m in Sources */,
 				9A08A9811F30533B00AF29EB /* TAAbstractDotView.m in Sources */,
@@ -6704,6 +6733,7 @@
 				89E52EED24F2D7750052403B /* PatientMsgChatCellModel.m in Sources */,
 				894C7D562579396F00EF9ABE /* ZXFExpandTextView.m in Sources */,
 				8910831B25A0C69A002C5959 /* WorkSpaceInfoModel.m in Sources */,
+				8910832925A2408F002C5959 /* GroupOperationPageModel.m in Sources */,
 				9A53877B20084D8B0084E772 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				9A53874A20084D8A0084E772 /* EMVoiceConverter.mm in Sources */,
 				9A54BB6A200F184600CF0844 /* WYYYiShengOneTableViewCell.m in Sources */,
@@ -6906,6 +6936,7 @@
 				9A08A9091F302B2E00AF29EB /* MJRefreshBackGifFooter.m in Sources */,
 				9A53893A20084DC40084E772 /* EMTextView.m in Sources */,
 				E309769E1F9DD20F00EC3F80 /* MASConstraint.m in Sources */,
+				8910832C25A24313002C5959 /* GroupOperationItemModel.m in Sources */,
 				9ACE974520184F050028FC9D /* ZJNSearchDoctorViewController.m in Sources */,
 				9A53879520084D8B0084E772 /* EaseEmojiEmoticons.m in Sources */,
 				9A79E82C1F38367D00BCF889 /* InfoOneTableViewCell.m in Sources */,
@@ -7127,6 +7158,7 @@
 				9A5387AF20084D8B0084E772 /* EaseTextView.m in Sources */,
 				9A53892B20084DC40084E772 /* EMChatroomMembersViewController.m in Sources */,
 				89203DC424CDA86E00D4D55E /* PatientMessagePageController.m in Sources */,
+				8910832225A22DE6002C5959 /* GuKeCache.m in Sources */,
 				E3BC82071F7D07AB00F0F38F /* MedicalPatientInfoTableViewCell.m in Sources */,
 				9A1E38741F32C8A00063FC2A /* ZhhuanChangViewController.m in Sources */,
 				E309767B1F9DD20F00EC3F80 /* IQKeyboardReturnKeyHandler.m in Sources */,
@@ -7382,8 +7414,6 @@
 					"$(PROJECT_DIR)/GuKe/Util/ThirdTool/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/GuKe/Util/ThirdTool/UMSocial/UMSocialUI",
 					"$(PROJECT_DIR)/Pods/UMengAnalytics-NO-IDFA/umsdk_IOS_analyics_no-idfa_v4.2.5",
-					"$(PROJECT_DIR)/GuKe/huanxinView/third/Parse",
-					"$(PROJECT_DIR)/GuKe/Alipay",
 					"$(PROJECT_DIR)/GuKe/Util/ThirdTool/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/GuKe/Util/huanxinView/third/Parse",
 					"$(PROJECT_DIR)/GuKe/Util/Alipay",
@@ -7452,8 +7482,6 @@
 					"$(PROJECT_DIR)/GuKe/Util/ThirdTool/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/GuKe/Util/ThirdTool/UMSocial/UMSocialUI",
 					"$(PROJECT_DIR)/Pods/UMengAnalytics-NO-IDFA/umsdk_IOS_analyics_no-idfa_v4.2.5",
-					"$(PROJECT_DIR)/GuKe/huanxinView/third/Parse",
-					"$(PROJECT_DIR)/GuKe/Alipay",
 					"$(PROJECT_DIR)/GuKe/Util/ThirdTool/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/GuKe/Util/huanxinView/third/Parse",
 					"$(PROJECT_DIR)/GuKe/Util/Alipay",

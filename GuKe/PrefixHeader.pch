@@ -63,6 +63,7 @@
 //zxf
 #import "UIView+Corner.h"
 #import "UIImageView+CornerRadius.h"
+#import "GuKeCache.h"
 
 #define DEMO_CALL 1
 //end

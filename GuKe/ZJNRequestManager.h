@@ -10,9 +10,9 @@
 
 @interface ZJNRequestManager : NSObject
 //宏定义请求成功block 回调成功后得到的信息
-typedef void (^HttpSuccess)(id data);
+typedef void (^ _Nullable HttpSuccess)(id data);
 //宏定义请求失败block 回调失败后得到的信息
-typedef void (^HttpFailure)(NSError *error);
+typedef void (^_Nullable HttpFailure)(NSError *error);
 //get请求
 +(void)getWithUrlString:(NSString *)urlString success:(HttpSuccess)success failure:(HttpFailure)failure;
 
