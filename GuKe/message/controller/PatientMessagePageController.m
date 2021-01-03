@@ -53,7 +53,6 @@
     self.bgScroll.pagingEnabled = YES;
     [self.view addSubview:self.bgScroll];
     
-    
 
     PatientMessageController *pmc = [[PatientMessageController alloc] init];
     pmc.view.frame = CGRectMake(0, 0, ScreenWidth, self.bgScroll.frame.size.height);

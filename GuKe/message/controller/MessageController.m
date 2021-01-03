@@ -12,8 +12,9 @@
 @interface MessageController ()<UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
 @property (nonatomic, strong) UISegmentedControl *segmentCtrl;
-@property (nonatomic, strong) UIPageViewController *pageController;
-@property (nonatomic, strong) NSArray *pageList;
+@property (nonatomic, strong) UIScrollView *scrollView;
+//@property (nonatomic, strong) UIPageViewController *pageController;
+//@property (nonatomic, strong) NSArray<UIViewController *> *pageList;
 @property (nonatomic, assign) NSInteger curIndex;
 
 @end
@@ -43,37 +44,55 @@
         make.center.equalTo(self.navigationController.navigationBar);
     }];
     
-    [self addChildViewController:self.pageController];
-    [self.view addSubview:self.pageController.view];
-    [self.pageController.view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
-    }];
+    self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    self.scrollView.scrollEnabled = NO;
+    [self.view addSubview:self.scrollView];
     
-    [self.pageController didMoveToParentViewController:self];
+    PatientMessagePageController *pvc = [[PatientMessagePageController alloc] init];
+    [self addChildViewController:pvc];
+    pvc.view.frame = self.scrollView.bounds;
+    [self.scrollView addSubview:pvc.view];
+    [pvc didMoveToParentViewController:self];
     
-    [self changeToViewControllerWithPageIndex:0];
+    CGRect f = pvc.view.frame;
+    f.origin.x = f.size.width;
+    self.chatListVC.view.frame = f;
+    [self.scrollView addSubview:self.chatListVC.view];
+    
+    self.scrollView.contentSize = CGSizeMake(2*f.size.width, 0);
+    
+    
+//    [self addChildViewController:self.pageController];
+//    [self.view addSubview:self.pageController.view];
+//    [self.pageController.view mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(self.view);
+//    }];
+//
+//    [self.pageController didMoveToParentViewController:self];
+//
+//    [self changeToViewControllerWithPageIndex:0];
     
 }
 
-- (NSArray *)pageList
-{
-    if (!_pageList) {
-        _pageList = @[[[PatientMessagePageController alloc] init], self.chatListVC];
-    }
-    return _pageList;
-}
+//- (NSArray<UIViewController *> *)pageList
+//{
+//    if (!_pageList) {
+//        _pageList = @[[[PatientMessagePageController alloc] init], self.chatListVC];
+//    }
+//    return _pageList;
+//}
 
 
-- (UIPageViewController *)pageController
-{
-    if (!_pageController) {
-        NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:UIPageViewControllerSpineLocationMin] forKey: UIPageViewControllerOptionSpineLocationKey];
-        _pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options: options];
-        _pageController.dataSource = self;
-        _pageController.delegate = self;
-    }
-    return  _pageController;
-}
+//- (UIPageViewController *)pageController
+//{
+//    if (!_pageController) {
+//        NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:UIPageViewControllerSpineLocationMin] forKey: UIPageViewControllerOptionSpineLocationKey];
+//        _pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options: options];
+//        _pageController.dataSource = self;
+//        _pageController.delegate = self;
+//    }
+//    return  _pageController;
+//}
 
 
 - (UISegmentedControl *)segmentCtrl
@@ -93,15 +112,21 @@
 
 - (void)indexDidChangeForSegmentedControl:(UISegmentedControl *)sCtrl
 {
-    [self changeToViewControllerWithPageIndex:sCtrl.selectedSegmentIndex];
+//    [self changeToViewControllerWithPageIndex:sCtrl.selectedSegmentIndex];
+    self.curIndex = sCtrl.selectedSegmentIndex;
 }
 
-
-- (void)changeToViewControllerWithPageIndex:(NSUInteger)index
+- (void)setCurIndex:(NSInteger)curIndex
 {
-    [self.pageController setViewControllers:@[self.pageList[index]] direction:self.curIndex>=index animated:YES completion:nil];//UIPageViewControllerNavigationDirectionForward
-   self.curIndex = index;
+    _curIndex = curIndex;
+    self.scrollView.contentOffset = CGPointMake(curIndex*self.scrollView.frame.size.width, 0);
 }
+
+//- (void)changeToViewControllerWithPageIndex:(NSUInteger)index
+//{
+//    [self.pageController setViewControllers:@[self.pageList[index]] direction:self.curIndex>=index animated:YES completion:nil];//UIPageViewControllerNavigationDirectionForward
+//   self.curIndex = index;
+//}
 
 
 /*
@@ -114,31 +139,31 @@
 }
 */
 
-- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers
-{
-    
-}
-
-- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed
-{
-    
-}
-
-- (nullable UIViewController *)pageViewController:(nonnull UIPageViewController *)pageViewController viewControllerBeforeViewController:(nonnull UIViewController *)viewController {
-    if (self.curIndex - 1 >= 0) {
-        self.curIndex -= 1;
-        return self.pageList[self.curIndex];
-    }
-    return nil;
-}
-
-- (nullable UIViewController *)pageViewController:(nonnull UIPageViewController *)pageViewController viewControllerAfterViewController:(nonnull UIViewController *)viewController {
-    if (self.curIndex + 1 < self.pageList.count) {
-        self.curIndex += 1;
-        return self.pageList[self.curIndex];
-    }
-    return nil;
-}
+//- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers
+//{
+//
+//}
+//
+//- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed
+//{
+//
+//}
+//
+//- (nullable UIViewController *)pageViewController:(nonnull UIPageViewController *)pageViewController viewControllerBeforeViewController:(nonnull UIViewController *)viewController {
+//    if (self.curIndex - 1 >= 0) {
+//        self.curIndex -= 1;
+//        return self.pageList[self.curIndex];
+//    }
+//    return nil;
+//}
+//
+//- (nullable UIViewController *)pageViewController:(nonnull UIPageViewController *)pageViewController viewControllerAfterViewController:(nonnull UIViewController *)viewController {
+//    if (self.curIndex + 1 < self.pageList.count) {
+//        self.curIndex += 1;
+//        return self.pageList[self.curIndex];
+//    }
+//    return nil;
+//}
 
 
 

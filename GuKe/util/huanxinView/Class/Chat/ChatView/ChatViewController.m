@@ -21,13 +21,14 @@
 #import "ContactSelectionViewController.h"
 #import "EMGroupInfoViewController.h"
 
-#import "WYYChatDetailViewController.h"//单聊详情
 #import "WYYHuanZheXiangQingViewController.h"//患者详情
 #import "WYYYishengDetailViewController.h"//医生详情
 #import "WYYGroupDetailViewController.h"//群聊详情
 #import "ICouldManager.h"
 #import "ViewFileController.h"
 #import "GuKeNavigationViewController.h"
+#import "WorkStudioInfoController.h"
+#import "WorkGroupInfoController.h"
 
 @interface ChatViewController ()<UIAlertViewDelegate,EMClientDelegate, EMChooseViewDelegate, UIDocumentPickerDelegate>
 {
@@ -139,11 +140,14 @@
         }
         
     }else{
-        WYYGroupDetailViewController *group = [[WYYGroupDetailViewController alloc]init];
-        group.groupID = self.conversation.conversationId;
-        group.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:group animated:NO];
+//        WYYGroupDetailViewController *group = [[WYYGroupDetailViewController alloc]init];
+//        group.groupID = self.conversation.conversationId;
+        WorkStudioInfoController *vc = [[WorkStudioInfoController alloc] init];
+        vc.groupId = self.conversation.conversationId;
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:NO];
     }
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

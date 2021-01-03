@@ -11,10 +11,9 @@
 #import "GroupListSectionHeaderView.h"
 #import "GroupListSectionFooterView.h"
 #import "WorkGroupListViewModel.h"
-#import "WorkStudioInfoController.h"
-#import "WorkGroupInfoController.h"
 #import "WYYNewFriendViewController.h"
 #import "WorkSpaceInfoModel.h"
+#import "ChatViewController.h"
 
 @interface WorkGroupListView ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -88,10 +87,10 @@
 - (void)enterGroupInfoFromSection:(NSInteger)section
 {
     GroupInfoModel *model = self.viewModel.groupList[section];
-    WorkStudioInfoController *vc = [[WorkStudioInfoController alloc] init];
-    vc.groupId = @(model.groupId).stringValue;
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.targetController.navigationController pushViewController:vc animated:YES];
+    ChatViewController *chat = [[ChatViewController alloc]initWithConversationChatter:@(model.groupId).stringValue conversationType:EMConversationTypeGroupChat];
+    chat.hidesBottomBarWhenPushed =YES;
+    chat.title = model.groupName;
+    [self.targetController.navigationController pushViewController:chat animated:NO];
 }
 
 
@@ -149,10 +148,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     GroupInfoModel *model = self.viewModel.groupList[indexPath.section].chatroom[indexPath.row];
-    WorkGroupInfoController *vc = [[WorkGroupInfoController alloc] init];
-    vc.groupId = @(model.groupId).stringValue;
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.targetController.navigationController pushViewController:vc animated:YES];
+    ChatViewController *chat = [[ChatViewController alloc]initWithConversationChatter:@(model.groupId).stringValue conversationType:EMConversationTypeGroupChat];
+    chat.hidesBottomBarWhenPushed =YES;
+    chat.title = model.groupName;
+    [self.targetController.navigationController pushViewController:chat animated:NO];
 }
 
 - (UITableView *)tableView

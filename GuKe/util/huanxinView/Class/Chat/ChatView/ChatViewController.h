@@ -12,8 +12,8 @@
 
 @interface ChatViewController : EaseMessageViewController <EaseMessageViewControllerDelegate, EaseMessageViewControllerDataSource>
 
+//@property (nonatomic, copy) NSString *<#value#>;
 @property (nonatomic,strong)NSString *doctorId;//医生id
-
 @property (nonatomic,strong)NSString *chatStyle;//1 我的患者
 - (void)showMenuViewController:(UIView *)showInView
                   andIndexPath:(NSIndexPath *)indexPath

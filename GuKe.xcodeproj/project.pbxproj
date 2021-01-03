@@ -595,7 +595,6 @@
 		9A756CA92011E11A005FE5FB /* WYYShipinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A756CA82011E11A005FE5FB /* WYYShipinViewController.m */; };
 		9A756CAF2011E15A005FE5FB /* WYYShiPinTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A756CAD2011E15A005FE5FB /* WYYShiPinTableViewCell.m */; };
 		9A756CB02011E15A005FE5FB /* WYYShiPinTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A756CAE2011E15A005FE5FB /* WYYShiPinTableViewCell.xib */; };
-		9A779874200D888F00EFCF67 /* WYYChatDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A779873200D888F00EFCF67 /* WYYChatDetailViewController.m */; };
 		9A779877200D88BC00EFCF67 /* WYYGroupDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A779876200D88BC00EFCF67 /* WYYGroupDetailViewController.m */; };
 		9A77987B200DC7EA00EFCF67 /* WYYGroupOneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A779879200DC7EA00EFCF67 /* WYYGroupOneTableViewCell.m */; };
 		9A77987C200DC7EA00EFCF67 /* WYYGroupOneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A77987A200DC7EA00EFCF67 /* WYYGroupOneTableViewCell.xib */; };
@@ -1954,8 +1953,6 @@
 		9A756CAC2011E15A005FE5FB /* WYYShiPinTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYYShiPinTableViewCell.h; sourceTree = "<group>"; };
 		9A756CAD2011E15A005FE5FB /* WYYShiPinTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYYShiPinTableViewCell.m; sourceTree = "<group>"; };
 		9A756CAE2011E15A005FE5FB /* WYYShiPinTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WYYShiPinTableViewCell.xib; sourceTree = "<group>"; };
-		9A779872200D888F00EFCF67 /* WYYChatDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYYChatDetailViewController.h; sourceTree = "<group>"; };
-		9A779873200D888F00EFCF67 /* WYYChatDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYYChatDetailViewController.m; sourceTree = "<group>"; };
 		9A779875200D88BC00EFCF67 /* WYYGroupDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYYGroupDetailViewController.h; sourceTree = "<group>"; };
 		9A779876200D88BC00EFCF67 /* WYYGroupDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYYGroupDetailViewController.m; sourceTree = "<group>"; };
 		9A779878200DC7EA00EFCF67 /* WYYGroupOneTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYYGroupOneTableViewCell.h; sourceTree = "<group>"; };
@@ -4759,8 +4756,6 @@
 				9A78C90F200C8D69003D86BF /* WYYChuanjianGroupViewController.m */,
 				9AAC64F12015ACEB003AA043 /* WYYChoseGroupNumberViewController.h */,
 				9AAC64F22015ACEB003AA043 /* WYYChoseGroupNumberViewController.m */,
-				9A779872200D888F00EFCF67 /* WYYChatDetailViewController.h */,
-				9A779873200D888F00EFCF67 /* WYYChatDetailViewController.m */,
 				9A779875200D88BC00EFCF67 /* WYYGroupDetailViewController.h */,
 				9A779876200D88BC00EFCF67 /* WYYGroupDetailViewController.m */,
 				9A1B53E32019759A003376B3 /* WYYAllGroupNumberViewController.h */,
@@ -6767,7 +6762,6 @@
 				1FA4553A2064D94D00CF0DD1 /* WodeShoucangVideoViewController.m in Sources */,
 				9A53878620084D8B0084E772 /* PSTGridLayoutRow.m in Sources */,
 				E3D30D7C20440FA000876D44 /* ZJNChangeCheckResultModel.m in Sources */,
-				9A779874200D888F00EFCF67 /* WYYChatDetailViewController.m in Sources */,
 				1FE2F924211A7B590071CF62 /* QJCOrderListmodel.m in Sources */,
 				1F1128DB2221265F00FD8CB6 /* MJPropertyKey.m in Sources */,
 				9A53879420084D8B0084E772 /* EaseEmoji.m in Sources */,
