@@ -59,7 +59,7 @@
     }];
 }
 
-- (void)configareWithTargetController:(UIViewController*)targetController data:(NSDictionary *)data
+- (void)configareWithTargetController:(UIViewController*)targetController data:(WorkSpaceInfoModel *)data
 {
     self.targetController = targetController;
     [self.viewModel configareWithData:data];
@@ -146,6 +146,14 @@
 //        }
     }
     return _tableView;
+}
+
+- (WorkSpaceInfoViewModel *)viewModel
+{
+    if (!_viewModel) {
+        _viewModel = [[WorkSpaceInfoViewModel alloc] init];
+    }
+    return _viewModel;
 }
 
 - (WorkSpaceHeaderView *)headerView

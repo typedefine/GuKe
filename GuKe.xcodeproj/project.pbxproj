@@ -87,6 +87,8 @@
 		89076AFB2561702100DD24D6 /* UIImageView+Corner.m in Sources */ = {isa = PBXBuildFile; fileRef = 89076AFA2561702100DD24D6 /* UIImageView+Corner.m */; };
 		8910831525A05985002C5959 /* CreateWorkGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910831425A05985002C5959 /* CreateWorkGroupController.m */; };
 		8910831825A059B3002C5959 /* CreateGroupPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910831725A059B3002C5959 /* CreateGroupPageModel.m */; };
+		8910831B25A0C69A002C5959 /* WorkSpaceInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910831A25A0C69A002C5959 /* WorkSpaceInfoModel.m */; };
+		8910831E25A0CD23002C5959 /* WorkSpaceInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910831D25A0CD23002C5959 /* WorkSpaceInfoController.m */; };
 		89162EAA24E4293700698B84 /* PatientInfoManageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EA924E4293700698B84 /* PatientInfoManageModel.m */; };
 		89162EAF24E438B400698B84 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EAE24E438B400698B84 /* Tools.m */; };
 		89162EB224ED70A400698B84 /* PatientMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EB124ED70A400698B84 /* PatientMessageController.m */; };
@@ -1079,6 +1081,10 @@
 		8910831425A05985002C5959 /* CreateWorkGroupController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateWorkGroupController.m; sourceTree = "<group>"; };
 		8910831625A059B3002C5959 /* CreateGroupPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateGroupPageModel.h; sourceTree = "<group>"; };
 		8910831725A059B3002C5959 /* CreateGroupPageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateGroupPageModel.m; sourceTree = "<group>"; };
+		8910831925A0C69A002C5959 /* WorkSpaceInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkSpaceInfoModel.h; sourceTree = "<group>"; };
+		8910831A25A0C69A002C5959 /* WorkSpaceInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkSpaceInfoModel.m; sourceTree = "<group>"; };
+		8910831C25A0CD23002C5959 /* WorkSpaceInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkSpaceInfoController.h; sourceTree = "<group>"; };
+		8910831D25A0CD23002C5959 /* WorkSpaceInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkSpaceInfoController.m; sourceTree = "<group>"; };
 		89162EA824E4293700698B84 /* PatientInfoManageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientInfoManageModel.h; sourceTree = "<group>"; };
 		89162EA924E4293700698B84 /* PatientInfoManageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientInfoManageModel.m; sourceTree = "<group>"; };
 		89162EAD24E438B400698B84 /* Tools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
@@ -3092,6 +3098,8 @@
 				894C7D382579396F00EF9ABE /* AllStudiosController.m */,
 				894C7D442579396F00EF9ABE /* WorkSpaceController.h */,
 				894C7D232579396F00EF9ABE /* WorkSpaceController.m */,
+				8910831C25A0CD23002C5959 /* WorkSpaceInfoController.h */,
+				8910831D25A0CD23002C5959 /* WorkSpaceInfoController.m */,
 				894C7D372579396F00EF9ABE /* WorkSpaceInfoPageModel.h */,
 				894C7D1F2579396F00EF9ABE /* WorkSpaceInfoPageModel.m */,
 				894C7D152579396F00EF9ABE /* WorkStudioInfoController.h */,
@@ -3143,6 +3151,8 @@
 			children = (
 				893D9F9B257D16B0003FCB82 /* GroupInfoModel.h */,
 				893D9F9C257D16B0003FCB82 /* GroupInfoModel.m */,
+				8910831925A0C69A002C5959 /* WorkSpaceInfoModel.h */,
+				8910831A25A0C69A002C5959 /* WorkSpaceInfoModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -6698,6 +6708,7 @@
 				89162EB524ED70C300698B84 /* PatientMsgChatController.m in Sources */,
 				89E52EED24F2D7750052403B /* PatientMsgChatCellModel.m in Sources */,
 				894C7D562579396F00EF9ABE /* ZXFExpandTextView.m in Sources */,
+				8910831B25A0C69A002C5959 /* WorkSpaceInfoModel.m in Sources */,
 				9A53877B20084D8B0084E772 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				9A53874A20084D8A0084E772 /* EMVoiceConverter.mm in Sources */,
 				9A54BB6A200F184600CF0844 /* WYYYiShengOneTableViewCell.m in Sources */,
@@ -7078,6 +7089,7 @@
 				E309769F1F9DD20F00EC3F80 /* MASConstraintMaker.m in Sources */,
 				1F1128AE2221246E00FD8CB6 /* ChooseModelChildren.m in Sources */,
 				9A5387AB20084D8B0084E772 /* EaseBubbleView.m in Sources */,
+				8910831E25A0CD23002C5959 /* WorkSpaceInfoController.m in Sources */,
 				9A08A90B1F302B2E00AF29EB /* MJRefreshBackStateFooter.m in Sources */,
 				9A5387AC20084D8B0084E772 /* EaseChatToolbar.m in Sources */,
 				9A697B5E1F3443940062F2FA /* LSCityChooseView.m in Sources */,

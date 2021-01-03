@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class WorkSpaceInfoModel;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WorkSpaceInfoView : UIView
 
-- (void)configareWithTargetController:(UIViewController*)targetController data:(NSDictionary *)data;
+- (void)configareWithTargetController:(UIViewController*)targetController data:(WorkSpaceInfoModel *)data;
 
 @end
 

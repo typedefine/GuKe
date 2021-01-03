@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "WorkSpaceInfoViewModel.h"
-#import "WorkGroupListViewModel.h"
+#import "WorkSpaceInfoModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,9 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 //@property (nonatomic, strong) UIViewController *targetController;
 @property (nonatomic, copy) NSString *sessionid;
 //@property (nonatomic, strong) WorkSpaceInfoViewModel *infoViewModel;
-//@property (nonatomic, strong) WorkGroupListViewModel *listViewModel;
+@property (nonatomic, strong) WorkSpaceInfoModel *model;
 
-//- (void)configareWithData:(NSDictionary *)data;
+- (void)configareWithData:(NSDictionary *)data;
 
 @end
 

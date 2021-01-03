@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "GroupInfoModel.h"
+@class WorkSpaceInfoModel;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WorkGroupListViewModel : NSObject
 
 @property (nonatomic, strong) NSArray<GroupInfoModel *> *groupList;
 
-- (void)configareWithData:(NSArray *)data;
+- (void)configareWithData:(WorkSpaceInfoModel *)data;
 
 @end
 

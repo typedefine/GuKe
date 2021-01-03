@@ -10,10 +10,10 @@
 #import "WorkSpaceInfoPageModel.h"
 #import "WorkSpaceInfoView.h"
 #import "WorkGroupListView.h"
-
 #import "WorkSpaceBlankView.h"
-#import "AllStudiosController.h"
-#import "CreateWordStudioController.h"
+//#import "AllStudiosController.h"
+//#import "CreateWordStudioController.h"
+#import "WorkSpaceInfoController.h"
 
 @interface WorkSpaceController ()
 
@@ -28,13 +28,21 @@
 
 @implementation WorkSpaceController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (self.pageModel.model.groups.count == 0) {
+        [self loadServerData];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     [self setupUI];
 
-    [self loadServerData];
+//    [self loadServerData];
 }
 
 - (void)setupUI
@@ -47,7 +55,7 @@
     self.navigationItem.title = @"工作站";
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.naviRightButton];
-    [self.naviRightButton addTarget:self action:@selector(lookforGroup) forControlEvents:UIControlEventTouchUpInside];
+    [self.naviRightButton addTarget:self action:@selector(naviRightButtonAction) forControlEvents:UIControlEventTouchUpInside];
     self.naviRightButton.hidden = YES;
     
 //    [self.view addSubview:self.infoView];
@@ -57,14 +65,17 @@
 //    self.infoView.hidden = YES;
 }
 
-- (void)lookforGroup
+- (void)naviRightButtonAction
 {
+    WorkSpaceInfoController *vc = [[WorkSpaceInfoController alloc] init];
+    vc.pageModel = self.pageModel.model;
+    [self.navigationController pushViewController:vc animated:YES];
 //    CreateWordStudioController *vc = [[CreateWordStudioController alloc] init];
 //    [self.navigationController pushViewController:vc animated:YES];
 //    return;
-    AllStudiosController *vc = [[AllStudiosController alloc] init];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+//    AllStudiosController *vc = [[AllStudiosController alloc] init];
+//    vc.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)loadServerData
@@ -78,9 +89,9 @@
     [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
         NSLog(@"获取工作站-->%@",data);
         [self hideHud];
-        NSDictionary *dict = (NSDictionary *)data;
-        if ([dict[@"retcode"] isEqual:@"0000"]) {
-            int status = [dict[@"status"] intValue];
+        [self.pageModel configareWithData:data];
+        if ([self.pageModel.model.retcode isEqualToString:@"0000"]) {
+            NSInteger status = self.pageModel.model.status;
             switch (status) {
                 case 1://未开通任何工作室
                 {
@@ -91,7 +102,7 @@
                     [self.infoView mas_remakeConstraints:^(MASConstraintMaker *make) {
                         make.edges.equalTo(self.view);
                     }];
-                    [self.infoView configareWithTargetController:self data:dict];
+                    [self.infoView configareWithTargetController:self data:self.pageModel.model];
         
                 }
                     break;
@@ -106,7 +117,7 @@
                     [self.groupListView mas_remakeConstraints:^(MASConstraintMaker *make) {
                         make.edges.equalTo(self.view);
                     }];
-                    [self.groupListView configareWithTargetController:self data:dict[@"data"]];
+                    [self.groupListView configareWithTargetController:self data:self.pageModel.model];
                 }
                     break;
 
@@ -133,7 +144,7 @@
                     break;
             }
         }else{
-            [self addErrorViewWithMsg:dict[@"message"]];
+            [self addErrorViewWithMsg:self.pageModel.model.message];
         }
     } failure:^(NSError *error) {
         [self hideHud];
@@ -164,10 +175,10 @@
         _naviRightButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _naviRightButton.titleLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightRegular];
         [_naviRightButton setTitleColor:greenC forState:UIControlStateNormal];
-        [_naviRightButton setTitle:@"查找群" forState:UIControlStateNormal];
+        [_naviRightButton setTitle:@"工作站介绍" forState:UIControlStateNormal];//@"查找群"
         _naviRightButton.backgroundColor = [UIColor whiteColor];
         CGFloat h = IPHONE_Y_SCALE(25);
-        _naviRightButton.frame = CGRectMake(0, 0, IPHONE_X_SCALE(65), h);
+        _naviRightButton.frame = CGRectMake(0, 0, IPHONE_X_SCALE(70), h);
         _naviRightButton.layer.cornerRadius = h/2.0f;
     }
     return _naviRightButton;

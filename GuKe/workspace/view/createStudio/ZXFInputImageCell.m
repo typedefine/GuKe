@@ -67,6 +67,13 @@
 //    [self sd_setImageWithURL:[NSURL URLWithString:imgUrl]];
 }
 
+- (void)setImage:(UIImage *)image
+{
+    [super setImage:image];
+    self.addLabel.hidden = image.isValidObjectValue;
+    self.indicateLabel.hidden = image.isValidObjectValue;
+}
+
 - (UILabel *)addLabel
 {
     if (!_addLabel) {

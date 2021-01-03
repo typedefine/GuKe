@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ZXFInputCellModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CreateGroupPageModel : NSObject
+
+@property(nonatomic, strong) NSArray<ZXFInputCellModel *> *cellModelList;
 
 @end
 

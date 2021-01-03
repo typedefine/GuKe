@@ -52,7 +52,64 @@
 
 - (void)createWorkStudio
 {
+    NSString *name = self.pageModel.cellModelList[0].content;
+    if (!name.isValidStringValue) {
+        [self showHint:@"请输入工作室名称"];
+        return;
+    }
     
+    NSString *logoUrl = self.pageModel.cellModelList[1].content;
+    if (!logoUrl.isValidStringValue) {
+        [self showHint:@"请输入工作室logo" inView:self.view];
+        return;
+    }
+    
+    NSString *desc = self.pageModel.cellModelList[2].content;
+    if (!desc.isValidStringValue) {
+        [self showHint:@"请输入工作室介绍" inView:self.view];
+        return;
+    }
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,urlpath_create_workstudio];
+    NSMutableDictionary *para = [@{
+        @"sessionId":sessionIding,
+        @"groupname":name,
+        @"groupportrait":logoUrl,
+        @"desc":desc,
+        @"groupType":@(1)
+    } mutableCopy];
+    
+    NSString *supporterLogo = self.pageModel.cellModelList[3].content;
+    if (supporterLogo.isValidStringValue) {
+        para[@"sponsor_logo"] = supporterLogo;
+    }
+    
+    NSString *supporterName = self.pageModel.cellModelList[4].content;
+    if (supporterName.isValidStringValue) {
+        para[@"sponsor_name"] = supporterName;
+    }
+    
+    NSString *supporterUrl = self.pageModel.cellModelList[5].content;
+    if (supporterUrl.isValidStringValue) {
+        para[@"sponsor_url"] = supporterUrl;
+    }
+   
+    [self showHudInView:self.view hint:nil];
+    [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
+        NSLog(@"创建工作室-->%@",data);
+        [self hideHud];
+        [self showHint:data[@"message"] inView:self.view];
+        [self performSelector:@selector(popBack) withObject:nil afterDelay:1];
+    } failure:^(NSError *error) {
+        NSLog(@"创建工作室-->%@",error);
+        [self hideHud];
+        [self showHint:@"创建工作室失败" inView:self.view];
+    }];
+}
+
+- (void)popBack
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -127,6 +184,7 @@
         [_createStudioButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_createStudioButton setTitle:@"创建" forState:UIControlStateNormal];
         _createStudioButton.titleLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightRegular];
+        _createStudioButton.backgroundColor = greenC;
     }
     return _createStudioButton;
 }

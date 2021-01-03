@@ -14,6 +14,7 @@
 #import "WorkStudioInfoController.h"
 #import "WorkGroupInfoController.h"
 #import "WYYNewFriendViewController.h"
+#import "WorkSpaceInfoModel.h"
 
 @interface WorkGroupListView ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -57,7 +58,7 @@
     }];
 }
 
-- (void)configareWithTargetController:(UIViewController*)targetController data:(NSArray *)data
+- (void)configareWithTargetController:(UIViewController*)targetController data:(WorkSpaceInfoModel *)data
 {
     self.targetController = targetController;
     [self.viewModel configareWithData:data];

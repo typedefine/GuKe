@@ -1,5 +1,5 @@
 //
-//  CreateGroupController.h
+//  WorkSpaceInfoController.h
 //  GuKe
 //
 //  Created by yb on 2021/1/2.
@@ -7,12 +7,13 @@
 //
 
 #import "BaseViewController.h"
+@class WorkSpaceInfoModel;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CreateWorkGroupController : BaseViewController
+@interface WorkSpaceInfoController : BaseViewController
 
-@property (nonatomic, assign) NSInteger superGroupId;//从属工作室id
+@property (nonatomic, strong) WorkSpaceInfoModel *pageModel;
 
 @end
 

@@ -14,6 +14,7 @@
 - (instancetype)init
 {
     if (self = [super init]) {
+        _model = [[WorkSpaceInfoModel alloc] init];
 //        self.workSpacetitle = @"骨先生工作站";
 //        self.workGrouptitle = @"工作室";
 //        self.addGroupActionTitle = @"申请开通工作室";
@@ -22,10 +23,10 @@
 }
 
 
-//- (void)configareWithData:(NSDictionary *)data
-//{
-//    [self.infoViewModel configareWithData:data];
-//}
+- (void)configareWithData:(NSDictionary *)data
+{
+    self.model = [WorkSpaceInfoModel mj_objectWithKeyValues:data];
+}
 
 //- (WorkSpaceInfoViewModel *)infoViewModel
 //{

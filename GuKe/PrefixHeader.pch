@@ -460,12 +460,14 @@
 /**医生添加医生申请*/
 #define doctorhuanxinaddHuan @"/app/doctorhuanxin/addHuan.json"
 
-/**工作站主页*/
+/**工作站主页-*/
 #define UrlPath_workplace @"/app/chatgroups/groups.json"
 
-/**工作站主页*/
+/**工作室介绍*/
 #define UrlPath_workstudio @"app/chatgroups/groupintro.json"//@"/app/chatgroups/groupinfo.json"
 
+/**创建工作室--*/
+#define urlpath_create_workstudio @"app/chatgroups/addgroupnew.json"
 
 /**删除好友*/
 #define userpatienthuanxindeletefriend @"/app/userpatienthuanxin/deletefriend.json"

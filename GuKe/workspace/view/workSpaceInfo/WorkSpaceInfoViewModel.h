@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ExpandTextCellModel.h"
-@class GroupInfoModel;
+@class GroupInfoModel, WorkSpaceInfoModel;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WorkSpaceInfoViewModel : NSObject
@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray<GroupInfoModel *> *groups;
 
 
-- (void)configareWithData:(NSDictionary *)data;
+- (void)configareWithData:(WorkSpaceInfoModel *)data;
 
 @end
 
