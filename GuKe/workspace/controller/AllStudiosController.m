@@ -110,7 +110,7 @@
 {
     GroupInfoModel *model = self.groups[indexPath.item];
     WorkStudioInfoController *vc = [[WorkStudioInfoController alloc] init];
-    vc.groupId = @(model.groupId).stringValue;
+    vc.groupInfo = model;
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
     

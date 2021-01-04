@@ -127,11 +127,11 @@
     if (!self.target || !self.action) return;
     
         if ([self.target respondsToSelector:self.action]) {
-            NSString *Id = @"all";
+            GroupInfoModel *model = nil;
             if (indexPath.item < self.groups.count) {
-                Id = @(self.groups[indexPath.item].groupId).stringValue;
+                model = self.groups[indexPath.item];
             }
-            [self.target performSelector:self.action withObject:Id];
+            [self.target performSelector:self.action withObject:model];
         }
     
 }

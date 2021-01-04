@@ -31,8 +31,10 @@
 #import "WorkGroupInfoController.h"
 #import "WorkSpaceInfoModel.h"
 #import "GroupInfoModel.h"
+#import "GroupOperationController.h"
+#import "EMGroupSharedFilesViewController.h"
 
-@interface ChatViewController ()<UIAlertViewDelegate,EMClientDelegate, EMChooseViewDelegate, UIDocumentPickerDelegate>
+@interface ChatViewController ()<UIAlertViewDelegate,EMClientDelegate, EMChooseViewDelegate, UIDocumentPickerDelegate, UIPopoverPresentationControllerDelegate>
 {
     UIMenuItem *_copyMenuItem;
     UIMenuItem *_deleteMenuItem;
@@ -40,11 +42,12 @@
     UIMenuItem *_recallItem;
     NSString *isDoctor;// 0医生 1患者
     NSString *doctorID;//医生id
-    NSInteger _groupType;
+    GroupInfoModel *_groupInfo;
 }
 
+@property (nonatomic, strong) UIButton *naviRightButton;
 @property (nonatomic) BOOL isPlayingAudio;
-
+@property (nonatomic, strong) EMGroup *group;
 @property (nonatomic) NSMutableDictionary *emotionDic;
 @property (nonatomic, copy) EaseSelectAtTargetCallback selectedCallback;
 
@@ -67,40 +70,55 @@
     
     
     if(![self.conversation.conversationId isEqualToString:@"gxs"]){
-        UIButton *backButtons = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-        backButtons.backgroundColor = greenC;
-        backButtons.accessibilityIdentifier = @"backs";
+        self.naviRightButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+        self.naviRightButton.backgroundColor = greenC;
+        self.naviRightButton.accessibilityIdentifier = @"backs";
         
         //backButtons.imageEdgeInsets = UIEdgeInsetsMake(0, - 20, 0, 20);
-        [backButtons addTarget:self action:@selector(rightAction) forControlEvents:UIControlEventTouchUpInside];
-        UIBarButtonItem *backItems = [[UIBarButtonItem alloc] initWithCustomView:backButtons];
+        [self.naviRightButton addTarget:self action:@selector(rightAction) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *backItems = [[UIBarButtonItem alloc] initWithCustomView:self.naviRightButton];
         [self.navigationItem setRightBarButtonItem:backItems];
          if (![self.doctorId isEqualToString:@"gxs"] ) {
             
             if (self.conversation.type == EMConversationTypeChat) {
-                [backButtons setImage:[UIImage imageNamed:@"man"] forState:normal];
+                [self.naviRightButton setImage:[UIImage imageNamed:@"man"] forState:normal];
                 [self makeUseridData];
             }else{
                 
                 WorkSpaceInfoModel *m =  [[GuKeCache shareCache] objectForKey:kWorkStudioGroup];
                 if (m) {
+                    [self addNaviToolBar];
                     for (GroupInfoModel *studio in m.groups) {
+                        studio.isJoined = YES;
+                        studio.isOwner = YES;
                         if ([@(studio.groupId).stringValue isEqualToString:self.conversation.conversationId]) {
-                            _groupType = studio.groupType;
+                            _groupInfo = studio;
                             break;
                         }else{
                             for (GroupInfoModel *group in studio.chatroom) {
+                                group.isJoined = YES;
+                                group.isOwner = YES;
                                 if ([@(group.groupId).stringValue isEqualToString:self.conversation.conversationId]) {
-                                    _groupType = group.groupType;
+                                    _groupInfo = group;
                                     break;
                                 }
                             }
                         }
                     }
-                }else{
-                    _groupType = 0;
                 }
-                [backButtons setImage:[UIImage imageNamed:_groupType>=1? @"MORE":@"group"] forState:normal];
+                [self.naviRightButton setImage:[UIImage imageNamed:_groupInfo && _groupInfo.isOwner? @"MORE":@"group"] forState:normal];
+                __weak typeof(self) weakSelf = self;
+//                [self showHudInView:self.view hint:NSLocalizedString(@"loadData", @"Load data...")];
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(){
+                    EMError *error = nil;
+                    EMGroup *group = [[EMClient sharedClient].groupManager getGroupSpecificationFromServerWithId:weakSelf.conversation.conversationId error:&error];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [weakSelf hideHud];
+                    });
+                    if (!error) {
+                        weakSelf.group = group;
+                    }
+                });
             }
         }
     
@@ -126,6 +144,87 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleCallNotification:) name:@"callControllerClose" object:nil];
     
 }
+
+- (void)addNaviToolBar
+{
+    UIView *toolBar = [[UIView alloc] init];
+    toolBar.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:toolBar];
+    [toolBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(self.view);
+        make.height.mas_equalTo(45);
+    }];
+    
+    DDCButton *contactBtn = [self createNaviToolBarButtonWithImagePath:@"group_contact" title:@" 通讯录"];
+    [toolBar addSubview:contactBtn];
+    [contactBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(toolBar).offset(IPHONE_X_SCALE(20));
+        make.height.mas_equalTo(25);
+        make.width.mas_equalTo(65);
+        make.centerY.equalTo(toolBar);
+    }];
+    [contactBtn addTarget:self action:@selector(viewContact) forControlEvents:UIControlEventTouchUpInside];
+    
+    DDCButton *fileBtn = [self createNaviToolBarButtonWithImagePath:@"group_share_file" title:@" 共享文件"];
+    [toolBar addSubview:fileBtn];
+    [fileBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(contactBtn.mas_right).offset(IPHONE_X_SCALE(12));
+        make.height.mas_equalTo(25);
+        make.width.mas_equalTo(80);
+        make.centerY.equalTo(toolBar);
+    }];
+    [fileBtn addTarget:self action:@selector(viewShareFiles) forControlEvents:UIControlEventTouchUpInside];
+    
+    DDCButton *videoBtn = [self createNaviToolBarButtonWithImagePath:@"group_video_normal" title:@" 视频"];
+    [videoBtn setImage:[UIImage imageNamed:@"group_video_selected"] forState:UIControlStateSelected];
+    [videoBtn setBackgroundColor:greenC forState:UIControlStateSelected];
+    [videoBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    [toolBar addSubview:videoBtn];
+    [videoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(fileBtn.mas_right).offset(IPHONE_X_SCALE(12));
+        make.height.mas_equalTo(25);
+        make.width.mas_equalTo(57);
+        make.centerY.equalTo(toolBar);
+    }];
+    [videoBtn addTarget:self action:@selector(viewVideos:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)viewContact
+{
+    
+}
+
+- (void)viewShareFiles
+{
+    if(self.group){
+        EMGroupSharedFilesViewController *vc = [[EMGroupSharedFilesViewController alloc] initWithGroup:self.group];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
+}
+
+- (void)viewVideos:(DDCButton *)btn
+{
+    btn.selected = !btn.selected;
+}
+
+
+- (DDCButton *)createNaviToolBarButtonWithImagePath:(NSString *)imagePath title:(NSString *)title
+{
+    DDCButton *btn = [DDCButton buttonWithType:UIButtonTypeCustom];
+    [btn setBackgroundColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    btn.titleLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightRegular];
+    [btn setTitleColor:[UIColor colorWithHex:0x3C3E3D] forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:imagePath] forState:UIControlStateNormal];
+    [btn setTitle:title forState:UIControlStateNormal];
+    btn.clipsToBounds = YES;
+    btn.layer.cornerRadius = 12.5;
+    [btn setLayerBorderColor:[UIColor colorWithHex:0x3C3E3D] forState:UIControlStateNormal];
+//    btn.layer.borderColor = [UIColor colorWithHex:0x3C3E3D].CGColor;
+//    btn.layer.borderWidth = 1;
+    return btn;
+}
+
 #pragma mark 根据user_id 判断医生还是患者
 - (void)makeUseridData
 {
@@ -163,16 +262,38 @@
         }
         
     }else{
-        if (_groupType == 1) {
-            WorkStudioInfoController *vc = [[WorkStudioInfoController alloc] init];
-            vc.groupId = self.conversation.conversationId;
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:NO];
-        }else if(_groupType > 1){
-            WorkGroupInfoController *vc = [[WorkGroupInfoController alloc] init];
-            vc.groupId = self.conversation.conversationId;
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:NO];
+        if (_groupInfo) {
+            if (_groupInfo.isOwner) {
+                GroupOperationController *vc = [[GroupOperationController alloc] init];
+                vc.targetController = self;
+                vc.groupInfo = _groupInfo;
+                vc.preferredContentSize = CGSizeMake(IPHONE_X_SCALE(180), _groupInfo.groupType==1?IPHONE_X_SCALE(205):IPHONE_X_SCALE(100));
+                vc.modalPresentationStyle = UIModalPresentationPopover;
+
+                UIPopoverPresentationController *popver = vc.popoverPresentationController;
+                popver.delegate = self;
+                    //弹出时参照视图的大小，与弹框的位置有关
+                popver.sourceRect = self.naviRightButton.bounds;
+                //弹出时所参照的视图，与弹框的位置有关
+                popver.sourceView = self.naviRightButton;
+                //弹框的箭头方向
+                popver.permittedArrowDirections = UIPopoverArrowDirectionUp;
+
+                [self presentViewController:vc animated:YES completion:nil];
+                
+            }else{
+                if (_groupInfo.groupType == 1) {
+                    WorkStudioInfoController *vc = [[WorkStudioInfoController alloc] init];
+                    vc.groupInfo = _groupInfo;
+                    vc.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:vc animated:NO];
+                }else if(_groupInfo.groupType > 1){
+                    WorkGroupInfoController *vc = [[WorkGroupInfoController alloc] init];
+                    vc.groupInfo = _groupInfo;
+                    vc.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:vc animated:NO];
+                }
+            }
         }else{
             WYYGroupDetailViewController *group = [[WYYGroupDetailViewController alloc]init];
             group.groupID = self.conversation.conversationId;
@@ -182,6 +303,25 @@
     }
     
 }
+
+
+// -------UIPopoverPresentationControllerDelegate
+// 默认返回的是覆盖整个屏幕，需设置成UIModalPresentationNone。
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller{
+    return UIModalPresentationNone;
+}
+// 设置点击蒙版是否消失，默认为YES
+- (BOOL)popoverPresentationControllerShouldDismissPopover:(UIPopoverPresentationController *)popoverPresentationController
+{
+    return YES;
+}
+// 弹出视图消失后调用的方法
+- (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController
+{
+    
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

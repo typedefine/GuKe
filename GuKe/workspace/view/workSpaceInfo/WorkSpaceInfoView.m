@@ -71,17 +71,17 @@
 }
 
 
-- (void)groupAction:(NSString *)groupId
+- (void)groupAction:(GroupInfoModel *)groupInfo
 {
-    if ([groupId isEqualToString:@"all"]) {
+    if (!groupInfo ) {
         NSLog(@"查看全部工作室");
         AllStudiosController *vc = [[AllStudiosController alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         [self.targetController.navigationController pushViewController:vc animated:YES];
     }else{
-        NSLog(@"查看工作室%@",groupId);
+//        NSLog(@"查看工作室%@",groupInfo.);
         WorkStudioInfoController *vc = [[WorkStudioInfoController alloc] init];
-        vc.groupId = groupId;
+        vc.groupInfo = groupInfo;
         vc.hidesBottomBarWhenPushed = YES;
         [self.targetController.navigationController pushViewController:vc animated:YES];
     }

@@ -7,13 +7,12 @@
 //
 
 #import "BaseViewController.h"
-
+@class GroupInfoModel;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WorkGroupInfoController : BaseViewController
 
-@property (nonatomic, copy) NSString *groupId;
-//@property (nonatomic, copy) NSString *name;
+@property (nonatomic, strong) GroupInfoModel *groupInfo;
 
 @end
 

@@ -61,6 +61,7 @@
 #import "MWPhotoBrowser.h"
 
 //zxf
+#import "DDCButton.h"
 #import "UIView+Corner.h"
 #import "UIImageView+CornerRadius.h"
 #import "GuKeCache.h"

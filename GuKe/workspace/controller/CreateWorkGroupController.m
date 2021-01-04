@@ -76,7 +76,7 @@
         @"groupname":name,
         @"groupportrait":logoUrl,
         @"desc":desc,
-        @"groupType":@(self.superGroupId)
+        @"groupType":self.superGroupId
     } mutableCopy];
   
    

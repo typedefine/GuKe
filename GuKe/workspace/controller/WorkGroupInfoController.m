@@ -78,7 +78,7 @@
     NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,UrlPath_workstudio];
     NSMutableDictionary *para = [@{
         @"sessionId": sessionIding,
-        @"groupid":self.groupId
+        @"groupid":@(self.groupInfo.groupId).stringValue
     } mutableCopy];
    
     [self showHudInView:self.view hint:nil];

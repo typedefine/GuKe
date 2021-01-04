@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CreateWorkGroupController : BaseViewController
 
-@property (nonatomic, assign) NSInteger superGroupId;//从属工作室id
+@property (nonatomic, copy) NSString *superGroupId;//从属工作室id
 
 @end
 

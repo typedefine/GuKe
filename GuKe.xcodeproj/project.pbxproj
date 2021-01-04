@@ -93,6 +93,12 @@
 		8910832625A2401A002C5959 /* GroupOperationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910832525A2401A002C5959 /* GroupOperationController.m */; };
 		8910832925A2408F002C5959 /* GroupOperationPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910832825A2408F002C5959 /* GroupOperationPageModel.m */; };
 		8910832C25A24313002C5959 /* GroupOperationItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910832B25A24313002C5959 /* GroupOperationItemModel.m */; };
+		8910832F25A355A7002C5959 /* GroupManageOperationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910832E25A355A7002C5959 /* GroupManageOperationCell.m */; };
+		8910835D25A37BEB002C5959 /* DDCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910835C25A37BEB002C5959 /* DDCButton.m */; };
+		8910836125A38260002C5959 /* ShareFilesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910836025A3825F002C5959 /* ShareFilesController.m */; };
+		8910836425A382F7002C5959 /* ShareFilesPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910836325A382F7002C5959 /* ShareFilesPageModel.m */; };
+		8910836725A38322002C5959 /* ShareFileItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910836625A38322002C5959 /* ShareFileItemModel.m */; };
+		8910836A25A38351002C5959 /* ShareFileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910836925A38351002C5959 /* ShareFileCell.m */; };
 		89162EAA24E4293700698B84 /* PatientInfoManageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EA924E4293700698B84 /* PatientInfoManageModel.m */; };
 		89162EAF24E438B400698B84 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EAE24E438B400698B84 /* Tools.m */; };
 		89162EB224ED70A400698B84 /* PatientMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EB124ED70A400698B84 /* PatientMessageController.m */; };
@@ -1096,6 +1102,18 @@
 		8910832825A2408F002C5959 /* GroupOperationPageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupOperationPageModel.m; sourceTree = "<group>"; };
 		8910832A25A24313002C5959 /* GroupOperationItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupOperationItemModel.h; sourceTree = "<group>"; };
 		8910832B25A24313002C5959 /* GroupOperationItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupOperationItemModel.m; sourceTree = "<group>"; };
+		8910832D25A355A7002C5959 /* GroupManageOperationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupManageOperationCell.h; sourceTree = "<group>"; };
+		8910832E25A355A7002C5959 /* GroupManageOperationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupManageOperationCell.m; sourceTree = "<group>"; };
+		8910835B25A37BEB002C5959 /* DDCButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCButton.h; sourceTree = "<group>"; };
+		8910835C25A37BEB002C5959 /* DDCButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCButton.m; sourceTree = "<group>"; };
+		8910835F25A3825F002C5959 /* ShareFilesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareFilesController.h; sourceTree = "<group>"; };
+		8910836025A3825F002C5959 /* ShareFilesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareFilesController.m; sourceTree = "<group>"; };
+		8910836225A382F7002C5959 /* ShareFilesPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareFilesPageModel.h; sourceTree = "<group>"; };
+		8910836325A382F7002C5959 /* ShareFilesPageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareFilesPageModel.m; sourceTree = "<group>"; };
+		8910836525A38322002C5959 /* ShareFileItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareFileItemModel.h; sourceTree = "<group>"; };
+		8910836625A38322002C5959 /* ShareFileItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareFileItemModel.m; sourceTree = "<group>"; };
+		8910836825A38351002C5959 /* ShareFileCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareFileCell.h; sourceTree = "<group>"; };
+		8910836925A38351002C5959 /* ShareFileCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareFileCell.m; sourceTree = "<group>"; };
 		89162EA824E4293700698B84 /* PatientInfoManageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientInfoManageModel.h; sourceTree = "<group>"; };
 		89162EA924E4293700698B84 /* PatientInfoManageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientInfoManageModel.m; sourceTree = "<group>"; };
 		89162EAD24E438B400698B84 /* Tools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
@@ -2852,7 +2870,7 @@
 			path = createStudio;
 			sourceTree = "<group>";
 		};
-		8910832325A23FA8002C5959 /* groupPopover */ = {
+		8910832325A23FA8002C5959 /* groupOperation */ = {
 			isa = PBXGroup;
 			children = (
 				8910832425A2401A002C5959 /* GroupOperationController.h */,
@@ -2861,8 +2879,34 @@
 				8910832825A2408F002C5959 /* GroupOperationPageModel.m */,
 				8910832A25A24313002C5959 /* GroupOperationItemModel.h */,
 				8910832B25A24313002C5959 /* GroupOperationItemModel.m */,
+				8910832D25A355A7002C5959 /* GroupManageOperationCell.h */,
+				8910832E25A355A7002C5959 /* GroupManageOperationCell.m */,
 			);
-			path = groupPopover;
+			path = groupOperation;
+			sourceTree = "<group>";
+		};
+		8910835A25A37BEB002C5959 /* DDCButton */ = {
+			isa = PBXGroup;
+			children = (
+				8910835B25A37BEB002C5959 /* DDCButton.h */,
+				8910835C25A37BEB002C5959 /* DDCButton.m */,
+			);
+			path = DDCButton;
+			sourceTree = "<group>";
+		};
+		8910835E25A38235002C5959 /* shareFiles */ = {
+			isa = PBXGroup;
+			children = (
+				8910835F25A3825F002C5959 /* ShareFilesController.h */,
+				8910836025A3825F002C5959 /* ShareFilesController.m */,
+				8910836225A382F7002C5959 /* ShareFilesPageModel.h */,
+				8910836325A382F7002C5959 /* ShareFilesPageModel.m */,
+				8910836525A38322002C5959 /* ShareFileItemModel.h */,
+				8910836625A38322002C5959 /* ShareFileItemModel.m */,
+				8910836825A38351002C5959 /* ShareFileCell.h */,
+				8910836925A38351002C5959 /* ShareFileCell.m */,
+			);
+			path = shareFiles;
 			sourceTree = "<group>";
 		};
 		89162EAC24E4389800698B84 /* Tools */ = {
@@ -3095,7 +3139,8 @@
 		894C7D132579396F00EF9ABE /* workspace */ = {
 			isa = PBXGroup;
 			children = (
-				8910832325A23FA8002C5959 /* groupPopover */,
+				8910835E25A38235002C5959 /* shareFiles */,
+				8910832325A23FA8002C5959 /* groupOperation */,
 				894C7D632579398100EF9ABE /* controller */,
 				894C7D65257939B300EF9ABE /* model */,
 				894C7D64257939AB00EF9ABE /* view */,
@@ -5179,6 +5224,7 @@
 		E30974F81F9DD20E00EC3F80 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				8910835A25A37BEB002C5959 /* DDCButton */,
 				8910831F25A2200F002C5959 /* GuKeCache.h */,
 				8910832025A2200F002C5959 /* GuKeCache.m */,
 				893A3DD7253A276900570FB5 /* iCloudFileManager */,
@@ -6647,6 +6693,7 @@
 				9A08A9541F302B3600AF29EB /* AFURLSessionManager.m in Sources */,
 				9A5387B420084D8B0084E772 /* EaseConversationCell.m in Sources */,
 				9A5387A220084D8B0084E772 /* EaseMessageCell.m in Sources */,
+				8910836425A382F7002C5959 /* ShareFilesPageModel.m in Sources */,
 				9A53877620084D8A0084E772 /* UIImage+EMMultiFormat.m in Sources */,
 				E32291B9202BEDB400D00ACA /* ZJNAnesthesiaView.m in Sources */,
 				E31619B2202990B400394A8E /* ZJNBetterDatePickerView.m in Sources */,
@@ -6699,6 +6746,7 @@
 				E349C92C1FAAE7AB005223A9 /* ZJNLiveRoomViewController.m in Sources */,
 				9A53877120084D8A0084E772 /* EMSDWebImagePrefetcher.m in Sources */,
 				9A53878F20084D8B0084E772 /* NSString+Valid.m in Sources */,
+				8910835D25A37BEB002C5959 /* DDCButton.m in Sources */,
 				9A53876D20084D8A0084E772 /* EMSDWebImageDecoder.m in Sources */,
 				E30976EA1F9DD20F00EC3F80 /* SUNSlideSwitchView.m in Sources */,
 				E30976921F9DD20F00EC3F80 /* HPTextViewInternal.m in Sources */,
@@ -6789,6 +6837,7 @@
 				893A3DC82537591E00570FB5 /* UITextView+Placeholder.m in Sources */,
 				E30976911F9DD20F00EC3F80 /* HPGrowingTextView.m in Sources */,
 				E3DF94111F79FC91001E1963 /* PersonalCenterTableViewCell.m in Sources */,
+				8910832F25A355A7002C5959 /* GroupManageOperationCell.m in Sources */,
 				1FA4553A2064D94D00CF0DD1 /* WodeShoucangVideoViewController.m in Sources */,
 				9A53878620084D8B0084E772 /* PSTGridLayoutRow.m in Sources */,
 				E3D30D7C20440FA000876D44 /* ZJNChangeCheckResultModel.m in Sources */,
@@ -6812,6 +6861,7 @@
 				9A53878A20084D8B0084E772 /* EaseConversationModel.m in Sources */,
 				893A3DA42537434800570FB5 /* DDCImageModel.m in Sources */,
 				E3F4B1071F7CD75D00CB16ED /* OperationInfoTableViewCell.m in Sources */,
+				8910836725A38322002C5959 /* ShareFileItemModel.m in Sources */,
 				9A667D622021501300365644 /* WYYDetailThreeTableViewCell.m in Sources */,
 				E30976741F9DD20F00EC3F80 /* IQNSArray+Sort.m in Sources */,
 				9A53879220084D8B0084E772 /* EaseConvertToCommonEmoticonsHelper.m in Sources */,
@@ -6831,6 +6881,7 @@
 				9A3D1EF2201FF8E4008F219B /* WYYHuanZheXiangQingViewController.m in Sources */,
 				894C7D502579396F00EF9ABE /* MoreWorkStudiosCell.m in Sources */,
 				9A53878520084D8B0084E772 /* PSTGridLayoutItem.m in Sources */,
+				8910836A25A38351002C5959 /* ShareFileCell.m in Sources */,
 				1FA5AFBE211B77A700FBF98B /* H9ViewController.m in Sources */,
 				893265242501316D00FE7BBE /* UIColor+HEX.m in Sources */,
 				8949095D257A91DA00E91C66 /* GroupListSectionFooterView.m in Sources */,
@@ -7142,6 +7193,7 @@
 				9A53891A20084DC40084E772 /* EMGroupTransferOwnerViewController.m in Sources */,
 				9A53891920084DC40084E772 /* EMGroupSharedFilesViewController.m in Sources */,
 				9A949BE42010882E00AE1A60 /* ZJNHotMeetingListModel.m in Sources */,
+				8910836125A38260002C5959 /* ShareFilesController.m in Sources */,
 				E32291C0202C3CA300D00ACA /* ZJNChangeOperationViewController.m in Sources */,
 				892555A924E2E009002F7B5B /* NSObject+DDC.m in Sources */,
 				9A08A9641F302B8600AF29EB /* UILabel+BoundingRect.m in Sources */,

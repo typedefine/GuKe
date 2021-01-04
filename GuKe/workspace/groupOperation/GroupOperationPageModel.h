@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GroupOperationPageModel : NSObject
 
+@property (nonatomic, assign) BOOL isStudio;
 @property (nonatomic, strong) NSArray<GroupOperationItemModel *> *items;
 
 @end
