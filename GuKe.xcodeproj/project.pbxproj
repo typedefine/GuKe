@@ -99,6 +99,9 @@
 		8910836425A382F7002C5959 /* ShareFilesPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910836325A382F7002C5959 /* ShareFilesPageModel.m */; };
 		8910836725A38322002C5959 /* ShareFileItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910836625A38322002C5959 /* ShareFileItemModel.m */; };
 		8910836A25A38351002C5959 /* ShareFileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910836925A38351002C5959 /* ShareFileCell.m */; };
+		8910836E25A4C8D3002C5959 /* GroupAddressbookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910836D25A4C8D3002C5959 /* GroupAddressbookCell.m */; };
+		8910837125A4C8F5002C5959 /* GroupAddressbookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910837025A4C8F5002C5959 /* GroupAddressbookController.m */; };
+		8910837425A4C90D002C5959 /* GroupAddressbookPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910837325A4C90D002C5959 /* GroupAddressbookPageModel.m */; };
 		89162EAA24E4293700698B84 /* PatientInfoManageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EA924E4293700698B84 /* PatientInfoManageModel.m */; };
 		89162EAF24E438B400698B84 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EAE24E438B400698B84 /* Tools.m */; };
 		89162EB224ED70A400698B84 /* PatientMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EB124ED70A400698B84 /* PatientMessageController.m */; };
@@ -1114,6 +1117,12 @@
 		8910836625A38322002C5959 /* ShareFileItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareFileItemModel.m; sourceTree = "<group>"; };
 		8910836825A38351002C5959 /* ShareFileCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareFileCell.h; sourceTree = "<group>"; };
 		8910836925A38351002C5959 /* ShareFileCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareFileCell.m; sourceTree = "<group>"; };
+		8910836C25A4C8D3002C5959 /* GroupAddressbookCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupAddressbookCell.h; sourceTree = "<group>"; };
+		8910836D25A4C8D3002C5959 /* GroupAddressbookCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupAddressbookCell.m; sourceTree = "<group>"; };
+		8910836F25A4C8F5002C5959 /* GroupAddressbookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupAddressbookController.h; sourceTree = "<group>"; };
+		8910837025A4C8F5002C5959 /* GroupAddressbookController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupAddressbookController.m; sourceTree = "<group>"; };
+		8910837225A4C90D002C5959 /* GroupAddressbookPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupAddressbookPageModel.h; sourceTree = "<group>"; };
+		8910837325A4C90D002C5959 /* GroupAddressbookPageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupAddressbookPageModel.m; sourceTree = "<group>"; };
 		89162EA824E4293700698B84 /* PatientInfoManageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientInfoManageModel.h; sourceTree = "<group>"; };
 		89162EA924E4293700698B84 /* PatientInfoManageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientInfoManageModel.m; sourceTree = "<group>"; };
 		89162EAD24E438B400698B84 /* Tools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
@@ -2909,6 +2918,19 @@
 			path = shareFiles;
 			sourceTree = "<group>";
 		};
+		8910836B25A4C81C002C5959 /* addressbook */ = {
+			isa = PBXGroup;
+			children = (
+				8910836C25A4C8D3002C5959 /* GroupAddressbookCell.h */,
+				8910836D25A4C8D3002C5959 /* GroupAddressbookCell.m */,
+				8910836F25A4C8F5002C5959 /* GroupAddressbookController.h */,
+				8910837025A4C8F5002C5959 /* GroupAddressbookController.m */,
+				8910837225A4C90D002C5959 /* GroupAddressbookPageModel.h */,
+				8910837325A4C90D002C5959 /* GroupAddressbookPageModel.m */,
+			);
+			path = addressbook;
+			sourceTree = "<group>";
+		};
 		89162EAC24E4389800698B84 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -3139,6 +3161,7 @@
 		894C7D132579396F00EF9ABE /* workspace */ = {
 			isa = PBXGroup;
 			children = (
+				8910836B25A4C81C002C5959 /* addressbook */,
 				8910835E25A38235002C5959 /* shareFiles */,
 				8910832325A23FA8002C5959 /* groupOperation */,
 				894C7D632579398100EF9ABE /* controller */,
@@ -6882,6 +6905,7 @@
 				894C7D502579396F00EF9ABE /* MoreWorkStudiosCell.m in Sources */,
 				9A53878520084D8B0084E772 /* PSTGridLayoutItem.m in Sources */,
 				8910836A25A38351002C5959 /* ShareFileCell.m in Sources */,
+				8910837125A4C8F5002C5959 /* GroupAddressbookController.m in Sources */,
 				1FA5AFBE211B77A700FBF98B /* H9ViewController.m in Sources */,
 				893265242501316D00FE7BBE /* UIColor+HEX.m in Sources */,
 				8949095D257A91DA00E91C66 /* GroupListSectionFooterView.m in Sources */,
@@ -7082,6 +7106,7 @@
 				9A08A90E1F302B2E00AF29EB /* MJRefreshStateHeader.m in Sources */,
 				9A53878020084D8B0084E772 /* PSTCollectionViewFlowLayout.m in Sources */,
 				9A53896820084DC40084E772 /* UIResponder+Router.m in Sources */,
+				8910836E25A4C8D3002C5959 /* GroupAddressbookCell.m in Sources */,
 				E30976A01F9DD20F00EC3F80 /* MASLayoutConstraint.m in Sources */,
 				893A3DCC2537591E00570FB5 /* NSString+Additions.m in Sources */,
 				9A53874120084D8A0084E772 /* EMAudioPlayerUtil.m in Sources */,
@@ -7109,6 +7134,7 @@
 				9A53890B20084DC40084E772 /* ChatViewController.m in Sources */,
 				1F1128D52221265E00FD8CB6 /* MJProperty.m in Sources */,
 				E3DABD1B1F8B4E470037AF98 /* ZJNPatientBodyInfoViewController.m in Sources */,
+				8910837425A4C90D002C5959 /* GroupAddressbookPageModel.m in Sources */,
 				E30976991F9DD20F00EC3F80 /* LiveGiftShowNumberView.m in Sources */,
 				9A42C4D81F53F4FC008D41C4 /* WoDeShouShuTableViewCell.m in Sources */,
 				9A397C951F316DC00089F5DC /* MainHuiYiViewController.m in Sources */,

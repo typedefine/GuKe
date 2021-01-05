@@ -11,6 +11,7 @@
 #import "WorkStudioFooterView.h"
 #import "ExpandTextCell.h"
 #import "WorkStudioInfoPageModel.h"
+#import "ChatViewController.h"
 
 @interface WorkStudioInfoController ()<UITableViewDataSource, UITableViewDelegate, GroupMembersViewDelegate>
 
@@ -46,13 +47,38 @@
     self.joinButton.clipsToBounds = YES;
     self.joinButton.layer.cornerRadius = h/2.0f;
     [self.joinButton addTarget:self action:@selector(joinButtonAction) forControlEvents:UIControlEventTouchUpInside];
-
+    if (self.groupInfo.joinStatus == 1) {
+        self.joinButton.selected = YES;
+    }else if(self.groupInfo.joinStatus == 2){
+        self.joinButton.enabled = NO;
+    }
+   
     [self loadServerData];
 }
 
 - (void)joinButtonAction
 {
-    
+    if (self.groupInfo.joinStatus == 0) {
+        // 调用:
+        NSString *reason = [NSString stringWithFormat:@"%@申请加入群组",[GuKeCache shareCache].user.name];
+        [[EMClient sharedClient].groupManager requestToJoinPublicGroup:@(self.groupInfo.groupId).stringValue message:reason completion:^(EMGroup *aGroup, EMError *aError) {
+            if (!aError) {
+                NSLog(@"申请加公开群成功 --- %@", aGroup);
+            } else {
+                NSLog(@"申请加公开群失败的原因 --- %@", aError.errorDescription);
+            }
+        }];
+    }else if(self.groupInfo.joinStatus == 1){
+        if (self.isFromChat) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }else{
+            ChatViewController *chat = [[ChatViewController alloc]initWithConversationChatter:@(self.groupInfo.groupId).stringValue conversationType:EMConversationTypeGroupChat];
+            chat.hidesBottomBarWhenPushed =YES;
+            chat.title = self.groupInfo.groupName;
+            [self.navigationController pushViewController:chat animated:YES];
+        }
+    }
+      
 }
 
 
@@ -251,6 +277,8 @@
     if (!_joinButton) {
         _joinButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_joinButton setTitle:@"申请进入" forState:UIControlStateNormal];
+        [_joinButton setTitle:@"进入工作室" forState:UIControlStateSelected];
+        [_joinButton setTitle:@"已申请加入，等待审核中" forState:UIControlStateDisabled];
         _joinButton.titleLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightRegular];
         _joinButton.backgroundColor = greenC;
     }

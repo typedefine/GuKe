@@ -33,6 +33,7 @@
 #import "GroupInfoModel.h"
 #import "GroupOperationController.h"
 #import "EMGroupSharedFilesViewController.h"
+#import "GroupAddressbookController.h"
 
 @interface ChatViewController ()<UIAlertViewDelegate,EMClientDelegate, EMChooseViewDelegate, UIDocumentPickerDelegate, UIPopoverPresentationControllerDelegate>
 {
@@ -85,7 +86,7 @@
                 [self makeUseridData];
             }else{
                 
-                WorkSpaceInfoModel *m =  [[GuKeCache shareCache] objectForKey:kWorkStudioGroup];
+                WorkSpaceInfoModel *m =  [[GuKeCache shareCache] objectForKey:kWorkStudioGroup_cache_key];
                 if (m) {
                     [self addNaviToolBar];
                     for (GroupInfoModel *studio in m.groups) {
@@ -191,7 +192,9 @@
 
 - (void)viewContact
 {
-    
+    GroupAddressbookController *vc = [[GroupAddressbookController alloc] init];
+    vc.groupInfo = _groupInfo;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)viewShareFiles
@@ -284,6 +287,7 @@
             }else{
                 if (_groupInfo.groupType == 1) {
                     WorkStudioInfoController *vc = [[WorkStudioInfoController alloc] init];
+                    vc.isFromChat = YES;
                     vc.groupInfo = _groupInfo;
                     vc.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:vc animated:NO];

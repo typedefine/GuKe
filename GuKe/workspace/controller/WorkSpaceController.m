@@ -141,7 +141,7 @@
         }
     };
    
-    WorkSpaceInfoModel *model = [[GuKeCache shareCache] objectForKey:kWorkStudioGroup];
+    WorkSpaceInfoModel *model = [[GuKeCache shareCache] objectForKey:kWorkStudioGroup_cache_key];
     if (model) {
         complet(model);
     }else{

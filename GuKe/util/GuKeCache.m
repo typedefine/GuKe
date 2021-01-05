@@ -24,6 +24,27 @@
 - (void)loadLocalInfo
 {
     _sessionId = sessionIding;
+    NSDictionary *ud = [[NSUserDefaults standardUserDefaults] objectForKey:kUserInfo_cache_Key];
+    if (ud) {
+        UserInfoModel *m = [UserInfoModel mj_objectWithKeyValues:ud];
+        self.user = m;
+    }
+}
+
+- (void)clean
+{
+    _sessionId = nil;
+    [self removeAllObjects];
+}
+
+- (UserInfoModel *)user
+{
+    return [self objectForKey:kUserInfo_cache_Key];
+}
+
+- (void)setUser:(UserInfoModel *)user
+{
+    [self setObject:user forKey:kUserInfo_cache_Key];
 }
 
 - (void)loadWorkSpaceDataWithSuccess:(HttpSuccess)success failure:(HttpFailure)failure
@@ -36,7 +57,7 @@
     [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
         WorkSpaceInfoModel *model = [WorkSpaceInfoModel mj_objectWithKeyValues:data];
         if ([model.retcode isEqualToString:@"0000"]) {
-            [self setObject:model forKey:kWorkStudioGroup];
+            [self setObject:model forKey:kWorkStudioGroup_cache_key];
         }
         if (success) {
             success(model);

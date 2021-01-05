@@ -11,6 +11,9 @@
 #import "ForgetMiMaViewController.h"
 #import "ZYNetworkAccessibity.h"
 #import "CountButton.h"
+#import "MJExtension.h"
+#import "GuKeCache.h"
+
 @interface LoginViewController ()<UITextFieldDelegate>{
     UILabel *titleLab;//页面标题
     UIView *blackView;//黑色遮罩层
@@ -299,6 +302,10 @@
         NSString *retcode = [NSString stringWithFormat:@"%@",data[@"retcode"]];
   
         if ([retcode isEqualToString:@"0"]) {
+            UserInfoModel *m = [UserInfoModel mj_objectWithKeyValues:data[@"data"]];
+            m.name = data[@"nickname"];
+//            [GuKeCache shareCache].user = m;
+            [defaults setObject:[m mj_JSONObject] forKey:kUserInfo_cache_Key];
             [defaults setObject:data[@"data"][@"sessionId"] forKey:@"sessionIdUser"];
             
             [defaults setObject:phoneStr forKey:@"userPhone"];

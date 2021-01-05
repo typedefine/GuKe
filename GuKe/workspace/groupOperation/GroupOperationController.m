@@ -79,6 +79,7 @@
         {
             if (self.groupInfo.groupType == 1) {
                 WorkStudioInfoController *vc = [[WorkStudioInfoController alloc] init];
+                vc.isFromChat = YES;
                 vc.groupInfo = self.groupInfo;
                 [self.targetController.navigationController pushViewController:vc animated:NO];
             }else{

@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface WorkStudioInfoController : BaseViewController
 
 @property (nonatomic, strong) GroupInfoModel *groupInfo;
+@property (nonatomic, assign) BOOL isFromChat;
 
 @end
 

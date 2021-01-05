@@ -10,6 +10,10 @@
 #import "UserInfoModel.h"
 @implementation GroupInfoModel
 
++ (NSDictionary *)mj_replacedKeyFromPropertyName
+{
+    return @{@"isOwner": @"owner"};
+}
 
 + (NSDictionary *)mj_objectClassInArray
 {

@@ -214,7 +214,7 @@
         LoginViewController *view = [LoginViewController new];
         [ChatDemoHelper shareHelper].mainVC = nil;
         self.window.rootViewController = view;
-        
+        [[GuKeCache shareCache] clean];
         
         /*
          #pragma    mark   判断是不是 第一次登陆
