@@ -13,6 +13,10 @@
 		1B7372FE259DBAB5008E816B /* MemberManagePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7372FD259DBAB5008E816B /* MemberManagePageModel.m */; };
 		1BAA8B0C25908B6A0074A2A3 /* ZXFInputField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA8B0B25908B6A0074A2A3 /* ZXFInputField.m */; };
 		1BAA8B0F25908B960074A2A3 /* CreateWordStudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA8B0E25908B960074A2A3 /* CreateWordStudioController.m */; };
+		1BCC63FD25A5DF51005EDBBF /* GroupVideoListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCC63FC25A5DF51005EDBBF /* GroupVideoListView.m */; };
+		1BCC640025A5DFA6005EDBBF /* GroupVideoListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCC63FF25A5DFA6005EDBBF /* GroupVideoListViewModel.m */; };
+		1BCC640325A5E126005EDBBF /* GroupVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCC640225A5E126005EDBBF /* GroupVideoCell.m */; };
+		1BCC640625A5E1F6005EDBBF /* GroupVideoCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCC640525A5E1F6005EDBBF /* GroupVideoCellModel.m */; };
 		1F1128AC2221246E00FD8CB6 /* Details.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1128A02221246E00FD8CB6 /* Details.m */; };
 		1F1128AD2221246E00FD8CB6 /* ChooseAreasBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1128A12221246E00FD8CB6 /* ChooseAreasBase.m */; };
 		1F1128AE2221246E00FD8CB6 /* ChooseModelChildren.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1128A22221246E00FD8CB6 /* ChooseModelChildren.m */; };
@@ -957,6 +961,14 @@
 		1BAA8B0B25908B6A0074A2A3 /* ZXFInputField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXFInputField.m; sourceTree = "<group>"; };
 		1BAA8B0D25908B960074A2A3 /* CreateWordStudioController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateWordStudioController.h; sourceTree = "<group>"; };
 		1BAA8B0E25908B960074A2A3 /* CreateWordStudioController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateWordStudioController.m; sourceTree = "<group>"; };
+		1BCC63FB25A5DF51005EDBBF /* GroupVideoListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupVideoListView.h; sourceTree = "<group>"; };
+		1BCC63FC25A5DF51005EDBBF /* GroupVideoListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupVideoListView.m; sourceTree = "<group>"; };
+		1BCC63FE25A5DFA6005EDBBF /* GroupVideoListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupVideoListViewModel.h; sourceTree = "<group>"; };
+		1BCC63FF25A5DFA6005EDBBF /* GroupVideoListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupVideoListViewModel.m; sourceTree = "<group>"; };
+		1BCC640125A5E126005EDBBF /* GroupVideoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupVideoCell.h; sourceTree = "<group>"; };
+		1BCC640225A5E126005EDBBF /* GroupVideoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupVideoCell.m; sourceTree = "<group>"; };
+		1BCC640425A5E1F6005EDBBF /* GroupVideoCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupVideoCellModel.h; sourceTree = "<group>"; };
+		1BCC640525A5E1F6005EDBBF /* GroupVideoCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupVideoCellModel.m; sourceTree = "<group>"; };
 		1F11289E2221246E00FD8CB6 /* ChooseModelChildren.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseModelChildren.h; sourceTree = "<group>"; };
 		1F11289F2221246E00FD8CB6 /* ChooseAreasChidren.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseAreasChidren.h; sourceTree = "<group>"; };
 		1F1128A02221246E00FD8CB6 /* Details.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Details.m; sourceTree = "<group>"; };
@@ -2633,6 +2645,21 @@
 			path = memberManage;
 			sourceTree = "<group>";
 		};
+		1BCC63FA25A5DF1E005EDBBF /* videoList */ = {
+			isa = PBXGroup;
+			children = (
+				1BCC63FB25A5DF51005EDBBF /* GroupVideoListView.h */,
+				1BCC63FC25A5DF51005EDBBF /* GroupVideoListView.m */,
+				1BCC63FE25A5DFA6005EDBBF /* GroupVideoListViewModel.h */,
+				1BCC63FF25A5DFA6005EDBBF /* GroupVideoListViewModel.m */,
+				1BCC640125A5E126005EDBBF /* GroupVideoCell.h */,
+				1BCC640225A5E126005EDBBF /* GroupVideoCell.m */,
+				1BCC640425A5E1F6005EDBBF /* GroupVideoCellModel.h */,
+				1BCC640525A5E1F6005EDBBF /* GroupVideoCellModel.m */,
+			);
+			path = videoList;
+			sourceTree = "<group>";
+		};
 		1F11289B2221246E00FD8CB6 /* chooseMore(选择关节三级) */ = {
 			isa = PBXGroup;
 			children = (
@@ -2784,12 +2811,12 @@
 		1FE2F914211A7B1C0071CF62 /* 滚动菜单栏 */ = {
 			isa = PBXGroup;
 			children = (
-				1FE2F915211A7B1C0071CF62 /* CQScrollMenuView.m */,
-				1FE2F916211A7B1C0071CF62 /* MianScrollViewController.m */,
-				1FE2F917211A7B1C0071CF62 /* UIView+frameAdjust.m */,
 				1FE2F918211A7B1C0071CF62 /* CQScrollMenuView.h */,
-				1FE2F919211A7B1C0071CF62 /* UIView+frameAdjust.h */,
+				1FE2F915211A7B1C0071CF62 /* CQScrollMenuView.m */,
 				1FE2F91A211A7B1C0071CF62 /* MianScrollViewController.h */,
+				1FE2F916211A7B1C0071CF62 /* MianScrollViewController.m */,
+				1FE2F919211A7B1C0071CF62 /* UIView+frameAdjust.h */,
+				1FE2F917211A7B1C0071CF62 /* UIView+frameAdjust.m */,
 			);
 			path = "滚动菜单栏";
 			sourceTree = "<group>";
@@ -3220,6 +3247,7 @@
 		894C7D64257939AB00EF9ABE /* view */ = {
 			isa = PBXGroup;
 			children = (
+				1BCC63FA25A5DF1E005EDBBF /* videoList */,
 				1B7372F8259DB2B6008E816B /* memberManage */,
 				8906E0F725924C830098A2AC /* createStudio */,
 				897E8DD02587C76D005E3AD7 /* membersView */,
@@ -6783,6 +6811,7 @@
 				9A3D1EF52020201C008F219B /* WYYHuanZheViewController.m in Sources */,
 				89E52EE424F2C5670052403B /* PatientChatCell.m in Sources */,
 				9A08A9661F302B8600AF29EB /* ZJNRequestManager.m in Sources */,
+				1BCC640625A5E1F6005EDBBF /* GroupVideoCellModel.m in Sources */,
 				894C7D522579396F00EF9ABE /* WorkStudiosTitleView.m in Sources */,
 				E3A105D41FA18A6500EBEF1F /* UIView+Layout.m in Sources */,
 				E3D30D682043DC2E00876D44 /* ZJNChangePatientBasicInfoViewController.m in Sources */,
@@ -6828,6 +6857,7 @@
 				9A53878120084D8B0084E772 /* PSTCollectionViewItemKey.m in Sources */,
 				9A08A96F1F304BB200AF29EB /* ForgetMiMaViewController.m in Sources */,
 				9A53892420084DC40084E772 /* SearchMessageViewController.m in Sources */,
+				1BCC640325A5E126005EDBBF /* GroupVideoCell.m in Sources */,
 				1F1128DA2221265F00FD8CB6 /* NSString+MJExtension.m in Sources */,
 				1F1128D42221265E00FD8CB6 /* NSObject+MJKeyValue.m in Sources */,
 				9A779896200DDD8000EFCF67 /* WYYZhaoYishengTwoViewController.m in Sources */,
@@ -6972,6 +7002,7 @@
 				9A42C4D31F53B8D8008D41C4 /* SuiFangJiLuTableViewCell.m in Sources */,
 				1FE2F923211A7B590071CF62 /* QJCOrderModel.m in Sources */,
 				894C7D5F2579396F00EF9ABE /* WorkStudioItemCell.m in Sources */,
+				1BCC63FD25A5DF51005EDBBF /* GroupVideoListView.m in Sources */,
 				9A1E38681F32B06E0063FC2A /* UIColor+XPKit.m in Sources */,
 				9A53892820084DC40084E772 /* ChatroomDetailViewController.m in Sources */,
 				9A08A9131F302B2E00AF29EB /* UIScrollView+MJRefresh.m in Sources */,
@@ -7025,6 +7056,7 @@
 				9A53874420084D8A0084E772 /* EMCDDeviceManager+Microphone.m in Sources */,
 				89E52EF024F2D7A10052403B /* PatientMsgChatModel.m in Sources */,
 				E30976A11F9DD20F00EC3F80 /* MASViewAttribute.m in Sources */,
+				1BCC640025A5DFA6005EDBBF /* GroupVideoListViewModel.m in Sources */,
 				8910831525A05985002C5959 /* CreateWorkGroupController.m in Sources */,
 				E3536B5A1F7E3269009EC5F9 /* Follow_UpRecordsViewController.m in Sources */,
 				E309769A1F9DD20F00EC3F80 /* LiveGiftShowView.m in Sources */,
