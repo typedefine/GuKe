@@ -471,6 +471,9 @@
 /**创建工作室--*/
 #define urlpath_create_workstudio @"app/chatgroups/addgroupnew.json"
 
+/**工作室悬浮视频列表--*/
+#define urlpath_work_group_video @"app/chatgroups/getchatvideo.json"
+
 /**删除好友*/
 #define userpatienthuanxindeletefriend @"/app/userpatienthuanxin/deletefriend.json"
 

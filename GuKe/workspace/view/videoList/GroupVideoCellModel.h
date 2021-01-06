@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GroupVideoModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GroupVideoCellModel : NSObject
 
 @property(nonatomic, copy) NSString *iconUrl;
-
+@property (nonatomic, strong) GroupVideoModel *model;
 
 @end
 

@@ -34,6 +34,7 @@
 #import "GroupOperationController.h"
 #import "EMGroupSharedFilesViewController.h"
 #import "GroupAddressbookController.h"
+#import "GroupVideoListView.h"
 
 @interface ChatViewController ()<UIAlertViewDelegate,EMClientDelegate, EMChooseViewDelegate, UIDocumentPickerDelegate, UIPopoverPresentationControllerDelegate>
 {
@@ -47,6 +48,7 @@
 }
 
 @property (nonatomic, strong) UIButton *naviRightButton;
+@property (nonatomic, strong) GroupVideoListView *videoListView;
 @property (nonatomic) BOOL isPlayingAudio;
 @property (nonatomic, strong) EMGroup *group;
 @property (nonatomic) NSMutableDictionary *emotionDic;
@@ -59,7 +61,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
- 
+
+    self.view.backgroundColor = [UIColor colorWithHex:0xEDF1F4];
+    
     UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     backButton.backgroundColor = greenC;
     backButton.accessibilityIdentifier = @"back";
@@ -89,6 +93,7 @@
                 WorkSpaceInfoModel *m =  [[GuKeCache shareCache] objectForKey:kWorkStudioGroup_cache_key];
                 if (m) {
                     [self addNaviToolBar];
+                    [self addGroupVideoListView];
                     for (GroupInfoModel *studio in m.groups) {
                         studio.isJoined = YES;
                         studio.isOwner = YES;
@@ -149,6 +154,7 @@
 - (void)addNaviToolBar
 {
     UIView *toolBar = [[UIView alloc] init];
+    toolBar.tag = 888;
     toolBar.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:toolBar];
     [toolBar mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -177,6 +183,7 @@
     [fileBtn addTarget:self action:@selector(viewShareFiles) forControlEvents:UIControlEventTouchUpInside];
     
     DDCButton *videoBtn = [self createNaviToolBarButtonWithImagePath:@"group_video_normal" title:@" 视频"];
+    videoBtn.tag = 999;
     [videoBtn setImage:[UIImage imageNamed:@"group_video_selected"] forState:UIControlStateSelected];
     [videoBtn setBackgroundColor:greenC forState:UIControlStateSelected];
     [videoBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
@@ -188,6 +195,22 @@
         make.centerY.equalTo(toolBar);
     }];
     [videoBtn addTarget:self action:@selector(viewVideos:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (DDCButton *)createNaviToolBarButtonWithImagePath:(NSString *)imagePath title:(NSString *)title
+{
+    DDCButton *btn = [DDCButton buttonWithType:UIButtonTypeCustom];
+    [btn setBackgroundColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    btn.titleLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightRegular];
+    [btn setTitleColor:[UIColor colorWithHex:0x3C3E3D] forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:imagePath] forState:UIControlStateNormal];
+    [btn setTitle:title forState:UIControlStateNormal];
+    btn.clipsToBounds = YES;
+    btn.layer.cornerRadius = 12.5;
+    [btn setLayerBorderColor:[UIColor colorWithHex:0x3C3E3D] forState:UIControlStateNormal];
+//    btn.layer.borderColor = [UIColor colorWithHex:0x3C3E3D].CGColor;
+//    btn.layer.borderWidth = 1;
+    return btn;
 }
 
 - (void)viewContact
@@ -209,24 +232,55 @@
 - (void)viewVideos:(DDCButton *)btn
 {
     btn.selected = !btn.selected;
+    self.videoListView.hidden = !btn.selected;
 }
 
-
-- (DDCButton *)createNaviToolBarButtonWithImagePath:(NSString *)imagePath title:(NSString *)title
+- (void)getGroupVideosWithConfig:(void (^)(id data))videoListViewConfig
 {
-    DDCButton *btn = [DDCButton buttonWithType:UIButtonTypeCustom];
-    [btn setBackgroundColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    btn.titleLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightRegular];
-    [btn setTitleColor:[UIColor colorWithHex:0x3C3E3D] forState:UIControlStateNormal];
-    [btn setImage:[UIImage imageNamed:imagePath] forState:UIControlStateNormal];
-    [btn setTitle:title forState:UIControlStateNormal];
-    btn.clipsToBounds = YES;
-    btn.layer.cornerRadius = 12.5;
-    [btn setLayerBorderColor:[UIColor colorWithHex:0x3C3E3D] forState:UIControlStateNormal];
-//    btn.layer.borderColor = [UIColor colorWithHex:0x3C3E3D].CGColor;
-//    btn.layer.borderWidth = 1;
-    return btn;
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,urlpath_work_group_video];
+    NSDictionary *para = @{
+        @"sessionId":sessionIding,
+        @"groupId":self.conversation.conversationId,
+    };
+   
+    [self showHudInView:self.view hint:nil];
+    [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
+        NSLog(@"工作室悬浮视频列表-->%@",data);
+        [self hideHud];
+        if ([data[@"retcode"] isEqualToString:@"0000"]) {
+            videoListViewConfig(data[@"data"]);
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"工作室悬浮视频列表-->%@",error);
+        [self hideHud];
+        [self showHint:@"创建工作室失败" inView:self.view];
+    }];
 }
+
+- (void)addGroupVideoListView
+{
+    [self.view addSubview:self.videoListView];
+    [self.videoListView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(IPHONE_X_SCALE(165));
+        make.left.right.equalTo(self.view);
+        make.top.equalTo(self.view).offset(45);
+    }];
+    __weak typeof(self) weakSelf = self;
+    void (^ configVideoListView)(id data) = ^(id data){
+        [self.videoListView configWithData:data clicked:^(GroupVideoModel *model) {
+            
+        } collapse:^{
+            weakSelf.videoListView.hidden = YES;
+            UIView *toolsBar = [self.view viewWithTag:888];
+            DDCButton *videoBtn = [toolsBar viewWithTag:999];
+            videoBtn.selected = NO;
+        }];
+    };
+    
+    [self getGroupVideosWithConfig:configVideoListView];
+}
+
 
 #pragma mark 根据user_id 判断医生还是患者
 - (void)makeUseridData
@@ -326,10 +380,6 @@
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (void)dealloc
 {
@@ -404,6 +454,15 @@
 
 
 #pragma mark - setup subviews
+
+- (GroupVideoListView *)videoListView
+{
+    if (!_videoListView) {
+        _videoListView = [[GroupVideoListView alloc] init];
+        _videoListView.hidden = YES;
+    }
+    return _videoListView;
+}
 
 - (void)_setupBarButtonItem
 {

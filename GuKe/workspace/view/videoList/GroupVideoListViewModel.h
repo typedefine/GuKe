@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, strong) NSArray<GroupVideoCellModel *> *items;
 
+- (void)configWithData:(NSArray<NSDictionary *> *)dataList;
+
 @end
 
 NS_ASSUME_NONNULL_END

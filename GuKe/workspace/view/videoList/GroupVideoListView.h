@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class GroupVideoModel;
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^ GroupVideoClickedHandler)(NSInteger index);
+typedef void (^ GroupVideoClickedHandler)(GroupVideoModel *model);
 
 @interface GroupVideoListView : UIView
 
-- (void)configWithData:(id)data clicked:(GroupVideoClickedHandler)clicked;
+- (void)configWithData:(id)data clicked:(GroupVideoClickedHandler)clicked collapse:(void (^)(void))collapse;
 
 @end
 

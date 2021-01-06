@@ -106,6 +106,8 @@
 		8910836E25A4C8D3002C5959 /* GroupAddressbookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910836D25A4C8D3002C5959 /* GroupAddressbookCell.m */; };
 		8910837125A4C8F5002C5959 /* GroupAddressbookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910837025A4C8F5002C5959 /* GroupAddressbookController.m */; };
 		8910837425A4C90D002C5959 /* GroupAddressbookPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910837325A4C90D002C5959 /* GroupAddressbookPageModel.m */; };
+		8910837725A613D7002C5959 /* GroupVideoFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910837625A613D7002C5959 /* GroupVideoFooterView.m */; };
+		8910837A25A628DC002C5959 /* GroupVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910837925A628DC002C5959 /* GroupVideoModel.m */; };
 		89162EAA24E4293700698B84 /* PatientInfoManageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EA924E4293700698B84 /* PatientInfoManageModel.m */; };
 		89162EAF24E438B400698B84 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EAE24E438B400698B84 /* Tools.m */; };
 		89162EB224ED70A400698B84 /* PatientMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89162EB124ED70A400698B84 /* PatientMessageController.m */; };
@@ -1135,6 +1137,10 @@
 		8910837025A4C8F5002C5959 /* GroupAddressbookController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupAddressbookController.m; sourceTree = "<group>"; };
 		8910837225A4C90D002C5959 /* GroupAddressbookPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupAddressbookPageModel.h; sourceTree = "<group>"; };
 		8910837325A4C90D002C5959 /* GroupAddressbookPageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupAddressbookPageModel.m; sourceTree = "<group>"; };
+		8910837525A613D7002C5959 /* GroupVideoFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupVideoFooterView.h; sourceTree = "<group>"; };
+		8910837625A613D7002C5959 /* GroupVideoFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupVideoFooterView.m; sourceTree = "<group>"; };
+		8910837825A628DC002C5959 /* GroupVideoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupVideoModel.h; sourceTree = "<group>"; };
+		8910837925A628DC002C5959 /* GroupVideoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupVideoModel.m; sourceTree = "<group>"; };
 		89162EA824E4293700698B84 /* PatientInfoManageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientInfoManageModel.h; sourceTree = "<group>"; };
 		89162EA924E4293700698B84 /* PatientInfoManageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientInfoManageModel.m; sourceTree = "<group>"; };
 		89162EAD24E438B400698B84 /* Tools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
@@ -2656,6 +2662,8 @@
 				1BCC640225A5E126005EDBBF /* GroupVideoCell.m */,
 				1BCC640425A5E1F6005EDBBF /* GroupVideoCellModel.h */,
 				1BCC640525A5E1F6005EDBBF /* GroupVideoCellModel.m */,
+				8910837525A613D7002C5959 /* GroupVideoFooterView.h */,
+				8910837625A613D7002C5959 /* GroupVideoFooterView.m */,
 			);
 			path = videoList;
 			sourceTree = "<group>";
@@ -3272,6 +3280,8 @@
 				893D9F9C257D16B0003FCB82 /* GroupInfoModel.m */,
 				8910831925A0C69A002C5959 /* WorkSpaceInfoModel.h */,
 				8910831A25A0C69A002C5959 /* WorkSpaceInfoModel.m */,
+				8910837825A628DC002C5959 /* GroupVideoModel.h */,
+				8910837925A628DC002C5959 /* GroupVideoModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -6751,6 +6761,7 @@
 				1F354A65221666F0001F3CAC /* WYYSearchShiPinViewController.m in Sources */,
 				E30976891F9DD20F00EC3F80 /* MMTextParser.m in Sources */,
 				E3E895A32021BB11004C2DB2 /* ZJNMRSharesTableViewCell.m in Sources */,
+				8910837A25A628DC002C5959 /* GroupVideoModel.m in Sources */,
 				9A53892220084DC40084E772 /* PublicGroupListViewController.m in Sources */,
 				9A08A9071F302B2E00AF29EB /* MJRefreshAutoNormalFooter.m in Sources */,
 				8949095A257A91BA00E91C66 /* GroupListSectionHeaderView.m in Sources */,
@@ -7038,6 +7049,7 @@
 				9A53896620084DC40084E772 /* TTGlobalUICommon.m in Sources */,
 				9A79E8361F3836C200BCF889 /* InfoThreeTableViewCell.m in Sources */,
 				9AA3892F2012D05A00452C39 /* WYYShiPinModel.m in Sources */,
+				8910837725A613D7002C5959 /* GroupVideoFooterView.m in Sources */,
 				9A53891720084DC40084E772 /* EMGroupMembersViewController.m in Sources */,
 				9A08A9091F302B2E00AF29EB /* MJRefreshBackGifFooter.m in Sources */,
 				9A53893A20084DC40084E772 /* EMTextView.m in Sources */,

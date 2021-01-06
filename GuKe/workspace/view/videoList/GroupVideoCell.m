@@ -37,7 +37,7 @@
     [self addSubview:self.iconView];
     [self.iconView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self);
-        make.size.mas_equalTo(40);
+        make.size.mas_equalTo(29);
     }];
 }
 
@@ -60,7 +60,7 @@
 {
     if (!_iconView) {
         _iconView = [[UIImageView alloc] init];
-        _iconView.image = [UIImage imageNamed:@"group_video_selected"];
+        _iconView.image = [UIImage imageNamed:@"group_viode_icon"];
     }
     return _iconView;
 }
