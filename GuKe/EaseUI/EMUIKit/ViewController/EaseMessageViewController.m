@@ -771,6 +771,17 @@ typedef enum : NSUInteger {
     [self.navigationController pushViewController:locationController animated:YES];
 }
 
+
+
+///  播放视频
+/// @param videoURL 视频URL
+- (void)playVideoWithUrl:(NSURL *)videoURL
+{
+    AVPlayerViewController *avVC = [[AVPlayerViewController alloc] init];
+    avVC.player = [AVPlayer playerWithURL:videoURL];
+    [self presentViewController:avVC animated:YES completion:nil];
+}
+
 /*!
  @method
  @brief 视频消息被点击选择
@@ -802,9 +813,12 @@ typedef enum : NSUInteger {
 //        [moviePlayerController.moviePlayer prepareToPlay];
 //        moviePlayerController.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
 //        [weakSelf presentMoviePlayerViewControllerAnimated:moviePlayerController];
+        /*
         AVPlayerViewController *avVC = [[AVPlayerViewController alloc] init];
         avVC.player = [AVPlayer playerWithURL:videoURL];
         [weakSelf presentViewController:avVC animated:YES completion:nil];
+        */
+        [weakSelf playVideoWithUrl:videoURL];
     };
     
     BOOL isCustomDownload = !([EMClient sharedClient].options.isAutoTransferMessageAttachments);

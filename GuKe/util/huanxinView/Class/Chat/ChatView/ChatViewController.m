@@ -35,6 +35,8 @@
 #import "EMGroupSharedFilesViewController.h"
 #import "GroupAddressbookController.h"
 #import "GroupVideoListView.h"
+#import "GroupVideoModel.h"
+#import "OnScreenCommentsView.h"
 
 @interface ChatViewController ()<UIAlertViewDelegate,EMClientDelegate, EMChooseViewDelegate, UIDocumentPickerDelegate, UIPopoverPresentationControllerDelegate>
 {
@@ -53,7 +55,7 @@
 @property (nonatomic, strong) EMGroup *group;
 @property (nonatomic) NSMutableDictionary *emotionDic;
 @property (nonatomic, copy) EaseSelectAtTargetCallback selectedCallback;
-
+@property (nonatomic, strong) OnScreenCommentsView *floatView;
 
 @end
 
@@ -94,6 +96,7 @@
                 if (m) {
                     [self addNaviToolBar];
                     [self addGroupVideoListView];
+                    [self addOnScreenComments];
                     for (GroupInfoModel *studio in m.groups) {
                         studio.isJoined = YES;
                         studio.isOwner = YES;
@@ -258,18 +261,12 @@
     }];
 }
 
-- (void)addGroupVideoListView
+- (void)getGroupVideos
 {
-    [self.view addSubview:self.videoListView];
-    [self.videoListView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(IPHONE_X_SCALE(165));
-        make.left.right.equalTo(self.view);
-        make.top.equalTo(self.view).offset(45);
-    }];
     __weak typeof(self) weakSelf = self;
     void (^ configVideoListView)(id data) = ^(id data){
         [self.videoListView configWithData:data clicked:^(GroupVideoModel *model) {
-            
+            [weakSelf playVideoWithUrl:[NSURL URLWithString:model.content]];
         } collapse:^{
             weakSelf.videoListView.hidden = YES;
             UIView *toolsBar = [self.view viewWithTag:888];
@@ -281,6 +278,28 @@
     [self getGroupVideosWithConfig:configVideoListView];
 }
 
+- (void)addGroupVideoListView
+{
+    [self.view addSubview:self.videoListView];
+    [self.videoListView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(IPHONE_X_SCALE(165));
+        make.left.right.equalTo(self.view);
+        make.top.equalTo(self.view).offset(45);
+    }];
+    [self getGroupVideos];
+}
+
+
+- (void)addOnScreenComments
+{
+    [self.view addSubview:self.floatView];
+    [self.floatView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.top.equalTo(self.view).offset(50);
+        make.height.mas_equalTo(45);
+    }];
+    [self.floatView configWithData:nil];
+}
 
 #pragma mark 根据user_id 判断医生还是患者
 - (void)makeUseridData
@@ -454,6 +473,14 @@
 
 
 #pragma mark - setup subviews
+
+- (OnScreenCommentsView *)floatView
+{
+    if (!_floatView) {
+        _floatView = [[OnScreenCommentsView alloc] init];
+    }
+    return _floatView;
+}
 
 - (GroupVideoListView *)videoListView
 {

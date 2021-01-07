@@ -523,4 +523,8 @@ shouldSendHasReadAckForMessage:(EMMessage *)message
 - (BOOL)shouldSendHasReadAckForMessage:(EMMessage *)message
                                  read:(BOOL)read;
 
+///  播放视频
+/// @param videoURL 视频URL
+- (void)playVideoWithUrl:(NSURL *)videoURL;
+
 @end
