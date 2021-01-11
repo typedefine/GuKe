@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 static const NSString *kWorkStudioGroup_cache_key = @"WorkStudio_group_list_data";
-static const NSString  __strong * _Nonnull kUserInfo_cache_Key = @"user_info_model";
+static const NSString *kUserInfo_cache_Key = @"user_info_model";
 
 @interface GuKeCache : NSCache
 

@@ -60,14 +60,37 @@
 {
     if (self.groupInfo.joinStatus == 0) {
         // 调用:
-        NSString *reason = [NSString stringWithFormat:@"%@申请加入群组",[GuKeCache shareCache].user.name];
-        [[EMClient sharedClient].groupManager requestToJoinPublicGroup:@(self.groupInfo.groupId).stringValue message:reason completion:^(EMGroup *aGroup, EMError *aError) {
-            if (!aError) {
-                NSLog(@"申请加公开群成功 --- %@", aGroup);
-            } else {
-                NSLog(@"申请加公开群失败的原因 --- %@", aError.errorDescription);
+//        NSString *reason = [NSString stringWithFormat:@"%@申请加入群组",[GuKeCache shareCache].user.name];
+//        [[EMClient sharedClient].groupManager requestToJoinPublicGroup:@(self.groupInfo.groupId).stringValue message:reason completion:^(EMGroup *aGroup, EMError *aError) {
+//            if (!aError) {
+//                NSLog(@"申请加公开群成功 --- %@", aGroup);
+//            } else {
+//                NSLog(@"申请加公开群失败的原因 --- %@", aError.errorDescription);
+//            }
+//        }];
+        
+        NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,UrlPath_apply_join_studio];
+        NSDictionary *para = @{
+            @"sessionId": [GuKeCache shareCache].sessionId,
+            @"groupid":@(self.groupInfo.groupId).stringValue,
+            @"userId":[GuKeCache shareCache].user.userId
+        };
+        [self showHudInView:self.view hint:nil];
+        [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
+            NSLog(@"申请加入工作室-->%@",data);
+            [self hideHud];
+            NSDictionary *dict = (NSDictionary *)data;
+            if ([dict[@"retcode"] isEqual:@"0000"]) {
+                [self showHint:@"申请加入工作室成功"];
+            }else{
+                [self showHint:dict[@"message"]];
             }
+        } failure:^(NSError *error) {
+            [self hideHud];
+            [self showHint:@"申请加入工作室失败"];
+            NSLog(@"申请加入工作室error:%@",error);
         }];
+        
     }else if(self.groupInfo.joinStatus == 1){
         if (self.isFromChat) {
             [self.navigationController popViewControllerAnimated:YES];

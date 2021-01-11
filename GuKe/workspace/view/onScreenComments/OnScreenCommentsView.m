@@ -9,6 +9,7 @@
 #import "OnScreenCommentsView.h"
 #import "FDanmakuView.h"
 #import "FDanmakuModel.h"
+#import "DMItemView.h"
 
 @interface OnScreenCommentsView ()<FDanmakuViewProtocol>
 @property(nonatomic,weak)FDanmakuView *danmakuView;
@@ -51,32 +52,55 @@
 
 - (void)configWithData:(id)data
 {
-    FDanmakuModel *model1 = [[FDanmakuModel alloc]init];
-    model1.beginTime = 3;
-    model1.liveTime = 5;
-    model1.content = @"哈哈哈~😊🙂😎~~~";
+//    NSMutableArray<FDanmakuModel *> *targetArray = [NSMutableArray array];
+//    for (NSDictionary *d in data) {
+//        DMModel *model = [DMModel mj_objectWithKeyValues:d];
+//        FDanmakuModel *viewModel = [[FDanmakuModel alloc]init];
+//        viewModel.model = model;
+//        [targetArray addObject:viewModel];
+//        [self.danmakuView.modelsArr addObject:viewModel];
+//    }
     
+    FDanmakuModel *model1 = [[FDanmakuModel alloc]init];
+    model1.name = @"2df";
+    model1.type = 0;
+    model1.beginTime = 1;
+    model1.liveTime = 3;
+    model1.content = @"哈哈哈~😊🙂😎~~~";
+
     FDanmakuModel *model2 = [[FDanmakuModel alloc]init];
-    model2.beginTime = 3.2;
-    model2.liveTime = 8;
+    model2.name = @"Jack";
+    model2.type = 1;
+    model2.beginTime = 2.2;
+    model2.liveTime = 3;
     model2.content = @"23322333";
+    
+    FDanmakuModel *model3 = [[FDanmakuModel alloc]init];
+    model3.name = @"占永青";
+    model3.type = 2;
+    model3.beginTime = 3.8;
+    model3.liveTime = 3;
+    model3.content = @"https:bghgdhs.com/";
     
     [self.danmakuView.modelsArr addObject:model1];
     [self.danmakuView.modelsArr addObject:model2];
+    [self.danmakuView.modelsArr addObject:model3];
 }
 
 -(NSTimeInterval)currentTime {
     static double time = 0;
-    time += 0.1 ;
+    time += 0.1;
     return time;
 }
 
-- (UIView *)danmakuViewWithModel:(FDanmakuModel*)model {
-    
-    UILabel *label = [UILabel new];
-    label.text = model.content;
-    [label sizeToFit];
-    return label;
+- (UIView *)danmakuViewWithModel:(FDanmakuModel*)model
+{
+    DMItemView *itemView = [[DMItemView alloc] init];
+    [itemView configWithData:model];
+//    UILabel *label = [UILabel new];
+//    label.text = model.content;
+//    [label sizeToFit];
+    return itemView;
     
 }
 
@@ -95,4 +119,8 @@
 }
 
 
+- (void)clean
+{
+    [self.danmakuView.modelsArr removeAllObjects];
+}
 @end

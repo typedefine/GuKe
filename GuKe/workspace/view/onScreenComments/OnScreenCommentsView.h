@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)pause;
 - (void)resume;
+- (void)clean;
 
 @end
 

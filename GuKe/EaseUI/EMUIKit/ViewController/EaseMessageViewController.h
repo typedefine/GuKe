@@ -417,6 +417,17 @@ shouldSendHasReadAckForMessage:(EMMessage *)message
  */
 - (void)tableViewDidTriggerHeaderRefresh;
 
+
+/// 接收cmd消息
+/// @param aCmdMessages 消息数组
+- (void)didReceiveCmdMessages:(NSArray *)aCmdMessages;
+
+
+/// 发送cmd消息
+/// @param content 内容提示
+/// @param ext 消息拓展
+- (void)sendCmdMessage:(NSString *)content withExt:(NSDictionary*)ext;
+
 /*!
  @method
  @brief 发送文本消息

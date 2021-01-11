@@ -11,6 +11,14 @@
 
 @implementation FDanmakuModel
 
-
+- (void)setModel:(DMModel *)model
+{
+    _model = model;
+    if (model.isValidObjectValue) {
+        self.name = model.doctorName;
+        self.content = model.content;
+        self.type = model.msgType;
+    }
+}
 
 @end

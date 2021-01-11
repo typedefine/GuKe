@@ -35,7 +35,7 @@
 #import "EMGroupSharedFilesViewController.h"
 #import "GroupAddressbookController.h"
 #import "GroupVideoListView.h"
-#import "GroupVideoModel.h"
+#import "DMModel.h"
 #import "OnScreenCommentsView.h"
 
 @interface ChatViewController ()<UIAlertViewDelegate,EMClientDelegate, EMChooseViewDelegate, UIDocumentPickerDelegate, UIPopoverPresentationControllerDelegate>
@@ -75,6 +75,9 @@
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     [self.navigationItem setLeftBarButtonItem:backItem];
     
+    [self.chatBarMoreView updateItemWithImage:[UIImage imageNamed:@"chat_photoLibrary"] highlightedImage:[UIImage imageNamed:@"chat_photoLibrary"] title:@"相册" atIndex:0];
+    [self.chatBarMoreView updateItemWithImage:[UIImage imageNamed:@"chat_camera"] highlightedImage:[UIImage imageNamed:@"chat_camera"] title:@"相机" atIndex:1];
+    [self.chatBarMoreView insertItemWithImage:[UIImage imageNamed:@"chat_file"] highlightedImage:[UIImage imageNamed:@"chat_file"] title:@"文件"];
     
     if(![self.conversation.conversationId isEqualToString:@"gxs"]){
         self.naviRightButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
@@ -114,6 +117,9 @@
                             }
                         }
                     }
+                    [self.chatBarMoreView insertItemWithImage:[UIImage imageNamed:@"text_dm"] highlightedImage:[UIImage imageNamed:@"text_dm"] title:@"文字弹幕"];
+                    [self.chatBarMoreView insertItemWithImage:[UIImage imageNamed:@"video_dm"] highlightedImage:[UIImage imageNamed:@"video_dm"] title:@"分享视频"];
+                    [self.chatBarMoreView insertItemWithImage:[UIImage imageNamed:@"live_dm"] highlightedImage:[UIImage imageNamed:@"live_dm"] title:@"分享直播"];
                 }
                 [self.naviRightButton setImage:[UIImage imageNamed:_groupInfo && _groupInfo.isOwner? @"MORE":@"group"] forState:normal];
                 __weak typeof(self) weakSelf = self;
@@ -136,11 +142,7 @@
         
         self.title =@"在线客服";
     }
-    
-    [self.chatBarMoreView updateItemWithImage:[UIImage imageNamed:@"chat_photoLibrary"] highlightedImage:[UIImage imageNamed:@"chat_photoLibrary"] title:@"相册" atIndex:0];
-    [self.chatBarMoreView updateItemWithImage:[UIImage imageNamed:@"chat_camera"] highlightedImage:[UIImage imageNamed:@"chat_camera"] title:@"相机" atIndex:1];
-    [self.chatBarMoreView insertItemWithImage:[UIImage imageNamed:@"chat_file"] highlightedImage:[UIImage imageNamed:@"chat_file"] title:@"文件"];
-    
+
     // Do any additional setup after loading the view.
     self.showRefreshHeader = YES;
     self.delegate = self;
@@ -265,7 +267,7 @@
 {
     __weak typeof(self) weakSelf = self;
     void (^ configVideoListView)(id data) = ^(id data){
-        [self.videoListView configWithData:data clicked:^(GroupVideoModel *model) {
+        [self.videoListView configWithData:data clicked:^(DMModel *model) {
             [weakSelf playVideoWithUrl:[NSURL URLWithString:model.content]];
         } collapse:^{
             weakSelf.videoListView.hidden = YES;
@@ -299,6 +301,7 @@
         make.height.mas_equalTo(45);
     }];
     [self.floatView configWithData:nil];
+    [self didReceiveDMMsg];
 }
 
 #pragma mark 根据user_id 判断医生还是患者
@@ -426,7 +429,11 @@
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    
+    if (_groupInfo) {
+        [self.floatView clean];
+        [self.floatView removeFromSuperview];
+        self.floatView = nil;
+    }
     [[NSNotificationCenter defaultCenter] postNotificationName:@"setupUnreadMessageCount" object:nil];
 }
 
@@ -611,6 +618,54 @@
     [self sendFileMessageWith:message];
 }
 
+#pragma mark 发送弹幕消息
+- (void)sendMDMsgWithtype:(NSInteger)type content:(NSString *)content
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,urlpath_work_group_extraSend];
+    NSDictionary *para = @{
+        @"sessionId": [GuKeCache shareCache].sessionId,
+        @"groupId":self.conversation.conversationId,
+        @"doctorName":[GuKeCache shareCache].user.doctorName,
+        @"content":content,
+        @"msgType":@(type).stringValue
+    };
+    
+    [self showHudInView:self.view hint:nil];
+    [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
+        NSLog(@"发送弹幕-->%@",data);
+        [self hideHud];
+        if (data[@"0000"]){
+            [self sendCmdMessage:content withExt:@{@"md_type":@(type)}];
+        }else{
+            [self showHint:data[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [self hideHud];
+        [self showHint:@"发送失败"];
+        NSLog(@"发送弹幕error:%@",error);
+    }];
+}
+
+
+- (void)addDMMsg:(NSInteger)type title:(NSString *)title
+{
+    __weak typeof(self) weakSelf = self;
+    __weak UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.textColor = [UIColor colorWithHex:0x3C3E3D];
+        textField.font = [UIFont systemFontOfSize:12 weight:UIFontWeightRegular];
+//        textField.height = 160;
+    }];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"发送" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf sendMDMsgWithtype:type content:alert.textFields.firstObject.text];
+    }]];
+    [self presentViewController:alert animated:YES completion:^{
+        
+    }];
+}
 
 
 #pragma mark - EaseMessageViewControllerDelegate
@@ -622,9 +677,29 @@
 
 - (void)messageViewController:(EaseMessageViewController *)viewController didSelectMoreView:(EaseChatBarMoreView *)moreView AtIndex:(NSInteger)index
 {
-    if (index == 2) {
-        //file
-        [self selectUploadFileFromICouldDrive];
+    switch (index) {
+        case 0:
+        {}
+            break;
+    
+        case 1:
+        {}
+            break;
+            
+        case 2:
+        {
+            [self selectUploadFileFromICouldDrive];
+        }
+            break;
+        case 3://文字弹幕
+        case 4://视频弹幕
+        case 5://直播弹幕
+        {
+            [self addDMMsg:index-3 title:[moreView titleForItemAndIndex:index]];
+        }
+            break;
+        default:
+            break;
     }
 }
 
@@ -889,6 +964,50 @@
         [self _recallWithMessage:msg text:text isSave:NO];
     }
 }
+
+- (void)didReceiveCmdMessages:(NSArray *)aCmdMessages
+{
+    for (EMMessage *message in aCmdMessages) {
+        if ([self.conversation.conversationId isEqualToString:message.conversationId]) {
+            [self showHint:NSEaseLocalizedString(@"receiveCmd", @"receive cmd message")];
+            if ([message.ext.allKeys containsObject:@"md_type"]) {
+                //可能需要解析单个cmd消息来显示弹幕
+                [self didReceiveDMMsg];
+                NSInteger type = [message.ext[@"md_type"] integerValue];
+                if (type == 1) {
+                    [self getGroupVideos];
+                }
+            }
+            break;
+        }
+    }
+}
+
+#pragma mark 接收弹幕消息
+- (void)didReceiveDMMsg
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,urlpath_work_group_extraSend];
+    NSDictionary *para = @{
+        @"sessionId": [GuKeCache shareCache].sessionId,
+        @"groupId":self.conversation.conversationId,
+    };
+    
+    [self showHudInView:self.view hint:nil];
+    [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
+        NSLog(@"接收弹幕-->%@",data);
+        [self hideHud];
+        if (data[@"0000"]){
+            [self.floatView configWithData:data[@"data"]];
+        }else{
+            [self showHint:data[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [self hideHud];
+        [self showHint:@"接收弹幕失败"];
+        NSLog(@"发送弹幕error:%@",error);
+    }];
+}
+
 
 #pragma mark - action
 

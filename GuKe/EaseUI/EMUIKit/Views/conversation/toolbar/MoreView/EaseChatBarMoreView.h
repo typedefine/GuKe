@@ -66,6 +66,11 @@ typedef enum{
  */
 - (void)removeItematIndex:(NSInteger)index;
 
+
+/// 获取按钮标题
+/// @param index 按钮索引
+- (NSString *)titleForItemAndIndex:(NSInteger)index;
+
 @end
 
 @protocol EaseChatBarMoreViewDelegate <NSObject>

@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GroupVideoModel : GJObject
+@interface DMModel : GJObject
 
 @property (nonatomic, assign) NSInteger Id;
 @property (nonatomic, assign) NSInteger groupId;

@@ -107,7 +107,7 @@
 		8910837125A4C8F5002C5959 /* GroupAddressbookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910837025A4C8F5002C5959 /* GroupAddressbookController.m */; };
 		8910837425A4C90D002C5959 /* GroupAddressbookPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910837325A4C90D002C5959 /* GroupAddressbookPageModel.m */; };
 		8910837725A613D7002C5959 /* GroupVideoFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910837625A613D7002C5959 /* GroupVideoFooterView.m */; };
-		8910837A25A628DC002C5959 /* GroupVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910837925A628DC002C5959 /* GroupVideoModel.m */; };
+		8910837A25A628DC002C5959 /* DMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910837925A628DC002C5959 /* DMModel.m */; };
 		8910838625A761FF002C5959 /* CALayer+Aimate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910837F25A761FF002C5959 /* CALayer+Aimate.m */; };
 		8910838725A761FF002C5959 /* FDanmakuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910838325A761FF002C5959 /* FDanmakuView.m */; };
 		8910838825A761FF002C5959 /* FDanmakuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910838425A761FF002C5959 /* FDanmakuModel.m */; };
@@ -198,6 +198,8 @@
 		898F1AE824D6DC9600397505 /* PatientInfoManageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1AE724D6DC9600397505 /* PatientInfoManageCell.m */; };
 		898F1AEB24D6DCCD00397505 /* PatientBookInfoStateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1AEA24D6DCCD00397505 /* PatientBookInfoStateCell.m */; };
 		89B2B9A324F52C6A0062387D /* MsgChatInputBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B2B9A224F52C6A0062387D /* MsgChatInputBar.m */; };
+		89C3D84925AB1D1A00A32EB5 /* DMItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3D84825AB1D1A00A32EB5 /* DMItemView.m */; };
+		89C3D84D25ACB42E00A32EB5 /* AddMembersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3D84C25ACB42E00A32EB5 /* AddMembersController.m */; };
 		89E52ED724F267E30052403B /* PatientBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52ED624F267E30052403B /* PatientBookController.m */; };
 		89E52EDA24F26ACC0052403B /* PatientBookPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52ED924F26ACC0052403B /* PatientBookPageModel.m */; };
 		89E52EDD24F26B2F0052403B /* PatientBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52EDC24F26B2F0052403B /* PatientBookCell.m */; };
@@ -1143,8 +1145,8 @@
 		8910837325A4C90D002C5959 /* GroupAddressbookPageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupAddressbookPageModel.m; sourceTree = "<group>"; };
 		8910837525A613D7002C5959 /* GroupVideoFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupVideoFooterView.h; sourceTree = "<group>"; };
 		8910837625A613D7002C5959 /* GroupVideoFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupVideoFooterView.m; sourceTree = "<group>"; };
-		8910837825A628DC002C5959 /* GroupVideoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupVideoModel.h; sourceTree = "<group>"; };
-		8910837925A628DC002C5959 /* GroupVideoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupVideoModel.m; sourceTree = "<group>"; };
+		8910837825A628DC002C5959 /* DMModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMModel.h; sourceTree = "<group>"; };
+		8910837925A628DC002C5959 /* DMModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMModel.m; sourceTree = "<group>"; };
 		8910837F25A761FF002C5959 /* CALayer+Aimate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Aimate.m"; sourceTree = "<group>"; };
 		8910838025A761FF002C5959 /* FDanmakuModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDanmakuModelProtocol.h; sourceTree = "<group>"; };
 		8910838125A761FF002C5959 /* FDanmakuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDanmakuView.h; sourceTree = "<group>"; };
@@ -1315,6 +1317,10 @@
 		898F1AEA24D6DCCD00397505 /* PatientBookInfoStateCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientBookInfoStateCell.m; sourceTree = "<group>"; };
 		89B2B9A124F52C6A0062387D /* MsgChatInputBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MsgChatInputBar.h; sourceTree = "<group>"; };
 		89B2B9A224F52C6A0062387D /* MsgChatInputBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MsgChatInputBar.m; sourceTree = "<group>"; };
+		89C3D84725AB1D1A00A32EB5 /* DMItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMItemView.h; sourceTree = "<group>"; };
+		89C3D84825AB1D1A00A32EB5 /* DMItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMItemView.m; sourceTree = "<group>"; };
+		89C3D84B25ACB42E00A32EB5 /* AddMembersController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddMembersController.h; sourceTree = "<group>"; };
+		89C3D84C25ACB42E00A32EB5 /* AddMembersController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddMembersController.m; sourceTree = "<group>"; };
 		89E52ED524F267E30052403B /* PatientBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookController.h; sourceTree = "<group>"; };
 		89E52ED624F267E30052403B /* PatientBookController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientBookController.m; sourceTree = "<group>"; };
 		89E52ED824F26ACC0052403B /* PatientBookPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookPageModel.h; sourceTree = "<group>"; };
@@ -2987,6 +2993,8 @@
 				8910838425A761FF002C5959 /* FDanmakuModel.m */,
 				8910838A25A7640E002C5959 /* OnScreenCommentsView.h */,
 				8910838B25A7640E002C5959 /* OnScreenCommentsView.m */,
+				89C3D84725AB1D1A00A32EB5 /* DMItemView.h */,
+				89C3D84825AB1D1A00A32EB5 /* DMItemView.m */,
 			);
 			path = onScreenComments;
 			sourceTree = "<group>";
@@ -3233,6 +3241,7 @@
 		894C7D132579396F00EF9ABE /* workspace */ = {
 			isa = PBXGroup;
 			children = (
+				89C3D84A25ACB2EA00A32EB5 /* addMembers */,
 				8910836B25A4C81C002C5959 /* addressbook */,
 				8910835E25A38235002C5959 /* shareFiles */,
 				8910832325A23FA8002C5959 /* groupOperation */,
@@ -3318,8 +3327,8 @@
 				893D9F9C257D16B0003FCB82 /* GroupInfoModel.m */,
 				8910831925A0C69A002C5959 /* WorkSpaceInfoModel.h */,
 				8910831A25A0C69A002C5959 /* WorkSpaceInfoModel.m */,
-				8910837825A628DC002C5959 /* GroupVideoModel.h */,
-				8910837925A628DC002C5959 /* GroupVideoModel.m */,
+				8910837825A628DC002C5959 /* DMModel.h */,
+				8910837925A628DC002C5959 /* DMModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -3345,6 +3354,15 @@
 				892555AB24E42206002F7B5B /* controller */,
 			);
 			path = patientRecord;
+			sourceTree = "<group>";
+		};
+		89C3D84A25ACB2EA00A32EB5 /* addMembers */ = {
+			isa = PBXGroup;
+			children = (
+				89C3D84B25ACB42E00A32EB5 /* AddMembersController.h */,
+				89C3D84C25ACB42E00A32EB5 /* AddMembersController.m */,
+			);
+			path = addMembers;
 			sourceTree = "<group>";
 		};
 		89E52EE124F2B1320052403B /* msg */ = {
@@ -6799,7 +6817,7 @@
 				1F354A65221666F0001F3CAC /* WYYSearchShiPinViewController.m in Sources */,
 				E30976891F9DD20F00EC3F80 /* MMTextParser.m in Sources */,
 				E3E895A32021BB11004C2DB2 /* ZJNMRSharesTableViewCell.m in Sources */,
-				8910837A25A628DC002C5959 /* GroupVideoModel.m in Sources */,
+				8910837A25A628DC002C5959 /* DMModel.m in Sources */,
 				9A53892220084DC40084E772 /* PublicGroupListViewController.m in Sources */,
 				9A08A9071F302B2E00AF29EB /* MJRefreshAutoNormalFooter.m in Sources */,
 				8949095A257A91BA00E91C66 /* GroupListSectionHeaderView.m in Sources */,
@@ -6906,6 +6924,7 @@
 				E3F964171F7F940E00924F8A /* ZJNPatientBasicInfoViewController.m in Sources */,
 				9A53878120084D8B0084E772 /* PSTCollectionViewItemKey.m in Sources */,
 				9A08A96F1F304BB200AF29EB /* ForgetMiMaViewController.m in Sources */,
+				89C3D84925AB1D1A00A32EB5 /* DMItemView.m in Sources */,
 				9A53892420084DC40084E772 /* SearchMessageViewController.m in Sources */,
 				1BCC640325A5E126005EDBBF /* GroupVideoCell.m in Sources */,
 				1F1128DA2221265F00FD8CB6 /* NSString+MJExtension.m in Sources */,
@@ -7174,6 +7193,7 @@
 				1FE2F91C211A7B1C0071CF62 /* MianScrollViewController.m in Sources */,
 				E309769D1F9DD20F00EC3F80 /* MASCompositeConstraint.m in Sources */,
 				894C7D582579396F00EF9ABE /* WorkSpaceInfoViewModel.m in Sources */,
+				89C3D84D25ACB42E00A32EB5 /* AddMembersController.m in Sources */,
 				9A08A8D11F302B2900AF29EB /* UIView+Extension.m in Sources */,
 				E3A105D31FA18A6500EBEF1F /* TZVideoPlayerController.m in Sources */,
 				E30976F91F9DD20F00EC3F80 /* TextFiledView.m in Sources */,

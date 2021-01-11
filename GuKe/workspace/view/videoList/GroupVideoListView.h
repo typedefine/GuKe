@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-@class GroupVideoModel;
+@class DMModel;
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^ GroupVideoClickedHandler)(GroupVideoModel *model);
+typedef void (^ GroupVideoClickedHandler)(DMModel *model);
 
 @interface GroupVideoListView : UIView
 

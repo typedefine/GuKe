@@ -207,6 +207,12 @@
     }
 }
 
+- (NSString *)titleForItemAndIndex:(NSInteger)index
+{
+    UIButton *item = [_scrollview viewWithTag:MOREVIEW_BUTTON_TAG+index];
+    return item.currentTitle;
+}
+
 #pragma mark - private
 
 - (void)_resetItemFromIndex:(NSInteger)index

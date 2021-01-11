@@ -6,9 +6,9 @@
 //  Copyright © 2021 shangyukeji. All rights reserved.
 //
 
-#import "GroupVideoModel.h"
+#import "DMModel.h"
 
-@implementation GroupVideoModel
+@implementation DMModel
 
 + (NSDictionary *)mj_replacedKeyFromPropertyName
 {

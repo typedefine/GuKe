@@ -302,12 +302,8 @@
         NSString *retcode = [NSString stringWithFormat:@"%@",data[@"retcode"]];
   
         if ([retcode isEqualToString:@"0"]) {
-            UserInfoModel *m = [UserInfoModel mj_objectWithKeyValues:data[@"data"]];
-            m.name = data[@"nickname"];
-//            [GuKeCache shareCache].user = m;
-            [defaults setObject:[m mj_JSONObject] forKey:kUserInfo_cache_Key];
             [defaults setObject:data[@"data"][@"sessionId"] forKey:@"sessionIdUser"];
-            
+            UserInfoModel *m = [UserInfoModel mj_objectWithKeyValues:data[@"data"]];
             [defaults setObject:phoneStr forKey:@"userPhone"];
             
             [defaults setObject:pwdStr forKey:@"passWord"];
@@ -321,6 +317,10 @@
             SetChatUserName(data[@"data"][@"nickname"]);
             Synchronize;
             
+            m.name = data[@"nickname"];
+//            [GuKeCache shareCache].user = m;
+            [defaults setObject:[m mj_JSONObject] forKey:kUserInfo_cache_Key];
+           
 //            NSLog(@"%@",ChatImgUrl);
         
             [self makeLoginHuanXin:data[@"data"][@"userId"] password:data[@"data"][@"pwd"]];

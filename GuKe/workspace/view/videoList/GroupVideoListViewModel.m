@@ -23,7 +23,7 @@
     if (dataList && dataList.count > 0) {
         NSMutableArray *targetArray = [NSMutableArray arrayWithCapacity:dataList.count];
         for (NSDictionary *d in dataList) {
-            GroupVideoModel *m = [GroupVideoModel mj_objectWithKeyValues:d];
+            DMModel *m = [DMModel mj_objectWithKeyValues:d];
             GroupVideoCellModel *cm = [[GroupVideoCellModel alloc] init];
             cm.iconUrl = @"http://files.guxians.com/chatgroup/default_groupvideo.jpg";
             cm.model = m;
