@@ -68,6 +68,7 @@
 - (void)naviRightButtonAction
 {
     WorkSpaceInfoController *vc = [[WorkSpaceInfoController alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 //    CreateWordStudioController *vc = [[CreateWordStudioController alloc] init];
 //    [self.navigationController pushViewController:vc animated:YES];

@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *groupDesc;
 
 @property (nonatomic, assign) NSInteger joinStatus;
-//@property (nonatomic, assign) BOOL isOwner;
+@property (nonatomic, assign) NSInteger isOwner;
 
 @property (nonatomic, assign) NSInteger count;
 @property (nonatomic, copy) NSString *countTitle;

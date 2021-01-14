@@ -45,16 +45,17 @@
 
 - (BOOL)isManager
 {
-    NSString * selfId = [GuKeCache shareCache].user.userId;
-    for (UserInfoModel *u in self.members) {
-        if ([u.userId isEqualToString:selfId]) {
-            if (u.roleType == 1) {
-                return YES;
-            }
-            return NO;
-        }
-    }
-    return NO;
+    return self.isOwner == 1;
+//    NSString * selfId = [GuKeCache shareCache].user.userId;
+//    for (UserInfoModel *u in self.members) {
+//        if ([u.userId isEqualToString:selfId]) {
+//            if (u.roleType == 1) {
+//                return YES;
+//            }
+//            return NO;
+//        }
+//    }
+//    return NO;
 }
 
 @end

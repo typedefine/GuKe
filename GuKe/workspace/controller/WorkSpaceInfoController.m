@@ -32,7 +32,6 @@
 
 - (void)loadServerData
 {
-    
     NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,UrlPath_joined_workplace];
     NSMutableDictionary *para = [@{
         @"sessionId": [GuKeCache shareCache].sessionId,
