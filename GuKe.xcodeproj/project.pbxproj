@@ -200,6 +200,7 @@
 		89B2B9A324F52C6A0062387D /* MsgChatInputBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B2B9A224F52C6A0062387D /* MsgChatInputBar.m */; };
 		89C3D84925AB1D1A00A32EB5 /* DMItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3D84825AB1D1A00A32EB5 /* DMItemView.m */; };
 		89C3D84D25ACB42E00A32EB5 /* AddMembersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3D84C25ACB42E00A32EB5 /* AddMembersController.m */; };
+		89C3D85025B0A1F600A32EB5 /* GroupAddressbookHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3D84F25B0A1F600A32EB5 /* GroupAddressbookHeaderView.m */; };
 		89E52ED724F267E30052403B /* PatientBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52ED624F267E30052403B /* PatientBookController.m */; };
 		89E52EDA24F26ACC0052403B /* PatientBookPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52ED924F26ACC0052403B /* PatientBookPageModel.m */; };
 		89E52EDD24F26B2F0052403B /* PatientBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52EDC24F26B2F0052403B /* PatientBookCell.m */; };
@@ -1321,6 +1322,8 @@
 		89C3D84825AB1D1A00A32EB5 /* DMItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMItemView.m; sourceTree = "<group>"; };
 		89C3D84B25ACB42E00A32EB5 /* AddMembersController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddMembersController.h; sourceTree = "<group>"; };
 		89C3D84C25ACB42E00A32EB5 /* AddMembersController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddMembersController.m; sourceTree = "<group>"; };
+		89C3D84E25B0A1F600A32EB5 /* GroupAddressbookHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupAddressbookHeaderView.h; sourceTree = "<group>"; };
+		89C3D84F25B0A1F600A32EB5 /* GroupAddressbookHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupAddressbookHeaderView.m; sourceTree = "<group>"; };
 		89E52ED524F267E30052403B /* PatientBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookController.h; sourceTree = "<group>"; };
 		89E52ED624F267E30052403B /* PatientBookController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientBookController.m; sourceTree = "<group>"; };
 		89E52ED824F26ACC0052403B /* PatientBookPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookPageModel.h; sourceTree = "<group>"; };
@@ -2981,6 +2984,8 @@
 				8910837025A4C8F5002C5959 /* GroupAddressbookController.m */,
 				8910837225A4C90D002C5959 /* GroupAddressbookPageModel.h */,
 				8910837325A4C90D002C5959 /* GroupAddressbookPageModel.m */,
+				89C3D84E25B0A1F600A32EB5 /* GroupAddressbookHeaderView.h */,
+				89C3D84F25B0A1F600A32EB5 /* GroupAddressbookHeaderView.m */,
 			);
 			path = addressbook;
 			sourceTree = "<group>";
@@ -7228,6 +7233,7 @@
 				1FEEAE4720A5917E009C78F1 /* QjcBackSelectView.m in Sources */,
 				E3D35C052022A86100A6FB9F /* ZJNMRShareDoctorViewController.m in Sources */,
 				9A08A8BF1F3013B000AF29EB /* GuKeNavigationViewController.m in Sources */,
+				89C3D85025B0A1F600A32EB5 /* GroupAddressbookHeaderView.m in Sources */,
 				1F179D9D22FAB644006BE323 /* QJSelectArea.m in Sources */,
 				E32CF4031F9B288200CF8C53 /* ZJNMeetingInfoModel.m in Sources */,
 				E3A105D11FA18A6500EBEF1F /* TZPhotoPreviewController.m in Sources */,

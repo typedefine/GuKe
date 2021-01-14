@@ -10,6 +10,7 @@
 #import "GroupAddressbookPageModel.h"
 #import "GroupAddressbookCell.h"
 #import "GroupInfoModel.h"
+#import "GroupAddressbookHeaderView.h"
 
 @interface GroupAddressbookController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -109,8 +110,8 @@
         [_tableView registerClass:[GroupAddressbookCell class] forCellReuseIdentifier:NSStringFromClass([GroupAddressbookCell class])];
         _tableView.rowHeight = IPHONE_X_SCALE(60);
         CGRect f = self.view.bounds;
-        f.size.height = IPHONE_X_SCALE(10);
-        _tableView.tableHeaderView = [[UIView alloc] initWithFrame:f];
+        f.size.height = IPHONE_X_SCALE(50);
+        _tableView.tableHeaderView = [[GroupAddressbookHeaderView alloc] initWithFrame:f];
         _tableView.tableFooterView = [[UIView alloc] init];
 //        if (@available(iOS 11.0, *)) {
 //            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;

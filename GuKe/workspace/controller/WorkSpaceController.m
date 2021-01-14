@@ -68,7 +68,6 @@
 - (void)naviRightButtonAction
 {
     WorkSpaceInfoController *vc = [[WorkSpaceInfoController alloc] init];
-    vc.pageModel = self.pageModel.model;
     [self.navigationController pushViewController:vc animated:YES];
 //    CreateWordStudioController *vc = [[CreateWordStudioController alloc] init];
 //    [self.navigationController pushViewController:vc animated:YES];

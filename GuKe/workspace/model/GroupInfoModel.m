@@ -12,7 +12,7 @@
 
 + (NSDictionary *)mj_replacedKeyFromPropertyName
 {
-    return @{@"isOwner": @"owner"};
+    return @{@"isOwner": @"owner", @"joinStatus":@"isJoined"};
 }
 
 + (NSDictionary *)mj_objectClassInArray
@@ -41,6 +41,20 @@
         }
     }
     return _countTitle;
+}
+
+- (BOOL)isManager
+{
+    NSString * selfId = [GuKeCache shareCache].user.userId;
+    for (UserInfoModel *u in self.members) {
+        if ([u.userId isEqualToString:selfId]) {
+            if (u.roleType == 1) {
+                return YES;
+            }
+            return NO;
+        }
+    }
+    return NO;
 }
 
 @end

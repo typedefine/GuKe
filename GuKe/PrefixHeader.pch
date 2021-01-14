@@ -465,6 +465,9 @@
 /**工作站主页-*/
 #define UrlPath_workplace @"/app/chatgroups/groups.json"
 
+/**加入后的工作站主页-*/
+#define UrlPath_joined_workplace @"app/chatgroups/groupshome.json"
+
 /**工作室介绍*/
 #define UrlPath_workstudio @"app/chatgroups/groupintro.json"//@"/app/chatgroups/groupinfo.json"
 

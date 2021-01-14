@@ -122,7 +122,8 @@
     }
     
 }
-- (void)makedata{
+- (void)makedata
+{
     NSString *searchStr;
     if (searchText.text.length == 0) {
         searchStr = @"";
@@ -152,7 +153,8 @@
         NSLog(@"群成员%@",error);
     }];
 }
-- (NSMutableArray *)sortDataArray:(NSArray *)dataArray{
+- (NSMutableArray *)sortDataArray:(NSArray *)dataArray
+{
     
     if (dataArray.count == 0) {
         [sectionTitlesArray removeAllObjects];
@@ -172,15 +174,12 @@
         [sortedArray addObject:sectionArray];
     }
     
-    
-    
     for (NSDictionary *dicat in dataArray) {
         NSString *realString = [NSString stringWithFormat:@"%@",[dicat objectForKey:@"name"]];
         NSString *firstLetter = [EaseChineseToPinyin pinyinFromChineseString:realString];
         NSInteger section = [indexCollection sectionForObject:[firstLetter substringToIndex:1] collationStringSelector:@selector(uppercaseString)];
         NSMutableArray *array = [sortedArray objectAtIndex:section];
         [array addObject:dicat];
-        
     }
     
     for (int i = 0; i < [sortedArray count]; i ++) {

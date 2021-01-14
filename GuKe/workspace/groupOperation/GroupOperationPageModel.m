@@ -14,7 +14,7 @@
 {
     if (!_items) {
         NSArray *titles = @[@"工作室介绍", @"创建群组", @"成员管理", @"移交管理权限"];
-        NSArray *imgPaths = @[@"group_info", @"group_create", @"group_manage", @"group_transfer"];
+        NSArray *imgPaths = @[@"group_info", @"group_create", @"group_invite", @"group_transfer"];
         NSMutableArray *targetList = [NSMutableArray arrayWithCapacity:titles.count];
         for (int i=0; i<titles.count; i++) {
             GroupOperationItemModel *item = [[GroupOperationItemModel alloc] init];

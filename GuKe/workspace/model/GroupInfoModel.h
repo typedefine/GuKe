@@ -21,9 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger groupStatus;
 @property (nonatomic, copy) NSString *groupDesc;
 
-@property (nonatomic, assign) BOOL isJoined;
 @property (nonatomic, assign) NSInteger joinStatus;
-@property (nonatomic, assign) BOOL isOwner;
+//@property (nonatomic, assign) BOOL isOwner;
 
 @property (nonatomic, assign) NSInteger count;
 @property (nonatomic, copy) NSString *countTitle;
@@ -34,6 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *sponsorName;
 @property (nonatomic, copy) NSString *sponsorLogo;
 @property (nonatomic, copy) NSString *sponsorUrl;
+
+@property (nonatomic, assign) BOOL isManager;
 
 @end
 

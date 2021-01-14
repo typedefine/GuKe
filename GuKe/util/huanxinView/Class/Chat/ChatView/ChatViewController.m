@@ -101,15 +101,13 @@
                     [self addGroupVideoListView];
                     [self addOnScreenComments];
                     for (GroupInfoModel *studio in m.groups) {
-                        studio.isJoined = YES;
-                        studio.isOwner = YES;
+                        studio.joinStatus = 1;
                         if ([@(studio.groupId).stringValue isEqualToString:self.conversation.conversationId]) {
                             _groupInfo = studio;
                             break;
                         }else{
                             for (GroupInfoModel *group in studio.chatroom) {
-                                group.isJoined = YES;
-                                group.isOwner = YES;
+                                group.joinStatus = 1;
                                 if ([@(group.groupId).stringValue isEqualToString:self.conversation.conversationId]) {
                                     _groupInfo = group;
                                     break;
@@ -121,7 +119,7 @@
                     [self.chatBarMoreView insertItemWithImage:[UIImage imageNamed:@"video_dm"] highlightedImage:[UIImage imageNamed:@"video_dm"] title:@"分享视频"];
                     [self.chatBarMoreView insertItemWithImage:[UIImage imageNamed:@"live_dm"] highlightedImage:[UIImage imageNamed:@"live_dm"] title:@"分享直播"];
                 }
-                [self.naviRightButton setImage:[UIImage imageNamed:_groupInfo && _groupInfo.isOwner? @"MORE":@"group"] forState:normal];
+                [self.naviRightButton setImage:[UIImage imageNamed:_groupInfo && _groupInfo.isManager? @"MORE":@"group"] forState:normal];
                 __weak typeof(self) weakSelf = self;
 //                [self showHudInView:self.view hint:NSLocalizedString(@"loadData", @"Load data...")];
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(){
@@ -300,7 +298,7 @@
         make.top.equalTo(self.view).offset(50);
         make.height.mas_equalTo(45);
     }];
-    [self.floatView configWithData:nil];
+//    [self.floatView configWithData:nil];
     [self didReceiveDMMsg];
 }
 
@@ -342,7 +340,7 @@
         
     }else{
         if (_groupInfo) {
-            if (_groupInfo.isOwner) {
+            if (_groupInfo.isManager) {
                 GroupOperationController *vc = [[GroupOperationController alloc] init];
                 vc.targetController = self;
                 vc.groupInfo = _groupInfo;

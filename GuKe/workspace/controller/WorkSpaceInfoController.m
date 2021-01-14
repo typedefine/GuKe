@@ -13,6 +13,7 @@
 @interface WorkSpaceInfoController ()
 
 @property (nonatomic, strong) WorkSpaceInfoView *infoView;
+//@property (nonatomic, strong) WorkSpaceInfoModel *pageModel;
 
 @end
 
@@ -21,11 +22,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"工作站";
-    [self.infoView configareWithTargetController:self data:self.pageModel];
+    
     [self.view addSubview:self.infoView];
     [self.infoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+    [self loadServerData];
+}
+
+- (void)loadServerData
+{
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,UrlPath_joined_workplace];
+    NSMutableDictionary *para = [@{
+        @"sessionId": [GuKeCache shareCache].sessionId,
+    } mutableCopy];
+    [self showHudInView:self.view hint:nil];
+    [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
+        [self hideHud];
+        WorkSpaceInfoModel *model = [WorkSpaceInfoModel mj_objectWithKeyValues:data];
+        if ([model.retcode isEqualToString:@"0000"]) {
+            [self.infoView configareWithTargetController:self data:model];
+        }
+    } failure:^(NSError *error) {
+        [self hideHud];
+    }];
+    
+    
 }
 
 - (WorkSpaceInfoView *)infoView

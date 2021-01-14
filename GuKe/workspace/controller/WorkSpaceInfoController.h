@@ -13,7 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WorkSpaceInfoController : BaseViewController
 
-@property (nonatomic, strong) WorkSpaceInfoModel *pageModel;
 
 @end
 

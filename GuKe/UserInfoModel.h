@@ -36,4 +36,8 @@
 @property (nonatomic, assign) NSInteger state;
 @property (nonatomic, copy) NSString *pwd;
 
+@property (nonatomic, copy) NSString *roleName;//通讯录标签
+@property (nonatomic, assign) NSInteger roleType;//通讯录标签类型 0 普通成员  1 管理员（换色标签）  2 身份标签（绿色标签）
+@property (nonatomic, assign) NSInteger isFriend;//0 不是好友  1是好友
+
 @end
