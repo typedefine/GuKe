@@ -31,7 +31,7 @@
     self.layer.cornerRadius = 5.0f;
     [self addSubview:self.titleLabel];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.mas_centerX).offset(-35);
+        make.right.equalTo(self.mas_centerX).offset(-5);
         make.centerY.equalTo(self);
     }];
     [self addSubview:self.iconView];

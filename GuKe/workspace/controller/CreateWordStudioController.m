@@ -72,7 +72,7 @@
     
     NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,urlpath_create_workstudio];
     NSMutableDictionary *para = [@{
-        @"sessionId":sessionIding,
+//        @"sessionId":sessionIding,
         @"groupname":name,
         @"groupportrait":logoUrl,
         @"desc":desc,
@@ -81,25 +81,33 @@
     
     NSString *supporterLogo = self.pageModel.cellModelList[3].content;
     if (supporterLogo.isValidStringValue) {
-        para[@"sponsor_logo"] = supporterLogo;
+        para[@"sponsorLogo"] = supporterLogo;
     }
     
     NSString *supporterName = self.pageModel.cellModelList[4].content;
     if (supporterName.isValidStringValue) {
-        para[@"sponsor_name"] = supporterName;
+        para[@"sponsorLame"] = supporterName;
     }
     
     NSString *supporterUrl = self.pageModel.cellModelList[5].content;
     if (supporterUrl.isValidStringValue) {
-        para[@"sponsor_url"] = supporterUrl;
+        para[@"sponsorUrl"] = supporterUrl;
     }
    
     [self showHudInView:self.view hint:nil];
     [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
         NSLog(@"创建工作室-->%@",data);
         [self hideHud];
-        [self showHint:data[@"message"] inView:self.view];
-        [self performSelector:@selector(popBack) withObject:nil afterDelay:1];
+        if ([data[@"retcode"] isEqualToString:@"0000"]) {
+            self.createStudioButton.enabled = NO;
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:data[@"message"] preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                [self popBack];
+            }]];
+            [self presentViewController:alert animated:YES completion:nil];
+        }else{
+            [self showHint:data[@"message"] inView:self.view];
+        }
     } failure:^(NSError *error) {
         NSLog(@"创建工作室-->%@",error);
         [self hideHud];

@@ -24,9 +24,10 @@
 {
     _model = [GroupInfoModel mj_objectWithKeyValues:data];
     self.name = self.model.groupName;
-    self.logoUrl = self.model.groupPortrait;//imgFullUrl(self.model.groupPortrait);
+    self.logoUrl = self.model.groupPortrait;
+    self.supporterName = self.model.sponsorName;
     self.supporterUrl = self.model.sponsorUrl;
-    self.supporterLogo = self.model.sponsorLogo;//imgFullUrl(self.model.sponsorLogo);
+    self.supporterLogo = self.model.sponsorLogo;
     self.infoCellModel.content = self.model.groupDesc;
     self.members = self.model.members;
 }

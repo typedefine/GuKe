@@ -227,7 +227,7 @@
 #pragma mark  图像
 - (void)chosePhoto
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"更改头像" message:nil preferredStyle: UIAlertControllerStyleActionSheet];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:self.titleLabel.text message:nil preferredStyle: UIAlertControllerStyleActionSheet];
     
     __weak typeof(self) weakSelf = self;
     UIAlertAction *photoAction = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

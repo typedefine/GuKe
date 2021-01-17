@@ -12,6 +12,9 @@
 
 @property(nonatomic, strong) UIImageView *portraitView;
 @property(nonatomic, strong) UILabel *nameLabel;
+@property (nonatomic, strong) UILabel *markLabel;
+@property (nonatomic, strong) UILabel *actionLabel;
+@property (nonatomic, strong) UIImageView *actionIcon;
 
 @end
 
@@ -68,6 +71,37 @@
     }
     return _nameLabel;
 }
+
+- (UILabel *)markLabel
+{
+    if (!_markLabel) {
+        _markLabel = [[UILabel alloc] init];
+        _markLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightMedium];
+        _markLabel.hidden = YES;
+    }
+    return _markLabel;
+}
+
+- (UILabel *)actionLabel
+{
+    if (!_actionLabel) {
+        _actionLabel = [[UILabel alloc] init];
+        _actionLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightMedium];
+        _actionLabel.hidden = YES;
+    }
+    return _actionLabel;
+}
+
+- (UIImageView *)actionIcon
+{
+    if (!_actionIcon) {
+        _actionIcon = [[UIImageView alloc] init];
+        _actionIcon.hidden = YES;
+    }
+    return _actionIcon;
+}
+
+
 
 @end
 

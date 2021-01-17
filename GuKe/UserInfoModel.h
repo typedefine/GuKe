@@ -29,7 +29,7 @@
 
 @property (nonatomic, copy) NSString *userId;
 @property (nonatomic ,copy) NSString *portrait;
-//@property (nonatomic, copy) NSString *nickname;
+@property (nonatomic, copy) NSString *nickname;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *sessionId;
 

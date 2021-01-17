@@ -13,6 +13,7 @@
 
 @interface OnScreenCommentsView ()<FDanmakuViewProtocol>
 @property(nonatomic,weak)FDanmakuView *danmakuView;
+@property(nonatomic, assign) NSInteger itemTime;
 @end
 
 @implementation OnScreenCommentsView
@@ -43,24 +44,46 @@
 
 - (void)setup
 {
-    FDanmakuView *danmaView = [[FDanmakuView alloc]initWithFrame:CGRectMake(0, 10, ScreenWidth, 25)];
+    self.itemTime = 0;
+    FDanmakuView *danmaView = [[FDanmakuView alloc]initWithFrame:CGRectMake(0, 10, ScreenWidth, 30)];
     danmaView.backgroundColor = [UIColor clearColor];
     danmaView.delegate = self;
     self.danmakuView = danmaView;
     [self addSubview:danmaView];
 }
 
+- (void)configWithType:(NSInteger)type conttent:(NSString *)content sendUser:(UserInfoModel *)user
+{
+    DMModel *model = [[DMModel alloc] init];
+    model.doctorName = user.doctorName;
+    model.content = content;
+    model.msgType = type;
+    FDanmakuModel *viewModel = [[FDanmakuModel alloc]init];
+    viewModel.model = model;
+    viewModel.beginTime = 0;
+    viewModel.liveTime = 3;
+    [self.danmakuView.modelsArr insertObject:viewModel atIndex:0];
+}
+
 - (void)configWithData:(id)data
 {
-//    NSMutableArray<FDanmakuModel *> *targetArray = [NSMutableArray array];
-//    for (NSDictionary *d in data) {
-//        DMModel *model = [DMModel mj_objectWithKeyValues:d];
-//        FDanmakuModel *viewModel = [[FDanmakuModel alloc]init];
-//        viewModel.model = model;
-//        [targetArray addObject:viewModel];
-//        [self.danmakuView.modelsArr addObject:viewModel];
-//    }
+    [self.danmakuView.modelsArr removeAllObjects];
+    NSArray *dataList = (NSArray *)data;
+    NSMutableArray<FDanmakuModel *> *targetArray = [NSMutableArray array];
+    for (int i=0; i< dataList.count ;i++) {
+        NSDictionary *d = dataList[i];
+        DMModel *model = [DMModel mj_objectWithKeyValues:d];
+        FDanmakuModel *viewModel = [[FDanmakuModel alloc]init];
+        viewModel.model = model;
+        self.itemTime += 1 + arc4random()%4;
+        viewModel.beginTime = self.itemTime;
+        viewModel.liveTime = 2 + arc4random()%3;
+        [targetArray addObject:viewModel];
+    }
     
+    [self.danmakuView.modelsArr addObjectsFromArray:targetArray];
+    
+    /*
     FDanmakuModel *model1 = [[FDanmakuModel alloc]init];
     model1.name = @"2df";
     model1.type = 0;
@@ -85,6 +108,7 @@
     [self.danmakuView.modelsArr addObject:model1];
     [self.danmakuView.modelsArr addObject:model2];
     [self.danmakuView.modelsArr addObject:model3];
+   */
 }
 
 -(NSTimeInterval)currentTime {

@@ -10,15 +10,11 @@
 
 @implementation UserInfoModel
 
-+ (NSDictionary *)mj_replacedKeyFromPropertyName
-{
-    return @{@"userId": @"userid"};//, @"name":@"nickname"
-}
+//+ (NSDictionary *)mj_replacedKeyFromPropertyName
+//{
+//    return @{@"userId": @"userid"};//, @"name":@"nickname"
+//}
 
-+ (NSDictionary *)mj_objectClassInArray
-{
-    return @{@"members":[UserInfoModel class]};
-}
 
 - (id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property
 {

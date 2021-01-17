@@ -10,12 +10,12 @@
 #import "ZXFInputFieldCell.h"
 #import "ZXFInputImageCell.h"
 #import "ZXFInputViewCell.h"
-#import "CreateWordStudioPageModel.h"
+#import "CreateGroupPageModel.h"
 
 @interface CreateWorkGroupController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *table;
-@property (nonatomic, strong) CreateWordStudioPageModel *pageModel;
+@property (nonatomic, strong) CreateGroupPageModel *pageModel;
 @property (nonatomic, strong) UIButton *createStudioButton;
 @end
 
@@ -72,20 +72,27 @@
     
     NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,urlpath_create_workstudio];
     NSMutableDictionary *para = [@{
-        @"sessionId":sessionIding,
+//        @"sessionId":sessionIding,
         @"groupname":name,
         @"groupportrait":logoUrl,
         @"desc":desc,
-        @"groupType":self.superGroupId
+        @"groupType":@(self.superGroupId.integerValue)
     } mutableCopy];
-  
    
     [self showHudInView:self.view hint:nil];
     [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
         NSLog(@"创建工作组-->%@",data);
         [self hideHud];
-        [self showHint:data[@"message"] inView:self.view];
-        [self performSelector:@selector(popBack) withObject:nil afterDelay:1];
+        if ([data[@"retcode"] isEqualToString:@"0000"]) {
+            self.createStudioButton.enabled = NO;
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:data[@"message"] preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                [self popBack];
+            }]];
+            [self presentViewController:alert animated:YES completion:nil];
+        }else{
+            [self showHint:data[@"message"] inView:self.view];
+        }
     } failure:^(NSError *error) {
         NSLog(@"创建工作组-->%@",error);
         [self hideHud];
@@ -175,10 +182,10 @@
     return _createStudioButton;
 }
 
-- (CreateWordStudioPageModel *)pageModel
+- (CreateGroupPageModel *)pageModel
 {
     if (!_pageModel) {
-        _pageModel = [[CreateWordStudioPageModel alloc] init];
+        _pageModel = [[CreateGroupPageModel alloc] init];
         
     }
     return _pageModel;

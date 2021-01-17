@@ -12,6 +12,7 @@
 #import "ExpandTextCell.h"
 #import "WorkStudioInfoPageModel.h"
 #import "ChatViewController.h"
+#import "WebViewController.h"
 
 @interface WorkStudioInfoController ()<UITableViewDataSource, UITableViewDelegate, GroupMembersViewDelegate>
 
@@ -70,18 +71,18 @@
 //        }];
         
         NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,UrlPath_apply_join_studio];
-        NSDictionary *para = @{
-            @"sessionId": [GuKeCache shareCache].sessionId,
-            @"groupid":@(self.groupInfo.groupId).stringValue,
-            @"userId":[GuKeCache shareCache].user.userId
-        };
+        NSMutableDictionary *paras = [NSMutableDictionary dictionary];
+        [paras setValue:@(self.groupInfo.groupId).stringValue forKey:@"groupId"];
+        [paras setValue:[GuKeCache shareCache].user.userId forKey:@"userId"];
         [self showHudInView:self.view hint:nil];
-        [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
+        [ZJNRequestManager postWithUrlString:urlString parameters:paras success:^(id data) {
             NSLog(@"申请加入工作室-->%@",data);
             [self hideHud];
             NSDictionary *dict = (NSDictionary *)data;
             if ([dict[@"retcode"] isEqual:@"0000"]) {
                 [self showHint:@"申请加入工作室成功"];
+                self.groupInfo.joinStatus = 2;
+                self.joinButton.enabled = NO;
             }else{
                 [self showHint:dict[@"message"]];
             }
@@ -161,7 +162,16 @@
 */
 - (void)supportDetail
 {
-    
+    if (self.pageModel.supporterUrl.isValidStringValue) {
+        if (![self.pageModel.supporterUrl hasPrefix:@"http"]) {
+            self.pageModel.supporterUrl = [NSString stringWithFormat:@"http://%@",self.pageModel.supporterUrl];
+        }
+        WebViewController *vc = [[WebViewController alloc] init];
+        vc.title = self.pageModel.supporterName;
+        vc.url = self.pageModel.supporterUrl;
+        [self.navigationController pushViewController:vc animated:YES];
+//        [self presentViewController:vc animated:YES completion:nil];
+    }
 }
 
 //- (void)memberAction:(NSString *)memberId

@@ -2011,9 +2011,9 @@ typedef enum : NSUInteger {
     }
 }
 
-- (void)sendCmdMessage:(NSString *)content withExt:(NSDictionary*)ext
+- (void)sendCmdMessage:(NSString *)action withExt:(NSDictionary*)ext
 {
-    EMMessage *message = [EaseSDKHelper getCmdMessage:content to:self.conversation.conversationId messageType:[self _messageTypeFromConversationType] messageExt:ext cmdParams:nil];
+    EMMessage *message = [EaseSDKHelper getCmdMessage:action to:self.conversation.conversationId messageType:[self _messageTypeFromConversationType] messageExt:ext cmdParams:nil];
     [self _sendMessage:message isNeedUploadFile:NO];
 }
 

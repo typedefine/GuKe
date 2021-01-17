@@ -7,19 +7,16 @@
 //
 
 #import "WorkSpaceController.h"
-#import "WorkSpaceInfoPageModel.h"
+#import "WorkSpaceInfoModel.h"
 #import "WorkSpaceInfoView.h"
 #import "WorkGroupListView.h"
 #import "WorkSpaceBlankView.h"
-//#import "AllStudiosController.h"
-//#import "CreateWordStudioController.h"
 #import "WorkSpaceInfoController.h"
 
 @interface WorkSpaceController ()
 
 @property (nonatomic, strong) UIButton *naviRightButton;
 
-@property (nonatomic, strong) WorkSpaceInfoPageModel *pageModel;
 @property (nonatomic, strong) WorkSpaceInfoView *infoView;
 @property (nonatomic, strong) WorkGroupListView *groupListView;
 @property (nonatomic, strong) WorkSpaceBlankView *blankView;
@@ -31,9 +28,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (self.pageModel.model.groups.count == 0) {
-        [self loadServerData];
-    }
+    [self loadServerData];
 }
 
 - (void)viewDidLoad {
@@ -82,9 +77,8 @@
 {
     __weak typeof(self) weakSelf = self;
     void (^ complet)(WorkSpaceInfoModel *data) = ^(WorkSpaceInfoModel *data){
-        weakSelf.pageModel.model = data;
-        if ([weakSelf.pageModel.model.retcode isEqualToString:@"0000"]) {
-            NSInteger status = weakSelf.pageModel.model.status;
+        if ([data.retcode isEqualToString:@"0000"]) {
+            NSInteger status = data.status;
             switch (status) {
                 case 1://未开通任何工作室
                 {
@@ -95,7 +89,7 @@
                     [weakSelf.infoView mas_remakeConstraints:^(MASConstraintMaker *make) {
                         make.edges.equalTo(weakSelf.view);
                     }];
-                    [weakSelf.infoView configareWithTargetController:weakSelf data:self.pageModel.model];
+                    [weakSelf.infoView configareWithTargetController:weakSelf data:data];
         
                 }
                     break;
@@ -110,7 +104,7 @@
                     [weakSelf.groupListView mas_remakeConstraints:^(MASConstraintMaker *make) {
                         make.edges.equalTo(weakSelf.view);
                     }];
-                    [weakSelf.groupListView configareWithTargetController:weakSelf data:weakSelf.pageModel.model];
+                    [weakSelf.groupListView configareWithTargetController:weakSelf data:data];
                 }
                     break;
 
@@ -137,11 +131,11 @@
                     break;
             }
         }else{
-            [weakSelf addErrorViewWithMsg:weakSelf.pageModel.model.message];
+            [weakSelf addErrorViewWithMsg:data.message];
         }
     };
    
-    WorkSpaceInfoModel *model = [[GuKeCache shareCache] objectForKey:kWorkStudioGroup_cache_key];
+    WorkSpaceInfoModel *model = [GuKeCache shareCache].spaceInfo;//[[GuKeCache shareCache] objectForKey:kWorkStudioGroup_cache_key];
     if (model) {
         complet(model);
     }else{
@@ -222,17 +216,6 @@
         _groupListView.hidden = YES;
     }
     return _groupListView;
-}
-
-
-- (WorkSpaceInfoPageModel *)pageModel
-{
-    if (!_pageModel) {
-        _pageModel = [[WorkSpaceInfoPageModel alloc] init];
-        _pageModel.sessionid = sessionIding;
-//        _pageModel.targetController = self;
-    }
-    return _pageModel;
 }
 
 

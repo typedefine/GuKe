@@ -26,14 +26,16 @@ static const CGFloat   kDandaoCount  = 5;
 
 @implementation FDanmakuView
 
-- (instancetype)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame
+{
     if (self = [super initWithFrame:frame]) {
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick:)];
         [self addGestureRecognizer:tap];
     }
     return self;
 }
-- (void)tapClick:(UITapGestureRecognizer *)tap {
+- (void)tapClick:(UITapGestureRecognizer *)tap
+{
     CGPoint point = [tap locationInView:tap.view];
     for (UIView *danmuView in self.danmakuViewArr) {
         CGRect frame = danmuView.layer.presentationLayer.frame;

@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GroupVideoFooterView : UICollectionReusableView
+@interface GroupVideoFooterView : UIView
 
 - (void)configWithTarget:(id)target action:(SEL)action;
 

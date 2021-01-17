@@ -11,6 +11,7 @@
 #import "GroupAddressbookCell.h"
 #import "GroupInfoModel.h"
 #import "GroupAddressbookHeaderView.h"
+#import "AddMembersController.h"
 
 @interface GroupAddressbookController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -67,7 +68,6 @@
 
 
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.groupInfo.members.count;
@@ -97,9 +97,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 //     UserInfoModel *model = self.groupInfo.members[indexPath.row];
- 
+    
 }
 
+
+- (void)addMembers
+{
+    AddMembersController *vc = [[AddMembersController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (UITableView *)tableView
 {
@@ -111,7 +117,9 @@
         _tableView.rowHeight = IPHONE_X_SCALE(60);
         CGRect f = self.view.bounds;
         f.size.height = IPHONE_X_SCALE(50);
-        _tableView.tableHeaderView = [[GroupAddressbookHeaderView alloc] initWithFrame:f];
+        GroupAddressbookHeaderView *header = [[GroupAddressbookHeaderView alloc] initWithFrame:f];
+        [header addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(addMembers)]];
+        _tableView.tableHeaderView = header;
         _tableView.tableFooterView = [[UIView alloc] init];
 //        if (@available(iOS 11.0, *)) {
 //            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;

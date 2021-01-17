@@ -8,16 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import "UserInfoModel.h"
+@class WorkSpaceInfoModel;
 
 NS_ASSUME_NONNULL_BEGIN
 
-static const NSString *kWorkStudioGroup_cache_key = @"WorkStudio_group_list_data";
-static const NSString *kUserInfo_cache_Key = @"user_info_model";
+//static const NSString *kWorkStudioGroup_cache_key = @"WorkStudio_group_list_data";
+static const NSString *kUserInfo_cache_Key = @"user_info";
 
-@interface GuKeCache : NSCache
+@interface GuKeCache : NSObject//NSCache
 
+@property (nonatomic, strong) WorkSpaceInfoModel *spaceInfo;
 @property (nonatomic, strong) UserInfoModel *user;
 @property (nonatomic, copy) NSString *sessionId;
+@property (nonatomic, strong) NSMutableDictionary *onScreenCommentsConfig;
 
 + (instancetype)shareCache;
 

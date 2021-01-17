@@ -35,7 +35,11 @@
 - (void)configWithData:(GroupInfoModel *)data
 {
     if (!data) return;
-    [self.mainView.imageView sd_setImageWithURL:[NSURL URLWithString:data.groupPortrait] placeholderImage:[UIImage imageNamed:@"icon_group"]];
+//    [self.mainView.imageView sd_setImageWithURL:[NSURL URLWithString:data.groupPortrait] placeholderImage:[UIImage imageNamed:@"icon_group"]];
+    [self.mainView.imageView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(20);
+        make.height.mas_equalTo(17);
+    }];
     self.mainView.titleLabel.text = data.groupName;
     self.mainView.subTitleLabel.text = data.countTitle;
 }

@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface OnScreenCommentsView : UIView
 
 - (void)configWithData:(id)data;
+- (void)configWithType:(NSInteger)type conttent:(NSString *)content sendUser:(UserInfoModel *)user;
 
 - (void)pause;
 - (void)resume;

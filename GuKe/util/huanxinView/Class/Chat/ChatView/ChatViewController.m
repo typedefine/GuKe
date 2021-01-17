@@ -61,6 +61,65 @@
 
 @implementation ChatViewController
 
+
+
+- (void)dealloc
+{
+    if (self.conversation.type == EMConversationTypeChatRoom) {
+        //退出聊天室，删除会话
+        if (self.isJoinedChatroom) {
+            NSString *chatter = [self.conversation.conversationId copy];
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                EMError *error = nil;
+                [[EMClient sharedClient].roomManager leaveChatroom:chatter error:&error];
+                if (error !=nil) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"Leave chatroom '%@' failed [%@]", chatter, error.errorDescription] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                        [alertView show];
+                    });
+                }
+            });
+        }
+        else {
+            [[EMClient sharedClient].chatManager deleteConversation:self.conversation.conversationId isDeleteMessages:YES completion:nil];
+        }
+    }
+    
+    [[EMClient sharedClient] removeDelegate:self];
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+//    if (self.conversation.type == EMConversationTypeGroupChat) {
+//        if (_groupInfo) {
+//            [self.floatView clean];
+//            [self.floatView pause];
+//            [self.floatView removeFromSuperview];
+//            self.floatView = nil;
+//        }
+//    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"setupUnreadMessageCount" object:nil];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (self.conversation.type == EMConversationTypeGroupChat) {
+        NSDictionary *ext = self.conversation.ext;
+        if ([[ext objectForKey:@"subject"] length])
+        {
+            self.title = [ext objectForKey:@"subject"];
+        }
+        
+        if (ext && ext[kHaveUnreadAtMessage] != nil)
+        {
+            NSMutableDictionary *newExt = [ext mutableCopy];
+            [newExt removeObjectForKey:kHaveUnreadAtMessage];
+            self.conversation.ext = newExt;
+        }
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -95,21 +154,21 @@
                 [self makeUseridData];
             }else{
                 
-                WorkSpaceInfoModel *m =  [[GuKeCache shareCache] objectForKey:kWorkStudioGroup_cache_key];
+                WorkSpaceInfoModel *m = [GuKeCache shareCache].spaceInfo; //[[GuKeCache shareCache] objectForKey:kWorkStudioGroup_cache_key];
                 if (m) {
                     [self addNaviToolBar];
                     [self addGroupVideoListView];
                     [self addOnScreenComments];
                     for (GroupInfoModel *studio in m.groups) {
-                        studio.joinStatus = 1;
                         if ([@(studio.groupId).stringValue isEqualToString:self.conversation.conversationId]) {
                             _groupInfo = studio;
+                            _groupInfo.joinStatus = 1;
                             break;
                         }else{
                             for (GroupInfoModel *group in studio.chatroom) {
-                                group.joinStatus = 1;
                                 if ([@(group.groupId).stringValue isEqualToString:self.conversation.conversationId]) {
                                     _groupInfo = group;
+                                    _groupInfo.joinStatus = 1;
                                     break;
                                 }
                             }
@@ -117,7 +176,7 @@
                     }
                     [self.chatBarMoreView insertItemWithImage:[UIImage imageNamed:@"text_dm"] highlightedImage:[UIImage imageNamed:@"text_dm"] title:@"文字弹幕"];
                     [self.chatBarMoreView insertItemWithImage:[UIImage imageNamed:@"video_dm"] highlightedImage:[UIImage imageNamed:@"video_dm"] title:@"分享视频"];
-                    [self.chatBarMoreView insertItemWithImage:[UIImage imageNamed:@"live_dm"] highlightedImage:[UIImage imageNamed:@"live_dm"] title:@"分享直播"];
+//                    [self.chatBarMoreView insertItemWithImage:[UIImage imageNamed:@"live_dm"] highlightedImage:[UIImage imageNamed:@"live_dm"] title:@"分享直播"];
                 }
                 [self.naviRightButton setImage:[UIImage imageNamed:_groupInfo && _groupInfo.isManager? @"MORE":@"group"] forState:normal];
                 __weak typeof(self) weakSelf = self;
@@ -156,6 +215,10 @@
 
 - (void)addNaviToolBar
 {
+    [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(self.view);
+        make.top.equalTo(self.view).offset(45);
+    }];
     UIView *toolBar = [[UIView alloc] init];
     toolBar.tag = 888;
     toolBar.backgroundColor = [UIColor whiteColor];
@@ -243,7 +306,7 @@
     
     NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,urlpath_work_group_video];
     NSDictionary *para = @{
-        @"sessionId":sessionIding,
+//        @"sessionId":sessionIding,
         @"groupId":self.conversation.conversationId,
     };
    
@@ -280,11 +343,12 @@
 
 - (void)addGroupVideoListView
 {
+    UIView *toolsBar = [self.view viewWithTag:888];
     [self.view addSubview:self.videoListView];
     [self.videoListView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(IPHONE_X_SCALE(165));
+        make.height.mas_equalTo(IPHONE_X_SCALE(125));
         make.left.right.equalTo(self.view);
-        make.top.equalTo(self.view).offset(45);
+        make.top.equalTo(toolsBar.mas_bottom).offset(0);
     }];
     [self getGroupVideos];
 }
@@ -292,14 +356,17 @@
 
 - (void)addOnScreenComments
 {
+    _floatView = [[OnScreenCommentsView alloc] init];
     [self.view addSubview:self.floatView];
     [self.floatView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
         make.top.equalTo(self.view).offset(50);
-        make.height.mas_equalTo(45);
+        make.height.mas_equalTo(30);
     }];
-//    [self.floatView configWithData:nil];
-    [self didReceiveDMMsg];
+    NSNumber *display = [GuKeCache shareCache].onScreenCommentsConfig[self.conversation.conversationId];
+    if (!display || ![display boolValue]) {
+        [self didReceiveDMMsg];
+    }
 }
 
 #pragma mark 根据user_id 判断医生还是患者
@@ -323,7 +390,10 @@
         NSLog(@"%@",error);
     }];
 }
-- (void)rightAction{
+
+
+- (void)rightAction
+{
     if (self.conversation.type == EMConversationTypeChat){
         if ([isDoctor isEqualToString:@"1"]) {
             WYYHuanZheXiangQingViewController *huanzhe = [[WYYHuanZheXiangQingViewController alloc]init];
@@ -400,61 +470,6 @@
 }
 
 
-
-- (void)dealloc
-{
-    if (self.conversation.type == EMConversationTypeChatRoom) {
-        //退出聊天室，删除会话
-        if (self.isJoinedChatroom) {
-            NSString *chatter = [self.conversation.conversationId copy];
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                EMError *error = nil;
-                [[EMClient sharedClient].roomManager leaveChatroom:chatter error:&error];
-                if (error !=nil) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"Leave chatroom '%@' failed [%@]", chatter, error.errorDescription] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                        [alertView show];
-                    });
-                }
-            });
-        }
-        else {
-            [[EMClient sharedClient].chatManager deleteConversation:self.conversation.conversationId isDeleteMessages:YES completion:nil];
-        }
-    }
-    
-    [[EMClient sharedClient] removeDelegate:self];
-}
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    if (_groupInfo) {
-        [self.floatView clean];
-        [self.floatView removeFromSuperview];
-        self.floatView = nil;
-    }
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"setupUnreadMessageCount" object:nil];
-}
-
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    if (self.conversation.type == EMConversationTypeGroupChat) {
-        NSDictionary *ext = self.conversation.ext;
-        if ([[ext objectForKey:@"subject"] length])
-        {
-            self.title = [ext objectForKey:@"subject"];
-        }
-        
-        if (ext && ext[kHaveUnreadAtMessage] != nil)
-        {
-            NSMutableDictionary *newExt = [ext mutableCopy];
-            [newExt removeObjectForKey:kHaveUnreadAtMessage];
-            self.conversation.ext = newExt;
-        }
-    }
-}
-
 - (void)tableViewDidTriggerHeaderRefresh {
     if ([[ChatDemoHelper shareHelper] isFetchHistoryChange]) {
         NSString *startMessageId = nil;
@@ -478,14 +493,6 @@
 
 
 #pragma mark - setup subviews
-
-- (OnScreenCommentsView *)floatView
-{
-    if (!_floatView) {
-        _floatView = [[OnScreenCommentsView alloc] init];
-    }
-    return _floatView;
-}
 
 - (GroupVideoListView *)videoListView
 {
@@ -621,7 +628,7 @@
 {
     NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,urlpath_work_group_extraSend];
     NSDictionary *para = @{
-        @"sessionId": [GuKeCache shareCache].sessionId,
+//        @"sessionId": [GuKeCache shareCache].sessionId,
         @"groupId":self.conversation.conversationId,
         @"doctorName":[GuKeCache shareCache].user.doctorName,
         @"content":content,
@@ -632,8 +639,9 @@
     [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
         NSLog(@"发送弹幕-->%@",data);
         [self hideHud];
-        if (data[@"0000"]){
-            [self sendCmdMessage:content withExt:@{@"md_type":@(type)}];
+        if ([data[@"retcode"] isEqualToString:@"0000"]){
+            [self sendCmdMessage:[NSString stringWithFormat:@"action_md_type_%ld",type] withExt:@{@"md_type":@(type)}];
+            [self.floatView configWithType:type conttent:content sendUser:[GuKeCache shareCache].user];
         }else{
             [self showHint:data[@"message"]];
         }
@@ -984,9 +992,8 @@
 #pragma mark 接收弹幕消息
 - (void)didReceiveDMMsg
 {
-    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,urlpath_work_group_extraSend];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,urlpath_work_group_extraReceive];
     NSDictionary *para = @{
-        @"sessionId": [GuKeCache shareCache].sessionId,
         @"groupId":self.conversation.conversationId,
     };
     
@@ -994,8 +1001,9 @@
     [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
         NSLog(@"接收弹幕-->%@",data);
         [self hideHud];
-        if (data[@"0000"]){
+        if ([data[@"retcode"] isEqualToString:@"0000"]){
             [self.floatView configWithData:data[@"data"]];
+            [GuKeCache shareCache].onScreenCommentsConfig[self.conversation.conversationId] = @(YES);
         }else{
             [self showHint:data[@"message"]];
         }

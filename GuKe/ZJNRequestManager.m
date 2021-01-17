@@ -77,7 +77,12 @@
     //内容类型
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/javascript",@"text/html", nil];
     //post请求
-    [manager POST:urlString parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:parameters];
+    [dict setValue:[GuKeCache shareCache].sessionId forKey:@"sessionId"];
+    [dict setValue:[GuKeCache shareCache].sessionId forKey:@"sessionid"];
+    
+    [manager POST:urlString parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         

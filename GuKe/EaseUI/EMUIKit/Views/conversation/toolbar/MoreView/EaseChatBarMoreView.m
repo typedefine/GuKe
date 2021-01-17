@@ -14,7 +14,7 @@
 
 #define CHAT_BUTTON_SIZE CGSizeMake(50,60)
 #define INSETS 10
-#define MOREVIEW_COL 4
+#define MOREVIEW_COL 5
 #define MOREVIEW_ROW 2
 #define MOREVIEW_BUTTON_TAG 1000
 
@@ -84,7 +84,7 @@
     _pageControl.numberOfPages = 1;
     [self addSubview:_pageControl];
     
-    CGFloat insets = (self.frame.size.width - 4 * CHAT_BUTTON_SIZE.width) / 5;
+    CGFloat insets = (self.frame.size.width - MOREVIEW_COL * CHAT_BUTTON_SIZE.width) / (MOREVIEW_COL+1);
     
     _photoButton = [self btnWithImage:[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_colorMore_photo"]
                      highlightedImage:[UIImage imageNamed:@"EaseUIResource.bundle/chatBar_colorMore_photoSelected"]
@@ -164,7 +164,7 @@
 
 - (void)insertItemWithImage:(UIImage *)image highlightedImage:(UIImage *)highLightedImage title:(NSString *)title
 {
-    CGFloat insets = (self.frame.size.width - MOREVIEW_COL * CHAT_BUTTON_SIZE.width) / 5;
+    CGFloat insets = (self.frame.size.width - MOREVIEW_COL * CHAT_BUTTON_SIZE.width) / (MOREVIEW_COL + 1);
     CGRect frame = self.frame;
     _maxIndex++;
     NSInteger pageSize = MOREVIEW_COL*MOREVIEW_ROW;
@@ -180,7 +180,7 @@
     [_scrollview addSubview:moreButton];
     [_scrollview setContentSize:CGSizeMake(CGRectGetWidth(self.frame) * (page + 1), CGRectGetHeight(self.frame))];
     [_pageControl setNumberOfPages:page + 1];
-    if (_maxIndex >=5) {
+    if (_maxIndex >=6) {
         frame.size.height = 150;
         _scrollview.frame = CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame));
         _pageControl.frame = CGRectMake(0, CGRectGetHeight(frame) - 20, CGRectGetWidth(frame), 20);

@@ -12,7 +12,7 @@
 
 + (NSDictionary *)mj_replacedKeyFromPropertyName
 {
-    return @{@"isOwner": @"owner", @"joinStatus":@"isJoined"};
+    return @{@"joinStatus":@"isJoined"};
 }
 
 + (NSDictionary *)mj_objectClassInArray

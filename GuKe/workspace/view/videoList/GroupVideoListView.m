@@ -21,6 +21,7 @@
 @property (nonatomic, copy) void (^ collapseHandler)(void);
 
 @property (nonatomic, strong) UILabel *blankLabel;
+@property (nonatomic, strong) GroupVideoFooterView *footerView;
 
 @end
 
@@ -53,15 +54,32 @@
 - (void)setUp
 {
     self.backgroundColor = [UIColor whiteColor];
+    
+    [self addSubview:self.footerView];
+    [self.footerView configWithTarget:self action:@selector(collapse)];
+    [self.footerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(self);
+        make.height.mas_equalTo(IPHONE_X_SCALE(40));
+    }];
+    
     [self addSubview:self.collectionView];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self);
+        make.left.right.top.equalTo(self);
+        make.bottom.equalTo(self.footerView.mas_top);
     }];
+    
     [self addSubview:self.blankLabel];
     [self.blankLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(IPHONE_X_SCALE(25));
         make.centerX.equalTo(self);
     }];
+}
+
+- (void)collapse
+{
+    if(self.collapseHandler){
+        self.collapseHandler();
+    }
 }
 
 - (void)configWithData:(id)data clicked:(GroupVideoClickedHandler)clicked collapse:(void (^)(void))collapse
@@ -80,22 +98,6 @@
     return 1;
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
-    if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
-        GroupVideoFooterView *footer = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass([GroupVideoFooterView class]) forIndexPath:indexPath];
-        [footer configWithTarget:self action:@selector(collapse)];
-        return footer;
-    }
-    return nil;
-}
-
-- (void)collapse
-{
-    if(self.collapseHandler){
-        self.collapseHandler();
-    }
-}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -106,14 +108,21 @@
 {
     GroupVideoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([GroupVideoCell class]) forIndexPath:indexPath];
     [cell configWithData:self.viewModel.items[indexPath.item]];
+    cell.tag = 9999;
+    [cell addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(itemClicked:)]];
     return cell;
+}
+
+- (void)itemClicked:(UITapGestureRecognizer *)tap
+{
+    if (self.clicked) {
+        self.clicked(self.viewModel.items[tap.view.tag-9999].model);
+    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.clicked) {
-        self.clicked(self.viewModel.items[indexPath.item].model);
-    }
+    
 }
 
 - (UICollectionView *)collectionView
@@ -123,12 +132,13 @@
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         layout.minimumInteritemSpacing = IPHONE_X_SCALE(10);
         layout.itemSize = CGSizeMake(IPHONE_X_SCALE(150), IPHONE_X_SCALE(85));
-        layout.sectionInset = UIEdgeInsetsMake(IPHONE_X_SCALE(15), IPHONE_X_SCALE(20), IPHONE_X_SCALE(15), IPHONE_X_SCALE(20));
-        layout.footerReferenceSize = CGSizeMake(ScreenWidth, IPHONE_X_SCALE(45));
+        layout.sectionInset = UIEdgeInsetsMake(0, IPHONE_X_SCALE(20), 0, IPHONE_X_SCALE(20));
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         [_collectionView registerClass:[GroupVideoCell class] forCellWithReuseIdentifier:NSStringFromClass([GroupVideoCell class])];
-        [_collectionView registerClass:[GroupVideoFooterView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass([GroupVideoFooterView class])];
         _collectionView.backgroundColor = [UIColor whiteColor];
+        if (@available(iOS 11.0, *)) {
+            _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
     }
     return _collectionView;
 }
@@ -151,6 +161,14 @@
         _blankLabel.hidden = YES;
     }
     return _blankLabel;
+}
+
+- (GroupVideoFooterView *)footerView
+{
+    if (!_footerView) {
+        _footerView = [[GroupVideoFooterView alloc] init];
+    }
+    return _footerView;
 }
 
 @end

@@ -168,7 +168,6 @@
 		894C7D4A2579396F00EF9ABE /* WorkSpaceHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C7D1A2579396F00EF9ABE /* WorkSpaceHeaderView.m */; };
 		894C7D4B2579396F00EF9ABE /* WorkSpaceTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C7D1B2579396F00EF9ABE /* WorkSpaceTitleView.m */; };
 		894C7D4C2579396F00EF9ABE /* WorkStudioFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C7D1E2579396F00EF9ABE /* WorkStudioFooterView.m */; };
-		894C7D4D2579396F00EF9ABE /* WorkSpaceInfoPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C7D1F2579396F00EF9ABE /* WorkSpaceInfoPageModel.m */; };
 		894C7D4E2579396F00EF9ABE /* GroupMembersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C7D202579396F00EF9ABE /* GroupMembersView.m */; };
 		894C7D4F2579396F00EF9ABE /* WorkSpaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C7D232579396F00EF9ABE /* WorkSpaceController.m */; };
 		894C7D502579396F00EF9ABE /* MoreWorkStudiosCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C7D242579396F00EF9ABE /* MoreWorkStudiosCell.m */; };
@@ -201,6 +200,7 @@
 		89C3D84925AB1D1A00A32EB5 /* DMItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3D84825AB1D1A00A32EB5 /* DMItemView.m */; };
 		89C3D84D25ACB42E00A32EB5 /* AddMembersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3D84C25ACB42E00A32EB5 /* AddMembersController.m */; };
 		89C3D85025B0A1F600A32EB5 /* GroupAddressbookHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3D84F25B0A1F600A32EB5 /* GroupAddressbookHeaderView.m */; };
+		89C3D85325B427DE00A32EB5 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3D85225B427DE00A32EB5 /* WebViewController.m */; };
 		89E52ED724F267E30052403B /* PatientBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52ED624F267E30052403B /* PatientBookController.m */; };
 		89E52EDA24F26ACC0052403B /* PatientBookPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52ED924F26ACC0052403B /* PatientBookPageModel.m */; };
 		89E52EDD24F26B2F0052403B /* PatientBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52EDC24F26B2F0052403B /* PatientBookCell.m */; };
@@ -1261,7 +1261,6 @@
 		894C7D1C2579396F00EF9ABE /* WorkStudioItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkStudioItemCell.h; sourceTree = "<group>"; };
 		894C7D1D2579396F00EF9ABE /* AllStudiosHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllStudiosHeaderView.h; sourceTree = "<group>"; };
 		894C7D1E2579396F00EF9ABE /* WorkStudioFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkStudioFooterView.m; sourceTree = "<group>"; };
-		894C7D1F2579396F00EF9ABE /* WorkSpaceInfoPageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkSpaceInfoPageModel.m; sourceTree = "<group>"; };
 		894C7D202579396F00EF9ABE /* GroupMembersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupMembersView.m; sourceTree = "<group>"; };
 		894C7D212579396F00EF9ABE /* AllStudiosController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllStudiosController.h; sourceTree = "<group>"; };
 		894C7D222579396F00EF9ABE /* ExpandTextCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpandTextCellModel.h; sourceTree = "<group>"; };
@@ -1283,7 +1282,6 @@
 		894C7D342579396F00EF9ABE /* WorkStudioInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkStudioInfoController.m; sourceTree = "<group>"; };
 		894C7D352579396F00EF9ABE /* WorkStudioHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkStudioHeaderView.m; sourceTree = "<group>"; };
 		894C7D362579396F00EF9ABE /* WorkStudioSupporterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkStudioSupporterView.m; sourceTree = "<group>"; };
-		894C7D372579396F00EF9ABE /* WorkSpaceInfoPageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkSpaceInfoPageModel.h; sourceTree = "<group>"; };
 		894C7D382579396F00EF9ABE /* AllStudiosController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllStudiosController.m; sourceTree = "<group>"; };
 		894C7D392579396F00EF9ABE /* GroupMembersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupMembersView.h; sourceTree = "<group>"; };
 		894C7D3A2579396F00EF9ABE /* WorkStudioFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkStudioFooterView.h; sourceTree = "<group>"; };
@@ -1324,6 +1322,8 @@
 		89C3D84C25ACB42E00A32EB5 /* AddMembersController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddMembersController.m; sourceTree = "<group>"; };
 		89C3D84E25B0A1F600A32EB5 /* GroupAddressbookHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupAddressbookHeaderView.h; sourceTree = "<group>"; };
 		89C3D84F25B0A1F600A32EB5 /* GroupAddressbookHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupAddressbookHeaderView.m; sourceTree = "<group>"; };
+		89C3D85125B427DE00A32EB5 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		89C3D85225B427DE00A32EB5 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		89E52ED524F267E30052403B /* PatientBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookController.h; sourceTree = "<group>"; };
 		89E52ED624F267E30052403B /* PatientBookController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientBookController.m; sourceTree = "<group>"; };
 		89E52ED824F26ACC0052403B /* PatientBookPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookPageModel.h; sourceTree = "<group>"; };
@@ -3277,8 +3277,6 @@
 				894C7D232579396F00EF9ABE /* WorkSpaceController.m */,
 				8910831C25A0CD23002C5959 /* WorkSpaceInfoController.h */,
 				8910831D25A0CD23002C5959 /* WorkSpaceInfoController.m */,
-				894C7D372579396F00EF9ABE /* WorkSpaceInfoPageModel.h */,
-				894C7D1F2579396F00EF9ABE /* WorkSpaceInfoPageModel.m */,
 				894C7D152579396F00EF9ABE /* WorkStudioInfoController.h */,
 				894C7D342579396F00EF9ABE /* WorkStudioInfoController.m */,
 				894C7D402579396F00EF9ABE /* WorkStudioInfoPageModel.h */,
@@ -3299,6 +3297,8 @@
 				1B7372F6259DB1FA008E816B /* MemberManageController.m */,
 				1B7372FC259DBAB5008E816B /* MemberManagePageModel.h */,
 				1B7372FD259DBAB5008E816B /* MemberManagePageModel.m */,
+				89C3D85125B427DE00A32EB5 /* WebViewController.h */,
+				89C3D85225B427DE00A32EB5 /* WebViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -7250,6 +7250,7 @@
 				E30976991F9DD20F00EC3F80 /* LiveGiftShowNumberView.m in Sources */,
 				9A42C4D81F53F4FC008D41C4 /* WoDeShouShuTableViewCell.m in Sources */,
 				9A397C951F316DC00089F5DC /* MainHuiYiViewController.m in Sources */,
+				89C3D85325B427DE00A32EB5 /* WebViewController.m in Sources */,
 				1F1128D72221265E00FD8CB6 /* MJExtensionConst.m in Sources */,
 				9A08A9851F30533B00AF29EB /* SDCollectionViewCell.m in Sources */,
 				1FA455362064ACDF00CF0DD1 /* mineCollectView.m in Sources */,
@@ -7323,7 +7324,6 @@
 				9AF6D9EF1F5CF17600C52F9B /* HssPingfenViewController.m in Sources */,
 				9A53877D20084D8B0084E772 /* PSTCollectionViewCell.m in Sources */,
 				E35781FD2028298700ACAEA5 /* ZJNAddOperationRequestModel.m in Sources */,
-				894C7D4D2579396F00EF9ABE /* WorkSpaceInfoPageModel.m in Sources */,
 				E309768A1F9DD20F00EC3F80 /* MMTextView.m in Sources */,
 				9A53893020084DC40084E772 /* AddFriendViewController.m in Sources */,
 				E30976EE1F9DD20F00EC3F80 /* SRSlimeView.m in Sources */,

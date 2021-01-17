@@ -17,6 +17,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         cache = [[GuKeCache alloc] init];
+        cache.onScreenCommentsConfig = [NSMutableDictionary dictionary];
     });
     return cache;
 }
@@ -27,25 +28,30 @@
     NSDictionary *ud = [[NSUserDefaults standardUserDefaults] objectForKey:kUserInfo_cache_Key];
     if (ud) {
         UserInfoModel *m = [UserInfoModel mj_objectWithKeyValues:ud];
-        self.user = m;
+//        [self setObject:m forKey:kUserInfo_cache_Key];
+        _user = m;
     }
 }
 
 - (void)clean
 {
+    [_onScreenCommentsConfig removeAllObjects];
+    _onScreenCommentsConfig = nil;
     _sessionId = nil;
-    [self removeAllObjects];
+    _user = nil;
+    _spaceInfo = nil;
+//    [self removeAllObjects];
 }
 
-- (UserInfoModel *)user
-{
-    return [self objectForKey:kUserInfo_cache_Key];
-}
-
-- (void)setUser:(UserInfoModel *)user
-{
-    [self setObject:user forKey:kUserInfo_cache_Key];
-}
+//- (UserInfoModel *)user
+//{
+//    return [self objectForKey:kUserInfo_cache_Key];
+//}
+//
+//- (void)setUser:(UserInfoModel *)user
+//{
+//    [self setObject:user forKey:kUserInfo_cache_Key];
+//}
 
 - (void)loadWorkSpaceDataWithSuccess:(HttpSuccess)success failure:(HttpFailure)failure
 {
@@ -57,12 +63,18 @@
     [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
         WorkSpaceInfoModel *model = [WorkSpaceInfoModel mj_objectWithKeyValues:data];
         if ([model.retcode isEqualToString:@"0000"]) {
-            [self setObject:model forKey:kWorkStudioGroup_cache_key];
+//            [self setObject:model forKey:kWorkStudioGroup_cache_key];
+            _spaceInfo = model;
         }
         if (success) {
             success(model);
         }
     } failure:failure];
+}
+
+-(void)dealloc
+{
+    [self clean];
 }
 
 @end

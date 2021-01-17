@@ -316,8 +316,8 @@
             SetChatImgUrl(data[@"data"][@"portrait"]);
             SetChatUserName(data[@"data"][@"nickname"]);
             Synchronize;
-            
-            m.name = data[@"nickname"];
+           
+            m.nickname = m.doctorName = m.name = data[@"data"][@"nickname"];
 //            [GuKeCache shareCache].user = m;
             [defaults setObject:[m mj_JSONObject] forKey:kUserInfo_cache_Key];
            

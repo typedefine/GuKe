@@ -484,6 +484,9 @@
 /**工作室发送弹幕/悬浮视频/直播--*/
 #define urlpath_work_group_extraSend @"app/chatgroups/sendmsg.json"
 
+/**工作室获取弹幕/悬浮视频/直播--*/
+#define urlpath_work_group_extraReceive @"app/chatgroups/getmsg.json"
+
 
 /**删除好友*/
 #define userpatienthuanxindeletefriend @"/app/userpatienthuanxin/deletefriend.json"

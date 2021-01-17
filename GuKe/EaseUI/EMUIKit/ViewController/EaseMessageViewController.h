@@ -424,9 +424,9 @@ shouldSendHasReadAckForMessage:(EMMessage *)message
 
 
 /// 发送cmd消息
-/// @param content 内容提示
+/// @param action 动作
 /// @param ext 消息拓展
-- (void)sendCmdMessage:(NSString *)content withExt:(NSDictionary*)ext;
+- (void)sendCmdMessage:(NSString *)action withExt:(NSDictionary*)ext;
 
 /*!
  @method
