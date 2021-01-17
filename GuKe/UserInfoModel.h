@@ -37,7 +37,12 @@
 @property (nonatomic, copy) NSString *pwd;
 
 @property (nonatomic, copy) NSString *roleName;//通讯录标签
+
+//身份名称类型
+//工作室1:管理员 2：会长/秘书长
+//讨论组1：组长  2：核心成员
 @property (nonatomic, assign) NSInteger roleType;//通讯录标签类型 0 普通成员  1 管理员（换色标签）  2 身份标签（绿色标签）
+
 @property (nonatomic, assign) NSInteger isFriend;//0 不是好友  1是好友
 
 @end

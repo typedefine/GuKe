@@ -70,13 +70,13 @@
         return;
     }
     
-    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,urlpath_create_workstudio];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,urlpath_create_workgroup];
     NSMutableDictionary *para = [@{
 //        @"sessionId":sessionIding,
         @"groupname":name,
         @"groupportrait":logoUrl,
         @"desc":desc,
-        @"groupType":@(self.superGroupId.integerValue)
+        @"groupType":self.superGroupId
     } mutableCopy];
    
     [self showHudInView:self.view hint:nil];

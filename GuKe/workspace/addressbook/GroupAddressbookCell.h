@@ -8,11 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, GroupAddressbookCellType){
+    GroupAddressbookCellType_None,
+    GroupAddressbookCellType_Addressbook,
+    GroupAddressbookCellType_Manage,
+    GroupAddressbookCellType_RemoveRight,
+    GroupAddressbookCellType_InviteMember,
+    GroupAddressbookCellType_MemberApply
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GroupAddressbookCell : UITableViewCell
 
-- (void)configWithData:(UserInfoModel *)data;
+- (void)configWithData:(UserInfoModel *)data Type:(GroupAddressbookCellType)type;
 
 @end
 

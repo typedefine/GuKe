@@ -7,14 +7,15 @@
 //
 
 #import "GroupAddressbookCell.h"
+#import "DDCButton.h"
 
 @interface GroupAddressbookCell ()
 
 @property(nonatomic, strong) UIImageView *portraitView;
 @property(nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *markLabel;
-@property (nonatomic, strong) UILabel *actionLabel;
-@property (nonatomic, strong) UIImageView *actionIcon;
+@property (nonatomic, strong) DDCButton *action2;
+@property (nonatomic, strong) DDCButton *action1;
 
 @end
 
@@ -47,13 +48,100 @@
         make.left.equalTo(self.portraitView.mas_right).offset(IPHONE_X_SCALE(10));
         make.centerY.equalTo(self.contentView);
     }];
+    
+    CGFloat m_h = 20;
+    [self.contentView addSubview:self.markLabel];
+    [self.markLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.nameLabel.mas_right).offset(10);
+        make.centerY.equalTo(self.contentView);
+        make.height.mas_equalTo(m_h);
+    }];
+    self.markLabel.clipsToBounds = YES;
+    self.markLabel.layer.cornerRadius = m_h/2.0f;
+    
+    
 }
 
-- (void)configWithData:(UserInfoModel *)data
+
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    self.markLabel.hidden = YES;
+    self.action2.hidden = YES;
+    self.action1.hidden = YES;
+}
+
+- (void)addMarkAttributesWithData:(UserInfoModel *)data
+{
+    if (data.roleName.isValidStringValue) {
+        self.markLabel.text = data.roleName;
+        if (data.roleType == 1) {
+            self.markLabel.textColor = [UIColor colorWithHex:0xF38D14];
+            self.markLabel.backgroundColor = [UIColor colorWithHex:0xFFF6EC];
+        }else if(data.roleType == 2){
+            self.markLabel.textColor = greenC;
+            self.markLabel.backgroundColor = [UIColor colorWithHex:0xE6F6F1];
+        }else{
+            self.markLabel.backgroundColor = [UIColor whiteColor];
+        }
+    }else{
+        self.markLabel.text = @"";
+        self.markLabel.textColor = [UIColor whiteColor];
+    }
+}
+
+- (void)configWithData:(UserInfoModel *)data Type:(GroupAddressbookCellType)type
 {
     [self.portraitView sd_setImageWithURL:[NSURL URLWithString:data.portrait] placeholderImage:[UIImage imageNamed:@"default_avatar"]];
     self.nameLabel.text = data.name;
+    
+    switch (type) {
+        case GroupAddressbookCellType_None:
+        {
+            
+        }
+            break;
+            
+        case GroupAddressbookCellType_Addressbook:
+        {
+            [self addMarkAttributesWithData:data];
+        }
+            break;
+            
+            
+        case GroupAddressbookCellType_Manage:
+        {
+            [self addMarkAttributesWithData:data];
+        }
+            break;
+            
+            
+        case GroupAddressbookCellType_RemoveRight:
+        {
+            [self addMarkAttributesWithData:data];
+        }
+            break;
+            
+        case GroupAddressbookCellType_InviteMember:
+        {
+            
+        }
+            break;
+            
+        case GroupAddressbookCellType_MemberApply:
+        {
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
+
+
+
+
 
 
 - (UIImageView *)portraitView
@@ -82,23 +170,24 @@
     return _markLabel;
 }
 
-- (UILabel *)actionLabel
+- (DDCButton *)action2
 {
-    if (!_actionLabel) {
-        _actionLabel = [[UILabel alloc] init];
-        _actionLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightMedium];
-        _actionLabel.hidden = YES;
+    if (!_action2) {
+        _action2 = [[DDCButton alloc] init];
+        _action2.titleLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightRegular];
+        _action2.hidden = YES;
     }
-    return _actionLabel;
+    return _action2;
 }
 
-- (UIImageView *)actionIcon
+- (DDCButton *)action1
 {
-    if (!_actionIcon) {
-        _actionIcon = [[UIImageView alloc] init];
-        _actionIcon.hidden = YES;
+    if (!_action1) {
+        _action1 = [[DDCButton alloc] init];
+        _action1.titleLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightRegular];
+        _action1.hidden = YES;
     }
-    return _actionIcon;
+    return _action2;
 }
 
 

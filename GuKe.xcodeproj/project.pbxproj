@@ -103,9 +103,6 @@
 		8910836425A382F7002C5959 /* ShareFilesPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910836325A382F7002C5959 /* ShareFilesPageModel.m */; };
 		8910836725A38322002C5959 /* ShareFileItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910836625A38322002C5959 /* ShareFileItemModel.m */; };
 		8910836A25A38351002C5959 /* ShareFileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910836925A38351002C5959 /* ShareFileCell.m */; };
-		8910836E25A4C8D3002C5959 /* GroupAddressbookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910836D25A4C8D3002C5959 /* GroupAddressbookCell.m */; };
-		8910837125A4C8F5002C5959 /* GroupAddressbookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910837025A4C8F5002C5959 /* GroupAddressbookController.m */; };
-		8910837425A4C90D002C5959 /* GroupAddressbookPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910837325A4C90D002C5959 /* GroupAddressbookPageModel.m */; };
 		8910837725A613D7002C5959 /* GroupVideoFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910837625A613D7002C5959 /* GroupVideoFooterView.m */; };
 		8910837A25A628DC002C5959 /* DMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910837925A628DC002C5959 /* DMModel.m */; };
 		8910838625A761FF002C5959 /* CALayer+Aimate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8910837F25A761FF002C5959 /* CALayer+Aimate.m */; };
@@ -199,8 +196,11 @@
 		89B2B9A324F52C6A0062387D /* MsgChatInputBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B2B9A224F52C6A0062387D /* MsgChatInputBar.m */; };
 		89C3D84925AB1D1A00A32EB5 /* DMItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3D84825AB1D1A00A32EB5 /* DMItemView.m */; };
 		89C3D84D25ACB42E00A32EB5 /* AddMembersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3D84C25ACB42E00A32EB5 /* AddMembersController.m */; };
-		89C3D85025B0A1F600A32EB5 /* GroupAddressbookHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3D84F25B0A1F600A32EB5 /* GroupAddressbookHeaderView.m */; };
 		89C3D85325B427DE00A32EB5 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3D85225B427DE00A32EB5 /* WebViewController.m */; };
+		89C3D87725B4A23600A32EB5 /* GroupAddressbookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3D86D25B4A23500A32EB5 /* GroupAddressbookCell.m */; };
+		89C3D87E25B4A43900A32EB5 /* GroupAddressbookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3D87D25B4A43900A32EB5 /* GroupAddressbookController.m */; };
+		89C3D88325B4A47700A32EB5 /* GroupAddressbookHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3D87F25B4A47600A32EB5 /* GroupAddressbookHeaderView.m */; };
+		89C3D88425B4A47700A32EB5 /* GroupAddressbookPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3D88225B4A47700A32EB5 /* GroupAddressbookPageModel.m */; };
 		89E52ED724F267E30052403B /* PatientBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52ED624F267E30052403B /* PatientBookController.m */; };
 		89E52EDA24F26ACC0052403B /* PatientBookPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52ED924F26ACC0052403B /* PatientBookPageModel.m */; };
 		89E52EDD24F26B2F0052403B /* PatientBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52EDC24F26B2F0052403B /* PatientBookCell.m */; };
@@ -1138,12 +1138,6 @@
 		8910836625A38322002C5959 /* ShareFileItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareFileItemModel.m; sourceTree = "<group>"; };
 		8910836825A38351002C5959 /* ShareFileCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareFileCell.h; sourceTree = "<group>"; };
 		8910836925A38351002C5959 /* ShareFileCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareFileCell.m; sourceTree = "<group>"; };
-		8910836C25A4C8D3002C5959 /* GroupAddressbookCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupAddressbookCell.h; sourceTree = "<group>"; };
-		8910836D25A4C8D3002C5959 /* GroupAddressbookCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupAddressbookCell.m; sourceTree = "<group>"; };
-		8910836F25A4C8F5002C5959 /* GroupAddressbookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupAddressbookController.h; sourceTree = "<group>"; };
-		8910837025A4C8F5002C5959 /* GroupAddressbookController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupAddressbookController.m; sourceTree = "<group>"; };
-		8910837225A4C90D002C5959 /* GroupAddressbookPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupAddressbookPageModel.h; sourceTree = "<group>"; };
-		8910837325A4C90D002C5959 /* GroupAddressbookPageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupAddressbookPageModel.m; sourceTree = "<group>"; };
 		8910837525A613D7002C5959 /* GroupVideoFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupVideoFooterView.h; sourceTree = "<group>"; };
 		8910837625A613D7002C5959 /* GroupVideoFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupVideoFooterView.m; sourceTree = "<group>"; };
 		8910837825A628DC002C5959 /* DMModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMModel.h; sourceTree = "<group>"; };
@@ -1320,10 +1314,16 @@
 		89C3D84825AB1D1A00A32EB5 /* DMItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMItemView.m; sourceTree = "<group>"; };
 		89C3D84B25ACB42E00A32EB5 /* AddMembersController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddMembersController.h; sourceTree = "<group>"; };
 		89C3D84C25ACB42E00A32EB5 /* AddMembersController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddMembersController.m; sourceTree = "<group>"; };
-		89C3D84E25B0A1F600A32EB5 /* GroupAddressbookHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupAddressbookHeaderView.h; sourceTree = "<group>"; };
-		89C3D84F25B0A1F600A32EB5 /* GroupAddressbookHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupAddressbookHeaderView.m; sourceTree = "<group>"; };
 		89C3D85125B427DE00A32EB5 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		89C3D85225B427DE00A32EB5 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		89C3D86D25B4A23500A32EB5 /* GroupAddressbookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupAddressbookCell.m; sourceTree = "<group>"; };
+		89C3D87225B4A23500A32EB5 /* GroupAddressbookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupAddressbookCell.h; sourceTree = "<group>"; };
+		89C3D87C25B4A43900A32EB5 /* GroupAddressbookController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupAddressbookController.h; sourceTree = "<group>"; };
+		89C3D87D25B4A43900A32EB5 /* GroupAddressbookController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupAddressbookController.m; sourceTree = "<group>"; };
+		89C3D87F25B4A47600A32EB5 /* GroupAddressbookHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupAddressbookHeaderView.m; sourceTree = "<group>"; };
+		89C3D88025B4A47700A32EB5 /* GroupAddressbookHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupAddressbookHeaderView.h; sourceTree = "<group>"; };
+		89C3D88125B4A47700A32EB5 /* GroupAddressbookPageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupAddressbookPageModel.h; sourceTree = "<group>"; };
+		89C3D88225B4A47700A32EB5 /* GroupAddressbookPageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupAddressbookPageModel.m; sourceTree = "<group>"; };
 		89E52ED524F267E30052403B /* PatientBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookController.h; sourceTree = "<group>"; };
 		89E52ED624F267E30052403B /* PatientBookController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientBookController.m; sourceTree = "<group>"; };
 		89E52ED824F26ACC0052403B /* PatientBookPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookPageModel.h; sourceTree = "<group>"; };
@@ -2978,14 +2978,14 @@
 		8910836B25A4C81C002C5959 /* addressbook */ = {
 			isa = PBXGroup;
 			children = (
-				8910836C25A4C8D3002C5959 /* GroupAddressbookCell.h */,
-				8910836D25A4C8D3002C5959 /* GroupAddressbookCell.m */,
-				8910836F25A4C8F5002C5959 /* GroupAddressbookController.h */,
-				8910837025A4C8F5002C5959 /* GroupAddressbookController.m */,
-				8910837225A4C90D002C5959 /* GroupAddressbookPageModel.h */,
-				8910837325A4C90D002C5959 /* GroupAddressbookPageModel.m */,
-				89C3D84E25B0A1F600A32EB5 /* GroupAddressbookHeaderView.h */,
-				89C3D84F25B0A1F600A32EB5 /* GroupAddressbookHeaderView.m */,
+				89C3D87C25B4A43900A32EB5 /* GroupAddressbookController.h */,
+				89C3D87D25B4A43900A32EB5 /* GroupAddressbookController.m */,
+				89C3D88025B4A47700A32EB5 /* GroupAddressbookHeaderView.h */,
+				89C3D87F25B4A47600A32EB5 /* GroupAddressbookHeaderView.m */,
+				89C3D88125B4A47700A32EB5 /* GroupAddressbookPageModel.h */,
+				89C3D88225B4A47700A32EB5 /* GroupAddressbookPageModel.m */,
+				89C3D87225B4A23500A32EB5 /* GroupAddressbookCell.h */,
+				89C3D86D25B4A23500A32EB5 /* GroupAddressbookCell.m */,
 			);
 			path = addressbook;
 			sourceTree = "<group>";
@@ -6902,6 +6902,7 @@
 				9A08A90A1F302B2E00AF29EB /* MJRefreshBackNormalFooter.m in Sources */,
 				E309767F1F9DD20F00EC3F80 /* IQTitleBarButtonItem.m in Sources */,
 				89162EB524ED70C300698B84 /* PatientMsgChatController.m in Sources */,
+				89C3D88425B4A47700A32EB5 /* GroupAddressbookPageModel.m in Sources */,
 				89E52EED24F2D7750052403B /* PatientMsgChatCellModel.m in Sources */,
 				894C7D562579396F00EF9ABE /* ZXFExpandTextView.m in Sources */,
 				8910831B25A0C69A002C5959 /* WorkSpaceInfoModel.m in Sources */,
@@ -7010,7 +7011,6 @@
 				894C7D502579396F00EF9ABE /* MoreWorkStudiosCell.m in Sources */,
 				9A53878520084D8B0084E772 /* PSTGridLayoutItem.m in Sources */,
 				8910836A25A38351002C5959 /* ShareFileCell.m in Sources */,
-				8910837125A4C8F5002C5959 /* GroupAddressbookController.m in Sources */,
 				1FA5AFBE211B77A700FBF98B /* H9ViewController.m in Sources */,
 				893265242501316D00FE7BBE /* UIColor+HEX.m in Sources */,
 				8949095D257A91DA00E91C66 /* GroupListSectionFooterView.m in Sources */,
@@ -7033,6 +7033,7 @@
 				9A1E386B1F32B06E0063FC2A /* xsqbanner.m in Sources */,
 				9A779885200DC81200EFCF67 /* WYYGroupThreeTableViewCell.m in Sources */,
 				9A667D5D20214FFE00365644 /* WYYDetailTwoTableViewCell.m in Sources */,
+				89C3D87725B4A23600A32EB5 /* GroupAddressbookCell.m in Sources */,
 				894C7D542579396F00EF9ABE /* WorkSpaceFooter.m in Sources */,
 				9A5387A620084D8B0084E772 /* EaseBubbleView+Image.m in Sources */,
 				9A78C908200C7848003D86BF /* WYYMainGroupViewController.m in Sources */,
@@ -7173,6 +7174,7 @@
 				893265282501418B00FE7BBE /* ReplyPatientBookTimePopover.m in Sources */,
 				9A53878C20084D8B0084E772 /* EaseUserModel.m in Sources */,
 				9A756CA22011C5DF005FE5FB /* WYYzuZhiHuiYiViewController.m in Sources */,
+				89C3D87E25B4A43900A32EB5 /* GroupAddressbookController.m in Sources */,
 				9A530B281F46B62500BD6C7E /* FaBuHuiYiViewController.m in Sources */,
 				89490963257A927600E91C66 /* WorkGroupListItemView.m in Sources */,
 				898F1ADF24D6C77200397505 /* PatientInfoManagePageModel.m in Sources */,
@@ -7217,7 +7219,6 @@
 				9A08A90E1F302B2E00AF29EB /* MJRefreshStateHeader.m in Sources */,
 				9A53878020084D8B0084E772 /* PSTCollectionViewFlowLayout.m in Sources */,
 				9A53896820084DC40084E772 /* UIResponder+Router.m in Sources */,
-				8910836E25A4C8D3002C5959 /* GroupAddressbookCell.m in Sources */,
 				E30976A01F9DD20F00EC3F80 /* MASLayoutConstraint.m in Sources */,
 				893A3DCC2537591E00570FB5 /* NSString+Additions.m in Sources */,
 				9A53874120084D8A0084E772 /* EMAudioPlayerUtil.m in Sources */,
@@ -7232,8 +7233,8 @@
 				894C7D4B2579396F00EF9ABE /* WorkSpaceTitleView.m in Sources */,
 				1FEEAE4720A5917E009C78F1 /* QjcBackSelectView.m in Sources */,
 				E3D35C052022A86100A6FB9F /* ZJNMRShareDoctorViewController.m in Sources */,
+				89C3D88325B4A47700A32EB5 /* GroupAddressbookHeaderView.m in Sources */,
 				9A08A8BF1F3013B000AF29EB /* GuKeNavigationViewController.m in Sources */,
-				89C3D85025B0A1F600A32EB5 /* GroupAddressbookHeaderView.m in Sources */,
 				1F179D9D22FAB644006BE323 /* QJSelectArea.m in Sources */,
 				E32CF4031F9B288200CF8C53 /* ZJNMeetingInfoModel.m in Sources */,
 				E3A105D11FA18A6500EBEF1F /* TZPhotoPreviewController.m in Sources */,
@@ -7246,7 +7247,6 @@
 				9A53890B20084DC40084E772 /* ChatViewController.m in Sources */,
 				1F1128D52221265E00FD8CB6 /* MJProperty.m in Sources */,
 				E3DABD1B1F8B4E470037AF98 /* ZJNPatientBodyInfoViewController.m in Sources */,
-				8910837425A4C90D002C5959 /* GroupAddressbookPageModel.m in Sources */,
 				E30976991F9DD20F00EC3F80 /* LiveGiftShowNumberView.m in Sources */,
 				9A42C4D81F53F4FC008D41C4 /* WoDeShouShuTableViewCell.m in Sources */,
 				9A397C951F316DC00089F5DC /* MainHuiYiViewController.m in Sources */,
