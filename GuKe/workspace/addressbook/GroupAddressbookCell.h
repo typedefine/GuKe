@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GroupAddressbookCell : UITableViewCell
 
-- (void)configWithData:(UserInfoModel *)data Type:(GroupAddressbookCellType)type;
+- (void)configWithData:(UserInfoModel *)data type:(GroupAddressbookCellType)type;
 
 @end
 

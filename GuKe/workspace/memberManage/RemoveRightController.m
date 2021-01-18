@@ -1,37 +1,66 @@
 //
-//  GroupAddressbookController.m
+//  RemoveRightController.m
 //  GuKe
 //
-//  Created by yb on 2021/1/6.
+//  Created by yb on 2021/1/19.
 //  Copyright © 2021 shangyukeji. All rights reserved.
 //
 
-#import "GroupAddressbookController.h"
-//#import "GroupAddressbookPageModel.h"
+#import "RemoveRightController.h"
 #import "GroupAddressbookCell.h"
 #import "GroupInfoModel.h"
-#import "GroupAddressbookHeaderView.h"
-#import "AddMembersController.h"
 
-@interface GroupAddressbookController ()<UITableViewDataSource, UITableViewDelegate>
+@interface RemoveRightController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
-//@property (nonatomic, strong) GroupAddressbookPageModel *pageModel;
+@property (nonatomic, strong) UIButton *naviRightButton;
 @end
 
-@implementation GroupAddressbookController
+@implementation RemoveRightController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithHex:0x3C3E3D];
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithHex:0x3C3E3D],NSFontAttributeName:[UIFont systemFontOfSize:18]}];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.barTintColor = greenC;
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:18]}];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    if (@available(iOS 13.0, *)) {
+        return UIStatusBarStyleDarkContent;
+    } else {
+        // Fallback on earlier versions
+        return UIStatusBarStyleDefault;
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    self.title = @"通讯录";
+    self.title = @"移交管理权限";
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.naviRightButton];
+    [self.naviRightButton addTarget:self action:@selector(naviRightButtonAction) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self);
     }];
     [self loadServerData];
+}
+
+- (void)naviRightButtonAction
+{
+    
 }
 
 - (void)loadServerData
@@ -89,7 +118,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     GroupAddressbookCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([GroupAddressbookCell class])];
-    [cell configWithData:self.groupInfo.members[indexPath.row] type:GroupAddressbookCellType_Addressbook];
+    [cell configWithData:self.groupInfo.members[indexPath.row] type:GroupAddressbookCellType_RemoveRight];
     return cell;
 }
 
@@ -100,13 +129,6 @@
     
 }
 
-
-- (void)addMembers
-{
-    AddMembersController *vc = [[AddMembersController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
 - (UITableView *)tableView
 {
     if (!_tableView) {
@@ -114,29 +136,25 @@
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.allowsSelection = NO;
         [_tableView registerClass:[GroupAddressbookCell class] forCellReuseIdentifier:NSStringFromClass([GroupAddressbookCell class])];
-        _tableView.rowHeight = IPHONE_X_SCALE(60);
-        CGRect f = self.view.bounds;
-        f.size.height = IPHONE_X_SCALE(50);
-        GroupAddressbookHeaderView *header = [[GroupAddressbookHeaderView alloc] initWithFrame:f];
-        [header addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(addMembers)]];
-        _tableView.tableHeaderView = header;
+        _tableView.rowHeight = IPHONE_X_SCALE(55);
         _tableView.tableFooterView = [[UIView alloc] init];
-//        if (@available(iOS 11.0, *)) {
-//            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-//        } else {
-//            self.pageModel.targetController.automaticallyAdjustsScrollViewInsets = NO;
-//            // Fallback on earlier versions
-//        }
     }
     return _tableView;
 }
 
-//- (GroupAddressbookPageModel *)pageModel
-//{
-//    if (!_pageModel) {
-//        _pageModel = [[GroupAddressbookPageModel alloc] init];
-//    }
-//    return _pageModel;
-//}
+- (UIButton *)naviRightButton
+{
+    if (!_naviRightButton) {
+        _naviRightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _naviRightButton.titleLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightRegular];
+        [_naviRightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_naviRightButton setTitle:@"完成" forState:UIControlStateNormal];//@"查找群"
+        _naviRightButton.backgroundColor = greenC;
+        CGFloat h = IPHONE_Y_SCALE(25);
+        _naviRightButton.frame = CGRectMake(0, 0, IPHONE_X_SCALE(60), h);
+        _naviRightButton.layer.cornerRadius = h/2.0f;
+    }
+    return _naviRightButton;
+}
 
 @end

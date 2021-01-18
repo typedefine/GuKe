@@ -61,6 +61,10 @@
 
 @implementation ChatViewController
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
 
 - (void)dealloc

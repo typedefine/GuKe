@@ -60,12 +60,28 @@
     self.markLabel.layer.cornerRadius = m_h/2.0f;
     
     
+    [self.contentView addSubview:self.action1];
+    [self.action1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView.mas_right).offset(-IPHONE_X_SCALE(20));
+        make.centerY.equalTo(self.contentView);
+    }];
+    
+    
+    [self.contentView addSubview:self.action2];
+    [self.action2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.action1.mas_left).offset(-IPHONE_X_SCALE(11));
+        make.centerY.equalTo(self.contentView);
+    }];
+    
 }
 
 
 - (void)prepareForReuse
 {
     [super prepareForReuse];
+    self.nameLabel.textColor = [UIColor colorWithHex:0x3C3E3D];
+    self.markLabel.text = @"";
+    self.markLabel.textColor = [UIColor whiteColor];
     self.markLabel.hidden = YES;
     self.action2.hidden = YES;
     self.action1.hidden = YES;
@@ -84,13 +100,86 @@
         }else{
             self.markLabel.backgroundColor = [UIColor whiteColor];
         }
-    }else{
-        self.markLabel.text = @"";
-        self.markLabel.textColor = [UIColor whiteColor];
+        self.markLabel.hidden = NO;
     }
+//    else{
+//        self.markLabel.text = @"";
+//        self.markLabel.textColor = [UIColor whiteColor];
+//        self.markLabel.hidden = YES;
+//    }
 }
 
-- (void)configWithData:(UserInfoModel *)data Type:(GroupAddressbookCellType)type
+- (void)addAddressbookActions
+{
+    CGFloat btn_w = IPHONE_X_SCALE(65), btn_h = IPHONE_X_SCALE(25);
+    self.action1.hidden = NO;
+    [self.action1 setImage:[UIImage imageNamed:@"group_tochat"] forState:UIControlStateNormal];
+    [self.action1 setTitle:@" 发消息" forState:UIControlStateNormal];
+    [self.action1 setTitleColor:[UIColor colorWithHex:0x3C3E3D] forState:UIControlStateNormal];
+    [self.action1 setLayerBorderColor:[UIColor colorWithHex:0xD5D9DC] forState:UIControlStateNormal];
+    [self.action1 mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView).offset(-IPHONE_X_SCALE(20));
+        make.centerY.equalTo(self.contentView);
+        make.width.mas_equalTo(btn_w);
+        make.height.mas_equalTo(btn_h);
+    }];
+    self.action1.clipsToBounds = YES;
+    self.action1.layer.cornerRadius = btn_h/2.0f;
+    
+    
+    self.action2.hidden = NO;
+    [self.action2 setImage:[UIImage imageNamed:@"group_invite"] forState:UIControlStateNormal];
+    [self.action2 setTitle:@" 加好友" forState:UIControlStateNormal];
+    [self.action2 setTitleColor:[UIColor colorWithHex:0x3C3E3D] forState:UIControlStateNormal];
+    [self.action2 setLayerBorderColor:[UIColor colorWithHex:0xD5D9DC] forState:UIControlStateNormal];
+    [self.action2 mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.action1.mas_left).offset(-IPHONE_X_SCALE(11));
+        make.centerY.equalTo(self.contentView);
+        make.width.mas_equalTo(btn_w);
+        make.height.mas_equalTo(btn_h);
+    }];
+    self.action2.clipsToBounds = YES;
+    self.action2.layer.cornerRadius = btn_h/2.0f;
+}
+
+- (void)addManageAction
+{
+    self.action1.hidden = NO;
+    [self.action1 setImage:[UIImage imageNamed:@"icon_more"] forState:UIControlStateNormal];
+    [self.action1 mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView).offset(-IPHONE_X_SCALE(20));
+        make.centerY.equalTo(self.contentView);
+        make.width.mas_equalTo(21);
+        make.height.mas_equalTo(4);
+    }];
+    [self.action1 setEnlargeEdgeWithTop:20 right:15 bottom:20 left:15];
+}
+
+- (void)addRemoveRightAction
+{
+    self.action1.hidden = NO;
+    [self.action1 setImage:[UIImage imageNamed:@"group_remove_right"] forState:UIControlStateNormal];
+    [self.action1 mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView).offset(-IPHONE_X_SCALE(20));
+        make.centerY.equalTo(self.contentView);
+        make.width.mas_equalTo(17);
+        make.height.mas_equalTo(12);
+    }];
+
+    self.action2.hidden = NO;
+    [self.action2 setImage:[UIImage imageNamed:@"group_invite"] forState:UIControlStateNormal];
+    [self.action2 setTitle:@"移交管理权限" forState:UIControlStateNormal];
+    [self.action2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.action2 mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.action1.mas_left).offset(-IPHONE_X_SCALE(9));
+        make.centerY.equalTo(self.contentView);
+//        make.width.mas_equalTo(btn_w);
+//        make.height.mas_equalTo(btn_h);
+    }];
+    self.action2.titleLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightMedium];
+}
+
+- (void)configWithData:(UserInfoModel *)data type:(GroupAddressbookCellType)type
 {
     [self.portraitView sd_setImageWithURL:[NSURL URLWithString:data.portrait] placeholderImage:[UIImage imageNamed:@"default_avatar"]];
     self.nameLabel.text = data.name;
@@ -105,6 +194,7 @@
         case GroupAddressbookCellType_Addressbook:
         {
             [self addMarkAttributesWithData:data];
+            [self addAddressbookActions];
         }
             break;
             
@@ -112,13 +202,18 @@
         case GroupAddressbookCellType_Manage:
         {
             [self addMarkAttributesWithData:data];
+            [self addManageAction];
         }
             break;
             
             
         case GroupAddressbookCellType_RemoveRight:
         {
+            self.nameLabel.textColor = [UIColor whiteColor];
             [self addMarkAttributesWithData:data];
+            self.markLabel.backgroundColor = [UIColor whiteColor];
+            [self addRemoveRightAction];
+            self.contentView.backgroundColor = greenC;
         }
             break;
             
@@ -187,7 +282,7 @@
         _action1.titleLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightRegular];
         _action1.hidden = YES;
     }
-    return _action2;
+    return _action1;
 }
 
 

@@ -28,6 +28,7 @@
 
 - (void)setup
 {
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     CGFloat r = IPHONE_X_SCALE(16);
     [self.contentView addSubview:self.portraitView];
     [self.portraitView mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -1,31 +1,26 @@
 //
-//  GroupAddressbookController.m
+//  GroupManageController.m
 //  GuKe
 //
-//  Created by yb on 2021/1/6.
+//  Created by yb on 2021/1/19.
 //  Copyright © 2021 shangyukeji. All rights reserved.
 //
 
-#import "GroupAddressbookController.h"
-//#import "GroupAddressbookPageModel.h"
+#import "GroupManageController.h"
 #import "GroupAddressbookCell.h"
 #import "GroupInfoModel.h"
-#import "GroupAddressbookHeaderView.h"
-#import "AddMembersController.h"
 
-@interface GroupAddressbookController ()<UITableViewDataSource, UITableViewDelegate>
+@interface GroupManageController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
-//@property (nonatomic, strong) GroupAddressbookPageModel *pageModel;
 @end
 
-@implementation GroupAddressbookController
+@implementation GroupManageController
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    self.title = @"通讯录";
+    self.title = @"成员管理";
     
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -89,7 +84,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     GroupAddressbookCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([GroupAddressbookCell class])];
-    [cell configWithData:self.groupInfo.members[indexPath.row] type:GroupAddressbookCellType_Addressbook];
+    [cell configWithData:self.groupInfo.members[indexPath.row] type:GroupAddressbookCellType_Manage];
     return cell;
 }
 
@@ -100,13 +95,6 @@
     
 }
 
-
-- (void)addMembers
-{
-    AddMembersController *vc = [[AddMembersController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
 - (UITableView *)tableView
 {
     if (!_tableView) {
@@ -115,28 +103,9 @@
         _tableView.allowsSelection = NO;
         [_tableView registerClass:[GroupAddressbookCell class] forCellReuseIdentifier:NSStringFromClass([GroupAddressbookCell class])];
         _tableView.rowHeight = IPHONE_X_SCALE(60);
-        CGRect f = self.view.bounds;
-        f.size.height = IPHONE_X_SCALE(50);
-        GroupAddressbookHeaderView *header = [[GroupAddressbookHeaderView alloc] initWithFrame:f];
-        [header addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(addMembers)]];
-        _tableView.tableHeaderView = header;
         _tableView.tableFooterView = [[UIView alloc] init];
-//        if (@available(iOS 11.0, *)) {
-//            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-//        } else {
-//            self.pageModel.targetController.automaticallyAdjustsScrollViewInsets = NO;
-//            // Fallback on earlier versions
-//        }
     }
     return _tableView;
 }
-
-//- (GroupAddressbookPageModel *)pageModel
-//{
-//    if (!_pageModel) {
-//        _pageModel = [[GroupAddressbookPageModel alloc] init];
-//    }
-//    return _pageModel;
-//}
 
 @end

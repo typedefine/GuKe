@@ -22,7 +22,7 @@
     bar.layer.borderColor = [UIColor clearColor].CGColor;
     bar.layer.borderWidth = 1.5f;
     bar.translucent = NO;
-    [bar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+//    [bar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
     
     

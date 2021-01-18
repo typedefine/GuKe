@@ -11,6 +11,8 @@
 #import "WorkStudioInfoController.h"
 #import "WorkGroupInfoController.h"
 #import "CreateWorkGroupController.h"
+#import "GroupManageController.h"
+#import "RemoveRightController.h"
 #import "GroupManageOperationCell.h"
 #import "GroupInfoModel.h"
 
@@ -100,13 +102,18 @@
             
         case GroupOperationType_memberManage:
         {
+            GroupManageController *vc = [[GroupManageController alloc] init];
+            vc.groupInfo = self.groupInfo;
+            [self.targetController.navigationController pushViewController:vc animated:NO];
             
         }
             break;
             
         case GroupOperationType_Transfer:
         {
-            
+            RemoveRightController *vc = [[RemoveRightController alloc] init];
+            vc.groupInfo = self.groupInfo;
+            [self.targetController.navigationController pushViewController:vc animated:NO];
         }
             break;
             
