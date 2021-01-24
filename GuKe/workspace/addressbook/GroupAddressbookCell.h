@@ -12,16 +12,23 @@ typedef NS_ENUM(NSUInteger, GroupAddressbookCellType){
     GroupAddressbookCellType_None,
     GroupAddressbookCellType_Addressbook,
     GroupAddressbookCellType_Manage,
-    GroupAddressbookCellType_RemoveRight,
+    GroupAddressbookCellType_RemoveRightSelected,
+    GroupAddressbookCellType_RemoveRightUnselected,
     GroupAddressbookCellType_InviteMember,
     GroupAddressbookCellType_MemberApply
 };
+
+typedef void (^ AddressbookAction)(UserInfoModel * _Nonnull user);
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GroupAddressbookCell : UITableViewCell
 
+@property (nonatomic, copy) AddressbookAction action1;
+@property (nonatomic, copy) AddressbookAction action2;
+
 - (void)configWithData:(UserInfoModel *)data type:(GroupAddressbookCellType)type;
+
 
 @end
 

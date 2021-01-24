@@ -200,6 +200,10 @@
 		89C3D88425B4A47700A32EB5 /* GroupAddressbookPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3D88225B4A47700A32EB5 /* GroupAddressbookPageModel.m */; };
 		89DF2BE725B5EDD80087F145 /* GroupManageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF2BE625B5EDD80087F145 /* GroupManageController.m */; };
 		89DF2BEE25B5F3790087F145 /* RemoveRightController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF2BED25B5F3790087F145 /* RemoveRightController.m */; };
+		89DF2C0625BB24070087F145 /* ManageRightPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF2BF725BB24070087F145 /* ManageRightPopupView.m */; };
+		89DF2C0E25BB261F0087F145 /* ManageRightPopupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF2C0D25BB261F0087F145 /* ManageRightPopupCell.m */; };
+		89DF2C1125BB26B70087F145 /* ManageRightPopupControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF2C1025BB26B70087F145 /* ManageRightPopupControl.m */; };
+		89DF2C1425BB2E500087F145 /* ManageRightPopupCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF2C1325BB2E500087F145 /* ManageRightPopupCellModel.m */; };
 		89E52ED724F267E30052403B /* PatientBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52ED624F267E30052403B /* PatientBookController.m */; };
 		89E52EDA24F26ACC0052403B /* PatientBookPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52ED924F26ACC0052403B /* PatientBookPageModel.m */; };
 		89E52EDD24F26B2F0052403B /* PatientBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52EDC24F26B2F0052403B /* PatientBookCell.m */; };
@@ -1321,6 +1325,14 @@
 		89DF2BE625B5EDD80087F145 /* GroupManageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupManageController.m; sourceTree = "<group>"; };
 		89DF2BEC25B5F3790087F145 /* RemoveRightController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RemoveRightController.h; sourceTree = "<group>"; };
 		89DF2BED25B5F3790087F145 /* RemoveRightController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RemoveRightController.m; sourceTree = "<group>"; };
+		89DF2BF025BB24070087F145 /* ManageRightPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageRightPopupView.h; sourceTree = "<group>"; };
+		89DF2BF725BB24070087F145 /* ManageRightPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageRightPopupView.m; sourceTree = "<group>"; };
+		89DF2C0C25BB261F0087F145 /* ManageRightPopupCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManageRightPopupCell.h; sourceTree = "<group>"; };
+		89DF2C0D25BB261F0087F145 /* ManageRightPopupCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManageRightPopupCell.m; sourceTree = "<group>"; };
+		89DF2C0F25BB26B70087F145 /* ManageRightPopupControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManageRightPopupControl.h; sourceTree = "<group>"; };
+		89DF2C1025BB26B70087F145 /* ManageRightPopupControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManageRightPopupControl.m; sourceTree = "<group>"; };
+		89DF2C1225BB2E500087F145 /* ManageRightPopupCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManageRightPopupCellModel.h; sourceTree = "<group>"; };
+		89DF2C1325BB2E500087F145 /* ManageRightPopupCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManageRightPopupCellModel.m; sourceTree = "<group>"; };
 		89E52ED524F267E30052403B /* PatientBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookController.h; sourceTree = "<group>"; };
 		89E52ED624F267E30052403B /* PatientBookController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientBookController.m; sourceTree = "<group>"; };
 		89E52ED824F26ACC0052403B /* PatientBookPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookPageModel.h; sourceTree = "<group>"; };
@@ -2664,6 +2676,7 @@
 		1B7372F8259DB2B6008E816B /* memberManage */ = {
 			isa = PBXGroup;
 			children = (
+				89DF2BEF25BB24070087F145 /* ManagePopupView */,
 				89C3D84B25ACB42E00A32EB5 /* AddMembersController.h */,
 				89C3D84C25ACB42E00A32EB5 /* AddMembersController.m */,
 				89DF2BE525B5EDD80087F145 /* GroupManageController.h */,
@@ -3355,6 +3368,21 @@
 				892555AB24E42206002F7B5B /* controller */,
 			);
 			path = patientRecord;
+			sourceTree = "<group>";
+		};
+		89DF2BEF25BB24070087F145 /* ManagePopupView */ = {
+			isa = PBXGroup;
+			children = (
+				89DF2BF025BB24070087F145 /* ManageRightPopupView.h */,
+				89DF2BF725BB24070087F145 /* ManageRightPopupView.m */,
+				89DF2C0F25BB26B70087F145 /* ManageRightPopupControl.h */,
+				89DF2C1025BB26B70087F145 /* ManageRightPopupControl.m */,
+				89DF2C0C25BB261F0087F145 /* ManageRightPopupCell.h */,
+				89DF2C0D25BB261F0087F145 /* ManageRightPopupCell.m */,
+				89DF2C1225BB2E500087F145 /* ManageRightPopupCellModel.h */,
+				89DF2C1325BB2E500087F145 /* ManageRightPopupCellModel.m */,
+			);
+			path = ManagePopupView;
 			sourceTree = "<group>";
 		};
 		89E52EE124F2B1320052403B /* msg */ = {
@@ -6870,6 +6898,7 @@
 				89E52EE424F2C5670052403B /* PatientChatCell.m in Sources */,
 				9A08A9661F302B8600AF29EB /* ZJNRequestManager.m in Sources */,
 				1BCC640625A5E1F6005EDBBF /* GroupVideoCellModel.m in Sources */,
+				89DF2C1425BB2E500087F145 /* ManageRightPopupCellModel.m in Sources */,
 				894C7D522579396F00EF9ABE /* WorkStudiosTitleView.m in Sources */,
 				E3A105D41FA18A6500EBEF1F /* UIView+Layout.m in Sources */,
 				E3D30D682043DC2E00876D44 /* ZJNChangePatientBasicInfoViewController.m in Sources */,
@@ -7180,6 +7209,7 @@
 				9A08A8651F300F8F00AF29EB /* main.m in Sources */,
 				9A53892920084DC40084E772 /* EMChatroomAdminsViewController.m in Sources */,
 				1F6FD51C20CE79CA004893DD /* pingfensmallView.m in Sources */,
+				89DF2C0625BB24070087F145 /* ManageRightPopupView.m in Sources */,
 				9A53893D20084DC40084E772 /* BaseViewController.m in Sources */,
 				1F1128D32221265E00FD8CB6 /* MJPropertyType.m in Sources */,
 				9A53878320084D8B0084E772 /* PSTCollectionViewUpdateItem.m in Sources */,
@@ -7370,6 +7400,7 @@
 				E3A105CA1FA18A6500EBEF1F /* TZImageCropManager.m in Sources */,
 				9A53894020084DC40084E772 /* EMSearchResultController.m in Sources */,
 				9A667D662021A2E000365644 /* WYYDetailHuanModel.m in Sources */,
+				89DF2C1125BB26B70087F145 /* ManageRightPopupControl.m in Sources */,
 				9A53877220084D8A0084E772 /* MKAnnotationView+EMWebCache.m in Sources */,
 				9A77988A200DD19C00EFCF67 /* WYYQunLiaoOneTableViewCell.m in Sources */,
 				9ACE974920184F050028FC9D /* ZJNFindDoctorTableViewCell.m in Sources */,
@@ -7379,6 +7410,7 @@
 				E30976751F9DD20F00EC3F80 /* IQUIScrollView+Additions.m in Sources */,
 				E30976901F9DD20F00EC3F80 /* FMResultSet.m in Sources */,
 				E309770A1F9DD20F00EC3F80 /* ZJNDatePickerView.m in Sources */,
+				89DF2C0E25BB261F0087F145 /* ManageRightPopupCell.m in Sources */,
 				9ACE972C201817020028FC9D /* WYYAddFriendList.m in Sources */,
 				E3E622B41F8CAFF6007593E5 /* AddFollow_UpRecordsViewController.m in Sources */,
 				9A08A9651F302B8600AF29EB /* UIViewController+HUD.m in Sources */,

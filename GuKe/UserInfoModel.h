@@ -28,6 +28,7 @@
 @property (nonatomic ,strong)NSArray  * specialty;
 
 @property (nonatomic, copy) NSString *userId;
+@property (nonatomic, copy) NSString *userid;
 @property (nonatomic ,copy) NSString *portrait;
 @property (nonatomic, copy) NSString *nickname;
 @property (nonatomic, copy) NSString *name;

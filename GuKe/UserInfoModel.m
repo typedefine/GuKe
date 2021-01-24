@@ -15,6 +15,15 @@
 //    return @{@"userId": @"userid"};//, @"name":@"nickname"
 //}
 
+- (NSString *)userid
+{
+    return _userid?:_userId;
+}
+
+- (NSString *)userId
+{
+    return _userId?:_userid;
+}
 
 - (id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property
 {

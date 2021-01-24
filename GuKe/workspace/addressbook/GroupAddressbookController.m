@@ -7,14 +7,15 @@
 //
 
 #import "GroupAddressbookController.h"
-//#import "GroupAddressbookPageModel.h"
 #import "GroupAddressbookCell.h"
 #import "GroupInfoModel.h"
 #import "GroupAddressbookHeaderView.h"
 #import "AddMembersController.h"
+#import "ChatViewController.h"
 
 @interface GroupAddressbookController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
+
 //@property (nonatomic, strong) GroupAddressbookPageModel *pageModel;
 @end
 
@@ -40,30 +41,29 @@
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         [self.tableView reloadData];
-    }else{
-        NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,chatgroupsgroupinfo];
-        NSArray *keysArray = @[@"sessionId",@"groupid"];
-        NSArray *valueArray = @[sessionIding,@(self.groupInfo.groupId).stringValue];
-        NSDictionary *dic = [NSDictionary dictionaryWithObjects:valueArray forKeys:keysArray];
-        [self showHudInView:self.view hint:nil];
-        [ZJNRequestManager postWithUrlString:urlString parameters:dic success:^(id data) {
-            [self hideHud];
-            NSString *retcode = [NSString stringWithFormat:@"%@",data[@"retcode"]];
-            if ([retcode isEqualToString:@"0000"]) {
-                GroupInfoModel *m = [GroupInfoModel mj_objectWithKeyValues:data[@"data"]];
-                self.groupInfo.members = m.members;
-                self.tableView.delegate = self;
-                self.tableView.dataSource = self;
-                [self.tableView reloadData];
-            }else{
-                [self showHint:data[@"message"]];
-            }
-            NSLog(@"群信息%@",data);
-        } failure:^(NSError *error) {
-            [self hideHud];
-            NSLog(@"群信息%@",error);
-        }];
     }
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,UrlPath_workstudio];
+    NSArray *keysArray = @[@"sessionId",@"groupid"];
+    NSArray *valueArray = @[sessionIding,@(self.groupInfo.groupId).stringValue];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjects:valueArray forKeys:keysArray];
+    [self showHudInView:self.view hint:nil];
+    [ZJNRequestManager postWithUrlString:urlString parameters:dic success:^(id data) {
+        [self hideHud];
+        NSString *retcode = [NSString stringWithFormat:@"%@",data[@"retcode"]];
+        if ([retcode isEqualToString:@"0000"]) {
+            GroupInfoModel *m = [GroupInfoModel mj_objectWithKeyValues:data[@"data"]];
+            self.groupInfo.members = m.members;
+            self.tableView.delegate = self;
+            self.tableView.dataSource = self;
+            [self.tableView reloadData];
+        }else{
+            [self showHint:data[@"message"]];
+        }
+        NSLog(@"群信息%@",data);
+    } failure:^(NSError *error) {
+        [self hideHud];
+        NSLog(@"群信息%@",error);
+    }];
 }
 
 
@@ -73,23 +73,18 @@
     return self.groupInfo.members.count;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//
-//}
-
-//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-////    if (indexPath.section==1) {
-////        return IPHONE_Y_SCALE(160);
-////    }
-//    return UITableViewAutomaticDimension;
-//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     GroupAddressbookCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([GroupAddressbookCell class])];
     [cell configWithData:self.groupInfo.members[indexPath.row] type:GroupAddressbookCellType_Addressbook];
+    __weak typeof(self) weakSelf = self;
+    cell.action1 = ^(UserInfoModel * _Nonnull user) {
+        [weakSelf chat:user];
+    };
+    cell.action2 = ^(UserInfoModel * _Nonnull user) {
+        [weakSelf addFriend:user];
+    };
     return cell;
 }
 
@@ -100,12 +95,69 @@
     
 }
 
+- (void)chat:(UserInfoModel *)user
+{
+    ChatViewController *vc = [[ChatViewController alloc] initWithConversationChatter:user.doctorId conversationType:EMConversationTypeChat];
+    vc.title = user.name;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)addFriend:(UserInfoModel *)user
+{
+    NSString *userId = [GuKeCache shareCache].user.userId;
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,doctorhuanxinaddHuan];
+    NSArray *keysArray = @[@"sessionId",@"doctorhuanId",@"content"];
+    NSArray *valueArray = @[sessionIding,userId,@""];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjects:valueArray forKeys:keysArray];
+    [self showHudInView:self.view hint:nil];
+    [ZJNRequestManager postWithUrlString:urlString parameters:dic success:^(id data) {
+        [self hideHud];
+        NSLog(@"好友申请%@",data);
+        NSString *retcode = [NSString stringWithFormat:@"%@",data[@"retcode"]];
+        if ([retcode isEqualToString:@"0000"]) {
+            EMError  *error = [[EMClient sharedClient].contactManager addContact:userId message:@"WYY好友申请"];
+        }
+        [self showHint:data[@"message"]];
+    } failure:^(NSError *error) {
+        [self hideHud];
+        NSLog(@"好友申请%@",error);
+    }];
+}
 
 - (void)addMembers
 {
     AddMembersController *vc = [[AddMembersController alloc] init];
+    vc.action = InviteMembersActionByAddingFriend;
+    __weak typeof(self) weakSelf = self;
+    vc.backgroupnumber = ^(NSMutableArray * _Nonnull numberArr) {
+        [weakSelf uploadAddMembers:numberArr];
+    };
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+- (void)uploadAddMembers:(NSArray *)data
+{
+    NSMutableString *uids = [NSMutableString stringWithString:@""];
+    for (NSDictionary *item in data) {
+        [uids appendString:item[@"userId"]];
+    }
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,UrlPath_invite_group_members];
+    NSDictionary *paras = @{@"sessionId": [GuKeCache shareCache].sessionId, @"groupid": @(self.groupInfo.groupId).stringValue, @"usernames":uids};
+    [self showHudInView:self.view hint:nil];
+    [ZJNRequestManager postWithUrlString:urlString parameters:paras success:^(id data) {
+        [self hideHud];
+        [self showHint:data[@"message"]];
+        NSString *retcode = [NSString stringWithFormat:@"%@",data[@"retcode"]];
+        if ([retcode isEqualToString:@"0000"]) {
+            [self loadServerData];
+        }
+        NSLog(@"邀请入群/添加群成员%@",data);
+    } failure:^(NSError *error) {
+        [self hideHud];
+        NSLog(@"邀请入群/添加群成员%@",error);
+    }];
+}
+
 
 - (UITableView *)tableView
 {

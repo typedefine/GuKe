@@ -40,7 +40,6 @@
         
     }
     
-
     self.view.backgroundColor = [UIColor whiteColor];
     sectionTitlesArray = [NSMutableArray array];
     numberArr = [NSMutableArray array];
@@ -303,7 +302,7 @@
     }else{
         [numberArr removeObject:itemArray[indes.section][indes.row]];
     }
-    
+    self.navigationItem.rightBarButtonItem.title = numberArr.count>0?[NSString stringWithFormat:@"确定(%ld)",numberArr.count]:@"确定";
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -474,6 +474,8 @@
 /**申请加入工作室*/
 #define UrlPath_apply_join_studio @"/app/chatgroups/applygroup.json"
 
+/**邀请入群/添加群成员*/
+#define UrlPath_invite_group_members @"app/chatgroups/addgroup.json"
 
 /**创建工作室--*/
 #define urlpath_create_workstudio @"app/chatgroups/addgroupnew.json"
@@ -499,6 +501,21 @@
 
 /**群信息*/
 #define chatgroupsgroupinfo @"/app/chatgroups/groupinfo.json"
+
+/**群成员管理-设置身份标签*/
+#define groupIDLabel @"app/chatgroups/addlabel.json"
+
+/**群成员管理-禁言*/
+#define group_mute @"app/chatgroups/mute.json"
+
+/**群成员管理-移入黑名单*/
+#define addgroupblack @"app/chatgroups/addgroupblack.json"
+
+/**群成员管理-踢人*/
+#define group_remove_members @"app/chatgroups/deletegroup.json"
+
+/**群成员管理-移交管理权限*/
+#define group_addMangeright @"app/chatgroups/transferGroup.json"
 
 /**医生好友（不包括患者,建群时使用）*/
 #define doctorhuanxindoctorlist @"/app/doctorhuanxin/doctorlist.json"
