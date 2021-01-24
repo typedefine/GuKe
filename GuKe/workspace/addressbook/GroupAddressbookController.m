@@ -139,6 +139,9 @@
 {
     NSMutableString *uids = [NSMutableString stringWithString:@""];
     for (NSDictionary *item in data) {
+        if (uids.length > 0) {
+            [uids appendString:@","];
+        }
         [uids appendString:item[@"userId"]];
     }
     NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,UrlPath_invite_group_members];

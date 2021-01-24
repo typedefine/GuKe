@@ -538,6 +538,10 @@
 /**添加群成员*/
 #define chatgroupsaddgroup @"/app/chatgroups/addgroup.json"
 
+
+/**同意申请加入工作室*/
+#define group_updateApply @"app/chatgroups/updateApply.json"
+
 /**建群*/
 #define chatgroupsadd @"/app/chatgroups/add.json"
 

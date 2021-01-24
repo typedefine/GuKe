@@ -10,10 +10,12 @@
 
 #import <Photos/Photos.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-
 #import "EMMemberCell.h"
+#import "ICouldManager.h"
+#import "ViewFileController.h"
+#import "GuKeNavigationViewController.h"
 
-@interface EMGroupSharedFilesViewController () <UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@interface EMGroupSharedFilesViewController () <UINavigationControllerDelegate,UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UIPopoverPresentationControllerDelegate>
 
 @property (nonatomic, strong) EMGroup *group;
 
@@ -40,12 +42,12 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUI:) name:@"UpdateGroupSharedFile" object:nil];
     
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    backButton.accessibilityIdentifier = @"back";
-    [backButton setImage:[UIImage imageNamed:@"backanniu"] forState:UIControlStateNormal];
-    [backButton addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    [self.navigationItem setLeftBarButtonItem:backItem];
+//    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+//    backButton.accessibilityIdentifier = @"back";
+//    [backButton setImage:[UIImage imageNamed:@"backanniu"] forState:UIControlStateNormal];
+//    [backButton addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+//    [self.navigationItem setLeftBarButtonItem:backItem];
     
     UIButton *uploadButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 64, 44)];
     [uploadButton setTitle:NSLocalizedString(@"group.upload", @"Upload") forState:UIControlStateNormal];
@@ -160,52 +162,6 @@
     }
 }
 
-#pragma mark - UIImagePickerControllerDelegate
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    NSURL *url = info[UIImagePickerControllerReferenceURL];
-    if (url == nil) {
-        UIImage *orgImage = info[UIImagePickerControllerOriginalImage];
-        NSData *data = UIImageJPEGRepresentation(orgImage, proportion);
-        [self _uploadData:data filename:nil];
-    } else {
-        if ([[UIDevice currentDevice].systemVersion doubleValue] >= 9.0f) {
-            PHFetchResult *result = [PHAsset fetchAssetsWithALAssetURLs:@[url] options:nil];
-            [result enumerateObjectsUsingBlock:^(PHAsset *asset , NSUInteger idx, BOOL *stop){
-                if (asset) {
-                    [[PHImageManager defaultManager] requestImageDataForAsset:asset options:nil resultHandler:^(NSData *data, NSString *uti, UIImageOrientation orientation, NSDictionary *dic){
-                        if (data != nil) {
-                            NSURL *path = [dic objectForKey:@"PHImageFileURLKey"];
-                            NSString *fileName = nil;
-                            if (path) {
-                                fileName = [[path absoluteString] lastPathComponent];
-                            }
-                            [self _uploadData:data filename:fileName];
-                        }
-                    }];
-                }
-            }];
-        } else {
-            ALAssetsLibrary *alasset = [[ALAssetsLibrary alloc] init];
-            [alasset assetForURL:url resultBlock:^(ALAsset *asset) {
-                if (asset) {
-                    ALAssetRepresentation* assetRepresentation = [asset defaultRepresentation];
-                    Byte* buffer = (Byte*)malloc((size_t)[assetRepresentation size]);
-                    NSUInteger bufferSize = [assetRepresentation getBytes:buffer fromOffset:0.0 length:(NSUInteger)[assetRepresentation size] error:nil];
-                    NSData* data = [NSData dataWithBytesNoCopy:buffer length:bufferSize freeWhenDone:YES];
-                    [self _uploadData:data filename:nil];
-                }
-            } failureBlock:NULL];
-        }
-    }
-    [picker dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    [self.imagePicker dismissViewControllerAnimated:YES completion:nil];
-}
 
 #pragma mark - private
 
@@ -287,14 +243,253 @@
     }];
 }
 
-#pragma mark - action
+#pragma mark - 上传
 
 - (void)uploadAction
 {
-    self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    self.imagePicker.mediaTypes = @[(NSString *)kUTTypeImage];
-    [self presentViewController:self.imagePicker animated:YES completion:NULL];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    __weak typeof(self) weakSelf = self;
+    [alert addAction:[UIAlertAction actionWithTitle:@"相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf takePicAction];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf photoAction];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"文件" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf selectUploadFileFromICouldDrive];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    [self presentViewController:alert animated:YES completion:nil];
 }
+
+
+- (void)photoAction
+{
+    // Pop image picker
+    self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    self.imagePicker.mediaTypes = @[(NSString *)kUTTypeImage, (NSString *)kUTTypeMovie, (NSString *)kUTTypeVideo, (NSString *)kUTTypeMPEG2Video, (NSString *)kUTTypeAppleProtectedMPEG4Video];
+    [self presentViewController:self.imagePicker animated:YES completion:NULL];
+    [[EaseSDKHelper shareHelper] setIsShowingimagePicker:YES];
+}
+
+- (void)takePicAction
+{
+    
+#if TARGET_IPHONE_SIMULATOR
+    [self showHint:NSEaseLocalizedString(@"message.simulatorNotSupportCamera", @"simulator does not support taking picture")];
+#elif TARGET_OS_IPHONE
+    self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    self.imagePicker.mediaTypes = @[(NSString *)kUTTypeImage,(NSString *)kUTTypeMovie];
+    [self presentViewController:self.imagePicker animated:YES completion:NULL];
+    
+    [[EaseSDKHelper shareHelper] setIsShowingimagePicker:YES];
+#endif
+}
+
+
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    NSString *mediaType = info[UIImagePickerControllerMediaType];
+    if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
+        NSURL *videoURL = info[UIImagePickerControllerMediaURL];
+        // video url:
+        // file:///private/var/mobile/Applications/B3CDD0B2-2F19-432B-9CFA-158700F4DE8F/tmp/capture-T0x16e39100.tmp.9R8weF/capturedvideo.mp4
+        // we will convert it to mp4 format
+        NSURL *mp4 = [self _convert2Mp4:videoURL];
+        NSFileManager *fileman = [NSFileManager defaultManager];
+        if ([fileman fileExistsAtPath:videoURL.path]) {
+            NSError *error = nil;
+            [fileman removeItemAtURL:videoURL error:&error];
+            if (error) {
+                NSLog(@"failed to remove file, error:%@.", error);
+            }
+        }
+        NSData *fileData = [NSData dataWithContentsOfURL:mp4];
+        [self _uploadData:fileData filename:@".mp4"];
+        
+    }else{
+        
+        NSURL *url = info[UIImagePickerControllerReferenceURL];
+        if (url == nil) {
+            UIImage *orgImage = info[UIImagePickerControllerOriginalImage];
+            NSData *data = UIImageJPEGRepresentation(orgImage, proportion);
+            [self _uploadData:data filename:nil];
+        } else {
+            if ([[UIDevice currentDevice].systemVersion doubleValue] >= 9.0f) {
+                PHFetchResult *result = [PHAsset fetchAssetsWithALAssetURLs:@[url] options:nil];
+                [result enumerateObjectsUsingBlock:^(PHAsset *asset , NSUInteger idx, BOOL *stop){
+                    if (asset) {
+                        [[PHImageManager defaultManager] requestImageDataForAsset:asset options:nil resultHandler:^(NSData *data, NSString *uti, UIImageOrientation orientation, NSDictionary *dic){
+                            if (data != nil) {
+                                NSURL *path = [dic objectForKey:@"PHImageFileURLKey"];
+                                NSString *fileName = nil;
+                                if (path) {
+                                    fileName = [[path absoluteString] lastPathComponent];
+                                }
+                                [self _uploadData:data filename:fileName];
+                            } else {
+                                [self showHint:NSEaseLocalizedString(@"message.smallerImage", @"The image size is too large, please choose another one")];
+                            }
+                        }];
+                    }
+                }];
+            } else {
+                ALAssetsLibrary *alasset = [[ALAssetsLibrary alloc] init];
+                [alasset assetForURL:url resultBlock:^(ALAsset *asset) {
+                    if (asset) {
+                        ALAssetRepresentation* assetRepresentation = [asset defaultRepresentation];
+                        Byte* buffer = (Byte*)malloc((size_t)[assetRepresentation size]);
+                        NSUInteger bufferSize = [assetRepresentation getBytes:buffer fromOffset:0.0 length:(NSUInteger)[assetRepresentation size] error:nil];
+                        NSData* fileData = [NSData dataWithBytesNoCopy:buffer length:bufferSize freeWhenDone:YES];
+                        [self _uploadData:fileData filename:nil];
+                    }
+                } failureBlock:NULL];
+            }
+        }
+    }
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    [[EaseSDKHelper shareHelper] setIsShowingimagePicker:NO];
+}
+
+/*!
+ @method
+ @brief mov格式视频转换为MP4格式
+ @discussion
+ @param movUrl   mov视频路径
+ @result  MP4格式视频路径
+ */
+- (NSURL *)_convert2Mp4:(NSURL *)movUrl
+{
+    NSURL *mp4Url = nil;
+    AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:movUrl options:nil];
+    NSArray *compatiblePresets = [AVAssetExportSession exportPresetsCompatibleWithAsset:avAsset];
+    
+    if ([compatiblePresets containsObject:AVAssetExportPresetHighestQuality]) {
+        AVAssetExportSession *exportSession = [[AVAssetExportSession alloc]initWithAsset:avAsset
+                                                                              presetName:AVAssetExportPresetHighestQuality];
+        NSString *mp4Path = [NSString stringWithFormat:@"%@/%d%d.mp4", [EMCDDeviceManager dataPath], (int)[[NSDate date] timeIntervalSince1970], arc4random() % 100000];
+        mp4Url = [NSURL fileURLWithPath:mp4Path];
+        exportSession.outputURL = mp4Url;
+        exportSession.shouldOptimizeForNetworkUse = YES;
+        exportSession.outputFileType = AVFileTypeMPEG4;
+        dispatch_semaphore_t wait = dispatch_semaphore_create(0l);
+        [exportSession exportAsynchronouslyWithCompletionHandler:^{
+            switch ([exportSession status]) {
+                case AVAssetExportSessionStatusFailed: {
+                    NSLog(@"failed, error:%@.", exportSession.error);
+                } break;
+                case AVAssetExportSessionStatusCancelled: {
+                    NSLog(@"cancelled.");
+                } break;
+                case AVAssetExportSessionStatusCompleted: {
+                    NSLog(@"completed.");
+                } break;
+                default: {
+                    NSLog(@"others.");
+                } break;
+            }
+            dispatch_semaphore_signal(wait);
+        }];
+        long timeout = dispatch_semaphore_wait(wait, DISPATCH_TIME_FOREVER);
+        if (timeout) {
+            NSLog(@"timeout.");
+        }
+        if (wait) {
+            //dispatch_release(wait);
+            wait = nil;
+        }
+    }
+    
+    return mp4Url;
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self.imagePicker dismissViewControllerAnimated:YES completion:nil];
+    
+    [[EaseSDKHelper shareHelper] setIsShowingimagePicker:NO];
+}
+
+
+
+#pragma mark - uploadfile
+
+- (void)selectUploadFileFromICouldDrive
+{
+    NSArray *documentTypes = @[
+        @"public.content",
+        @"public.text",
+        @"public.source-code",
+        @"public.image",
+        @"public.audiovisual-content",
+        @"com.adobe.pdf",
+        @"com.apple.keynote.key",
+        @"com.microsoft.word.doc",
+        @"com.microsoft.excel.xls",
+        @"com.microsoft.powerpoint.ppt"
+    ];
+    UIDocumentPickerViewController *documentPicker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:documentTypes inMode:UIDocumentPickerModeOpen];
+    documentPicker.delegate = self;
+    [self presentViewController:documentPicker animated:YES completion:nil];
+}
+
+
+- (void)documentPickerWasCancelled:(UIDocumentPickerViewController *)controller
+{
+    
+}
+
+
+#if defined(__IPHONE_11_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_11_0
+
+- (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentsAtURLs:(NSArray<NSURL *> *)urls
+{
+    [self documentPicker:controller handlerWithUrl:urls.firstObject];
+//    [controller dismissViewControllerAnimated:YES completion:nil];
+}
+
+#else
+
+- (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentAtURL:(NSURL *)url
+{
+    [self documentPicker:controller handlerWithUrl:url];
+//    [controller dismissViewControllerAnimated:YES completion:nil];
+}
+
+#endif
+
+- (void)documentPicker:(UIDocumentPickerViewController *)controller handlerWithUrl:(NSURL *)url
+{
+    NSString *fileName = url.lastPathComponent;
+    if ([ICouldManager iCouldEnable]) {
+        [ICouldManager downloadFileWithDocumentUrl:url completion:^(NSData * _Nonnull data) {
+            [self _uploadData:data filename:fileName];
+        }];
+    }
+}
+
+
+
+#pragma mark -viewfile
+
+
+- (void)viewFile:(NSString *)filePath name:(NSString *)fileName
+{
+    ViewFileController *webVC = [[ViewFileController alloc] init];
+    webVC.fileUrl = [NSURL fileURLWithPath:filePath];
+    webVC.title = fileName;
+//    webVC.modalPresentationStyle = UIModalPresentationPageSheet;
+    GuKeNavigationViewController *nav = [[GuKeNavigationViewController alloc]initWithRootViewController:webVC];
+    [self presentViewController:nav animated:YES completion:nil];
+    
+}
+
+
 
 - (void)updateUI:(NSNotification *)aNotif
 {

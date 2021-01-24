@@ -28,6 +28,8 @@
 #import "ZJNDoctorInfoViewController.h"
 #import "WYYNewFriendViewController.h"//新的朋友
 #import "WYYzuZhiHuiYiViewController.h"//我组织的会议
+#import "MemberApplyController.h"
+
 @interface WoDeViewController ()<UITableViewDelegate,UITableViewDataSource,PersonalCenterDelegate>{
     UITableView *mainTableview;
     NSDictionary *infoDic;//存放请求到的个人信息
@@ -47,9 +49,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    imgArr = @[@[@"订单中心",@"center_icon1"],@[@"center_icon2",@"center_icon3"],@[@"新的朋友",@"我组织的会议",@"center_icon5",@"center_icon6",@"在线客服",@"center_icon4"]];
+    imgArr = @[@[@"订单中心",@"center_icon1"],@[@"center_icon2",@"center_icon3"],@[@"新的朋友",@"group_create",@"我组织的会议",@"center_icon5",@"center_icon6",@"在线客服",@"center_icon4"]];
     
-    titArr =@[@[@"订单中心",@"个人资料"],@[@"同道",@"我的团队"],@[@"新的朋友",@"我组织的会议",@"推荐",@"我的收藏",@"在线客服",@"设置"]];
+    titArr =@[@[@"订单中心",@"个人资料"],@[@"同道",@"我的团队"],@[@"新的朋友",@"群成员申请",@"我组织的会议",@"推荐",@"我的收藏",@"在线客服",@"设置"]];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeLetterState) name:@"changeLetterState" object:nil];
     
@@ -81,8 +83,6 @@
         NSString *retcode = [NSString stringWithFormat:@"%@",data[@"retcode"]];
         if ([retcode isEqualToString:@"0"]) {
             infoDic = [NSDictionary dictionaryWithDictionary:data[@"data"]];
-            
-            
             SetChatImgUrl(infoDic[@"portrait"]);
             SetChatUserName(infoDic[@"doctorName"]);
             Synchronize;
@@ -133,7 +133,7 @@
         
         return 0;
     }else if (section == 3){
-        return 6;
+        return 7;
     }else if (section == 1){
         return 2;
     }else{
@@ -164,6 +164,9 @@
             return 150;
         }
     }else{
+        if (indexPath.section==3 && indexPath.row == 1) {
+            return CGFLOAT_MIN;
+        }
         return 50;
     }
 }
@@ -205,6 +208,9 @@
         }
         cell.headerImageV.image = [UIImage imageNamed:imgArr[indexPath.section-1][indexPath.row]];
         cell.nameLabel.text = titArr[indexPath.section-1][indexPath.row];
+        if (indexPath.section == 3 && indexPath.row == 1) {
+            cell.contentView.hidden = YES;
+        }
         return cell;
     }
 }
@@ -244,20 +250,24 @@
             [self presentViewController:nav animated:NO completion:nil];
             
         }else if(indexPath.row == 1){
+//            ApplyViewController *vc = [ApplyViewController shareController];
+            GuKeNavigationViewController *nav = [[GuKeNavigationViewController alloc]initWithRootViewController:[[MemberApplyController alloc] init]];
+            [self presentViewController:nav animated:NO completion:nil];
+        }else if(indexPath.row == 2){
             //我组织的会议
             //我组织的会议
             WYYzuZhiHuiYiViewController *pe = [[WYYzuZhiHuiYiViewController alloc]init];
             
             GuKeNavigationViewController *nav = [[GuKeNavigationViewController alloc]initWithRootViewController:pe];
             [self presentViewController:nav animated:NO completion:nil];
-        }else if (indexPath.row == 2) {
+        }else if (indexPath.row == 3) {
             ZJNShareDialogsView *shareView = [[ZJNShareDialogsView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
             [shareView show];
-        }else if (indexPath.row == 3){
+        }else if (indexPath.row == 4){
             MineCollectViewController *shou = [[MineCollectViewController alloc]init];
             GuKeNavigationViewController *nav = [[GuKeNavigationViewController alloc]initWithRootViewController:shou];
             [self presentViewController:nav animated:NO completion:nil];
-        }else if (indexPath.row == 4){
+        }else if (indexPath.row == 5){
             
             QJCKFViewcontroller *tong = [[QJCKFViewcontroller alloc]init];
             GuKeNavigationViewController *nav = [[GuKeNavigationViewController alloc]initWithRootViewController:tong];

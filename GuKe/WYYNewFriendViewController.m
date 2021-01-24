@@ -166,11 +166,8 @@
     }];
 }
 #pragma mark 拒绝按钮
-- (void)didCanCelButton:(NSString *)useridStr{
-    
-    
-    
-    
+- (void)didCanCelButton:(NSString *)useridStr
+{
     
     NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,goodfrienddelete];
     NSArray *keysArray = @[@"sessionId",@"userid"];

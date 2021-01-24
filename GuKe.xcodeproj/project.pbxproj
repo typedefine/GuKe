@@ -213,6 +213,7 @@
 		89E52EEA24F2D64D0052403B /* PatientMsgChatPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52EE924F2D64D0052403B /* PatientMsgChatPageModel.m */; };
 		89E52EED24F2D7750052403B /* PatientMsgChatCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52EEC24F2D7750052403B /* PatientMsgChatCellModel.m */; };
 		89E52EF024F2D7A10052403B /* PatientMsgChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E52EEF24F2D7A10052403B /* PatientMsgChatModel.m */; };
+		89EAA58C25BDA95700DE6D2E /* MemberApplyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EAA58B25BDA95700DE6D2E /* MemberApplyController.m */; };
 		9A08A8651F300F8F00AF29EB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A08A8641F300F8F00AF29EB /* main.m */; };
 		9A08A8681F300F8F00AF29EB /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A08A8671F300F8F00AF29EB /* AppDelegate.mm */; };
 		9A08A8701F300F8F00AF29EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A08A86F1F300F8F00AF29EB /* Assets.xcassets */; };
@@ -1351,6 +1352,8 @@
 		89E52EEC24F2D7750052403B /* PatientMsgChatCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientMsgChatCellModel.m; sourceTree = "<group>"; };
 		89E52EEE24F2D7A10052403B /* PatientMsgChatModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientMsgChatModel.h; sourceTree = "<group>"; };
 		89E52EEF24F2D7A10052403B /* PatientMsgChatModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientMsgChatModel.m; sourceTree = "<group>"; };
+		89EAA58A25BDA95700DE6D2E /* MemberApplyController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberApplyController.h; sourceTree = "<group>"; };
+		89EAA58B25BDA95700DE6D2E /* MemberApplyController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberApplyController.m; sourceTree = "<group>"; };
 		9A08A8601F300F8E00AF29EB /* GuKe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuKe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A08A8641F300F8F00AF29EB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9A08A8661F300F8F00AF29EB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -2683,6 +2686,8 @@
 				89DF2BE625B5EDD80087F145 /* GroupManageController.m */,
 				89DF2BEC25B5F3790087F145 /* RemoveRightController.h */,
 				89DF2BED25B5F3790087F145 /* RemoveRightController.m */,
+				89EAA58A25BDA95700DE6D2E /* MemberApplyController.h */,
+				89EAA58B25BDA95700DE6D2E /* MemberApplyController.m */,
 			);
 			path = memberManage;
 			sourceTree = "<group>";
@@ -6953,6 +6958,7 @@
 				9A779896200DDD8000EFCF67 /* WYYZhaoYishengTwoViewController.m in Sources */,
 				9A53876220084D8A0084E772 /* MWCaptionView.m in Sources */,
 				E3536B5E1F7E3497009EC5F9 /* Follow_UpRecordsBasicInfoTableViewCell.m in Sources */,
+				89EAA58C25BDA95700DE6D2E /* MemberApplyController.m in Sources */,
 				E30976881F9DD20F00EC3F80 /* MMTextAttachment.m in Sources */,
 				E309767C1F9DD20F00EC3F80 /* IQTextView.m in Sources */,
 				893A3DA22537434800570FB5 /* DDCImageViewerScrollView.m in Sources */,
@@ -7607,7 +7613,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 23P4287UJD;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -7651,7 +7657,7 @@
 					"$(PROJECT_DIR)/GuKe/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/GuKe/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.2.2;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -7675,7 +7681,7 @@
 				CODE_SIGN_ENTITLEMENTS = GuKe/GuKe.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 23P4287UJD;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -7721,7 +7727,7 @@
 					"$(PROJECT_DIR)/GuKe/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/GuKe/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.2.2;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
