@@ -60,7 +60,7 @@
     
     NSString *logoUrl = self.pageModel.cellModelList[1].content;
     if (!logoUrl.isValidStringValue) {
-        [self showHint:@"请输入工作室logo" inView:self.view];
+        [self showHint:@"请添加工作室logo" inView:self.view];
         return;
     }
     
@@ -70,26 +70,47 @@
         return;
     }
     
+    NSString *hospitalName = self.pageModel.cellModelList[3].content;
+    if (!hospitalName.isValidStringValue) {
+        [self showHint:@"请输入医院名称" inView:self.view];
+        return;
+    }
+    
+    NSString *sectionName = self.pageModel.cellModelList[4].content;
+    if (!sectionName.isValidStringValue) {
+        [self showHint:@"请输入科室名称" inView:self.view];
+        return;
+    }
+    
+    NSString *certImgUrl = self.pageModel.cellModelList[5].content;
+    if (!certImgUrl.isValidStringValue) {
+        [self showHint:@"请添加执业医师证书" inView:self.view];
+        return;
+    }
+    
     NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,urlpath_create_workstudio];
     NSMutableDictionary *para = [@{
 //        @"sessionId":sessionIding,
         @"groupname":name,
         @"groupportrait":logoUrl,
         @"desc":desc,
-        @"groupType":@(1)
+        @"groupType":@(1),
+        @"hospital":hospitalName,
+        @"department":sectionName,
+        @"certPic":certImgUrl
     } mutableCopy];
     
-    NSString *supporterLogo = self.pageModel.cellModelList[3].content;
+    NSString *supporterLogo = self.pageModel.cellModelList[6].content;
     if (supporterLogo.isValidStringValue) {
         para[@"sponsorLogo"] = supporterLogo;
     }
     
-    NSString *supporterName = self.pageModel.cellModelList[4].content;
+    NSString *supporterName = self.pageModel.cellModelList[7].content;
     if (supporterName.isValidStringValue) {
         para[@"sponsorLame"] = supporterName;
     }
     
-    NSString *supporterUrl = self.pageModel.cellModelList[5].content;
+    NSString *supporterUrl = self.pageModel.cellModelList[8].content;
     if (supporterUrl.isValidStringValue) {
         para[@"sponsorUrl"] = supporterUrl;
     }
@@ -149,7 +170,7 @@
         case ZXFInputCellTypeTextView:
         {
             ZXFInputViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ZXFInputViewCell class])];
-            [cell configureWithTitle:m.title content:m.content input:^(NSString * _Nonnull text) {
+            [cell configureWithTitle:m.title placeholder:m.placeholder content:m.content input:^(NSString * _Nonnull text) {
 //                [weakSelf.table scrollToRowAtIndexPath:weakIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
                 m.content = text;
             }];
@@ -159,7 +180,7 @@
         default:
         {
             ZXFInputFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ZXFInputFieldCell class])];
-            [cell configWithTitle:m.title placeholder:m.placeholder completion:^(NSString * _Nonnull text) {
+            [cell configWithTitle:m.title placeholder:m.placeholder content:m.content completion:^(NSString * _Nonnull text) {
 //                if (weakIndexPath.row >= weakSelf.pageModel.cellModelList.count-3) {
 //                    [weakSelf.table scrollToRowAtIndexPath:weakIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 //                }

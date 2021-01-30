@@ -82,12 +82,23 @@
     self.count = 0;
 }
 
-- (void)configureWithTitle:(NSString *)title content:(NSString *)content input:(inputAction)input
+- (void)configureWithTitle:(NSString *)title
+               placeholder:(NSString *)placeholder
+                   content:(NSString *)content
+                     input:(inputAction)input
 {
-    self.titleLabel.text = title;
+    if (title.isValidStringValue) {
+        self.titleLabel.text = title;
+    }
+    
+    if (placeholder.isValidStringValue) {
+        self.placeholderLabel.text = title;
+    }
+    
     if (content.isValidStringValue) {
         self.textView.text = content;
         self.placeholderLabel.hidden = YES;
+        self.count = content.length;
     }
     self.input = [input copy];
 }
@@ -141,7 +152,7 @@
         _placeholderLabel = [[UILabel alloc] init];
         _placeholderLabel.textColor = SetColor(0xD0D0D0);
         _placeholderLabel.font = Font14;
-        _placeholderLabel.text = @"请输入提醒内容";
+//        _placeholderLabel.text = @"请输入提醒内容";
     }
     return _placeholderLabel;
 }

@@ -134,7 +134,7 @@
         case ZXFInputCellTypeTextView:
         {
             ZXFInputViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ZXFInputViewCell class])];
-            [cell configureWithTitle:m.title content:m.content input:^(NSString * _Nonnull text) {
+            [cell configureWithTitle:m.title placeholder:m.placeholder content:m.content input:^(NSString * _Nonnull text) {
 //                [weakSelf.table scrollToRowAtIndexPath:weakIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
                 m.content = text;
             }];
@@ -144,7 +144,7 @@
         default:
         {
             ZXFInputFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ZXFInputFieldCell class])];
-            [cell configWithTitle:m.title placeholder:m.placeholder completion:^(NSString * _Nonnull text) {
+            [cell configWithTitle:m.title placeholder:m.placeholder content:m.content completion:^(NSString * _Nonnull text) {
 //                if (weakIndexPath.row >= weakSelf.pageModel.cellModelList.count-3) {
 //                    [weakSelf.table scrollToRowAtIndexPath:weakIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 //                }

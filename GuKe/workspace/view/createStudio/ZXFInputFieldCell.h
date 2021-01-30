@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)configWithTitle:(NSString *)title
             placeholder:(NSString *)placeholder
+                content:(NSString *)content
              completion:(void (^)(NSString *text))completion;
 
 @end

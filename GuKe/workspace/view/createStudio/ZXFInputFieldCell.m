@@ -52,6 +52,7 @@
 
 - (void)configWithTitle:(NSString *)title
             placeholder:(NSString *)placeholder
+                content:(NSString *)content
              completion:(void (^)(NSString *text))completion
 {
     if (title.isValidStringValue) {
@@ -62,11 +63,18 @@
         self.placeholder = placeholder;
     }
     
-    if (placeholder.isValidStringValue) {
-        self.textField.placeholder = placeholder;
+    if (content.isValidStringValue) {
+        self.textField.text = content;
     }
+    
     self.completion = [completion copy];
     
+}
+
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    self.textField.text = @"";
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField

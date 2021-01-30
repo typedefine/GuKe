@@ -14,7 +14,10 @@ typedef void (^ inputAction)(NSString *text);
 
 @interface ZXFInputViewCell : UITableViewCell
 
-- (void)configureWithTitle:(NSString *)title content:(NSString *)content input:(inputAction)input;
+- (void)configureWithTitle:(NSString *)title
+               placeholder:(NSString *)placeholder
+                   content:(NSString *)content
+                     input:(inputAction)input;
 
 @end
 

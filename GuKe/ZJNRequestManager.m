@@ -96,8 +96,9 @@
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(error);
-
+        if(failure){
+            failure(error);
+        }
     }];
 //    [manager POST:urlString parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
 //        if ([responseObject isKindOfClass:[NSDictionary class]]) {
