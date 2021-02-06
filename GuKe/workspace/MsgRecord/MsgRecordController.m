@@ -1,17 +1,12 @@
-/************************************************************
- *  * Hyphenate CONFIDENTIAL
- * __________________
- * Copyright (C) 2016 Hyphenate Inc. All rights reserved.
- *
- * NOTICE: All information contained herein is, and remains
- * the property of Hyphenate Inc.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from Hyphenate Inc.
- */
+//
+//  MsgRecordController.m
+//  GuKe
+//
+//  Created by yb on 2021/2/6.
+//  Copyright © 2021 shangyukeji. All rights reserved.
+//
 
-#import "ChatViewController.h"
-
+#import "MsgRecordController.h"
 #import "ChatroomDetailViewController.h"
 #import "UserProfileViewController.h"
 #import "UserProfileManager.h"
@@ -37,95 +32,25 @@
 #import "GroupVideoListView.h"
 #import "DMModel.h"
 #import "OnScreenCommentsView.h"
-#import "MsgRecordController.h"
-//#import "YZXSelectDateViewController.h"
-#import "MsgDatePickerController.h"
 
-@interface ChatViewController ()<UIAlertViewDelegate,EMClientDelegate, EMChooseViewDelegate, UIDocumentPickerDelegate, UIPopoverPresentationControllerDelegate>
+@interface MsgRecordController ()<UIAlertViewDelegate,EMClientDelegate, EMChooseViewDelegate>
 {
     UIMenuItem *_copyMenuItem;
     UIMenuItem *_deleteMenuItem;
     UIMenuItem *_transpondMenuItem;
     UIMenuItem *_recallItem;
-    NSString *isDoctor;// 0医生 1患者
-    NSString *doctorID;//医生id
-    GroupInfoModel *_groupInfo;
 }
 
-@property (nonatomic, strong) UIButton *naviRightButton;
-@property (nonatomic, strong) GroupVideoListView *videoListView;
 @property (nonatomic) BOOL isPlayingAudio;
 @property (nonatomic, strong) EMGroup *group;
 @property (nonatomic) NSMutableDictionary *emotionDic;
 @property (nonatomic, copy) EaseSelectAtTargetCallback selectedCallback;
-@property (nonatomic, strong) OnScreenCommentsView *floatView;
 
 @end
 
-@implementation ChatViewController
-
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;
-}
+@implementation MsgRecordController
 
 
-- (void)dealloc
-{
-    if (self.conversation.type == EMConversationTypeChatRoom) {
-        //退出聊天室，删除会话
-        if (self.isJoinedChatroom) {
-            NSString *chatter = [self.conversation.conversationId copy];
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                EMError *error = nil;
-                [[EMClient sharedClient].roomManager leaveChatroom:chatter error:&error];
-                if (error !=nil) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"Leave chatroom '%@' failed [%@]", chatter, error.errorDescription] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                        [alertView show];
-                    });
-                }
-            });
-        }
-        else {
-            [[EMClient sharedClient].chatManager deleteConversation:self.conversation.conversationId isDeleteMessages:YES completion:nil];
-        }
-    }
-    
-    [[EMClient sharedClient] removeDelegate:self];
-}
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-//    if (self.conversation.type == EMConversationTypeGroupChat) {
-//        if (_groupInfo) {
-//            [self.floatView clean];
-//            [self.floatView pause];
-//            [self.floatView removeFromSuperview];
-//            self.floatView = nil;
-//        }
-//    }
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"setupUnreadMessageCount" object:nil];
-}
-
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    if (self.conversation.type == EMConversationTypeGroupChat) {
-        NSDictionary *ext = self.conversation.ext;
-        if ([[ext objectForKey:@"subject"] length])
-        {
-            self.title = [ext objectForKey:@"subject"];
-        }
-        
-        if (ext && ext[kHaveUnreadAtMessage] != nil)
-        {
-            NSMutableDictionary *newExt = [ext mutableCopy];
-            [newExt removeObjectForKey:kHaveUnreadAtMessage];
-            self.conversation.ext = newExt;
-        }
-    }
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -140,78 +65,16 @@
     [backButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     [self.navigationItem setLeftBarButtonItem:backItem];
-    
-    [self.chatBarMoreView updateItemWithImage:[UIImage imageNamed:@"chat_photoLibrary"] highlightedImage:[UIImage imageNamed:@"chat_photoLibrary"] title:@"相册" atIndex:0];
-    [self.chatBarMoreView updateItemWithImage:[UIImage imageNamed:@"chat_camera"] highlightedImage:[UIImage imageNamed:@"chat_camera"] title:@"相机" atIndex:1];
-    [self.chatBarMoreView insertItemWithImage:[UIImage imageNamed:@"chat_file"] highlightedImage:[UIImage imageNamed:@"chat_file"] title:@"文件"];
-    
-    if(![self.conversation.conversationId isEqualToString:@"gxs"]){
-        self.naviRightButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-        self.naviRightButton.backgroundColor = greenC;
-        self.naviRightButton.accessibilityIdentifier = @"backs";
-        
-        //backButtons.imageEdgeInsets = UIEdgeInsetsMake(0, - 20, 0, 20);
-        [self.naviRightButton addTarget:self action:@selector(rightAction) forControlEvents:UIControlEventTouchUpInside];
-        UIBarButtonItem *backItems = [[UIBarButtonItem alloc] initWithCustomView:self.naviRightButton];
-        [self.navigationItem setRightBarButtonItem:backItems];
-         if (![self.doctorId isEqualToString:@"gxs"] ) {
-            
-            if (self.conversation.type == EMConversationTypeChat) {
-                [self.naviRightButton setImage:[UIImage imageNamed:@"man"] forState:normal];
-                [self makeUseridData];
-            }else{
-                
-                WorkSpaceInfoModel *m = [GuKeCache shareCache].spaceInfo; //[[GuKeCache shareCache] objectForKey:kWorkStudioGroup_cache_key];
-                if (m) {
-                    [self addNaviToolBar];
-                    [self addGroupVideoListView];
-                    [self addOnScreenComments];
-                    for (GroupInfoModel *studio in m.groups) {
-                        if ([@(studio.groupId).stringValue isEqualToString:self.conversation.conversationId]) {
-                            _groupInfo = studio;
-                            _groupInfo.joinStatus = 1;
-                            break;
-                        }else{
-                            for (GroupInfoModel *group in studio.chatroom) {
-                                if ([@(group.groupId).stringValue isEqualToString:self.conversation.conversationId]) {
-                                    _groupInfo = group;
-                                    _groupInfo.joinStatus = 1;
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    [self.chatBarMoreView insertItemWithImage:[UIImage imageNamed:@"text_dm"] highlightedImage:[UIImage imageNamed:@"text_dm"] title:@"文字弹幕"];
-                    [self.chatBarMoreView insertItemWithImage:[UIImage imageNamed:@"video_dm"] highlightedImage:[UIImage imageNamed:@"video_dm"] title:@"分享视频"];
-//                    [self.chatBarMoreView insertItemWithImage:[UIImage imageNamed:@"live_dm"] highlightedImage:[UIImage imageNamed:@"live_dm"] title:@"分享直播"];
-                }
-                [self.naviRightButton setImage:[UIImage imageNamed:_groupInfo && _groupInfo.isManager? @"MORE":@"group"] forState:normal];
-                __weak typeof(self) weakSelf = self;
-//                [self showHudInView:self.view hint:NSLocalizedString(@"loadData", @"Load data...")];
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(){
-                    EMError *error = nil;
-                    EMGroup *group = [[EMClient sharedClient].groupManager getGroupSpecificationFromServerWithId:weakSelf.conversation.conversationId error:&error];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [weakSelf hideHud];
-                    });
-                    if (!error) {
-                        weakSelf.group = group;
-                    }
-                });
-            }
-        }
-    
-        
-    }else{
-        
-        self.title =@"在线客服";
-    }
 
-    // Do any additional setup after loading the view.
+    [self.chatToolbar removeFromSuperview];
+    
+    [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    
     self.showRefreshHeader = YES;
     self.delegate = self;
     self.dataSource = self;
-    //[self _setupBarButtonItem];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteAllMessages:) name:KNOTIFICATIONNAME_DELETEALLMESSAGE object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(exitChat) name:@"ExitChat" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertCallMessage:) name:@"insertCallMessage" object:nil];
@@ -220,305 +83,40 @@
     
 }
 
-- (void)addNaviToolBar
-{
-    [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(self.view);
-        make.top.equalTo(self.view).offset(45);
-    }];
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 45, 0);
-    UIView *toolBar = [[UIView alloc] init];
-    toolBar.tag = 888;
-    toolBar.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:toolBar];
-    [toolBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.equalTo(self.view);
-        make.height.mas_equalTo(45);
-    }];
-    
-    DDCButton *contactBtn = [self createNaviToolBarButtonWithImagePath:@"group_contact" title:@" 通讯录"];
-    [toolBar addSubview:contactBtn];
-    [contactBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(toolBar).offset(IPHONE_X_SCALE(20));
-        make.height.mas_equalTo(25);
-        make.width.mas_equalTo(65);
-        make.centerY.equalTo(toolBar);
-    }];
-    [contactBtn addTarget:self action:@selector(viewContact) forControlEvents:UIControlEventTouchUpInside];
-    
-    DDCButton *fileBtn = [self createNaviToolBarButtonWithImagePath:@"group_share_file" title:@" 共享文件"];
-    [toolBar addSubview:fileBtn];
-    [fileBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(contactBtn.mas_right).offset(IPHONE_X_SCALE(12));
-        make.height.mas_equalTo(25);
-        make.width.mas_equalTo(80);
-        make.centerY.equalTo(toolBar);
-    }];
-    [fileBtn addTarget:self action:@selector(viewShareFiles) forControlEvents:UIControlEventTouchUpInside];
-    
-    DDCButton *videoBtn = [self createNaviToolBarButtonWithImagePath:@"group_video_normal" title:@" 视频"];
-    videoBtn.tag = 999;
-    [videoBtn setImage:[UIImage imageNamed:@"group_video_selected"] forState:UIControlStateSelected];
-    [videoBtn setBackgroundColor:greenC forState:UIControlStateSelected];
-    [videoBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [toolBar addSubview:videoBtn];
-    [videoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(fileBtn.mas_right).offset(IPHONE_X_SCALE(12));
-        make.height.mas_equalTo(25);
-        make.width.mas_equalTo(57);
-        make.centerY.equalTo(toolBar);
-    }];
-    [videoBtn addTarget:self action:@selector(viewVideos:) forControlEvents:UIControlEventTouchUpInside];
-    
-    DDCButton *recordBtn = [self createNaviToolBarButtonWithImagePath:@"icon_group_record" title:@" 记录"];
-    [toolBar addSubview:recordBtn];
-    [recordBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(toolBar.mas_right).offset(-IPHONE_X_SCALE(20));
-        make.height.mas_equalTo(25);
-        make.width.mas_equalTo(60);
-        make.centerY.equalTo(toolBar);
-    }];
-    [recordBtn addTarget:self action:@selector(viewMsgRecord) forControlEvents:UIControlEventTouchUpInside];
-
-}
-
-- (DDCButton *)createNaviToolBarButtonWithImagePath:(NSString *)imagePath title:(NSString *)title
-{
-    DDCButton *btn = [DDCButton buttonWithType:UIButtonTypeCustom];
-    [btn setBackgroundColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    btn.titleLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightRegular];
-    [btn setTitleColor:[UIColor colorWithHex:0x3C3E3D] forState:UIControlStateNormal];
-    [btn setImage:[UIImage imageNamed:imagePath] forState:UIControlStateNormal];
-    [btn setTitle:title forState:UIControlStateNormal];
-    btn.clipsToBounds = YES;
-    btn.layer.cornerRadius = 12.5;
-    [btn setLayerBorderColor:[UIColor colorWithHex:0x3C3E3D] forState:UIControlStateNormal];
-//    btn.layer.borderColor = [UIColor colorWithHex:0x3C3E3D].CGColor;
-//    btn.layer.borderWidth = 1;
-    return btn;
-}
-
-- (void)viewMsgRecord
-{
-//    YZXSelectDateViewController *VC = [[YZXSelectDateViewController alloc] init];
-//    __weak typeof(self) weak_self = self;
-//    __block YZXTimeToChooseType type = YZXTimeToChooseInDay;
-//    __block NSString *sDate;
-//    __block NSString *eDate;
-//    VC.confirmTheDateBlock = ^(NSString *startDate, NSString *endDate, YZXTimeToChooseType selectedType) {
-//        type = selectedType;
-//        sDate = startDate;
-//        eDate = endDate;
-//    };
-//    VC.selectedType = type;
-//    VC.startDate    = sDate;
-//    VC.endDate      = eDate;
-//    [self presentViewController:VC animated:YES completion:nil];
-    
-    MsgDatePickerController *pickerVC = [[MsgDatePickerController alloc] init];
-    __weak typeof(self) weakSelf = self;
-    __weak GroupInfoModel *g = _groupInfo;
-    pickerVC.selectedDate = ^(NSString *date){
-        MsgRecordController *vc = [[MsgRecordController alloc] initWithConversationChatter:weakSelf.conversation.conversationId conversationType:weakSelf.conversation.type];
-        vc.date = date;
-        vc.groupId = @(g.groupId).stringValue;
-        [weakSelf.navigationController pushViewController:vc animated:YES];
-    };
-    [self presentViewController:pickerVC animated:YES completion:nil];
-}
-
-- (void)viewContact
-{
-    GroupAddressbookController *vc = [[GroupAddressbookController alloc] init];
-    vc.groupInfo = _groupInfo;
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
-- (void)viewShareFiles
-{
-    if(self.group){
-        EMGroupSharedFilesViewController *vc = [[EMGroupSharedFilesViewController alloc] initWithGroup:self.group];
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    
-}
-
-- (void)viewVideos:(DDCButton *)btn
-{
-    btn.selected = !btn.selected;
-    self.videoListView.hidden = !btn.selected;
-}
-
-- (void)getGroupVideosWithConfig:(void (^)(id data))videoListViewConfig
-{
-    
-    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,urlpath_work_group_video];
-    NSDictionary *para = @{
-//        @"sessionId":sessionIding,
-        @"groupId":self.conversation.conversationId,
-    };
-   
-    [self showHudInView:self.view hint:nil];
-    [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
-        NSLog(@"工作室悬浮视频列表-->%@",data);
-        [self hideHud];
-        if ([data[@"retcode"] isEqualToString:@"0000"]) {
-            videoListViewConfig(data[@"data"]);
-        }
-    } failure:^(NSError *error) {
-        NSLog(@"工作室悬浮视频列表-->%@",error);
-        [self hideHud];
-        [self showHint:@"创建工作室失败" inView:self.view];
-    }];
-}
-
-- (void)getGroupVideos
-{
-    __weak typeof(self) weakSelf = self;
-    void (^ configVideoListView)(id data) = ^(id data){
-        [self.videoListView configWithData:data clicked:^(DMModel *model) {
-            [weakSelf playVideoWithUrl:[NSURL URLWithString:model.content]];
-        } collapse:^{
-            weakSelf.videoListView.hidden = YES;
-            UIView *toolsBar = [self.view viewWithTag:888];
-            DDCButton *videoBtn = [toolsBar viewWithTag:999];
-            videoBtn.selected = NO;
-        }];
-    };
-    
-    [self getGroupVideosWithConfig:configVideoListView];
-}
-
-- (void)addGroupVideoListView
-{
-    UIView *toolsBar = [self.view viewWithTag:888];
-    [self.view addSubview:self.videoListView];
-    [self.videoListView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(IPHONE_X_SCALE(125));
-        make.left.right.equalTo(self.view);
-        make.top.equalTo(toolsBar.mas_bottom).offset(0);
-    }];
-    [self getGroupVideos];
-}
-
-
-- (void)addOnScreenComments
-{
-    _floatView = [[OnScreenCommentsView alloc] init];
-    [self.view addSubview:self.floatView];
-    [self.floatView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.view);
-        make.top.equalTo(self.view).offset(50);
-        make.height.mas_equalTo(30);
-    }];
-    NSNumber *display = [GuKeCache shareCache].onScreenCommentsConfig[self.conversation.conversationId];
-    if (!display || ![display boolValue]) {
-        [self didReceiveDMMsg];
-    }
-}
-
-#pragma mark 根据user_id 判断医生还是患者
-- (void)makeUseridData
-{
-    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,doctorhuanxinDistinguish];
-    NSArray *keysArray = @[@"userId"];
-    NSArray *valueArray = @[self.conversation.conversationId];
-    NSDictionary *dic = [NSDictionary dictionaryWithObjects:valueArray forKeys:keysArray];
-    
-    [ZJNRequestManager postWithUrlString:urlString parameters:dic success:^(id data) {
-        NSLog(@"%@",data);
-        NSString *retcode = [NSString stringWithFormat:@"%@",data[@"retcode"]];
-        if ([retcode isEqualToString:@"0000"]) {
-            isDoctor = [NSString stringWithFormat:@"%@",data[@"data"][@"isDoctor"]];
-            doctorID = [NSString stringWithFormat:@"%@",data[@"data"][@"doctorId"]];
-        }else{
-            
-        }
-    } failure:^(NSError *error) {
-        NSLog(@"%@",error);
-    }];
-}
-
-
-- (void)rightAction
-{
-    if (self.conversation.type == EMConversationTypeChat){
-        if ([isDoctor isEqualToString:@"1"]) {
-            WYYHuanZheXiangQingViewController *huanzhe = [[WYYHuanZheXiangQingViewController alloc]init];
-            huanzhe.hidesBottomBarWhenPushed = YES;
-            huanzhe.userIDStr = self.conversation.conversationId;
-            [self.navigationController pushViewController:huanzhe animated:NO];
-        }else{
-            WYYYishengDetailViewController *detail = [[WYYYishengDetailViewController alloc]init];
-            detail.doctorId = doctorID;
-            detail.deleteStr = @"1";
-            detail.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:detail animated:NO];
-        }
-        
-    }else{
-        if (_groupInfo) {
-            if (_groupInfo.isManager) {
-                GroupOperationController *vc = [[GroupOperationController alloc] init];
-                vc.targetController = self;
-                vc.groupInfo = _groupInfo;
-                vc.preferredContentSize = CGSizeMake(IPHONE_X_SCALE(180), _groupInfo.groupType==1?IPHONE_X_SCALE(205):IPHONE_X_SCALE(100));
-                vc.modalPresentationStyle = UIModalPresentationPopover;
-
-                UIPopoverPresentationController *popver = vc.popoverPresentationController;
-                popver.delegate = self;
-                    //弹出时参照视图的大小，与弹框的位置有关
-                popver.sourceRect = self.naviRightButton.bounds;
-                //弹出时所参照的视图，与弹框的位置有关
-                popver.sourceView = self.naviRightButton;
-                //弹框的箭头方向
-                popver.permittedArrowDirections = UIPopoverArrowDirectionUp;
-
-                [self presentViewController:vc animated:YES completion:nil];
-                
-            }else{
-                if (_groupInfo.groupType == 1) {
-                    WorkStudioInfoController *vc = [[WorkStudioInfoController alloc] init];
-                    vc.isFromChat = YES;
-                    vc.groupInfo = _groupInfo;
-                    vc.hidesBottomBarWhenPushed = YES;
-                    [self.navigationController pushViewController:vc animated:NO];
-                }else if(_groupInfo.groupType > 1){
-                    WorkGroupInfoController *vc = [[WorkGroupInfoController alloc] init];
-                    vc.groupInfo = _groupInfo;
-                    vc.hidesBottomBarWhenPushed = YES;
-                    [self.navigationController pushViewController:vc animated:NO];
-                }
-            }
-        }else{
-            WYYGroupDetailViewController *group = [[WYYGroupDetailViewController alloc]init];
-            group.groupID = self.conversation.conversationId;
-            group.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:group animated:NO];
-        }
-    }
-    
-}
-
-
-// -------UIPopoverPresentationControllerDelegate
-// 默认返回的是覆盖整个屏幕，需设置成UIModalPresentationNone。
-- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller{
-    return UIModalPresentationNone;
-}
-// 设置点击蒙版是否消失，默认为YES
-- (BOOL)popoverPresentationControllerShouldDismissPopover:(UIPopoverPresentationController *)popoverPresentationController
-{
-    return YES;
-}
-// 弹出视图消失后调用的方法
-- (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController
-{
-    
-}
-
 
 - (void)tableViewDidTriggerHeaderRefresh {
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,group_msg_record];
+    NSMutableDictionary *paras = [@{} mutableCopy];
+    [paras setValue:[GuKeCache shareCache].sessionId forKey:@"sessionId"];
+    [paras setValue:self.groupId forKey:@"groupId"];
+    [paras setValue:self.date forKey:@"time"];
+    
+    [self showHudInView:self.view hint:nil];
+    [ZJNRequestManager getWithUrlString:urlString parameters:paras success:^(id data) {
+        [self hideHud];
+        NSLog(@"群聊天记录%@",data);
+        NSString *retcode = [NSString stringWithFormat:@"%@",data[@"retcode"]];
+        if ([retcode isEqualToString:@"0000"]) {
+            NSString *msgId = data[@"data"][@"msgId"];
+            [EMClient.sharedClient.chatManager asyncFetchHistoryMessagesFromServer:self.conversation.conversationId
+                                                                  conversationType:self.conversation.type
+                                                                    startMessageId:msgId
+                                                                          pageSize:10
+                                                                        completion:^(EMCursorResult *aResult, EMError *aError)
+            {
+                [super tableViewDidTriggerHeaderRefresh];
+            }];
+        }else{
+            [self showHint:data[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [self hideHud];
+        NSLog(@"群聊天记录%@",error);
+    }];
+    
+    
+    /*
     if ([[ChatDemoHelper shareHelper] isFetchHistoryChange]) {
         NSString *startMessageId = nil;
         if ([self.messsagesSource count] > 0) {
@@ -537,46 +135,9 @@
     } else {
         [super tableViewDidTriggerHeaderRefresh];
     }
+     */
 }
 
-
-#pragma mark - setup subviews
-
-- (GroupVideoListView *)videoListView
-{
-    if (!_videoListView) {
-        _videoListView = [[GroupVideoListView alloc] init];
-        _videoListView.hidden = YES;
-    }
-    return _videoListView;
-}
-
-- (void)_setupBarButtonItem
-{
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    backButton.accessibilityIdentifier = @"back";
-    [backButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    [self.navigationItem setLeftBarButtonItem:backItem];
-    
-    //单聊
-    if (self.conversation.type == EMConversationTypeChat) {
-        UIButton *clearButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-        clearButton.accessibilityIdentifier = @"clear_message";
-        [clearButton setImage:[UIImage imageNamed:@"delete"] forState:UIControlStateNormal];
-        [clearButton addTarget:self action:@selector(deleteAllMessages:) forControlEvents:UIControlEventTouchUpInside];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:clearButton];
-    }
-    else{//群聊
-        UIButton *detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
-        detailButton.accessibilityIdentifier = @"detail";
-        [detailButton setImage:[UIImage imageNamed:@"group_detail"] forState:UIControlStateNormal];
-        [detailButton addTarget:self action:@selector(showGroupDetailAction) forControlEvents:UIControlEventTouchUpInside];
-        
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:detailButton];
-    }
-}
 
 #pragma mark - UIAlertViewDelegate
 
@@ -607,121 +168,6 @@
 }
 
 
-#pragma mark - uploadfile
-
-- (void)selectUploadFileFromICouldDrive
-{
-    NSArray *documentTypes = @[
-        @"public.content",
-        @"public.text",
-        @"public.source-code",
-        @"public.image",
-        @"public.audiovisual-content",
-        @"com.adobe.pdf",
-        @"com.apple.keynote.key",
-        @"com.microsoft.word.doc",
-        @"com.microsoft.excel.xls",
-        @"com.microsoft.powerpoint.ppt"
-    ];
-    UIDocumentPickerViewController *documentPicker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:documentTypes inMode:UIDocumentPickerModeOpen];
-    documentPicker.delegate = self;
-    [self presentViewController:documentPicker animated:YES completion:nil];
-}
-
-
-- (void)documentPickerWasCancelled:(UIDocumentPickerViewController *)controller
-{
-    
-}
-
-
-#if defined(__IPHONE_11_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_11_0
-
-- (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentsAtURLs:(NSArray<NSURL *> *)urls
-{
-    [self documentPicker:controller handlerWithUrl:urls.firstObject];
-//    [controller dismissViewControllerAnimated:YES completion:nil];
-}
-
-#else
-
-- (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentAtURL:(NSURL *)url
-{
-    [self documentPicker:controller handlerWithUrl:url];
-//    [controller dismissViewControllerAnimated:YES completion:nil];
-}
-
-#endif
-
-- (void)documentPicker:(UIDocumentPickerViewController *)controller handlerWithUrl:(NSURL *)url
-{
-    NSString *fileName = url.lastPathComponent;
-    if ([ICouldManager iCouldEnable]) {
-        [ICouldManager downloadFileWithDocumentUrl:url completion:^(NSData * _Nonnull data) {
-            [self uploadFileWithName:fileName fileData:data];
-        }];
-    }
-}
-
-
-- (void)uploadFileWithName:(NSString *)fileName fileData:(NSData *)data
-{
-    NSDictionary *dic = @{@"userPic":[NSString stringWithFormat:@"%@%@",imgPath,ChatImgUrl],@"userName":[NSString stringWithFormat:@"%@",ChatUserName]};
-    EMMessage *message = [EaseSDKHelper getFileMessageWithData:data fileName:fileName to:self.conversation.conversationId messageType:[self messageTypeFromConversationType] messageExt:dic];
-    [self sendFileMessageWith:message];
-}
-
-#pragma mark 发送弹幕消息
-- (void)sendMDMsgWithtype:(NSInteger)type content:(NSString *)content
-{
-    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,urlpath_work_group_extraSend];
-    NSDictionary *para = @{
-//        @"sessionId": [GuKeCache shareCache].sessionId,
-        @"groupId":self.conversation.conversationId,
-        @"doctorName":[GuKeCache shareCache].user.doctorName,
-        @"content":content,
-        @"msgType":@(type).stringValue
-    };
-    
-    [self showHudInView:self.view hint:nil];
-    [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
-        NSLog(@"发送弹幕-->%@",data);
-        [self hideHud];
-        if ([data[@"retcode"] isEqualToString:@"0000"]){
-            [self sendCmdMessage:[NSString stringWithFormat:@"action_md_type_%ld",type] withExt:@{@"md_type":@(type)}];
-            [self.floatView configWithType:type conttent:content sendUser:[GuKeCache shareCache].user];
-        }else{
-            [self showHint:data[@"message"]];
-        }
-    } failure:^(NSError *error) {
-        [self hideHud];
-        [self showHint:@"发送失败"];
-        NSLog(@"发送弹幕error:%@",error);
-    }];
-}
-
-
-- (void)addDMMsg:(NSInteger)type title:(NSString *)title
-{
-    __weak typeof(self) weakSelf = self;
-    __weak UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        textField.textColor = [UIColor colorWithHex:0x3C3E3D];
-        textField.font = [UIFont systemFontOfSize:12 weight:UIFontWeightRegular];
-//        textField.height = 160;
-    }];
-    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            
-    }]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"发送" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [weakSelf sendMDMsgWithtype:type content:alert.textFields.firstObject.text];
-    }]];
-    [self presentViewController:alert animated:YES completion:^{
-        
-    }];
-}
-
-
 #pragma mark - EaseMessageViewControllerDelegate
 
 //- (BOOL)messageViewController:(EaseMessageViewController *)viewController didSelectMessageModel:(id<IMessageModel>)messageModel
@@ -731,30 +177,7 @@
 
 - (void)messageViewController:(EaseMessageViewController *)viewController didSelectMoreView:(EaseChatBarMoreView *)moreView AtIndex:(NSInteger)index
 {
-    switch (index) {
-        case 0:
-        {}
-            break;
-    
-        case 1:
-        {}
-            break;
-            
-        case 2:
-        {
-            [self selectUploadFileFromICouldDrive];
-        }
-            break;
-        case 3://文字弹幕
-        case 4://视频弹幕
-        case 5://直播弹幕
-        {
-            [self addDMMsg:index-3 title:[moreView titleForItemAndIndex:index]];
-        }
-            break;
-        default:
-            break;
-    }
+  
 }
 
 
@@ -842,13 +265,13 @@
     
     if (chatGroup) {
         if (!chatGroup.occupants) {
-            __weak ChatViewController* weakSelf = self;
+            __weak typeof(self) weakSelf = self;
             [self showHudInView:self.view hint:@"Fetching group members..."];
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 EMError *error = nil;
                 EMGroup *group = [[EMClient sharedClient].groupManager getGroupSpecificationFromServerWithId:chatGroup.groupId error:&error];
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    __strong ChatViewController *strongSelf = weakSelf;
+                    __strong typeof(self) strongSelf = weakSelf;
                     if (strongSelf) {
                         [strongSelf hideHud];
                         if (error) {
@@ -1025,48 +448,7 @@
     }
 }
 
-- (void)didReceiveCmdMessages:(NSArray *)aCmdMessages
-{
-    for (EMMessage *message in aCmdMessages) {
-        if ([self.conversation.conversationId isEqualToString:message.conversationId]) {
-            [self showHint:NSEaseLocalizedString(@"receiveCmd", @"receive cmd message")];
-            if ([message.ext.allKeys containsObject:@"md_type"]) {
-                //可能需要解析单个cmd消息来显示弹幕
-                [self didReceiveDMMsg];
-                NSInteger type = [message.ext[@"md_type"] integerValue];
-                if (type == 1) {
-                    [self getGroupVideos];
-                }
-            }
-            break;
-        }
-    }
-}
 
-#pragma mark 接收弹幕消息
-- (void)didReceiveDMMsg
-{
-    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,urlpath_work_group_extraReceive];
-    NSDictionary *para = @{
-        @"groupId":self.conversation.conversationId,
-    };
-    
-    [self showHudInView:self.view hint:nil];
-    [ZJNRequestManager postWithUrlString:urlString parameters:para success:^(id data) {
-        NSLog(@"接收弹幕-->%@",data);
-        [self hideHud];
-        if ([data[@"retcode"] isEqualToString:@"0000"]){
-            [self.floatView configWithData:data[@"data"]];
-            [GuKeCache shareCache].onScreenCommentsConfig[self.conversation.conversationId] = @(YES);
-        }else{
-            [self showHint:data[@"message"]];
-        }
-    } failure:^(NSError *error) {
-        [self hideHud];
-        [self showHint:@"接收弹幕失败"];
-        NSLog(@"发送弹幕error:%@",error);
-    }];
-}
 
 
 #pragma mark - action

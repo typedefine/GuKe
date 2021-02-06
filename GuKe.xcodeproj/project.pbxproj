@@ -190,6 +190,29 @@
 		898F1AE524D6DC6700397505 /* PatientFitMentionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1AE424D6DC6700397505 /* PatientFitMentionCell.m */; };
 		898F1AE824D6DC9600397505 /* PatientInfoManageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1AE724D6DC9600397505 /* PatientInfoManageCell.m */; };
 		898F1AEB24D6DCCD00397505 /* PatientBookInfoStateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1AEA24D6DCCD00397505 /* PatientBookInfoStateCell.m */; };
+		89A5DBB025CE8307008C1D7C /* MsgRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A5DBAF25CE8307008C1D7C /* MsgRecordController.m */; };
+		89A5DBEE25CE909F008C1D7C /* YZXSelectDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A5DBBC25CE909F008C1D7C /* YZXSelectDateViewController.m */; };
+		89A5DBEF25CE909F008C1D7C /* YZXMonthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A5DBC025CE909F008C1D7C /* YZXMonthModel.m */; };
+		89A5DBF025CE909F008C1D7C /* YZXDateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A5DBC225CE909F008C1D7C /* YZXDateModel.m */; };
+		89A5DBF125CE909F008C1D7C /* YZXCalendarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A5DBC325CE909F008C1D7C /* YZXCalendarModel.m */; };
+		89A5DBF225CE909F008C1D7C /* UIColor+Hexadecimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A5DBCA25CE909F008C1D7C /* UIColor+Hexadecimal.m */; };
+		89A5DBF325CE909F008C1D7C /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A5DBCD25CE909F008C1D7C /* BaseTableView.m */; };
+		89A5DBF425CE909F008C1D7C /* SJPageNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A5DBD225CE909F008C1D7C /* SJPageNavigationView.m */; };
+		89A5DBF525CE909F008C1D7C /* YZXCalendarHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A5DBD325CE909F008C1D7C /* YZXCalendarHelper.m */; };
+		89A5DBF625CE909F008C1D7C /* YZXMonthTableViewHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A5DBD725CE909F008C1D7C /* YZXMonthTableViewHeaderView.m */; };
+		89A5DBF725CE909F008C1D7C /* YZXAnnualReportView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A5DBD825CE909F008C1D7C /* YZXAnnualReportView.m */; };
+		89A5DBF825CE909F008C1D7C /* YZXCustomDateBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A5DBDA25CE909F008C1D7C /* YZXCustomDateBottomView.m */; };
+		89A5DBF925CE909F008C1D7C /* YZXMonthlyReportView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A5DBDC25CE909F008C1D7C /* YZXMonthlyReportView.m */; };
+		89A5DBFA25CE909F008C1D7C /* YZXCalendarCollectionViewHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A5DBDF25CE909F008C1D7C /* YZXCalendarCollectionViewHeaderView.m */; };
+		89A5DBFB25CE909F008C1D7C /* YZXCalendarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89A5DBE025CE909F008C1D7C /* YZXCalendarCollectionViewCell.xib */; };
+		89A5DBFC25CE909F008C1D7C /* YZXCalendarCollectionViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89A5DBE125CE909F008C1D7C /* YZXCalendarCollectionViewHeaderView.xib */; };
+		89A5DBFD25CE909F008C1D7C /* YZXPlainFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A5DBE525CE909F008C1D7C /* YZXPlainFlowLayout.m */; };
+		89A5DBFE25CE909F008C1D7C /* YZXCalendarCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A5DBE625CE909F008C1D7C /* YZXCalendarCollectionViewCell.m */; };
+		89A5DBFF25CE909F008C1D7C /* YZXWeekMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A5DBE825CE909F008C1D7C /* YZXWeekMenuView.m */; };
+		89A5DC0025CE909F008C1D7C /* YZXDaysMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A5DBEC25CE909F008C1D7C /* YZXDaysMenuView.m */; };
+		89A5DC0125CE909F008C1D7C /* YZXCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A5DBED25CE909F008C1D7C /* YZXCalendarView.m */; };
+		89A5DC0C25CE9340008C1D7C /* JSBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A5DC0B25CE9340008C1D7C /* JSBadgeView.m */; };
+		89A5DC0F25CE9D18008C1D7C /* MsgDatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A5DC0E25CE9D18008C1D7C /* MsgDatePickerController.m */; };
 		89B2B9A324F52C6A0062387D /* MsgChatInputBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B2B9A224F52C6A0062387D /* MsgChatInputBar.m */; };
 		89C3D84925AB1D1A00A32EB5 /* DMItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3D84825AB1D1A00A32EB5 /* DMItemView.m */; };
 		89C3D84D25ACB42E00A32EB5 /* AddMembersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3D84C25ACB42E00A32EB5 /* AddMembersController.m */; };
@@ -1306,6 +1329,53 @@
 		898F1AE724D6DC9600397505 /* PatientInfoManageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientInfoManageCell.m; sourceTree = "<group>"; };
 		898F1AE924D6DCCD00397505 /* PatientBookInfoStateCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatientBookInfoStateCell.h; sourceTree = "<group>"; };
 		898F1AEA24D6DCCD00397505 /* PatientBookInfoStateCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatientBookInfoStateCell.m; sourceTree = "<group>"; };
+		89A5DBAE25CE8307008C1D7C /* MsgRecordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MsgRecordController.h; sourceTree = "<group>"; };
+		89A5DBAF25CE8307008C1D7C /* MsgRecordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MsgRecordController.m; sourceTree = "<group>"; };
+		89A5DBBB25CE909F008C1D7C /* YZXSelectDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZXSelectDateViewController.h; sourceTree = "<group>"; };
+		89A5DBBC25CE909F008C1D7C /* YZXSelectDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZXSelectDateViewController.m; sourceTree = "<group>"; };
+		89A5DBBF25CE909F008C1D7C /* YZXDateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZXDateModel.h; sourceTree = "<group>"; };
+		89A5DBC025CE909F008C1D7C /* YZXMonthModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZXMonthModel.m; sourceTree = "<group>"; };
+		89A5DBC125CE909F008C1D7C /* YZXMonthModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZXMonthModel.h; sourceTree = "<group>"; };
+		89A5DBC225CE909F008C1D7C /* YZXDateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZXDateModel.m; sourceTree = "<group>"; };
+		89A5DBC325CE909F008C1D7C /* YZXCalendarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZXCalendarModel.m; sourceTree = "<group>"; };
+		89A5DBC425CE909F008C1D7C /* YZXCalendarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZXCalendarModel.h; sourceTree = "<group>"; };
+		89A5DBC625CE909F008C1D7C /* YZXCalendarHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZXCalendarHeader.h; sourceTree = "<group>"; };
+		89A5DBC725CE909F008C1D7C /* YZXCalendarHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZXCalendarHelper.h; sourceTree = "<group>"; };
+		89A5DBC925CE909F008C1D7C /* UIColor+Hexadecimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hexadecimal.h"; sourceTree = "<group>"; };
+		89A5DBCA25CE909F008C1D7C /* UIColor+Hexadecimal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hexadecimal.m"; sourceTree = "<group>"; };
+		89A5DBCB25CE909F008C1D7C /* YZXCalendarHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZXCalendarHeader.pch; sourceTree = "<group>"; };
+		89A5DBCD25CE909F008C1D7C /* BaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableView.m; sourceTree = "<group>"; };
+		89A5DBCE25CE909F008C1D7C /* BaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableView.h; sourceTree = "<group>"; };
+		89A5DBD125CE909F008C1D7C /* SJPageNavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJPageNavigationView.h; sourceTree = "<group>"; };
+		89A5DBD225CE909F008C1D7C /* SJPageNavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJPageNavigationView.m; sourceTree = "<group>"; };
+		89A5DBD325CE909F008C1D7C /* YZXCalendarHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZXCalendarHelper.m; sourceTree = "<group>"; };
+		89A5DBD625CE909F008C1D7C /* YZXCustomDateBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZXCustomDateBottomView.h; sourceTree = "<group>"; };
+		89A5DBD725CE909F008C1D7C /* YZXMonthTableViewHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZXMonthTableViewHeaderView.m; sourceTree = "<group>"; };
+		89A5DBD825CE909F008C1D7C /* YZXAnnualReportView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZXAnnualReportView.m; sourceTree = "<group>"; };
+		89A5DBD925CE909F008C1D7C /* YZXMonthlyReportView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZXMonthlyReportView.h; sourceTree = "<group>"; };
+		89A5DBDA25CE909F008C1D7C /* YZXCustomDateBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZXCustomDateBottomView.m; sourceTree = "<group>"; };
+		89A5DBDB25CE909F008C1D7C /* YZXMonthTableViewHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZXMonthTableViewHeaderView.h; sourceTree = "<group>"; };
+		89A5DBDC25CE909F008C1D7C /* YZXMonthlyReportView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZXMonthlyReportView.m; sourceTree = "<group>"; };
+		89A5DBDD25CE909F008C1D7C /* YZXAnnualReportView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZXAnnualReportView.h; sourceTree = "<group>"; };
+		89A5DBDF25CE909F008C1D7C /* YZXCalendarCollectionViewHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZXCalendarCollectionViewHeaderView.m; sourceTree = "<group>"; };
+		89A5DBE025CE909F008C1D7C /* YZXCalendarCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YZXCalendarCollectionViewCell.xib; sourceTree = "<group>"; };
+		89A5DBE125CE909F008C1D7C /* YZXCalendarCollectionViewHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YZXCalendarCollectionViewHeaderView.xib; sourceTree = "<group>"; };
+		89A5DBE225CE909F008C1D7C /* YZXPlainFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZXPlainFlowLayout.h; sourceTree = "<group>"; };
+		89A5DBE325CE909F008C1D7C /* YZXCalendarCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZXCalendarCollectionViewCell.h; sourceTree = "<group>"; };
+		89A5DBE425CE909F008C1D7C /* YZXCalendarCollectionViewHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZXCalendarCollectionViewHeaderView.h; sourceTree = "<group>"; };
+		89A5DBE525CE909F008C1D7C /* YZXPlainFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZXPlainFlowLayout.m; sourceTree = "<group>"; };
+		89A5DBE625CE909F008C1D7C /* YZXCalendarCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZXCalendarCollectionViewCell.m; sourceTree = "<group>"; };
+		89A5DBE725CE909F008C1D7C /* YZXDaysMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZXDaysMenuView.h; sourceTree = "<group>"; };
+		89A5DBE825CE909F008C1D7C /* YZXWeekMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZXWeekMenuView.m; sourceTree = "<group>"; };
+		89A5DBE925CE909F008C1D7C /* YZXCalendarDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZXCalendarDelegate.h; sourceTree = "<group>"; };
+		89A5DBEA25CE909F008C1D7C /* YZXCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZXCalendarView.h; sourceTree = "<group>"; };
+		89A5DBEB25CE909F008C1D7C /* YZXWeekMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZXWeekMenuView.h; sourceTree = "<group>"; };
+		89A5DBEC25CE909F008C1D7C /* YZXDaysMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZXDaysMenuView.m; sourceTree = "<group>"; };
+		89A5DBED25CE909F008C1D7C /* YZXCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZXCalendarView.m; sourceTree = "<group>"; };
+		89A5DC0A25CE9340008C1D7C /* JSBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBadgeView.h; sourceTree = "<group>"; };
+		89A5DC0B25CE9340008C1D7C /* JSBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSBadgeView.m; sourceTree = "<group>"; };
+		89A5DC0D25CE9D18008C1D7C /* MsgDatePickerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MsgDatePickerController.h; sourceTree = "<group>"; };
+		89A5DC0E25CE9D18008C1D7C /* MsgDatePickerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MsgDatePickerController.m; sourceTree = "<group>"; };
 		89B2B9A124F52C6A0062387D /* MsgChatInputBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MsgChatInputBar.h; sourceTree = "<group>"; };
 		89B2B9A224F52C6A0062387D /* MsgChatInputBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MsgChatInputBar.m; sourceTree = "<group>"; };
 		89C3D84725AB1D1A00A32EB5 /* DMItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMItemView.h; sourceTree = "<group>"; };
@@ -3265,6 +3335,7 @@
 		894C7D132579396F00EF9ABE /* workspace */ = {
 			isa = PBXGroup;
 			children = (
+				89A5DBAD25CE82DC008C1D7C /* MsgRecord */,
 				1B7372F8259DB2B6008E816B /* memberManage */,
 				8910836B25A4C81C002C5959 /* addressbook */,
 				8910835E25A38235002C5959 /* shareFiles */,
@@ -3373,6 +3444,163 @@
 				892555AB24E42206002F7B5B /* controller */,
 			);
 			path = patientRecord;
+			sourceTree = "<group>";
+		};
+		89A5DBAD25CE82DC008C1D7C /* MsgRecord */ = {
+			isa = PBXGroup;
+			children = (
+				89A5DBAE25CE8307008C1D7C /* MsgRecordController.h */,
+				89A5DBAF25CE8307008C1D7C /* MsgRecordController.m */,
+				89A5DC0D25CE9D18008C1D7C /* MsgDatePickerController.h */,
+				89A5DC0E25CE9D18008C1D7C /* MsgDatePickerController.m */,
+			);
+			path = MsgRecord;
+			sourceTree = "<group>";
+		};
+		89A5DBB925CE909F008C1D7C /* YZXCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				89A5DC0925CE9334008C1D7C /* JSBadgeView */,
+				89A5DBBA25CE909F008C1D7C /* controller */,
+				89A5DBBD25CE909F008C1D7C /* Model */,
+				89A5DBC525CE909F008C1D7C /* EngineeringDocuments */,
+				89A5DBD425CE909F008C1D7C /* Views */,
+			);
+			path = YZXCalendar;
+			sourceTree = "<group>";
+		};
+		89A5DBBA25CE909F008C1D7C /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				89A5DBBB25CE909F008C1D7C /* YZXSelectDateViewController.h */,
+				89A5DBBC25CE909F008C1D7C /* YZXSelectDateViewController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		89A5DBBD25CE909F008C1D7C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				89A5DBBE25CE909F008C1D7C /* DateSelection - 日期选择 */,
+				89A5DBC325CE909F008C1D7C /* YZXCalendarModel.m */,
+				89A5DBC425CE909F008C1D7C /* YZXCalendarModel.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		89A5DBBE25CE909F008C1D7C /* DateSelection - 日期选择 */ = {
+			isa = PBXGroup;
+			children = (
+				89A5DBBF25CE909F008C1D7C /* YZXDateModel.h */,
+				89A5DBC025CE909F008C1D7C /* YZXMonthModel.m */,
+				89A5DBC125CE909F008C1D7C /* YZXMonthModel.h */,
+				89A5DBC225CE909F008C1D7C /* YZXDateModel.m */,
+			);
+			path = "DateSelection - 日期选择";
+			sourceTree = "<group>";
+		};
+		89A5DBC525CE909F008C1D7C /* EngineeringDocuments */ = {
+			isa = PBXGroup;
+			children = (
+				89A5DBCB25CE909F008C1D7C /* YZXCalendarHeader.pch */,
+				89A5DBC625CE909F008C1D7C /* YZXCalendarHeader.h */,
+				89A5DBC725CE909F008C1D7C /* YZXCalendarHelper.h */,
+				89A5DBD325CE909F008C1D7C /* YZXCalendarHelper.m */,
+				89A5DBC825CE909F008C1D7C /* Categroy */,
+				89A5DBCC25CE909F008C1D7C /* Base */,
+				89A5DBCF25CE909F008C1D7C /* Vendor */,
+			);
+			path = EngineeringDocuments;
+			sourceTree = "<group>";
+		};
+		89A5DBC825CE909F008C1D7C /* Categroy */ = {
+			isa = PBXGroup;
+			children = (
+				89A5DBC925CE909F008C1D7C /* UIColor+Hexadecimal.h */,
+				89A5DBCA25CE909F008C1D7C /* UIColor+Hexadecimal.m */,
+			);
+			path = Categroy;
+			sourceTree = "<group>";
+		};
+		89A5DBCC25CE909F008C1D7C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				89A5DBCD25CE909F008C1D7C /* BaseTableView.m */,
+				89A5DBCE25CE909F008C1D7C /* BaseTableView.h */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		89A5DBCF25CE909F008C1D7C /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				89A5DBD025CE909F008C1D7C /* SJPageNavigationView */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		89A5DBD025CE909F008C1D7C /* SJPageNavigationView */ = {
+			isa = PBXGroup;
+			children = (
+				89A5DBD125CE909F008C1D7C /* SJPageNavigationView.h */,
+				89A5DBD225CE909F008C1D7C /* SJPageNavigationView.m */,
+			);
+			path = SJPageNavigationView;
+			sourceTree = "<group>";
+		};
+		89A5DBD425CE909F008C1D7C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				89A5DBD525CE909F008C1D7C /* DateSelection - 日期选择 */,
+				89A5DBDE25CE909F008C1D7C /* collectionView */,
+				89A5DBE725CE909F008C1D7C /* YZXDaysMenuView.h */,
+				89A5DBEC25CE909F008C1D7C /* YZXDaysMenuView.m */,
+				89A5DBE825CE909F008C1D7C /* YZXWeekMenuView.m */,
+				89A5DBE925CE909F008C1D7C /* YZXCalendarDelegate.h */,
+				89A5DBEB25CE909F008C1D7C /* YZXWeekMenuView.h */,
+				89A5DBEA25CE909F008C1D7C /* YZXCalendarView.h */,
+				89A5DBED25CE909F008C1D7C /* YZXCalendarView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		89A5DBD525CE909F008C1D7C /* DateSelection - 日期选择 */ = {
+			isa = PBXGroup;
+			children = (
+				89A5DBD625CE909F008C1D7C /* YZXCustomDateBottomView.h */,
+				89A5DBD725CE909F008C1D7C /* YZXMonthTableViewHeaderView.m */,
+				89A5DBD825CE909F008C1D7C /* YZXAnnualReportView.m */,
+				89A5DBD925CE909F008C1D7C /* YZXMonthlyReportView.h */,
+				89A5DBDA25CE909F008C1D7C /* YZXCustomDateBottomView.m */,
+				89A5DBDB25CE909F008C1D7C /* YZXMonthTableViewHeaderView.h */,
+				89A5DBDC25CE909F008C1D7C /* YZXMonthlyReportView.m */,
+				89A5DBDD25CE909F008C1D7C /* YZXAnnualReportView.h */,
+			);
+			path = "DateSelection - 日期选择";
+			sourceTree = "<group>";
+		};
+		89A5DBDE25CE909F008C1D7C /* collectionView */ = {
+			isa = PBXGroup;
+			children = (
+				89A5DBDF25CE909F008C1D7C /* YZXCalendarCollectionViewHeaderView.m */,
+				89A5DBE025CE909F008C1D7C /* YZXCalendarCollectionViewCell.xib */,
+				89A5DBE125CE909F008C1D7C /* YZXCalendarCollectionViewHeaderView.xib */,
+				89A5DBE225CE909F008C1D7C /* YZXPlainFlowLayout.h */,
+				89A5DBE325CE909F008C1D7C /* YZXCalendarCollectionViewCell.h */,
+				89A5DBE425CE909F008C1D7C /* YZXCalendarCollectionViewHeaderView.h */,
+				89A5DBE525CE909F008C1D7C /* YZXPlainFlowLayout.m */,
+				89A5DBE625CE909F008C1D7C /* YZXCalendarCollectionViewCell.m */,
+			);
+			path = collectionView;
+			sourceTree = "<group>";
+		};
+		89A5DC0925CE9334008C1D7C /* JSBadgeView */ = {
+			isa = PBXGroup;
+			children = (
+				89A5DC0A25CE9340008C1D7C /* JSBadgeView.h */,
+				89A5DC0B25CE9340008C1D7C /* JSBadgeView.m */,
+			);
+			path = JSBadgeView;
 			sourceTree = "<group>";
 		};
 		89DF2BEF25BB24070087F145 /* ManagePopupView */ = {
@@ -5366,6 +5594,7 @@
 		E30974F81F9DD20E00EC3F80 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				89A5DBB925CE909F008C1D7C /* YZXCalendar */,
 				8910835A25A37BEB002C5959 /* DDCButton */,
 				8910831F25A2200F002C5959 /* GuKeCache.h */,
 				8910832025A2200F002C5959 /* GuKeCache.m */,
@@ -6678,6 +6907,7 @@
 				9A53895720084DC40084E772 /* icon_022_cover.png in Resources */,
 				9A53895E20084DC40084E772 /* icon_030.gif in Resources */,
 				9A5388F020084DC40084E772 /* Button_Speaker_active@2x.png in Resources */,
+				89A5DBFB25CE909F008C1D7C /* YZXCalendarCollectionViewCell.xib in Resources */,
 				9A79E8491F38541C00BCF889 /* ShuHouSUFangViewController.xib in Resources */,
 				9A53894E20084DC40084E772 /* icon_018.gif in Resources */,
 				9A78C90D200C7BD9003D86BF /* WYYMainGroupTableViewCell.xib in Resources */,
@@ -6745,6 +6975,7 @@
 				9A779881200DC7FB00EFCF67 /* WYYGroupTwoTableViewCell.xib in Resources */,
 				9A5388DC20084DC40084E772 /* Button_End@3x.png in Resources */,
 				9A53891320084DC40084E772 /* default_avatar@2x.png in Resources */,
+				89A5DBFC25CE909F008C1D7C /* YZXCalendarCollectionViewHeaderView.xib in Resources */,
 				9A5388FB20084DC40084E772 /* conf_add@2x.png in Resources */,
 				9A530B2E1F46C2FA00BD6C7E /* ReMenHuiYiViewController.xib in Resources */,
 				1FBA711E211D71F0001D1F71 /* AlipaySDK.bundle in Resources */,
@@ -6884,7 +7115,9 @@
 				9AAC64F72015AD96003AA043 /* WYYChoseGroupNumberTableViewCell.m in Sources */,
 				9ACE974720184F050028FC9D /* ZJNAddDoctorView.m in Sources */,
 				9A53891420084DC40084E772 /* EMGroupAdminsViewController.m in Sources */,
+				89A5DBFF25CE909F008C1D7C /* YZXWeekMenuView.m in Sources */,
 				E30976781F9DD20F00EC3F80 /* IQUIViewController+Additions.m in Sources */,
+				89A5DBF325CE909F008C1D7C /* BaseTableView.m in Sources */,
 				E349C92C1FAAE7AB005223A9 /* ZJNLiveRoomViewController.m in Sources */,
 				9A53877120084D8A0084E772 /* EMSDWebImagePrefetcher.m in Sources */,
 				9A53878F20084D8B0084E772 /* NSString+Valid.m in Sources */,
@@ -6919,6 +7152,7 @@
 				E3D30D722043F71700876D44 /* ZJNChangePatientBodyInfoModel.m in Sources */,
 				9A08A9821F30533B00AF29EB /* TAAnimatedDotView.m in Sources */,
 				9A3A1BF01F4131AC00F33025 /* DuiBiViewController.m in Sources */,
+				89A5DBB025CE8307008C1D7C /* MsgRecordController.m in Sources */,
 				9A08A90A1F302B2E00AF29EB /* MJRefreshBackNormalFooter.m in Sources */,
 				E309767F1F9DD20F00EC3F80 /* IQTitleBarButtonItem.m in Sources */,
 				89162EB524ED70C300698B84 /* PatientMsgChatController.m in Sources */,
@@ -6934,6 +7168,7 @@
 				9A1E38521F32AD060063FC2A /* ZiXunDetailViewController.m in Sources */,
 				894C7D4C2579396F00EF9ABE /* WorkStudioFooterView.m in Sources */,
 				8910838625A761FF002C5959 /* CALayer+Aimate.m in Sources */,
+				89A5DC0125CE909F008C1D7C /* YZXCalendarView.m in Sources */,
 				E3577A7F1FFCA1A900E4A738 /* ZJNInfoView.m in Sources */,
 				9A5388C620084DC30084E772 /* EMConfAddUserCell.m in Sources */,
 				E30976EF1F9DD20F00EC3F80 /* TFHpple.m in Sources */,
@@ -6988,6 +7223,7 @@
 				E3DF94111F79FC91001E1963 /* PersonalCenterTableViewCell.m in Sources */,
 				8910832F25A355A7002C5959 /* GroupManageOperationCell.m in Sources */,
 				1FA4553A2064D94D00CF0DD1 /* WodeShoucangVideoViewController.m in Sources */,
+				89A5DBEE25CE909F008C1D7C /* YZXSelectDateViewController.m in Sources */,
 				9A53878620084D8B0084E772 /* PSTGridLayoutRow.m in Sources */,
 				E3D30D7C20440FA000876D44 /* ZJNChangeCheckResultModel.m in Sources */,
 				1FE2F924211A7B590071CF62 /* QJCOrderListmodel.m in Sources */,
@@ -6995,6 +7231,7 @@
 				9A53879420084D8B0084E772 /* EaseEmoji.m in Sources */,
 				9A53894120084DC40084E772 /* UIViewController+SearchController.m in Sources */,
 				893265252501316D00FE7BBE /* UIButton+EnlargeEdge.m in Sources */,
+				89A5DBF025CE909F008C1D7C /* YZXDateModel.m in Sources */,
 				89490956257A8FBA00E91C66 /* WorkGroupListView.m in Sources */,
 				9A8867262011885900F96753 /* WYYSearchYishengModel.m in Sources */,
 				9A38A4C31F4C2C290078B207 /* HuiYiXiangQingViewController.m in Sources */,
@@ -7011,6 +7248,7 @@
 				9A53878A20084D8B0084E772 /* EaseConversationModel.m in Sources */,
 				893A3DA42537434800570FB5 /* DDCImageModel.m in Sources */,
 				E3F4B1071F7CD75D00CB16ED /* OperationInfoTableViewCell.m in Sources */,
+				89A5DBF925CE909F008C1D7C /* YZXMonthlyReportView.m in Sources */,
 				8910836725A38322002C5959 /* ShareFileItemModel.m in Sources */,
 				9A667D622021501300365644 /* WYYDetailThreeTableViewCell.m in Sources */,
 				E30976741F9DD20F00EC3F80 /* IQNSArray+Sort.m in Sources */,
@@ -7018,6 +7256,7 @@
 				894C7D5E2579396F00EF9ABE /* AllStudiosHeaderView.m in Sources */,
 				894C7D572579396F00EF9ABE /* MoreGroupMemberCell.m in Sources */,
 				E3EDC0AC1FA434FC0024FF8B /* ZJNFalseViewController.m in Sources */,
+				89A5DBF825CE909F008C1D7C /* YZXCustomDateBottomView.m in Sources */,
 				9A397CB81F31BA750089F5DC /* BaoMingRenYuanTableViewCell.m in Sources */,
 				9A53876320084D8A0084E772 /* MWGridCell.m in Sources */,
 				9A53896720084DC40084E772 /* UIImageView+HeadImage.m in Sources */,
@@ -7059,6 +7298,7 @@
 				9A78C908200C7848003D86BF /* WYYMainGroupViewController.m in Sources */,
 				893A3DCD2537591E00570FB5 /* NSString+Util.m in Sources */,
 				8906E0FD259256F10098A2AC /* ZXFInputViewCell.m in Sources */,
+				89A5DBF625CE909F008C1D7C /* YZXMonthTableViewHeaderView.m in Sources */,
 				9A08A9531F302B3600AF29EB /* AFURLResponseSerialization.m in Sources */,
 				9A53877920084D8B0084E772 /* UIImageView+EMWebCache.m in Sources */,
 				E3A105D01FA18A6500EBEF1F /* TZPhotoPreviewCell.m in Sources */,
@@ -7078,6 +7318,7 @@
 				9A53879C20084D8B0084E772 /* EaseRefreshTableViewController.m in Sources */,
 				E32CF40C1F9B3F2F00CF8C53 /* ZJNSingUpMeetingPeopleTableViewCell.m in Sources */,
 				9A53879A20084D8B0084E772 /* EaseLocationViewController.m in Sources */,
+				89A5DBF425CE909F008C1D7C /* SJPageNavigationView.m in Sources */,
 				9A530B231F468B6300BD6C7E /* WoDeHuiYiTableViewCell.m in Sources */,
 				89E52ED724F267E30052403B /* PatientBookController.m in Sources */,
 				E3669D6F1FA96A410011DCF1 /* ZJNShareView.m in Sources */,
@@ -7088,6 +7329,7 @@
 				9A79E8611F3858F800BCF889 /* SuiThreeTableViewCell.m in Sources */,
 				9A08A9141F302B2E00AF29EB /* UIView+MJExtension.m in Sources */,
 				9A5387B120084D8B0084E772 /* EaseFacialView.m in Sources */,
+				89A5DBFA25CE909F008C1D7C /* YZXCalendarCollectionViewHeaderView.m in Sources */,
 				E3A105CE1FA18A6500EBEF1F /* TZLocationManager.m in Sources */,
 				9A53877E20084D8B0084E772 /* PSTCollectionViewController.m in Sources */,
 				E30976A61F9DD20F00EC3F80 /* ViewController+MASAdditions.m in Sources */,
@@ -7145,6 +7387,7 @@
 				9A79E82C1F38367D00BCF889 /* InfoOneTableViewCell.m in Sources */,
 				9A53897A200854C40084E772 /* YshengChatViewController.m in Sources */,
 				9A08A9871F30533B00AF29EB /* UIView+SDExtension.m in Sources */,
+				89A5DC0F25CE9D18008C1D7C /* MsgDatePickerController.m in Sources */,
 				E3D30D75204401F400876D44 /* ZJNChangePatientBodyInfoViewController.m in Sources */,
 				9A53874820084D8A0084E772 /* amrFileCodec.mm in Sources */,
 				89490966257A935300E91C66 /* WorkGroupListViewModel.m in Sources */,
@@ -7161,6 +7404,7 @@
 				9A77988F200DD1AF00EFCF67 /* WYYQunLiaoTwoTableViewCell.m in Sources */,
 				9A53892520084DC40084E772 /* ChatMainViewController.m in Sources */,
 				9A08A8C41F3013E600AF29EB /* GuKeViewController.m in Sources */,
+				89A5DBFE25CE909F008C1D7C /* YZXCalendarCollectionViewCell.m in Sources */,
 				E32CF4061F9B2AF100CF8C53 /* ZJNSignUpMeetingViewController.m in Sources */,
 				8910838825A761FF002C5959 /* FDanmakuModel.m in Sources */,
 				E3E895A72021D178004C2DB2 /* ZJNMRSharesCollectionViewCell.m in Sources */,
@@ -7270,11 +7514,13 @@
 				1F1128D52221265E00FD8CB6 /* MJProperty.m in Sources */,
 				E3DABD1B1F8B4E470037AF98 /* ZJNPatientBodyInfoViewController.m in Sources */,
 				E30976991F9DD20F00EC3F80 /* LiveGiftShowNumberView.m in Sources */,
+				89A5DBF725CE909F008C1D7C /* YZXAnnualReportView.m in Sources */,
 				9A42C4D81F53F4FC008D41C4 /* WoDeShouShuTableViewCell.m in Sources */,
 				9A397C951F316DC00089F5DC /* MainHuiYiViewController.m in Sources */,
 				89C3D85325B427DE00A32EB5 /* WebViewController.m in Sources */,
 				1F1128D72221265E00FD8CB6 /* MJExtensionConst.m in Sources */,
 				9A08A9851F30533B00AF29EB /* SDCollectionViewCell.m in Sources */,
+				89A5DBF525CE909F008C1D7C /* YZXCalendarHelper.m in Sources */,
 				1FA455362064ACDF00CF0DD1 /* mineCollectView.m in Sources */,
 				E3F9641B1F7F95D000924F8A /* ZJNTextFieldTableViewCell.m in Sources */,
 				E30977071F9DD20F00EC3F80 /* UIViewExt.m in Sources */,
@@ -7314,6 +7560,8 @@
 				E3A105D21FA18A6500EBEF1F /* TZProgressView.m in Sources */,
 				E3D35C14202318FB00A6FB9F /* ZJNTextView.m in Sources */,
 				893D9F9D257D16B0003FCB82 /* GroupInfoModel.m in Sources */,
+				89A5DC0025CE909F008C1D7C /* YZXDaysMenuView.m in Sources */,
+				89A5DBF225CE909F008C1D7C /* UIColor+Hexadecimal.m in Sources */,
 				9A2D38D41F3AF40A00932F35 /* ZYQAssetPickerController.m in Sources */,
 				9AFE600C1F33197A001F10D1 /* DatePickerView.m in Sources */,
 				9A53893E20084DC40084E772 /* EMChooseViewController.m in Sources */,
@@ -7369,6 +7617,7 @@
 				89E52EDA24F26ACC0052403B /* PatientBookPageModel.m in Sources */,
 				898F1AE224D6DBF100397505 /* PatientInfoManageHeaderView.m in Sources */,
 				9A5387AF20084D8B0084E772 /* EaseTextView.m in Sources */,
+				89A5DBFD25CE909F008C1D7C /* YZXPlainFlowLayout.m in Sources */,
 				9A53892B20084DC40084E772 /* EMChatroomMembersViewController.m in Sources */,
 				89203DC424CDA86E00D4D55E /* PatientMessagePageController.m in Sources */,
 				8910832225A22DE6002C5959 /* GuKeCache.m in Sources */,
@@ -7405,6 +7654,7 @@
 				1F1128D92221265F00FD8CB6 /* NSObject+MJClass.m in Sources */,
 				E3A105CA1FA18A6500EBEF1F /* TZImageCropManager.m in Sources */,
 				9A53894020084DC40084E772 /* EMSearchResultController.m in Sources */,
+				89A5DBEF25CE909F008C1D7C /* YZXMonthModel.m in Sources */,
 				9A667D662021A2E000365644 /* WYYDetailHuanModel.m in Sources */,
 				89DF2C1125BB26B70087F145 /* ManageRightPopupControl.m in Sources */,
 				9A53877220084D8A0084E772 /* MKAnnotationView+EMWebCache.m in Sources */,
@@ -7448,6 +7698,7 @@
 				9A53878720084D8B0084E772 /* PSTGridLayoutSection.m in Sources */,
 				9A08A9121F302B2E00AF29EB /* UIScrollView+MJExtension.m in Sources */,
 				E309767A1F9DD20F00EC3F80 /* IQKeyboardManager.m in Sources */,
+				89A5DBF125CE909F008C1D7C /* YZXCalendarModel.m in Sources */,
 				E309768C1F9DD20F00EC3F80 /* FMDatabase.m in Sources */,
 				9A53892120084DC40084E772 /* PublicGroupDetailViewController.m in Sources */,
 				9A53879820084D8B0084E772 /* FixFopen.c in Sources */,
@@ -7458,6 +7709,7 @@
 				1F1128B8222125B200FD8CB6 /* UIView+SDAutoLayout.m in Sources */,
 				893A3DA62537434800570FB5 /* DDCImageSelectorCell.m in Sources */,
 				9A53879F20084D8B0084E772 /* EaseUserCell.m in Sources */,
+				89A5DC0C25CE9340008C1D7C /* JSBadgeView.m in Sources */,
 				E30976971F9DD20F00EC3F80 /* LiveGiftShowCustom.m in Sources */,
 				9A5388C120084DC30084E772 /* EMCallOptions+NSCoding.m in Sources */,
 			);

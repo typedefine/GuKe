@@ -517,6 +517,9 @@
 /**群成员管理-移交管理权限*/
 #define group_addMangeright @"app/chatgroups/transferGroup.json"
 
+/**群群聊天记录*/
+#define group_msg_record @"app/chatgroups/getChatMsg.json"
+
 /**医生好友（不包括患者,建群时使用）*/
 #define doctorhuanxindoctorlist @"/app/doctorhuanxin/doctorlist.json"
 
