@@ -55,6 +55,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.title = @"聊天记录";
     self.view.backgroundColor = [UIColor colorWithHex:0xEDF1F4];
     
     UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
