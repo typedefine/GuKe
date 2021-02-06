@@ -109,7 +109,7 @@
                 [super tableViewDidTriggerHeaderRefresh];
             }];
         }else{
-            [self showHint:data[@"message"]];
+            [self showHint:@"没有历史记录"];
         }
     } failure:^(NSError *error) {
         [self hideHud];
