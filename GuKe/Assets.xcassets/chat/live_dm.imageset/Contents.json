@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "椭圆 852 拷贝 3.png",
+      "filename" : "icon-video.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "椭圆 852 拷贝 3@2x.png",
+      "filename" : "icon-video@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "椭圆 852 拷贝 3@3x.png",
+      "filename" : "icon-video@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
