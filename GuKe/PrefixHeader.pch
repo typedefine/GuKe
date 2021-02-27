@@ -471,6 +471,9 @@
 /**工作室介绍*/
 #define UrlPath_workstudio @"app/chatgroups/groupintro.json"//@"/app/chatgroups/groupinfo.json"
 
+/**工作室/组的角色*/
+#define UrlPath_group_role @"app/chatgroups/chatroomrole.json"
+
 /**申请加入工作室*/
 #define UrlPath_apply_join_studio @"/app/chatgroups/applygroup.json"
 

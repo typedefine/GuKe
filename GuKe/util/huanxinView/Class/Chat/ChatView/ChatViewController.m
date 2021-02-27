@@ -50,6 +50,7 @@
     NSString *isDoctor;// 0医生 1患者
     NSString *doctorID;//医生id
     GroupInfoModel *_groupInfo;
+    
 }
 
 @property (nonatomic, strong) UIButton *naviRightButton;
@@ -129,7 +130,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.view.backgroundColor = [UIColor colorWithHex:0xEDF1F4];
     
     UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
@@ -170,20 +171,20 @@
                         if ([@(studio.groupId).stringValue isEqualToString:self.conversation.conversationId]) {
                             _groupInfo = studio;
                             _groupInfo.joinStatus = 1;
+                            [self getGroupRole];
                             break;
                         }else{
                             for (GroupInfoModel *group in studio.chatroom) {
                                 if ([@(group.groupId).stringValue isEqualToString:self.conversation.conversationId]) {
                                     _groupInfo = group;
                                     _groupInfo.joinStatus = 1;
+                                    [self getGroupRole];
                                     break;
                                 }
                             }
                         }
                     }
-                    [self.chatBarMoreView insertItemWithImage:[UIImage imageNamed:@"text_dm"] highlightedImage:[UIImage imageNamed:@"text_dm"] title:@"文字弹幕"];
-                    [self.chatBarMoreView insertItemWithImage:[UIImage imageNamed:@"video_dm"] highlightedImage:[UIImage imageNamed:@"video_dm"] title:@"分享视频"];
-//                    [self.chatBarMoreView insertItemWithImage:[UIImage imageNamed:@"live_dm"] highlightedImage:[UIImage imageNamed:@"live_dm"] title:@"分享直播"];
+
                 }
                 [self.naviRightButton setImage:[UIImage imageNamed:_groupInfo && _groupInfo.isManager? @"MORE":@"group"] forState:normal];
                 __weak typeof(self) weakSelf = self;
@@ -219,6 +220,38 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleCallNotification:) name:@"callControllerClose" object:nil];
     
 }
+
+
+- (void)getGroupRole
+{
+    _groupInfo.roleType = 0;
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,UrlPath_group_role];
+    NSDictionary *paras = @{
+        @"sessionId": [GuKeCache shareCache].sessionId,
+        @"groupid": @(_groupInfo.groupId).stringValue
+    };
+    [self showHudInView:self.view hint:nil];
+    [ZJNRequestManager postWithUrlString:urlString parameters:paras success:^(id data) {
+        [self hideHud];
+        [self showHint:data[@"message"]];
+        NSString *retcode = [NSString stringWithFormat:@"%@",data[@"retcode"]];
+        if ([retcode isEqualToString:@"0000"]) {
+            _groupInfo.roleType = [data[@"data"][@"roleType"] integerValue];
+            
+            if (_groupInfo.roleType > 0) {
+                [self.chatBarMoreView insertItemWithImage:[UIImage imageNamed:@"text_dm"] highlightedImage:[UIImage imageNamed:@"text_dm"] title:@"文字弹幕"];
+                [self.chatBarMoreView insertItemWithImage:[UIImage imageNamed:@"video_dm"] highlightedImage:[UIImage imageNamed:@"video_dm"] title:@"分享视频"];
+//                    [self.chatBarMoreView insertItemWithImage:[UIImage imageNamed:@"live_dm"] highlightedImage:[UIImage imageNamed:@"live_dm"] title:@"分享直播"];
+            }
+        }
+        NSLog(@"获取当前身份权限%@",data);
+    } failure:^(NSError *error) {
+        [self hideHud];
+        NSLog(@"获取当前身份权限%@",error);
+    }];
+}
+
+
 
 - (void)addNaviToolBar
 {
@@ -458,11 +491,15 @@
         
     }else{
         if (_groupInfo) {
-            if (_groupInfo.isManager) {
+            if (_groupInfo.roleType > 0) {//_groupInfo.isManager
                 GroupOperationController *vc = [[GroupOperationController alloc] init];
                 vc.targetController = self;
                 vc.groupInfo = _groupInfo;
-                vc.preferredContentSize = CGSizeMake(IPHONE_X_SCALE(180), _groupInfo.groupType==1?IPHONE_X_SCALE(205):IPHONE_X_SCALE(100));
+                CGFloat h = IPHONE_X_SCALE(100);
+                if (_groupInfo.groupType==1 && _groupInfo.roleType == 1) {
+                    h = IPHONE_X_SCALE(205);
+                }
+                vc.preferredContentSize = CGSizeMake(IPHONE_X_SCALE(180), h);
                 vc.modalPresentationStyle = UIModalPresentationPopover;
 
                 UIPopoverPresentationController *popver = vc.popoverPresentationController;
@@ -704,11 +741,16 @@
 - (void)addDMMsg:(NSInteger)type title:(NSString *)title
 {
     __weak typeof(self) weakSelf = self;
+    __weak NSString *weakTitle = title;
+    NSInteger weakType = type;
     __weak UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
     [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         textField.textColor = [UIColor colorWithHex:0x3C3E3D];
         textField.font = [UIFont systemFontOfSize:12 weight:UIFontWeightRegular];
 //        textField.height = 160;
+        if (weakType >= 1){
+            textField.placeholder = [NSString stringWithFormat:@"请输入%@的地址",weakTitle];
+        }
     }];
     [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             

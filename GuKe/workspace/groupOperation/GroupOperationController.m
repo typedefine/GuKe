@@ -149,6 +149,7 @@
     if (!_pageModel) {
         _pageModel = [[GroupOperationPageModel alloc] init];
         _pageModel.isStudio = self.groupInfo.groupType == 1;
+        _pageModel.isManager = self.groupInfo.roleType == 1;
     }
     return _pageModel;
 }
