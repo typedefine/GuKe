@@ -47,7 +47,7 @@
 #import "NSString+Util.h"
 #import "UIButton+EnlargeEdge.h"
 #import "NSString+Additions.h"
-#import "UITextView+Placeholder.h"
+//#import "UITextView+Placeholder.h"
 #import "Toast+UIView.h"
 #import "UIView+DDCToast.h"
 #import "UIView+CornerRadius.h"

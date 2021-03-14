@@ -164,9 +164,9 @@
             return 150;
         }
     }else{
-        if (indexPath.section==3 && indexPath.row == 1) {
-            return CGFLOAT_MIN;
-        }
+//        if (indexPath.section==3 && indexPath.row == 1) {
+//            return CGFLOAT_MIN;
+//        }
         return 50;
     }
 }
@@ -208,9 +208,9 @@
         }
         cell.headerImageV.image = [UIImage imageNamed:imgArr[indexPath.section-1][indexPath.row]];
         cell.nameLabel.text = titArr[indexPath.section-1][indexPath.row];
-        if (indexPath.section == 3 && indexPath.row == 1) {
-            cell.contentView.hidden = YES;
-        }
+//        if (indexPath.section == 3 && indexPath.row == 1) {
+//            cell.contentView.hidden = YES;
+//        }
         return cell;
     }
 }

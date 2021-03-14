@@ -43,9 +43,7 @@
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self);
         make.centerY.equalTo(self);
-        make.size.mas_equalTo(r);
-//        make.width.mas_equalTo(IPHONE_X_SCALE(20));
-//        make.height.mas_equalTo(IPHONE_X_SCALE(17));
+//        make.size.mas_equalTo(r);
     }];
     self.imageView.clipsToBounds = YES;
     self.imageView.layer.cornerRadius = r/2.0f;

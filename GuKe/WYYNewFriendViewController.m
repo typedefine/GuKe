@@ -77,7 +77,8 @@
         NSLog(@"好友申请列表%@",error);
     }];
 }
-- (void)makeAddTableview{
+- (void)makeAddTableview
+{
     if (IS_IPGONE_X) {
         detailTableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 86)];
     }else{

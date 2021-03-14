@@ -135,7 +135,6 @@
 		893A3DB1253756CC00570FB5 /* UIView+DDCToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 893A3DAE253756CC00570FB5 /* UIView+DDCToast.m */; };
 		893A3DB7253757C400570FB5 /* UIView+CornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 893A3DB5253757C400570FB5 /* UIView+CornerRadius.m */; };
 		893A3DB8253757C400570FB5 /* UIImageView+CornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 893A3DB6253757C400570FB5 /* UIImageView+CornerRadius.m */; };
-		893A3DC82537591E00570FB5 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 893A3DBB2537591D00570FB5 /* UITextView+Placeholder.m */; };
 		893A3DC92537591E00570FB5 /* UIButton+EnlargeEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = 893A3DBC2537591D00570FB5 /* UIButton+EnlargeEdge.m */; };
 		893A3DCA2537591E00570FB5 /* UIButton+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 893A3DBE2537591D00570FB5 /* UIButton+Additions.m */; };
 		893A3DCB2537591E00570FB5 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 893A3DBF2537591D00570FB5 /* UIView+Frame.m */; };
@@ -182,6 +181,7 @@
 		894C7D5F2579396F00EF9ABE /* WorkStudioItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C7D3C2579396F00EF9ABE /* WorkStudioItemCell.m */; };
 		894C7D602579396F00EF9ABE /* ExpandTextCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C7D432579396F00EF9ABE /* ExpandTextCellModel.m */; };
 		894C7D612579396F00EF9ABE /* WorkSpaceBlankView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C7D452579396F00EF9ABE /* WorkSpaceBlankView.m */; };
+		8959A67A25F6812200B20FC2 /* GroupApplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8959A67925F6812200B20FC2 /* GroupApplyCell.m */; };
 		897E8DCF25866FE5005E3AD7 /* WorkGroupInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E8DCE25866FE5005E3AD7 /* WorkGroupInfoController.m */; };
 		897E8DD32587D25D005E3AD7 /* WorkGroupInfoPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 897E8DD22587D25D005E3AD7 /* WorkGroupInfoPageModel.m */; };
 		898F1ADC24D46FD400397505 /* PatientInfoManageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 898F1ADB24D46FD400397505 /* PatientInfoManageController.m */; };
@@ -1230,7 +1230,6 @@
 		893A3DB4253757C400570FB5 /* UIImageView+CornerRadius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+CornerRadius.h"; sourceTree = "<group>"; };
 		893A3DB5253757C400570FB5 /* UIView+CornerRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CornerRadius.m"; sourceTree = "<group>"; };
 		893A3DB6253757C400570FB5 /* UIImageView+CornerRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+CornerRadius.m"; sourceTree = "<group>"; };
-		893A3DBB2537591D00570FB5 /* UITextView+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Placeholder.m"; sourceTree = "<group>"; };
 		893A3DBC2537591D00570FB5 /* UIButton+EnlargeEdge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIButton+EnlargeEdge.m"; path = "Category/UIButton+EnlargeEdge.m"; sourceTree = "<group>"; };
 		893A3DBD2537591D00570FB5 /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
 		893A3DBE2537591D00570FB5 /* UIButton+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Additions.m"; sourceTree = "<group>"; };
@@ -1240,7 +1239,6 @@
 		893A3DC22537591D00570FB5 /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
 		893A3DC32537591E00570FB5 /* UIButton+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Additions.h"; sourceTree = "<group>"; };
 		893A3DC42537591E00570FB5 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
-		893A3DC52537591E00570FB5 /* UITextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder.h"; sourceTree = "<group>"; };
 		893A3DC62537591E00570FB5 /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
 		893A3DD32537643700570FB5 /* KeyboardStateListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardStateListener.h; sourceTree = "<group>"; };
 		893A3DD42537643700570FB5 /* KeyboardStateListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardStateListener.m; sourceTree = "<group>"; };
@@ -1313,6 +1311,8 @@
 		894C7D452579396F00EF9ABE /* WorkSpaceBlankView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkSpaceBlankView.m; sourceTree = "<group>"; };
 		894C7D462579396F00EF9ABE /* MoreGroupMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreGroupMemberCell.h; sourceTree = "<group>"; };
 		894C7D482579396F00EF9ABE /* WorkSpaceFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkSpaceFooter.h; sourceTree = "<group>"; };
+		8959A67825F6812200B20FC2 /* GroupApplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupApplyCell.h; sourceTree = "<group>"; };
+		8959A67925F6812200B20FC2 /* GroupApplyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupApplyCell.m; sourceTree = "<group>"; };
 		897E8DCD25866FE5005E3AD7 /* WorkGroupInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkGroupInfoController.h; sourceTree = "<group>"; };
 		897E8DCE25866FE5005E3AD7 /* WorkGroupInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkGroupInfoController.m; sourceTree = "<group>"; };
 		897E8DD12587D25D005E3AD7 /* WorkGroupInfoPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkGroupInfoPageModel.h; sourceTree = "<group>"; };
@@ -3426,6 +3426,8 @@
 		897E8DD02587C76D005E3AD7 /* membersView */ = {
 			isa = PBXGroup;
 			children = (
+				8959A67825F6812200B20FC2 /* GroupApplyCell.h */,
+				8959A67925F6812200B20FC2 /* GroupApplyCell.m */,
 				894C7D392579396F00EF9ABE /* GroupMembersView.h */,
 				894C7D202579396F00EF9ABE /* GroupMembersView.m */,
 				894C7D312579396F00EF9ABE /* GroupMemberCell.h */,
@@ -5640,8 +5642,6 @@
 				893A3DBE2537591D00570FB5 /* UIButton+Additions.m */,
 				893A3DC02537591D00570FB5 /* UIButton+EnlargeEdge.h */,
 				893A3DBC2537591D00570FB5 /* UIButton+EnlargeEdge.m */,
-				893A3DC52537591E00570FB5 /* UITextView+Placeholder.h */,
-				893A3DBB2537591D00570FB5 /* UITextView+Placeholder.m */,
 				893A3DC42537591E00570FB5 /* UIView+Frame.h */,
 				893A3DBF2537591D00570FB5 /* UIView+Frame.m */,
 				893A3DB2253757C400570FB5 /* CornerRadius */,
@@ -7084,6 +7084,7 @@
 				9A779893200DDC8600EFCF67 /* WYYZhaoYishengViewController.m in Sources */,
 				E3F964201F7F97DC00924F8A /* ZJNArrowTableViewCell.m in Sources */,
 				9A53877F20084D8B0084E772 /* PSTCollectionViewData.m in Sources */,
+				8959A67A25F6812200B20FC2 /* GroupApplyCell.m in Sources */,
 				1BAA8B0C25908B6A0074A2A3 /* ZXFInputField.m in Sources */,
 				E30976F01F9DD20F00EC3F80 /* TFHppleElement.m in Sources */,
 				E3D35C0B2022E17E00A6FB9F /* ZJNAddPatientRequestModel.m in Sources */,
@@ -7218,7 +7219,6 @@
 				9A79E83F1F384AC300BCF889 /* Utile.m in Sources */,
 				9A949BD6201033C700AE1A60 /* WYYNewFriendViewController.m in Sources */,
 				E3D30D6B2043DD8300876D44 /* ZJNChangePatientBasicInfoModel.m in Sources */,
-				893A3DC82537591E00570FB5 /* UITextView+Placeholder.m in Sources */,
 				E30976911F9DD20F00EC3F80 /* HPGrowingTextView.m in Sources */,
 				E3DF94111F79FC91001E1963 /* PersonalCenterTableViewCell.m in Sources */,
 				8910832F25A355A7002C5959 /* GroupManageOperationCell.m in Sources */,
@@ -7865,7 +7865,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 23P4287UJD;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -7909,7 +7909,7 @@
 					"$(PROJECT_DIR)/GuKe/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/GuKe/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);
-				MARKETING_VERSION = 1.2.4;
+				MARKETING_VERSION = 1.2.6;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -7933,7 +7933,7 @@
 				CODE_SIGN_ENTITLEMENTS = GuKe/GuKe.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 23P4287UJD;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -7979,7 +7979,7 @@
 					"$(PROJECT_DIR)/GuKe/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/GuKe/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);
-				MARKETING_VERSION = 1.2.4;
+				MARKETING_VERSION = 1.2.6;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",

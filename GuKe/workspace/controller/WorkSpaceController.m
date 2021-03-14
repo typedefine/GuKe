@@ -28,7 +28,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self loadServerData];
+    [self loadServerData:NO];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad {
@@ -36,8 +41,15 @@
     // Do any additional setup after loading the view.
     
     [self setupUI];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(groupChanged:) name:@"GroupChangedNotification" object:nil];
 
 //    [self loadServerData];
+}
+
+- (void)groupChanged:(NSNotification *)noti
+{
+    [self loadServerData:YES];
 }
 
 - (void)setupUI
@@ -73,7 +85,7 @@
 //    [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)loadServerData
+- (void)loadServerData:(BOOL)force
 {
     __weak typeof(self) weakSelf = self;
     void (^ complet)(WorkSpaceInfoModel *data) = ^(WorkSpaceInfoModel *data){
@@ -136,7 +148,7 @@
     };
    
     WorkSpaceInfoModel *model = [GuKeCache shareCache].spaceInfo;//[[GuKeCache shareCache] objectForKey:kWorkStudioGroup_cache_key];
-    if (model) {
+    if (!force && model) {
         complet(model);
     }else{
         [self showHudInView:self.view hint:nil];

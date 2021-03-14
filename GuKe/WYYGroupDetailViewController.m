@@ -373,7 +373,6 @@
     }else{
         [self tuichuGroup];
     }
-    
 }
 #pragma mark 消息免打扰
 - (void)didMianDaRao:(UISwitch *)swbtn{

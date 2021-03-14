@@ -21,6 +21,7 @@
 @property (nonatomic, strong) WorkStudioFooterView *footerView;
 @property (nonatomic, strong) WorkStudioInfoPageModel *pageModel;
 @property (nonatomic, strong) UIButton *joinButton;
+@property (nonatomic, strong) UIButton *naviRightButton;
 
 @end
 
@@ -31,6 +32,9 @@
     // Do any additional setup after loading the view.
     
     self.navigationItem.title = @"工作室介绍";
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.naviRightButton];
+    [self.naviRightButton addTarget:self action:@selector(naviRightButtonAction) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -57,39 +61,97 @@
     [self loadServerData];
 }
 
+- (void)naviRightButtonAction
+{
+    if (self.groupInfo.isOwner) {
+        [self jiesanGroup];
+    }else{
+        [self tuichuGroup];
+    }
+}
+
+#pragma mark 退出群
+- (void)tuichuGroup
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,chatgroupsleavegroup];
+    NSArray *keysArray = @[@"sessionId",@"groupid"];
+    NSArray *valueArray = @[sessionIding,@(self.groupInfo.groupId).stringValue];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjects:valueArray forKeys:keysArray];
+    [self showHudInView:self.view hint:nil];
+    [ZJNRequestManager postWithUrlString:urlString parameters:dic success:^(id data) {
+        [self hideHud];
+        NSString *retcode = [NSString stringWithFormat:@"%@",data[@"retcode"]];
+        if ([retcode isEqualToString:@"0000"]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"GroupChangedNotification" object:nil];
+            [self.navigationController popToRootViewControllerAnimated:NO];
+        }else{
+            [self showHint:data[@"message"]];
+        }
+        NSLog(@"退出群%@",data);
+    } failure:^(NSError *error) {
+        [self hideHud];
+        NSLog(@"退出群%@",error);
+    }];
+}
+
+#pragma mark 解散群
+- (void)jiesanGroup
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",requestUrl,chatgroupsdelete];
+    NSArray *keysArray = @[@"sessionId",@"groupid"];
+    NSArray *valueArray = @[sessionIding,@(self.groupInfo.groupId).stringValue];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjects:valueArray forKeys:keysArray];
+    [self showHudInView:self.view hint:nil];
+    [ZJNRequestManager postWithUrlString:urlStr parameters:dic success:^(id data) {
+        [self hideHud];
+        NSString *retcode = [NSString stringWithFormat:@"%@",data[@"retcode"]];
+        if ([retcode isEqualToString:@"0000"]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"GroupChangedNotification" object:nil];
+            [self.navigationController popToRootViewControllerAnimated:NO];
+        }else{
+            [self showHint:data[@"message"]];
+        }
+        NSLog(@"解散群%@",data);
+    } failure:^(NSError *error) {
+        [self hideHud];
+        NSLog(@"解散群%@",error);
+    }];
+}
+
+
 - (void)joinButtonAction
 {
     if (self.groupInfo.joinStatus == 0) {
         // 调用:
-//        NSString *reason = [NSString stringWithFormat:@"%@申请加入群组",[GuKeCache shareCache].user.name];
-//        [[EMClient sharedClient].groupManager requestToJoinPublicGroup:@(self.groupInfo.groupId).stringValue message:reason completion:^(EMGroup *aGroup, EMError *aError) {
-//            if (!aError) {
-//                NSLog(@"申请加公开群成功 --- %@", aGroup);
-//            } else {
-//                NSLog(@"申请加公开群失败的原因 --- %@", aError.errorDescription);
-//            }
-//        }];
-        
-        NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,UrlPath_apply_join_studio];
-        NSMutableDictionary *paras = [NSMutableDictionary dictionary];
-        [paras setValue:@(self.groupInfo.groupId).stringValue forKey:@"groupId"];
-        [paras setValue:[GuKeCache shareCache].user.userId forKey:@"userId"];
-        [self showHudInView:self.view hint:nil];
-        [ZJNRequestManager postWithUrlString:urlString parameters:paras success:^(id data) {
-            NSLog(@"申请加入工作室-->%@",data);
-            [self hideHud];
-            NSDictionary *dict = (NSDictionary *)data;
-            if ([dict[@"retcode"] isEqual:@"0000"]) {
-                [self showHint:@"申请加入工作室成功"];
-                self.groupInfo.joinStatus = 2;
-                self.joinButton.enabled = NO;
-            }else{
-                [self showHint:dict[@"message"]];
+        NSString *reason = [NSString stringWithFormat:@"%@申请加入%@",[GuKeCache shareCache].user.name, self.groupInfo.groupName];
+        [[EMClient sharedClient].groupManager requestToJoinPublicGroup:@(self.groupInfo.groupId).stringValue message:reason completion:^(EMGroup *aGroup, EMError *aError) {
+            if (!aError) {
+                NSLog(@"申请加公开群成功 --- %@", aGroup);
+                NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,UrlPath_apply_join_studio];
+                NSMutableDictionary *paras = [NSMutableDictionary dictionary];
+                [paras setValue:@(self.groupInfo.groupId).stringValue forKey:@"groupId"];
+                [paras setValue:[GuKeCache shareCache].user.userId forKey:@"userId"];
+                [self showHudInView:self.view hint:nil];
+                [ZJNRequestManager postWithUrlString:urlString parameters:paras success:^(id data) {
+                    NSLog(@"申请加入工作室-->%@",data);
+                    [self hideHud];
+                    NSDictionary *dict = (NSDictionary *)data;
+                    if ([dict[@"retcode"] isEqual:@"0000"]) {
+                        [self showHint:@"申请加入工作室成功"];
+                        self.groupInfo.joinStatus = 2;
+                        self.joinButton.enabled = NO;
+                    }else{
+                        [self showHint:dict[@"message"]];
+                    }
+                } failure:^(NSError *error) {
+                    [self hideHud];
+                    [self showHint:@"申请加入工作室失败"];
+                    NSLog(@"申请加入工作室error:%@",error);
+                }];
+                
+            } else {
+                NSLog(@"申请加公开群失败的原因 --- %@", aError.errorDescription);
             }
-        } failure:^(NSError *error) {
-            [self hideHud];
-            [self showHint:@"申请加入工作室失败"];
-            NSLog(@"申请加入工作室error:%@",error);
         }];
         
     }else if(self.groupInfo.joinStatus == 1){
@@ -318,6 +380,21 @@
     return _joinButton;
 }
 
+
+- (UIButton *)naviRightButton
+{
+    if (!_naviRightButton) {
+        _naviRightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _naviRightButton.titleLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightRegular];
+        [_naviRightButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [_naviRightButton setTitle:self.groupInfo.isOwner?@"解散工作室":@"退出工作室" forState:UIControlStateNormal];//@"查找群"
+        _naviRightButton.backgroundColor = [UIColor whiteColor];
+        CGFloat h = IPHONE_Y_SCALE(25);
+        _naviRightButton.frame = CGRectMake(0, 0, IPHONE_X_SCALE(70), h);
+        _naviRightButton.layer.cornerRadius = h/2.0f;
+    }
+    return _naviRightButton;
+}
 
 
 - (WorkStudioInfoPageModel *)pageModel

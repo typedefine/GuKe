@@ -86,6 +86,7 @@
         _collectionView.backgroundColor = [UIColor whiteColor];
 //        _collectionView.allowsSelection = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
+        _collectionView.showsHorizontalScrollIndicator = NO;
         [_collectionView registerClass:[WorkStudioItemCell class] forCellWithReuseIdentifier:NSStringFromClass([WorkStudioItemCell class])];
         [_collectionView registerClass:[MoreWorkStudiosCell class] forCellWithReuseIdentifier:NSStringFromClass([MoreWorkStudiosCell class])];
     }
@@ -109,14 +110,14 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.groups.count+1;
+    return self.groups.count;//self.groups.count+1;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.item == self.groups.count) {
-        return [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([MoreWorkStudiosCell class]) forIndexPath:indexPath];
-    }
+//    if (indexPath.item == self.groups.count) {
+//        return [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([MoreWorkStudiosCell class]) forIndexPath:indexPath];
+//    }
     WorkStudioItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([WorkStudioItemCell class]) forIndexPath:indexPath];
     [cell configCellWithData:self.groups[indexPath.item]];
     return cell;

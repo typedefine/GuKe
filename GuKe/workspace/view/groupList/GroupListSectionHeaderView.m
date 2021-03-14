@@ -31,9 +31,8 @@
         }];
         CGFloat r = IPHONE_X_SCALE(33);
         [self.mainView.imageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.width.mas_equalTo(r);
-            make.height.mas_equalTo(r);
-            make.centerY.equalTo(self.mainView);
+            make.size.mas_equalTo(r);
+            make.centerY.left.equalTo(self.mainView);
         }];
         self.mainView.imageView.clipsToBounds = YES;
         self.mainView.imageView.layer.cornerRadius = r/2.0f;

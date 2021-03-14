@@ -12,6 +12,7 @@
 
 @interface WorkGroupInfoController ()<GroupMembersViewDelegate>
 
+@property (nonatomic, strong) UIButton *naviRightButton;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIView *topView;
 @property (nonatomic, strong) UIView *middleView;
@@ -39,6 +40,10 @@
 
 - (void)setupSubViews
 {
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.naviRightButton];
+    [self.naviRightButton addTarget:self action:@selector(naviRightButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    
     self.scrollView.frame = self.view.bounds;
     [self.view addSubview:self.scrollView];
     
@@ -65,6 +70,63 @@
     self.middleView.frame = f;
     self.membersView.frame = CGRectMake(18, IPHONE_Y_SCALE(15), f.size.width-36, f.size.height-IPHONE_Y_SCALE(30));
     
+}
+
+- (void)naviRightButtonAction
+{
+    if (self.groupInfo.isOwner) {
+        [self jiesanGroup];
+    }else{
+        [self tuichuGroup];
+    }
+}
+
+#pragma mark 退出群
+- (void)tuichuGroup
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",requestUrl,chatgroupsleavegroup];
+    NSArray *keysArray = @[@"sessionId",@"groupid"];
+    NSArray *valueArray = @[sessionIding,@(self.groupInfo.groupId).stringValue];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjects:valueArray forKeys:keysArray];
+    [self showHudInView:self.view hint:nil];
+    [ZJNRequestManager postWithUrlString:urlString parameters:dic success:^(id data) {
+        [self hideHud];
+        NSString *retcode = [NSString stringWithFormat:@"%@",data[@"retcode"]];
+        if ([retcode isEqualToString:@"0000"]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"GroupChangedNotification" object:nil];
+            [self.navigationController popToRootViewControllerAnimated:NO];
+        }else{
+            [self showHint:data[@"message"]];
+        }
+        NSLog(@"退出群%@",data);
+    } failure:^(NSError *error) {
+        [self hideHud];
+        NSLog(@"退出群%@",error);
+    }];
+}
+
+#pragma mark 解散群
+- (void)jiesanGroup
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@",requestUrl,chatgroupsdelete];
+    NSArray *keysArray = @[@"sessionId",@"groupid"];
+    NSArray *valueArray = @[sessionIding,@(self.groupInfo.groupId).stringValue];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjects:valueArray forKeys:keysArray];
+    [self showHudInView:self.view hint:nil];
+    [ZJNRequestManager postWithUrlString:urlStr parameters:dic success:^(id data) {
+        [self hideHud];
+        NSString *retcode = [NSString stringWithFormat:@"%@",data[@"retcode"]];
+        if ([retcode isEqualToString:@"0000"]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"GroupChangedNotification" object:nil];
+            [self.navigationController popToRootViewControllerAnimated:NO];
+        }else{
+            [self showHint:data[@"message"]];
+        }
+        NSLog(@"解散群%@",data);
+    } failure:^(NSError *error) {
+        [self hideHud];
+        NSLog(@"解散群%@",error);
+    }];
 }
 
 - (void)setDisplayViewColor:(UIColor *)color
@@ -153,6 +215,21 @@
 //    }
 //}
 
+
+- (UIButton *)naviRightButton
+{
+    if (!_naviRightButton) {
+        _naviRightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _naviRightButton.titleLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightRegular];
+        [_naviRightButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [_naviRightButton setTitle:self.groupInfo.isOwner?@"解散工作组":@"退出工作组" forState:UIControlStateNormal];//@"查找群"
+        _naviRightButton.backgroundColor = [UIColor whiteColor];
+        CGFloat h = IPHONE_Y_SCALE(25);
+        _naviRightButton.frame = CGRectMake(0, 0, IPHONE_X_SCALE(70), h);
+        _naviRightButton.layer.cornerRadius = h/2.0f;
+    }
+    return _naviRightButton;
+}
 
 
 - (UIScrollView *)scrollView

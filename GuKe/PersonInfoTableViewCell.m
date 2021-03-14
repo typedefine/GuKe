@@ -17,6 +17,10 @@
     self.redView.layer.masksToBounds = YES;
     self.redView.layer.cornerRadius = 7.5;
     // Initialization code
+    
+//    [self.imageView mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.size.mas_equalTo(IPHONE_X_SCALE(13));
+//    }];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
