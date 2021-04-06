@@ -15,7 +15,7 @@
 {
     if (self = [super initWithFrame:frame]) {
         
-        self.portraitView.image = [UIImage imageNamed:@"icon_more"];
+        self.portraitView.image = [UIImage imageNamed:@"more"];
     }
     return self;
 }

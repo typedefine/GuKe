@@ -208,8 +208,8 @@
         return [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([MoreGroupMemberCell class]) forIndexPath:indexPath];
     }
     GroupMemberCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([GroupMemberCell class]) forIndexPath:indexPath];
-//    [cell configCellWithData:self.members[indexPath.item]];
-    [cell.portraitView sd_setImageWithURL:[NSURL URLWithString:imgFullUrl(self.members[indexPath.item].portrait)] placeholderImage:[UIImage imageNamed:@"default_avatar"]];
+    NSString *imgUrlStr = self.members[indexPath.item].portrait;
+    [cell.portraitView sd_setImageWithURL:[NSURL URLWithString:imgUrlStr] placeholderImage:[UIImage imageNamed:@"default_avatar"]];
     return cell;
 }
 
